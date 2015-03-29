@@ -1,0 +1,50 @@
+/*common css*/
+.btn{
+	text-transform:uppercase;
+	font-weight:bold;
+	border:none;
+}
+.btn-primary{
+	background-color:#177efd;
+}
+.btn-primary:hover{
+	background-color:#337ab7;
+}
+.btn-default{
+}
+.btn-default:hover{
+}
+.form-control{
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+}
+.text-inlineblock{
+	display:inline-block;
+	vertical-align:top;
+	width:auto;
+}
+.text-danger{
+}
+.box-captcha{
+	display:inline-block;
+	border:1px solid #b8b8b8;
+	margin:0 0 5px;
+	vertical-align:middle;
+}
+.btnnewimg{
+    background: url(../images/btnnewimg.png) no-repeat;
+    border:none;
+    box-shadow:none;
+    cursor:pointer;
+    height:31px;
+    margin:0 0 0 5px !important;
+    text-indent:-9999px;
+    vertical-align:middle !important;
+    width:30px;
+	display:inline-block;
+}
+.form-horizontal .control-label{
+	font-weight:600;
+}
+/*end common css*/
