@@ -16,6 +16,7 @@ class WebAsset extends AppAsset {
         'js/customer/viewUtils.js',
         'js/customer/layout.js',
         'js/customer/index.js',
+        'js/customer/money.js',
         'js/customer/auth.js',
         'js/customer/func.js',
         'js/customer/administrator.js',
