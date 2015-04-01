@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2015 at 05:29 AM
--- Server version: 5.6.11
--- PHP Version: 5.5.3
+-- Generation Time: Apr 01, 2015 at 07:34 PM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,22 +19,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `web_tour_db`
 --
-CREATE DATABASE IF NOT EXISTS `web_tour_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `web_tour_db`;
 
-DELIMITER $$
---
--- Procedures
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `test_multi_sets`()
-    DETERMINISTIC
-begin
-        select user() as first_col;
-        select user() as first_col, now() as second_col;
-        select user() as first_col, now() as second_col, now() as third_col;
-        end$$
+-- DELIMITER $$
+-- --
+-- -- Procedures
+-- --
+-- CREATE DEFINER=`root`@`localhost` PROCEDURE `test_multi_sets`()
+--     DETERMINISTIC
+-- begin
+--         select user() as first_col;
+--         select user() as first_col, now() as second_col;
+--         select user() as first_col, now() as second_col, now() as third_col;
+--         end$$
 
-DELIMITER ;
+-- DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -60,6 +58,7 @@ CREATE TABLE IF NOT EXISTS `administrator` (
 
 INSERT INTO `administrator` (`id`, `description`, `joinTime`, `active`, `lastTime`, `role`, `rememberKey`) VALUES
 ('bapcai.vn29@gmail.com', 'Tên : bắp cải , giới tính : male', 1418719454, 1, 1421723564, 0, NULL),
+('bientran.hust@gmail.com', 'Tên : , giới tính : male', 1418785470, 1, 1427419528, 0, NULL),
 ('hoaot@peacesoft.net', 'Tên : Hoa Ong The , giới tính : male', 1418694614, 1, 1419040127, 0, NULL),
 ('quang.nh94@gmail.com', 'Tên : Quang Nguyễn Huy , giới tính : undefined', 1418712401, 1, 1419385268, 0, NULL),
 ('xuanlap93@gmail.com', 'Tên : Dam Lap , giới tính : male', 1418785470, 1, 1427419528, 0, NULL);
@@ -228,9 +227,19 @@ CREATE TABLE IF NOT EXISTS `money` (
   `id` int(12) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(3) NOT NULL,
   `name` varchar(50) NOT NULL,
+  `create_time` int(11) NOT NULL,
+  `update_time` int(11) NOT NULL,
   `language` varchar(3) NOT NULL,
+  `active` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `money`
+--
+
+INSERT INTO `money` (`id`, `code`, `name`, `create_time`, `update_time`, `language`, `active`) VALUES
+(1, 'USD', 'Đô la mỹ', 1427909306, 1427909306, 'VI', 1);
 
 -- --------------------------------------------------------
 
@@ -345,7 +354,7 @@ CREATE TABLE IF NOT EXISTS `option` (
 --
 
 INSERT INTO `option` (`id`, `key`, `value`, `auto_load`, `name`) VALUES
-(1, 'EMAIL_CONTACT', 'contact@gmail.com', 1, 'Email liên lạc'),
+(1, 'EMAIL_CONTACT', 'contact123@gmail.com', 1, 'Email liên lạc'),
 (2, 'ADMIN_EMAIL', 'admin@gmail.com', 1, 'Email admin'),
 (3, 'SLOGAN', 'đây là slogan của chúng tôi', 1, 'Slogan'),
 (4, 'HOTLINE', '1663598168', 1, 'Hotline'),
