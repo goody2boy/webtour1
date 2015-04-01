@@ -7,55 +7,49 @@ use Yii;
 /**
  * This is the model class for table "image".
  *
- * @property string $id
+ * @property string $targetId
+ * @property integer $position
  * @property string $type
- * @property integer $target_id
- * @property string $description
- * @property string $title
- * @property string $caption
- * @property string $link
- * @property integer $by
- * @property integer $active
+ * @property integer $width
+ * @property integer $height
+ * @property string $extension
+ * @property string $imageId
  */
-class Image extends \yii\db\ActiveRecord
-{
+class Image extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'image';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['type', 'target_id', 'title', 'link'], 'required'],
-            [['target_id', 'by', 'active'], 'integer'],
-            [['description'], 'string'],
-            [['type'], 'string', 'max' => 12],
-            [['title', 'caption', 'link'], 'string', 'max' => 100]
+            [['targetId', 'imageId'], 'required'],
+            [['position', 'width', 'height'], 'integer'],
+            [['targetId', 'imageId'], 'string', 'max' => 220],
+            [['type'], 'string', 'max' => 20],
+            [['extension'], 'string', 'max' => 50]
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
-            'id' => Yii::t('app', 'ID'),
+            'targetId' => Yii::t('app', 'Target ID'),
+            'position' => Yii::t('app', 'Position'),
             'type' => Yii::t('app', 'Type'),
-            'target_id' => Yii::t('app', 'Target ID'),
-            'description' => Yii::t('app', 'Description'),
-            'title' => Yii::t('app', 'Title'),
-            'caption' => Yii::t('app', 'Caption'),
-            'link' => Yii::t('app', 'Link'),
-            'by' => Yii::t('app', 'By'),
-            'active' => Yii::t('app', 'Active'),
+            'width' => Yii::t('app', 'Width'),
+            'height' => Yii::t('app', 'Height'),
+            'extension' => Yii::t('app', 'Extension'),
+            'imageId' => Yii::t('app', 'Image ID'),
         ];
     }
+
 }

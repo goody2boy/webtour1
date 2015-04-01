@@ -8,10 +8,6 @@
             <ul class="nav nav-tabs" role="tablist">
                 <li class="active"><a href="#banner/grid">Danh sách banner</a></li>
                 <li style="float: right;"><div class="btn-group">
-                <button type="button" class="btn btn-success btn-right" onclick="metaindex.config('1')">
-                    <i class="fa fa-wrench"></i>
-                    Cấu hình seo trang chủ
-                </button>
             </div></li>
             </ul>
         </div>

@@ -53,6 +53,7 @@ news.add = function() {
                         if (rs.success) {
                                 var html = Fly.template('/news/tradd.tpl', rs);
                                 $('#mytable tbody[rel-data="bodydata"]').prepend(html);
+                                $('tr[rel-data='+rs.data.id+']').addClass('success');
                                 popup.close('popup-add-news');
                         } else {
                             popup.msg(rs.message);
@@ -136,6 +137,8 @@ news.edit = function(id) {
                                             $('td[data-name="' + id + '"]').empty().html(rs.data.name);
                                             $('td[data-updateTime="' + id + '"]').empty().html(textUtils.formatTime(rs.data.updateTime));
                                             $('td div[data-key-active="' + id + '"]').empty().html('<label class="label label-' + (rs.data.active == 1 ? 'success' : 'danger') + '" >' + (rs.data.active == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="news.changeActive(\'' + rs.data.id + '\')" style="cursor: pointer; margin-left: 5px" class="glyphicon glyphicon-' + (rs.data.active == 1 ? 'check' : 'unchecked') + '" />');
+                                            $('td div[data-key-nav="' + id + '"]').empty().html('<label class="label label-' + (rs.data.home == 1 ? 'success' : 'danger') + '" >' + (rs.data.home == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="news.changeHome(\'' + rs.data.id + '\')" style="cursor: pointer; margin-left: 5px" class="glyphicon glyphicon-' + (rs.data.home == 1 ? 'check' : 'unchecked') + '" />');
+                                            $('tr[rel-data='+id+']').addClass('success');
                                             popup.close('popup-edit-news');
                                     } else {
                                         popup.msg(rs.message);
@@ -171,20 +174,22 @@ news.changeActive = function(id) {
         done: function(resp) {
             if (resp.success) {
                 $("div[data-key-active='" + id + "']").html('<label class="label label-' + (resp.data.active == 1 ? 'success' : 'danger') + '" >' + (resp.data.active == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="news.changeActive(\'' + id + '\');" style="cursor: pointer; margin-left:5px" class="glyphicon glyphicon-' + (resp.data.active == 1 ? 'check' : 'unchecked') + '" />');
+                $('tr[rel-data='+id+']').addClass('success');
             } else {
                 popup.msg(resp.message);
             }
         }
     });
 };
-news.changeNav = function(id) {
+news.changeHome = function(id) {
     ajax({
-        service: '/news/changenav',
+        service: '/news/changehome',
         data: {id: id},
         loading: false,
         done: function(resp) {
             if (resp.success) {
-                $("div[data-key-nav='" + id + "']").html('<label class="label label-' + (resp.data.nav == 1 ? 'success' : 'danger') + '" >' + (resp.data.nav == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="news.changeNav(\'' + id + '\');" style="cursor: pointer; margin-left:5px" class="glyphicon glyphicon-' + (resp.data.nav == 1 ? 'check' : 'unchecked') + '" />');
+                $("div[data-key-nav='" + id + "']").html('<label class="label label-' + (resp.data.home == 1 ? 'success' : 'danger') + '" >' + (resp.data.home == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="news.changeHome(\'' + id + '\');" style="cursor: pointer; margin-left:5px" class="glyphicon glyphicon-' + (resp.data.home == 1 ? 'check' : 'unchecked') + '" />');
+                $('tr[rel-data='+id+']').addClass('success');
             } else {
                 popup.msg(resp.message);
             }

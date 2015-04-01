@@ -2,6 +2,6 @@
 
 return [
     "image" => [
-        'baseUrl' => "http://webtour.com/"
+        'baseUrl' => "http://localhost/hoalua/frontend/public/"
     ]
 ];

@@ -19,21 +19,13 @@ class WebAsset extends AppAsset {
         'js/customer/auth.js',
         'js/customer/func.js',
         'js/customer/administrator.js',
-        'js/customer/menu.js',
-        'js/customer/video.js',
         'js/customer/newscategory.js',
         'js/customer/image.js',
         'js/customer/news.js',
         'js/customer/partners.js',
-        'js/customer/reviews.js',
-        'js/customer/album.js',
         'js/customer/item.js',
         'js/customer/contact.js',
         'js/customer/banner.js',
-        'js/customer/metanews.js',
-        'js/customer/metaitem.js',
-        'js/customer/metaindex.js',
-        'js/customer/metacategory.js',
     ];
 
 }

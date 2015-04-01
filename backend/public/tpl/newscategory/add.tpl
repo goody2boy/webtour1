@@ -28,31 +28,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-4">Tab:</label>
-        <div class="col-sm-4">
-            <select name="tabOne" class="form-control">
-                <option value="1" <%= (typeof data != 'undefined' && data.tabOne == 1 ?  'selected' : '') %>>Hoạt động</option>
-                <option value="0" <%= (typeof data != 'undefined' && data.tabOne == 0 ?  'selected' : '') %>>Tạm khóa</option>
-            </select>
-        </div>
-        <div class="col-sm-4">
-            <select name="tabTwo" class="form-control">
-                <option value="1" <%= (typeof data != 'undefined' && data.tabTwo == 1 ?  'selected' : '') %>>Hoạt động</option>
-                <option value="0" <%= (typeof data != 'undefined' && data.tabTwo == 0 ?  'selected' : '') %>>Tạm khóa</option>
-            </select>
-        </div>
-    </div>
-    <div class="form-group">
         <label class="control-label col-sm-4">Thứ tự:</label>
         <div class="col-sm-8">
             <input name="position" type="text" class="form-control" value="<%= typeof data != 'undefined'?data.position:0 %>"/>
-            <input name="id" type="text" class="form-control" value="<%= (typeof data != 'undefined' ? data.id : '')%>" style="display: none"/>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-sm-4">Icon:</label>
-        <div class="col-sm-8">
-            <input name="icon" type="text" class="form-control" value="<%= typeof data != 'undefined'?data.icon:'' %>"/>
             <input name="id" type="text" class="form-control" value="<%= (typeof data != 'undefined' ? data.id : '')%>" style="display: none"/>
         </div>
     </div>

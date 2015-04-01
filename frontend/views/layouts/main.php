@@ -39,7 +39,7 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
         <div class="navigator">
             <div class="container">
                 <a class="logo" href="<?= $this->context->baseUrl ?>"></a>
-                <div class="sologan"><?= $this->context->var['home']->slogan ?></div>
+                <div class="sologan"><h1><?= $this->context->var['home']->slogan ?></h1></div>
                 <div class="hotline">
                     <i class="fa fa-phone"></i>
                     <?= $this->context->var['home']->hotline ?>
@@ -48,6 +48,7 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                     <a target="_blank" href="<?= $this->context->var['home']->facebook ?>"><i class="fa fa-facebook"></i></a>
                     <a target="_blank" href="<?= $this->context->var['home']->twitter ?>"><i class="fa fa-twitter"></i></a>
                     <a target="_blank" href="<?= $this->context->var['home']->youtube ?>"><i class="fa fa-youtube"></i></a>
+                    <a target="_blank" href="<?= $this->context->var['home']->google ?>"><i class="fa fa-google-plus"></i></a>
                     <!--<a href="#"><i class="fa fa-pinterest"></i></a>-->
                 </div>
             </div><!-- container -->
@@ -121,7 +122,7 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                 <div class="row md-reset-5">
                     <div class="col-md-4 padding-all-5">
                         <div class="logo-footer"><a href="<?= $this->context->baseUrl ?>"><img src="<?= $this->context->baseUrl ?>images/logo-footer.png" alt="logo" /></a></div>
-                        <p class="fad-p">Công ty cổ phần Airocide Việt Nam</p>
+                        <h4 class="fad-p">Công ty cổ phần Airocide Việt Nam</h4>
                         <ul class="fad-ul">
                             <li>
                                 <span class="fad-icon"><i class="fa fa-map-marker"></i></span>
@@ -145,13 +146,14 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                             <a target="_blank" href="<?= $this->context->var['home']->facebook ?>"><i class="fa fa-facebook"></i></a>
                             <a target="_blank" href="<?= $this->context->var['home']->twitter ?>"><i class="fa fa-twitter"></i></a>
                             <a target="_blank" href="<?= $this->context->var['home']->youtube ?>"><i class="fa fa-youtube"></i></a>
+                            <a target="_blank" href="<?= $this->context->var['home']->google ?>"><i class="fa fa-google-plus"></i></a>
                             <!--<a href="#"><i class="fa fa-pinterest"></i></a>-->
                         </div>
                     </div><!-- col -->
                     <div class="col-md-4 padding-all-5 ipad-hidden">
                         <div class="box">
                             <div class="box-title">
-                                <div class="lb-name">Ý kiến khách hàng</div>
+                                <div class="lb-name"><h4>Ý kiến khách hàng<h4></div>
                                 <div class="lb-desc">Những ý kiến nhiều người quan tâm nhất</div>
                             </div><!-- box-title -->
                             <div class="box-content">
@@ -183,7 +185,7 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                     <div class="col-md-4 padding-all-5 ipad-hidden">
                         <div class="box">
                             <div class="box-title">
-                                <div class="lb-name">Thư viện hình ảnh</div>
+                                <div class="lb-name"><h4>Thư viện hình ảnh</h4></div>
                                 <?php if (is_array($albums)) { ?>
                                     <?php foreach ($albums as $album) { ?>
                                         <?php if ($album->active == 1 && $album->home == 1) { ?>

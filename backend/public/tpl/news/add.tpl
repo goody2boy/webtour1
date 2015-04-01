@@ -11,12 +11,6 @@
             <input name="alias" data-alias=alias value="<%= (typeof data != 'undefined' ?  data.alias : '') %>" type="text" class="form-control" placeholder="Alias"/>
         </div>
     </div>
-    <div class="form-group">
-        <label class="control-label col-sm-4">Icon:</label>
-        <div class="col-sm-8">
-            <input name="icon" data-alias=icon value="<%= (typeof data != 'undefined' ?  data.icon : '') %>" type="text" class="form-control" placeholder="Icon"/>
-        </div>
-    </div>
     <input name="id"  value="<%= (typeof data != 'undefined' ?  data.id : '') %>" type="text" class="form-control" placeholder="id" style="display: none;"/>
     <div class="form-group">
         <label class="control-label col-sm-4">Danh sách danh mục:</label>
@@ -35,11 +29,11 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-4">Hiển thị nav:</label>
+        <label class="control-label col-sm-4">Hiển thị trang chủ:</label>
         <div class="col-sm-4">
-            <select name="nav" class="form-control">
-                <option value="1" <%= (typeof data != 'undefined' && data.nav == 1 ?  'selected' : '') %>>Hoạt động</option>
-                <option value="0" <%= (typeof data != 'undefined' && data.nav != 1 ?  'selected' : '') %>>Tạm khóa</option>
+            <select name="home" class="form-control">
+                <option value="1" <%= (typeof data != 'undefined' && data.home == 1 ?  'selected' : '') %>>Hoạt động</option>
+                <option value="0" <%= (typeof data != 'undefined' && data.home != 1 ?  'selected' : '') %>>Tạm khóa</option>
             </select>
         </div>
     </div>

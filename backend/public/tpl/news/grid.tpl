@@ -7,12 +7,6 @@
         <div class="panel-heading">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="active"><a href="#news/grid">Danh sách tin tức</a></li>
-                <li style="float: right;"><div class="btn-group">
-                <button type="button" class="btn btn-success btn-right" onclick="metaindex.config('3')">
-                    <i class="fa fa-wrench"></i>
-                    Cấu hình seo
-                </button>
-            </div></li>
             </ul>
         </div>
     </div>
@@ -53,8 +47,8 @@
                 </div><!-- /col -->
                 <div class="col-sm-3">
                     <div style="margin-top: 5px;">
-                        <select class="form-control" name="nav" data-search="nav"  >
-                            <option value="0" >Hiển thị nav</option>
+                        <select class="form-control" name="home" data-search="home"  >
+                            <option value="0" >Hiển thị trang chủ</option>
                             <option value="1" >Hoạt động</option>
                             <option value="2" >Tạm khóa</option>
                         </select>
@@ -82,7 +76,7 @@
                         <th class="text-center" style="vertical-align: middle" >Tên tin tức</th>
                         <th class="text-center" style="vertical-align: middle" >Ngày tạo</th>
                         <th class="text-center" style="vertical-align: middle" >Ngày sửa chữa</th>
-                        <th class="text-center" style="vertical-align: middle;" >Nav</th>
+                        <th class="text-center" style="vertical-align: middle;" >Trang chủ</th>
                         <th class="text-center" style="vertical-align: middle;" >Trạng thái</th>
                         <th class="text-center" style="vertical-align: middle;width: 290px" > 
                             Chức năng<i style="cursor: pointer" onclick="news.add();" class="pull-right glyphicon glyphicon-plus">
@@ -115,8 +109,7 @@
                         <td class="text-center" style="vertical-align: middle" data-updateTime="<%= this.id %>"><%= textUtils.formatTime(this.updateTime) %></td>
                         <td class="text-center" style="vertical-align: middle">
                             <div data-key-nav="<%= this.id %>">
-                                <%= '<label class="label label-' + (this.nav == 1 ? 'success' : 'danger') + '" >' + (this.nav == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="news.changeNav(\'' + this.id + '\')" style="cursor: pointer; margin-left: 5px" class="glyphicon glyphicon-' + (this.nav == 1 ? 'check' : 'unchecked') + '" />' %>
-                            </div>
+                                <%= '<label class="label label-' + (this.home == 1 ? 'success' : 'danger') + '" >' + (this.home == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="news.changeHome(\'' + this.id + '\')" style="cursor: pointer; margin-left: 5px" class="glyphicon glyphicon-' + (this.home == 1 ? 'check' : 'unchecked') + '" />' %>                            </div>
                         </td>
                         <td class="text-center" style="vertical-align: middle">
                             <div data-key-active="<%= this.id %>">
@@ -130,10 +123,6 @@
                                 </button>
                                 <button onclick="image.addImage('<%= this.id %>', 'news');" type="button" class="btn btn-success" style="width: 100px;">
                                     <span class="fa fa-image pull-left" style="line-height: 18px" ></span> Ảnh
-                                </button>
-                                <button type="button" class="btn btn-info" onclick="metanews.config('<%= this.id %>')" style="width: 102px;">
-                                    <i class="fa fa-wrench"></i>
-                                    Cấu hình
                                 </button>
                             </div>
                         </td>

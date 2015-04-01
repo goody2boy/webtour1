@@ -20,8 +20,6 @@
                         <th class="text-center" style="vertical-align: middle" >ID</th>
                         <th class="text-center" style="vertical-align: middle" >Tên danh mục</th>
                         <th class="text-center" style="vertical-align: middle;width: 140px" >Hiển thị</th>
-                        <th class="text-center" style="vertical-align: middle;width: 140px" >Tab 1</th>
-                        <th class="text-center" style="vertical-align: middle;width: 140px" >Tab 2</th>
                         <th class="text-center" style="vertical-align: middle;width: 80px" >Thứ tự</th>
                         <th class="text-center" style="vertical-align: middle;width: 280px" >
                             Chức năng<i style="cursor: pointer" onclick="newscategory.add();" class="pull-right glyphicon glyphicon-plus">
@@ -49,16 +47,6 @@
                             </div>
                         </td>
                         <td class="text-center" style="vertical-align: middle">
-                            <div data-key-tab1="<%= cat.id %>">
-                                <%= '<label class="label label-' + (cat.tabOne == 1 ? 'success' : 'danger') + '" >' + (cat.tabOne == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="newscategory.changeTab1(\'' + cat.id + '\')" style="cursor: pointer; margin-left: 5px" class="glyphicon glyphicon-' + (cat.tabOne == 1 ? 'check' : 'unchecked') + '" />' %>
-                            </div>
-                        </td>
-                        <td class="text-center" style="vertical-align: middle">
-                            <div data-key-tab2="<%= cat.id %>">
-                                <%= '<label class="label label-' + (cat.tabTwo == 1 ? 'success' : 'danger') + '" >' + (cat.tabTwo == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="newscategory.changeTab2(\'' + cat.id + '\')" style="cursor: pointer; margin-left: 5px" class="glyphicon glyphicon-' + (cat.tabTwo == 1 ? 'check' : 'unchecked') + '" />' %>
-                            </div>
-                        </td>
-                        <td class="text-center" style="vertical-align: middle">
                             <input type="text" onchange="newscategory.changePosition('<%= cat.id%>')" rel-data="<%= cat.id %>" class="text-center" value="<%= cat.position %>" size="4">
                         </td>
                         <td class="text-center" style="vertical-align: middle">
@@ -69,10 +57,6 @@
 
                                 <button type="button" class="btn btn-danger" onclick="newscategory.remove('<%= cat.id %>')" >
                                     <i class="glyphicon glyphicon-trash pull-left" style="line-height: 16px"></i>Xóa
-                                </button>
-                                 <button type="button" class="btn btn-success btn-right" onclick="metacategory.config('<%= cat.id %>')" style="width: 102px;">
-                                    <i class="fa fa-wrench"></i>
-                                    Cấu hình
                                 </button>
                             </div>
                         </td>
@@ -92,16 +76,6 @@
                             </div>
                         </td>
                         <td class="text-center" style="vertical-align: middle">
-                            <div data-key-tab1="<%= catlv2.id %>">
-                                <%= '<label class="label label-' + (catlv2.tabOne == 1 ? 'success' : 'danger') + '" >' + (catlv2.tabOne == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="newscategory.changeTab1(\'' + catlv2.id + '\')" style="cursor: pointer; margin-left: 5px" class="glyphicon glyphicon-' + (catlv2.tabOne == 1 ? 'check' : 'unchecked') + '" />' %>
-                            </div>
-                        </td>
-                        <td class="text-center" style="vertical-align: middle">
-                            <div data-key-tab2="<%= catlv2.id %>">
-                                <%= '<label class="label label-' + (catlv2.tabTwo == 1 ? 'success' : 'danger') + '" >' + (catlv2.tabTwo == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="newscategory.changeTab2(\'' + catlv2.id + '\')" style="cursor: pointer; margin-left: 5px" class="glyphicon glyphicon-' + (catlv2.tabTwo == 1 ? 'check' : 'unchecked') + '" />' %>
-                            </div>
-                        </td>
-                        <td class="text-center" style="vertical-align: middle">
                             <input type="text" onchange="newscategory.changePosition('<%= catlv2.id %>');" rel-data="<%= catlv2.id %>" class="text-center" value="<%= catlv2.position %>" size="4">
                         </td>
                         <td class="text-center" style="vertical-align: middle">
@@ -111,10 +85,6 @@
                                 </button>
                                 <button type="button" class="btn btn-danger" onclick="newscategory.remove('<%= catlv2.id %>')" >
                                     <i class="glyphicon glyphicon-trash pull-left" style="line-height: 16px"></i>Xóa
-                                </button>
-                                <button type="button" class="btn btn-success btn-right" onclick="metacategory.config('<%= catlv2.id %>')" style="width: 102px;">
-                                    <i class="fa fa-wrench"></i>
-                                    Cấu hình
                                 </button>
                             </div>
                         </td>

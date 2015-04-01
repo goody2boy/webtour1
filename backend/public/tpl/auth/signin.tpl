@@ -7,7 +7,7 @@
             <div class="gmail-login">
                 <a style="cursor: pointer" data-click="signin">
                     <span class="icon-gmail"></span> 
-                    Đăng nhập hệ thống airocide
+                    Đăng nhập hệ thống Hoa Lửa
                 </a>
             </div>
             <div class="shadow"></div>

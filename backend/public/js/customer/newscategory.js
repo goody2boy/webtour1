@@ -33,36 +33,7 @@ newscategory.changeActive = function(id) {
         }
     });
 };
-newscategory.changeTab1 = function(id) {
-    ajax({
-        service: '/newscategory/changetab1',
-        data: {id: id},
-        loading: false,
-        done: function(resp) {
-            if (resp.success) {
-                $("div[data-key-tab1='" + id + "']").html('<label class="label label-' + (resp.data.tabOne == 1 ? 'success' : 'danger') + '" >' + (resp.data.tabOne == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="newscategory.changeTab1(\'' + id + '\');" style="cursor: pointer; margin-left:5px" class="glyphicon glyphicon-' + (resp.data.tabOne == 1 ? 'check' : 'unchecked') + '" />');
-                $("tr[rel-data=" + id + "]").addClass('success');
-            } else {
-                popup.msg(resp.message);
-            }
-        }
-    });
-};
-newscategory.changeTab2 = function(id) {
-    ajax({
-        service: '/newscategory/changetab2',
-        data: {id: id},
-        loading: false,
-        done: function(resp) {
-            if (resp.success) {
-                $("div[data-key-tab2='" + id + "']").html('<label class="label label-' + (resp.data.tabTwo == 1 ? 'success' : 'danger') + '" >' + (resp.data.tabTwo == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="newscategory.changeTab2(\'' + id + '\');" style="cursor: pointer; margin-left:5px" class="glyphicon glyphicon-' + (resp.data.tabTwo == 1 ? 'check' : 'unchecked') + '" />');
-                $("tr[rel-data=" + id + "]").addClass('success');
-            } else {
-                popup.msg(resp.message);
-            }
-        }
-    });
-};
+
 
 
 newscategory.changePosition = function(id) {
@@ -122,7 +93,7 @@ newscategory.add = function() {
             style: 'btn-primary',
             fn: function() {
                 ajaxSubmit({
-                    service: '/newscategory/add',
+                    service: '/newscategory/save',
                     id: 'add-category',
                     contentType: 'json',
                     loading: false,
@@ -183,7 +154,7 @@ newscategory.edit = function(id) {
                         style: 'btn-primary',
                         fn: function() {
                             ajaxSubmit({
-                                service: '/newscategory/add',
+                                service: '/newscategory/save',
                                 id: 'add-category',
                                 contentType: 'json',
                                 loading: false,

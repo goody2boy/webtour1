@@ -11,16 +11,6 @@
         </div>
     </td>
     <td class="text-center" style="vertical-align: middle">
-        <div data-key-tab1="<%= data.id %>">
-            <%= '<label class="label label-' + (data.tabOne == 1 ? 'success' : 'danger') + '" >' + (data.tabOne == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="newscategory.changeTab1(\'' + data.id + '\')" style="cursor: pointer; margin-left: 5px" class="glyphicon glyphicon-' + (data.tabOne == 1 ? 'check' : 'unchecked') + '" />' %>
-        </div>
-    </td>
-    <td class="text-center" style="vertical-align: middle">
-        <div data-key-tab2="<%= data.id %>">
-            <%= '<label class="label label-' + (data.tabTwo == 1 ? 'success' : 'danger') + '" >' + (data.tabTwo == 1 ? 'Hiển thị' : 'Tạm khóa') + '</label><i onclick="newscategory.changeTab2(\'' + data.id + '\')" style="cursor: pointer; margin-left: 5px" class="glyphicon glyphicon-' + (data.tabTwo == 1 ? 'check' : 'unchecked') + '" />' %>
-        </div>
-    </td>
-    <td class="text-center" style="vertical-align: middle">
         <input type="text" onchange="newscategory.changePosition('<%= data.id %>');" rel-data="<%= data.id %>" class="text-center" value="<%= data.position %>" size="4">
     </td>
     <td class="text-center" style="vertical-align: middle">
@@ -30,10 +20,6 @@
             </button>
             <button type="button" class="btn btn-danger" onclick="newscategory.remove('<%= data.id %>')" >
                 <i class="glyphicon glyphicon-trash pull-left" style="line-height: 16px"></i>Xóa
-            </button>
-            <button type="button" class="btn btn-success btn-right" onclick="metacategory.config('<%= data.id %>')" style="width: 102px;">
-                <i class="fa fa-wrench"></i>
-                Cấu hình
             </button>
         </div>
     </td>
