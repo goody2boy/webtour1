@@ -3,11 +3,11 @@
         <div class="box-login">
             <div class="login-circle"><span class="icon-user"></span><span class="shadow2"></span></div>
             <div class="shadow1"></div>
-            <div class="bl-title">Airocide</div>
+            <div class="bl-title">Tour</div>
             <div class="gmail-login">
                 <a style="cursor: pointer" data-click="signin">
                     <span class="icon-gmail"></span> 
-                    Đăng nhập hệ thống Hoa Lửa
+                    Đăng nhập hệ thống Tour
                 </a>
             </div>
             <div class="shadow"></div>
