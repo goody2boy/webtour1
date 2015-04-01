@@ -24,10 +24,10 @@ money.grid = function() {
                 layout.container(Fly.template("/money/grid.tpl", resp));
                 setTimeout(function() {
                     viewUtils.initSearch("search");
-                    $('input[data-search=createTime]').timeSelect();
-                    $('input[data-search=createTimeTo]').timeSelect();
-                    $('input[data-search=updateTime]').timeSelect();
-                    $('input[data-search=updateTimeTo]').timeSelect();
+                    $('input[data-search=create_time]').timeSelect();
+                    $('input[data-search=create_time_to]').timeSelect();
+                    $('input[data-search=update_time]').timeSelect();
+                    $('input[data-search=update_time_to]').timeSelect();
                 }, 300);
             } else {
                 popup.msg(resp.message);
