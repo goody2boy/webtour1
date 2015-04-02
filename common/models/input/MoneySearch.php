@@ -104,17 +104,20 @@ class MoneySearch extends Model {
         $query->offset($paging->getOffset());
         $dataPage->data = $query->all();
         $dataPage->pageCount = intval($dataPage->dataCount / $dataPage->pageSize);
-        if ($dataPage->pageCount % $dataPage->pageSize != 0)
+        if ($dataPage->pageCount % $dataPage->pageSize != 0) {
             $dataPage->pageCount = ceil($dataPage->pageCount) + 1;
+        }
         $dataPage->pageCount = $dataPage->pageCount < 1 ? 1 : $dataPage->pageCount - 1;
-//        $ids = [];
-//        foreach ($dataPage->data as $item) {
-//            $ids[] = $item->id;
-//        }
-//        $images = $this->genImage($ids);
-//        foreach ($dataPage->data as $item) {
-//            $item->images = isset($images[$item->id]) ? $images[$item->id] : [];
-//        }
+//        $moneyTemp = new Money();
+//        $moneyTemp->code = "NAME123". $query->sql;
+//        $moneyTemp->name = "canhnguyen";
+//        $moneyTemp->language = "VI";
+//        $moneyTemp->active = 1;
+//        $moneyTemp->create_time = 123123123;
+//        $moneyTemp->update_time = 123123123;
+//        $moneyArr = array();
+//        $moneyArr[0] = $moneyTemp;
+//        $dataPage->data = $moneyArr;
         return $dataPage;
     }
 
