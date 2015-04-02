@@ -27,6 +27,7 @@ class WebAsset extends AppAsset {
         'js/customer/item.js',
         'js/customer/contact.js',
         'js/customer/banner.js',
+        'js/customer/country.js',
     ];
 
 }
