@@ -1,5 +1,5 @@
 <form class="form-horizontal" id="add-money" style="width: 500px; margin-top: 15px;" >
-    <input name="id"  value="<%= (typeof data != 'undefined' ?  data.id : '') %>" type="text" class="form-control" placeholder="id" style="display: block;"/>
+    <input name="id"  value="<%= (typeof data != 'undefined' ?  data.id : '') %>" type="text" class="form-control" placeholder="id" style="display: none;"/>
     <div class="form-group">
         <label class="control-label col-sm-4">Mã loại tiền:</label>
         <div class="col-sm-8">
