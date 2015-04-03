@@ -96,7 +96,7 @@ money.edit = function (id){
                                     rs.data.index = index;
                                     if (rs.success) {
                                             var html = Fly.template('/money/tredit.tpl', rs);
-                                            $("tr[data-key='" + id + "']").empty().html(html).addClass('success');
+//                                            $("tr[data-key='" + id + "']").empty().html(html).addClass('success');
                                             popup.close('popup-edit-money');
                                     } else {
                                         popup.msg(rs.message);
