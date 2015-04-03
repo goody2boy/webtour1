@@ -21,7 +21,7 @@
     <div class="form-group">
         <label class="control-label col-sm-4">Mô tả:</label>
         <div class="col-sm-8">
-            <textarea name="description" rows="5" class="form-control" placeholder="Mỗi dòng mô tả cách nhau bởi 1 dấu phẩy"><%= (typeof data != 'undefined' ?  data.description : '') %></textarea>
+            <textarea name="description" rows="5" class="form-control" placeholder="Mô tả"><%= (typeof data != 'undefined' ?  data.description : '') %></textarea>
         </div>
     </div>
     <div class="form-group">
