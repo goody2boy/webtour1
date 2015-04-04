@@ -24,7 +24,7 @@ use Yii;
  * @property integer $update_time
  * @property integer $end_time
  * @property integer $author_id
- * @property string $laguage
+ * @property string $language
  * @property string $status
  */
 class Tour extends \yii\db\ActiveRecord
@@ -43,12 +43,12 @@ class Tour extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'code', 'title', 'city_id', 'description', 'full_initerary', 'inclusion', 'exclusion', 'note', 'mapp_address', 'price_id', 'duration_time', 'money_id', 'create_time', 'update_time', 'end_time', 'author_id', 'laguage', 'status'], 'required'],
-            [['id', 'city_id', 'price_id', 'duration_time', 'money_id', 'create_time', 'update_time', 'end_time', 'author_id'], 'integer'],
+            [['id', 'code', 'title', 'city_id', 'description', 'full_initerary', 'inclusion', 'exclusion', 'note', 'mapp_address', 'price_id', 'duration_time', 'money_id', 'create_time', 'update_time', 'end_time', 'author_id', 'language', 'status'], 'required'],
+            [['id', 'city_id', 'category_id', 'price_id', 'duration_time', 'money_id', 'create_time', 'update_time', 'end_time', 'author_id'], 'integer'],
             [['description', 'full_initerary', 'inclusion', 'exclusion', 'note'], 'string'],
             [['code'], 'string', 'max' => 10],
             [['title', 'mapp_address'], 'string', 'max' => 100],
-            [['laguage'], 'string', 'max' => 3],
+            [['language'], 'string', 'max' => 3],
             [['status'], 'string', 'max' => 12]
         ];
     }
@@ -63,6 +63,7 @@ class Tour extends \yii\db\ActiveRecord
             'code' => 'Code',
             'title' => 'Title',
             'city_id' => 'City ID',
+            'category_id' => 'Category ID',
             'description' => 'Description',
             'full_initerary' => 'Full Initerary',
             'inclusion' => 'Inclusion',
@@ -76,8 +77,12 @@ class Tour extends \yii\db\ActiveRecord
             'update_time' => 'Update Time',
             'end_time' => 'End Time',
             'author_id' => 'Author ID',
-            'laguage' => 'Laguage',
+            'language' => 'Language',
             'status' => 'Status',
         ];
+    }
+    
+    public function attributes() {
+        return array_merge(parent::attributes(), ['price', 'city']);
     }
 }
