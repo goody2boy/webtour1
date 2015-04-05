@@ -3,10 +3,11 @@
 namespace common\models\business;
 
 use common\models\db\City;
+use common\models\inter\InterBusiness;
 use common\models\db\District;
 use common\models\output\Response;
 
-class CityBusiness {
+class CityBusiness implements InterBusiness {
 
     /**
      * Chi tiết thành phố hiện hành
@@ -31,8 +32,24 @@ class CityBusiness {
         return City::find()->orderBy(['name' => SORT_ASC])->all();
     }
 
-   public static function getCityByCountry($coutryId){
-       return City::findAll(['country_id'=>$coutryId]);
-   }
+    public static function getCityByCountry($coutryId) {
+        return City::findAll(['country_id' => $coutryId])->all();
+    }
+
+    public static function mGet($ids) {
+        return City::find()->andWhere(["id" => $ids])->all();
+    }
+
+    public static function getToKey($ids) {
+        $cities = City::find()->andWhere(["id" => $ids])->all();
+        if ($cities == null || empty($cities)) {
+            return $cities;
+        }
+        $result = [];
+        foreach ($cities as $city) {
+            $result[$city->id] = $city;
+        }
+        return $result;
+    }
 
 }

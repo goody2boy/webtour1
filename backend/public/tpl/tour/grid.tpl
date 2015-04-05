@@ -89,6 +89,7 @@
                         <th class="text-center" style="vertical-align: middle" >ID</th>
                         <th class="text-center" style="vertical-align: middle" >Mã Tour</th>
                         <th class="text-center" style="vertical-align: middle" >Tiêu đề tour</th>
+                        <th class="text-center" style="vertical-align: middle" >Tour Type</th>
                         <th class="text-center" style="vertical-align: middle;width: 80px" >Thời gian dự kiến</th>
                         <th class="text-center" style="vertical-align: middle" >Giá min</th>
                         <th class="text-center" style="vertical-align: middle" >Thành phố</th>
@@ -118,9 +119,14 @@
                         </td>
                         <td class="text-center" style="vertical-align: middle"><%= this.code %></td>
                         <td class="text-center" style="vertical-align: middle"><%= this.title %></td>
-                        <td class="text-center" style="vertical-align: middle"><%= this.duration_time %></td>
+                        <td class="text-center" style="vertical-align: middle">
+                            <% $.each(this.categories, function(index){ %>
+                            <%= this.name + ',' %>
+                            <% }); %>
+                        </td>
+                        <td class="text-center" style="vertical-align: middle"><%= this.duration_time %> (Ngày)</td>
                         <td class="text-center" style="vertical-align: middle"><%= this.price_name %></td>
-                        <td class="text-center" style="vertical-align: middle"><%= this.city_name %></td>
+                        <td class="text-center" style="vertical-align: middle"><%= this.city.name %></td>
                         <td class="text-center" style="vertical-align: middle"><%= this.language %></td>
                         <td class="text-center" style="vertical-align: middle"><%= textUtils.formatTime(this.create_time,'day') %></td>
                         <td class="text-center" style="vertical-align: middle"><%= textUtils.formatTime(this.update_time,'day') %></td>

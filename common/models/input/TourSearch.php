@@ -6,6 +6,12 @@ use common\models\db\Tour;
 use common\models\output\DataPage;
 use yii\base\Model;
 use yii\data\Pagination;
+use common\models\business\CityBusiness;
+use common\models\business\PriceBusiness;
+use common\models\business\CategoryBusiness;
+use common\models\business\CategoryTourBusiness;
+use common\models\business\UserBusiness;
+use common\models\business\MoneyBusiness;
 
 /**
  * Description of TourSearch
@@ -33,7 +39,7 @@ class TourSearch extends Model {
     public function rules() {
         return [
             [['title', 'code', 'tourType', 'language', 'sort'], 'string'],
-            [['city', 'price', 'status','durationTime','createTime', 'createTimeTo', 'updateTime', 'updateTimeTo', 'pageSize', 'page'], 'integer'],
+            [['city', 'price', 'status', 'durationTime', 'createTime', 'createTimeTo', 'updateTime', 'updateTimeTo', 'pageSize', 'page'], 'integer'],
         ];
     }
 
@@ -56,9 +62,9 @@ class TourSearch extends Model {
         if ($this->code != null && $this->code != '') {
             $query->andWhere(['=', 'code', strtoupper($this->code)]);
         }
-        if ($this->tourType != null && $this->tourType != '') {
-            $query->andWhere(['=', 'category_id', $this->tourType]);
-        }
+//        if ($this->tourType != null && $this->tourType != '') {
+//            $query->andWhere(['=', 'category_id', $this->tourType]);
+//        }
         if ($this->language != null && $this->language != '') {
             $query->andWhere(['LIKE', 'language', strtolower($this->language)]);
         }
@@ -126,25 +132,79 @@ class TourSearch extends Model {
         if ($dataPage->pageCount % $dataPage->pageSize != 0)
             $dataPage->pageCount = ceil($dataPage->pageCount) + 1;
         $dataPage->pageCount = $dataPage->pageCount < 1 ? 1 : $dataPage->pageCount - 1;
-        
-//         $tempTour = new Tour();
-//         $tempTour->id = 1;
-//         $tempTour->title = 1;
-//         $tempTour->code = 1;
-//         $tempTour->duration_time = 1;
-//         $tempTour->price_id = 1;
-//         $tempTour->price_name = 100;
-//         $tempTour->city_id = 1;
-//         $tempTour->city_name = "Hà NỘi";
-//         $tempTour->language = 1;
-//         $tempTour->create_time = 1;
-//         $tempTour->update_time = 1;
-//         $tempTour->status = 1;
-//         $arr = array();
-//         $arr[0]=$tempTour;
-//         $arr[1]=$tempTour;
-//         $dataPage->data = $arr ;
+        $tourIds = [];
+        $authorIds = [];
+        $cityIds = [];
+        foreach ($dataPage->data as $tour) {
+            $tourIds[] = $tour->id;
+            $authorIds[] = $tour->author_id;
+            $cityIds[] = $tour->city_id;
+        }
+        $cityArr = $this->getCities($cityIds);
+        $categoryArr = $this->getCategories($tourIds);
+        $authorArr = $this->getAuthors($authorIds);
+        foreach ($dataPage->data as $tour) {
+            $tour->city = $cityArr[$tour->city_id] != null ? $cityArr[$tour->city_id] : '';
+            $tour->categories = $categoryArr[$tour->id] != null ? $categoryArr[$tour->id] : '';
+        }
+//        // lay trong vong for
+//        $priceArr = PriceBusiness::getByTour($tourId);
+//        $moneyArr = MoneyBusiness::mGet($ids);
         return $dataPage;
+    }
+
+    public static function getCategories($tourIds) {
+        $categoryTours = CategoryTourBusiness::getByTour($tourIds);
+        if ($categoryTours == null || empty($categoryTours)) {
+            return $categoryTours;
+        }
+        $categoryIds = [];
+        foreach ($categoryTours as $cateTour) {
+            foreach ($cateTour as $cateId) {
+                $categoryIds[] = $cateId;
+            }
+        }
+        $categories = CategoryBusiness::getToKey($categoryIds);
+        $result = [];
+        foreach ($tourIds as $tour_id) {
+            foreach ($categoryTours as $cateTour) {
+                foreach ($cateTour as $cateId) {
+                    if (!isset($result[$tour_id]) || $result[$tour_id] == null) {
+                        $result[$tour_id] = [];
+                    }
+                    $result[$tour_id][] = $categories[$cateId];
+                }
+            }
+        }
+        return $result;
+    }
+
+    public static function getTours($cateIds) {
+        $categoryTours = CategoryTourBusiness::getByCate($cateIds);
+        if ($categoryTours == null || empty($categoryTours)) {
+            return $categoryTours;
+        }
+        $categories = [];
+        foreach ($categoryTours as $cateTour) {
+            $categories[] = $cateTour->cate_id;
+        }
+        return CategoryBusiness::mGet($categories);
+    }
+
+    public static function getMoney($tourIds) {
+        
+    }
+
+    public static function getPrices($tourIds) {
+        
+    }
+
+    public static function getAuthors($authorIds) {
+        return UserBusiness::getToKey($authorIds);
+    }
+
+    public static function getCities($cityIds) {
+        return CityBusiness::getToKey($cityIds);
     }
 
 }

@@ -44,7 +44,7 @@ class Tour extends \yii\db\ActiveRecord
     {
         return [
             [['id', 'code', 'title', 'city_id', 'description', 'full_initerary', 'inclusion', 'exclusion', 'note', 'mapp_address', 'price_id', 'duration_time', 'money_id', 'create_time', 'update_time', 'end_time', 'author_id', 'language', 'status'], 'required'],
-            [['id', 'city_id', 'category_id', 'price_id', 'duration_time', 'money_id', 'create_time', 'update_time', 'end_time', 'author_id'], 'integer'],
+            [['id', 'city_id',  'price_id', 'duration_time', 'money_id', 'create_time', 'update_time', 'end_time', 'author_id'], 'integer'],
             [['description', 'full_initerary', 'inclusion', 'exclusion', 'note'], 'string'],
             [['code'], 'string', 'max' => 10],
             [['title', 'mapp_address'], 'string', 'max' => 100],
@@ -63,7 +63,6 @@ class Tour extends \yii\db\ActiveRecord
             'code' => 'Code',
             'title' => 'Title',
             'city_id' => 'City ID',
-            'category_id' => 'Category ID',
             'description' => 'Description',
             'full_initerary' => 'Full Initerary',
             'inclusion' => 'Inclusion',
@@ -83,6 +82,6 @@ class Tour extends \yii\db\ActiveRecord
     }
     
     public function attributes() {
-        return array_merge(parent::attributes(), ['price', 'city']);
+        return array_merge(parent::attributes(), ['prices', 'city', 'moneys', 'categories']);
     }
 }
