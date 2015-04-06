@@ -46,4 +46,20 @@ class UserBusiness {
         return new Response(true, "Người dùng " . $user->active ? "đã mở khóa" : "đã khóa", $user);
     }
 
+    public static function mGet($ids) {
+        return User::find()->andWhere(["id" => $ids])->all();
+    }
+
+    public static function getToKey($ids) {
+        $users = User::find()->andWhere(["id" => $ids])->all();
+        if ($users == null || empty($users)) {
+            return $users;
+        }
+        $result = [];
+        foreach ($users as $user) {
+            $result[$user->id] = $user;
+        }
+        return $result;
+    }
+
 }

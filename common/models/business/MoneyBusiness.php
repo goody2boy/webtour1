@@ -41,13 +41,6 @@ class MoneyBusiness implements InterBusiness {
         $money->active = $money->active == 1 ? 0 : 1;
         $money->save(false);
         return new Response(true, "Loại tiền " . $money->name . $money->active ? "đã mở khóa" : "đã khóa", $money);
-//        if ($money->active == 1) {
-//            Money::updateAll(['active' => 0], ['id' => $money->id]);
-//            return new Response(true, "Hủy kích hoạt thành công money", );
-//        }else {
-//            Money::updateAll(['active' => 1], ['id' => $money->id]);
-//            return new Response(true, "Kích hoạt thành công money");
-//        }
     }
 
     public static function get($id) {
@@ -56,7 +49,7 @@ class MoneyBusiness implements InterBusiness {
     }
 
     public static function mGet($ids) {
-        return Money::find()->andWhere(['id' => $ids]);
+        return Money::find()->andWhere(['id' => $ids])->all();
     }
 
 }
