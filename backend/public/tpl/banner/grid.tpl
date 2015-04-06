@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-sm-3 padding-right-5">
                     <div style="margin-top: 5px;">
-                        <select class="form-control" name="active">
+                        <select class="form-control" data-search="active" name="active">
                             <option value="0" >Trạng thái</option>
                             <option value="1" >Hoạt động</option>
                             <option value="2" >Tạm khóa</option>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-sm-3 padding-right-5">
                     <div style="margin-top: 5px;">
-                        <select class="form-control" name="type">
+                        <select class="form-control" data-search="type" name="type">
                             <option value="" >Kiểu Banner</option>
                             <option value="center" >Center Banner</option>
                             <option value="heart" >Heart Banner</option>

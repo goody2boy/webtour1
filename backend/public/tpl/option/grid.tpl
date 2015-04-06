@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-sm-3 padding-right-5">
                     <div style="margin-top: 5px;">
-                        <select class="form-control" name="auto_load">
+                        <select class="form-control" data-search="auto_load" name="auto_load">
                             <option value="0" >Trạng thái</option>
                             <option value="1" >Hoạt động</option>
                             <option value="2" >Tạm khóa</option>

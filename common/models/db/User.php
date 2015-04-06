@@ -8,51 +8,68 @@ use Yii;
  * This is the model class for table "user".
  *
  * @property string $id
- * @property string $user_name
- * @property string $user_pass
- * @property integer $registered_time
- * @property string $display_name
- * @property string $active_key
- * @property integer $contact_id
+ * @property string $username
+ * @property string $password
+ * @property integer $createTime
+ * @property string $firstName
+ * @property integer $activeKey
  * @property integer $active
+ * @property string $lastName
+ * @property string $email
+ * @property string $address
+ * @property string $phone
+ * @property integer $countryId
+ * @property integer $cityId
  */
-class User extends \yii\db\ActiveRecord
-{
+class User extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'user';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['user_name', 'user_pass', 'registered_time', 'display_name', 'active_key', 'contact_id'], 'required'],
-            [['registered_time', 'contact_id', 'active'], 'integer'],
-            [['user_name', 'user_pass', 'active_key'], 'string', 'max' => 50],
-            [['display_name'], 'string', 'max' => 100]
+            [['username', 'password', 'createTime', 'firstName', 'lastName', 'email', 'address', 'phone'], 'required'],
+            [['createTime', 'activeKey', 'active', 'countryId', 'cityId'], 'integer'],
+            [['username', 'password'], 'string', 'max' => 50],
+            [['firstName', 'lastName'], 'string', 'max' => 100],
+            [['email'], 'string', 'max' => 150],
+            [['address'], 'string', 'max' => 220],
+            [['phone'], 'string', 'max' => 45],
+            [['email'], 'unique'],
+            [['username'], 'unique']
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
-            'user_name' => 'User Name',
-            'user_pass' => 'User Pass',
-            'registered_time' => 'Registered Time',
-            'display_name' => 'Display Name',
-            'active_key' => 'Active Key',
-            'contact_id' => 'Contact ID',
+            'username' => 'Username',
+            'password' => 'Password',
+            'createTime' => 'Create Time',
+            'firstName' => 'First Name',
+            'activeKey' => 'Active Key',
             'active' => 'Active',
+            'lastName' => 'Last Name',
+            'email' => 'Email',
+            'address' => 'Address',
+            'phone' => 'Phone',
+            'countryId' => 'Country ID',
+            'cityId' => 'City ID',
         ];
     }
+
+    public function attributes() {
+        return array_merge(parent::attributes(), ['countryName','cityName']);
+    }
+
 }
