@@ -4,6 +4,8 @@ namespace backend\controllers\service;
 
 use backend\models\TourForm;
 use common\models\business\TourBusiness;
+use common\models\business\CategoryTourBusiness;
+use common\models\business\PriceBusiness;
 use common\models\db\Tour;
 use common\models\input\TourSearch;
 use common\models\output\Response;
@@ -40,8 +42,28 @@ class TourController extends ServiceController {
             return $this->response($resp);
         }
         $id = Yii::$app->request->get('id');
-        $partners = PartnersBusiness::get($id);
-        return $this->response(new Response(true, "", $partners));
+        $tour = TourBusiness::get($id);
+        $search = new TourSearch();
+        $search->id = $id;
+        return $this->response(new Response(true, "", $search->search(true)));
+    }
+
+    public function actionChangeActive($id) {
+        if (is_object($resp = $this->can("changeActive"))) {
+            return $this->response($resp);
+        }
+        $id = Yii::$app->request->get('id');
+        return $this->response(TourBusiness::changeActive($id));
+    }
+
+    public function actionRemove($id) {
+        if (is_object($resp = $this->can("remove"))) {
+            return $this->response($resp);
+        }
+        $id = Yii::$app->request->get('id');
+        CategoryTourBusiness::removeByTour($id);
+        PriceBusiness::removeByTour($id);
+        return $this->response(TourBusiness::remove($id));
     }
 
 }

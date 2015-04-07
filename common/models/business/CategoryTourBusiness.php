@@ -1,28 +1,28 @@
 <?php
 
-
 namespace common\models\business;
 
 use common\models\db\CategoryTour;
 use common\models\inter\InterBusiness;
 use common\models\output\Response;
+
 /**
  * Description of CategoryTourBusiness
  *
  * @author CANH
  */
 class CategoryTourBusiness implements InterBusiness {
-    
+
     public static function get($id) {
         $item = CategoryTour::findOne($id);
         return $item;
     }
 
     public static function mGet($ids) {
-         return CategoryTour::find()->andWhere(["id" => $ids])->all();
+        return CategoryTour::find()->andWhere(["id" => $ids])->all();
     }
-    
-    public static function getByTour($tourIds){
+
+    public static function getByTour($tourIds) {
         $cateTours = CategoryTour::find()->andWhere(["tour_id" => $tourIds])->all();
         if ($cateTours == null || empty($cateTours)) {
             return $cateTours;
@@ -36,8 +36,8 @@ class CategoryTourBusiness implements InterBusiness {
         }
         return $result;
     }
-    
-    public static function getByCate($cateId){
+
+    public static function getByCate($cateId) {
         $cateTours = CategoryTour::find()->andWhere(["cate_id" => $cateId])->all();
         if ($cateTours == null || empty($cateTours)) {
             return $cateTours;
@@ -52,5 +52,9 @@ class CategoryTourBusiness implements InterBusiness {
         return $result;
     }
 
-//put your code here
+    public static function removeByTour($tourId) {
+        CategoryTour::deleteAll(['tour_id' => $tourId]);
+        return new Response(true, "Xóa thành công Category Tour");
+    }
+
 }

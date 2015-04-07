@@ -30,6 +30,7 @@
     <div class="form-group">
         <label class="control-label col-sm-4">Description</label>
         <div class="col-sm-8">
+{*            <textarea rows="5" name="content" type="text"class="form-control" ><%= (typeof data != 'undefined' ?  data.content: '') %></textarea>*}
             <textarea rows="5" name="description" type="text"class="form-control" ><%= (typeof data != 'undefined' ?  data.content: '') %></textarea>
         </div>
     </div>

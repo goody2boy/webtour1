@@ -12,6 +12,7 @@ use common\models\business\CategoryBusiness;
 use common\models\business\CategoryTourBusiness;
 use common\models\business\UserBusiness;
 use common\models\business\MoneyBusiness;
+use yii\db\Query;
 
 /**
  * Description of TourSearch
@@ -20,6 +21,7 @@ use common\models\business\MoneyBusiness;
  */
 class TourSearch extends Model {
 
+    public $id;
     public $title;
     public $price;
     public $city;
@@ -39,7 +41,7 @@ class TourSearch extends Model {
     public function rules() {
         return [
             [['title', 'code', 'tourType', 'language', 'sort'], 'string'],
-            [['city', 'price', 'status', 'durationTime', 'createTime', 'createTimeTo', 'updateTime', 'updateTimeTo', 'pageSize', 'page'], 'integer'],
+            [['id','city', 'price', 'status', 'durationTime', 'createTime', 'createTimeTo', 'updateTime', 'updateTimeTo', 'pageSize', 'page'], 'integer'],
         ];
     }
 
@@ -50,6 +52,9 @@ class TourSearch extends Model {
      */
     public function search($page = false) {
         $query = Tour::find();
+        if ($this->id > 0) {
+            $query->andWhere(['=', 'id', $this->id]);
+        }
         if ($this->title != null && $this->title != '') {
             $query->andWhere(['LIKE', 'title', trim(strtolower($this->title))]);
         }
@@ -62,9 +67,9 @@ class TourSearch extends Model {
         if ($this->code != null && $this->code != '') {
             $query->andWhere(['=', 'code', strtoupper($this->code)]);
         }
-//        if ($this->tourType != null && $this->tourType != '') {
-//            $query->andWhere(['=', 'category_id', $this->tourType]);
-//        }
+        if ($this->tourType != null && $this->tourType != '') {
+            $query->andWhere(['like', 'category_ids', $this->tourType + ',']);
+        }
         if ($this->language != null && $this->language != '') {
             $query->andWhere(['LIKE', 'language', strtolower($this->language)]);
         }
@@ -133,23 +138,28 @@ class TourSearch extends Model {
             $dataPage->pageCount = ceil($dataPage->pageCount) + 1;
         $dataPage->pageCount = $dataPage->pageCount < 1 ? 1 : $dataPage->pageCount - 1;
         $tourIds = [];
+        $moneyIds = [];
         $authorIds = [];
         $cityIds = [];
         foreach ($dataPage->data as $tour) {
             $tourIds[] = $tour->id;
+            $moneyIds[] = $tour->money_id;
             $authorIds[] = $tour->author_id;
             $cityIds[] = $tour->city_id;
         }
         $cityArr = $this->getCities($cityIds);
         $categoryArr = $this->getCategories($tourIds);
+        $moneyArr = $this->getMoney($moneyIds);
         $authorArr = $this->getAuthors($authorIds);
         foreach ($dataPage->data as $tour) {
             $tour->city = $cityArr[$tour->city_id] != null ? $cityArr[$tour->city_id] : '';
             $tour->categories = $categoryArr[$tour->id] != null ? $categoryArr[$tour->id] : '';
+            $tour->moneys = $moneyArr[$tour->money_id] != null ? $moneyArr[$tour->money_id] : '';
+            $tour->author = $authorArr[$tour->author_id] != null ? $authorArr[$tour->author_id] : '';
+//            $tour->prices =  PriceBusiness::getByTour($tourId);
+//            $tour->moneys = MoneyBusiness::mGet($ids);
         }
-//        // lay trong vong for
-//        $priceArr = PriceBusiness::getByTour($tourId);
-//        $moneyArr = MoneyBusiness::mGet($ids);
+        // lay trong vong for
         return $dataPage;
     }
 
@@ -168,11 +178,13 @@ class TourSearch extends Model {
         $result = [];
         foreach ($tourIds as $tour_id) {
             foreach ($categoryTours as $cateTour) {
-                foreach ($cateTour as $cateId) {
-                    if (!isset($result[$tour_id]) || $result[$tour_id] == null) {
-                        $result[$tour_id] = [];
+                if (array_search($cateTour, $categoryTours) == $tour_id) {
+                    foreach ($cateTour as $cateId) {
+                        if (!isset($result[$tour_id]) || $result[$tour_id] == null) {
+                            $result[$tour_id] = [];
+                        }
+                        $result[$tour_id][] = $categories[$cateId];
                     }
-                    $result[$tour_id][] = $categories[$cateId];
                 }
             }
         }
@@ -191,8 +203,8 @@ class TourSearch extends Model {
         return CategoryBusiness::mGet($categories);
     }
 
-    public static function getMoney($tourIds) {
-        
+    public static function getMoney($moneyIds) {
+        return MoneyBusiness::getToKey($moneyIds);
     }
 
     public static function getPrices($tourIds) {

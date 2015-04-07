@@ -52,4 +52,16 @@ class MoneyBusiness implements InterBusiness {
         return Money::find()->andWhere(['id' => $ids])->all();
     }
 
+    
+    public static function getToKey($ids){
+        $moneys = Money::find()->andWhere(["id" => $ids])->all();
+        if ($moneys == null || empty($moneys)) {
+            return $moneys;
+        }
+        $result = [];
+        foreach ($moneys as $money) {
+            $result[$money->id] = $money;
+        }
+        return $result;
+    }
 }

@@ -16,8 +16,8 @@
                 <!-- title, price , city-->
                 <div class="col-sm-3 padding-all-5">
                     <input data-search="title" name="title" type="text" class="form-control" placeholder="Tiêu đề" style="margin-top:5px;"  >
-                    <input data-search="durationTime" name="durationTime" type="text" class="form-control" placeholder="Thời gian diễn ra" style="margin-top:5px;" >
-                    <select data-search="price" class="form-control" name="price" style="margin-top:5px;"  >
+                    <input data-search="durationTime" name="durationTime" type="text" class="form-control" placeholder="Thời gian dự kiến" style="margin-top:5px;" >
+                    <select data-search="price" class="form-control" name="price" style="margin-top:5px;" >
                         <option value="" >--Chọn giá--</option>
                         <option value="100" >100</option>
                         <option value="200" >200</option>
@@ -27,16 +27,9 @@
                 <div class="col-sm-3 padding-all-5">
                     <input data-search="code" name="code" type="code" class="form-control" placeholder="Mã tour" style="margin-top:5px;">
                     <select data-search="tourType" class="form-control" name="tourType"  style="margin-top:5px;" >
-                        <option value="" >--Chọn Loại Tour--</option>
-                        <option value="0" >Hà Nội Tour</option>
-                        <option value="1" >Huế Tour</option>
                     </select>
                     <select data-search="city" class="form-control" name="city" style="margin-top:5px;"  >
-                        <option value="" >--Chọn thành phố--</option>
-                        <option value="EN" >Hà Nội</option>
-                        <option value="VI" >Vinh</option>
                     </select>
-
                 </div><!-- /col -->
                 <!-- create time from,updatetimefrom  -->
                 <div class="col-sm-3 padding-all-5">
@@ -88,16 +81,16 @@
                     <tr class="success" >
                         <th class="text-center" style="vertical-align: middle" >ID</th>
                         <th class="text-center" style="vertical-align: middle" >Mã Tour</th>
-                        <th class="text-center" style="vertical-align: middle" >Tiêu đề tour</th>
-                        <th class="text-center" style="vertical-align: middle" >Tour Type</th>
+                        <th class="text-center" style="vertical-align: middle;width: 150px" >Tiêu đề tour</th>
+                        <th class="text-center" style="vertical-align: middle;width: 150px" >Tour Type</th>
                         <th class="text-center" style="vertical-align: middle;width: 80px" >Thời gian dự kiến</th>
                         <th class="text-center" style="vertical-align: middle" >Giá min</th>
                         <th class="text-center" style="vertical-align: middle" >Thành phố</th>
-                        <th class="text-center" style="vertical-align: middle;width: 100px;" >Ngôn ngữ</th>
+                        <th class="text-center" style="vertical-align: middle" >Ngôn ngữ</th>
                         <th class="text-center" style="vertical-align: middle" >Ngày tạo</th>
                         <th class="text-center" style="vertical-align: middle" >Ngày sửa</th>
-                        <th class="text-center" style="vertical-align: middle;width: 100px;" >Kích hoạt<i class="glyphicon glyphicon-edit pull-right"></i></th>
-                        <th class="text-center" style="vertical-align: middle;width: 215px" > 
+                        <th class="text-center" style="vertical-align: middle;width: 80px;" >Kích hoạt<i class="glyphicon glyphicon-edit pull-right"></i></th>
+                        <th class="text-center" style="vertical-align: middle;width: 100px" > 
                             Chức năng<i style="cursor: pointer; color: red;" onclick="tour.add();" class="pull-right glyphicon glyphicon-plus">
                         </th>
                     <tr>

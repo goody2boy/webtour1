@@ -18,6 +18,10 @@ class CategoryBusiness implements InterBusiness {
         $item = Category::findOne($id);
         return $item;
     }
+    
+    public static function getAll(){
+        return Category::find()->orderBy(['name' => SORT_ASC])->all();
+    }
 
     public static function mGet($ids) {
         return Category::find()->andWhere(["id" => $ids])->all();

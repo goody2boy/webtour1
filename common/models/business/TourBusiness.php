@@ -28,4 +28,22 @@ class TourBusiness implements InterBusiness {
         return Tour::find()->andWhere(["id" => $ids]);
     }
 
+    public static function changeActive($id) {
+        $tour = self::get($id);
+        // check xem co tour nao dung loai tien nay khong
+        if ($tour == null) {
+            return new Response(false, "Tour này không tồn tại trên hệ thống");
+        }
+        $tour->status = $tour->status == 1 ? 0 : 1;
+        $tour->save(false);
+        return new Response(true, "Tour " . $tour->title . $tour->status ? "đã mở khóa" : "đã khóa", $tour);
+    }
+
+    public static function remove($id) {
+        $tour = self::get($id);
+        // check xem co tour nao dung loai tien nay khong
+        Tour::deleteAll(['id' => $tour->id]);
+        return new Response(true, "Xóa thành công Tour : </br>" . $tour->title);
+    }
+
 }

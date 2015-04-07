@@ -41,4 +41,9 @@ class CategoryTour extends \yii\db\ActiveRecord
             'tour_id' => 'Tour ID',
         ];
     }
+    
+    public function getTour()
+    {
+        return $this->hasOne(Tour::className(), ['id'=>'tour_id']);
+    }
 }

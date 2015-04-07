@@ -29,7 +29,8 @@ class PriceBusiness implements InterBusiness {
         return Price::find()->andWhere(["tour_id" => $tourIds])->orderBy("position ASC")->all();
     }
 
-//    public statuc function getByTour($tourId){
-//        $query ->
-//    }
+    public static function removeByTour($tourId) {
+        Price::deleteAll(['tour_id' => $tourId]);
+        return new Response(true, "Xóa thành công Price");
+    }
 }
