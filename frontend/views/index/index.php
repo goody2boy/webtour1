@@ -1,14 +1,12 @@
     <div class="main-slider">
         <div id="heartslider" class="owl-carousel">
+            <?php if(!empty($heart)) { ?>
+            <?php foreach ($heart as $banner) { ?>
             <div class="h-item">
-                <a href="#"><img src="data/slider1.jpg" alt="slider" /></a>
+                <a href="<?= $banner->link ?>"><img src="<?= (sizeof($banner->images) > 0) ? $banner->images[0] : $this->context->baseUrl.'data/slider1' ?>" alt="<?= $banner->name ?>" /></a>
             </div><!-- h-item -->
-            <div class="h-item">
-                 <a href="#"><img src="data/slider2.jpg" alt="slider" /></a>
-            </div><!-- h-item -->
-            <div class="h-item">
-                 <a href="#"><img src="data/slider3.jpg" alt="slider" /></a>
-            </div><!-- h-item -->
+            <?php } ?>
+            <?php } ?>
         </div><!-- owl-carousel -->
         <div class="box-support">
         	<div class="container">
