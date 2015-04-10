@@ -1,14 +1,15 @@
 /*common css*/
 .btn{
-	text-transform:uppercase;
-	font-weight:bold;
 	border:none;
+	padding:7px 15px;
+	-moz-border-radius:0;
+	-webkit-border-radius:0;
+	border-radius:0;
 }
 .btn-primary{
-	background-color:#177efd;
+	background-color:#034fbd;
 }
 .btn-primary:hover{
-	background-color:#337ab7;
 }
 .btn-default{
 }
@@ -25,6 +26,7 @@
 	width:auto;
 }
 .text-danger{
+	color:#fe0405;
 }
 .box-captcha{
 	display:inline-block;
@@ -43,8 +45,5 @@
     vertical-align:middle !important;
     width:30px;
 	display:inline-block;
-}
-.form-horizontal .control-label{
-	font-weight:600;
 }
 /*end common css*/

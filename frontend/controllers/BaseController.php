@@ -23,20 +23,10 @@ class BaseController extends Controller {
         parent::init();
         $this->baseUrl = 'http://' . $_SERVER['HTTP_HOST'] . str_replace("index.php", '', $_SERVER['SCRIPT_NAME']);
         $this->mDefault();
-        $this->footer();
     }
 
     public function footer() {
-        $review = new ReviewsSearch();
-        $this->var["reviews"] = $review->search(true)->data;
-        $album = new AlbumSearch();
-        $album->active = 1;
-        $album->home = 1;
-        $album->pageSize = 1;
-        $this->var['albums'] = $album->search(true)->data;
-        $menu = MenuBusiness::getGrid(1);
-        $this->var['menus'] = $menu;
-        $this->var['home'] = HomeBusiness::get(1);
+        
         
     }
 
