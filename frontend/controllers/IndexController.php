@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\business\BannerBusiness;
 use common\models\business\TourBusiness;
+use common\models\business\OptionBusiness;
 use common\models\input\TourSearch;
 use common\models\enu\BannerType;
 
@@ -15,25 +16,23 @@ class IndexController extends BaseController {
      */
     public function actionIndex() {
         $heart = BannerBusiness::getByType(BannerType::HEART, 1);
-//        $tourFeatures = TourBusiness::mGet(["1", "2", "3", "4"]);
-        $search = new TourSearch();
-        $search->id = "1";
-        // 
-        $tour1= $search->search(true)->data;
-        $search->id = "2";
-        $tour2= $search->search(true)->data;
-        $search->id = "3";
-        $tour3= $search->search(true)->data;
-        $search->id = "4";
-        $tour4= $search->search(true)->data;
-        $tourFeatures[] =  $tour1;
-        $tourFeatures[] =  $tour2;
-        $tourFeatures[] =  $tour3;
-        $tourFeatures[] =  $tour4;
+        $tourFeatures = $this->getTourFeatureBox();
         return $this->render('index', [
-        'heart' => $heart,
-        'tourFeatures' => $tourFeatures,
+                    'heart' => $heart,
+                    'tourFeatures' => $tourFeatures,
         ]);
+    }
+
+    public function getTourFeatureBox() {
+        $tourFeatures = [];
+        $search = new TourSearch();
+        $nameArr = ['HOMEBOX'];
+        $listTourIds = preg_split ("/,/", OptionBusiness::getConfig($nameArr, 1)[0]->value);
+        foreach ($listTourIds as $tourId) {
+            $search->id = $tourId;
+            $tourFeatures[] = $search->search(true)->data[0];
+        }
+        return $tourFeatures;
     }
 
     public function actionPhp() {

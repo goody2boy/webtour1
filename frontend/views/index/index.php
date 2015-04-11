@@ -202,13 +202,13 @@ use common\util\UrlUtils;
                         <div class="img"><a href="#"><img src="data/image1.jpg" alt="img" /></a></div>
                         <div class="g-content">
                             <div class="g-row">
-                                <a class="g-title" href="<?= $this->context->baseUrl . UrlUtils::item($tour[0]->title, $tour[0]->id) ?>"><?= $tour[0]->title?></a>
+                                <a class="g-title" href="<?= $this->context->baseUrl . UrlUtils::item($tour->title, $tour->id) ?>"><?= $tour->title?></a>
                             </div>
-                            <div class="g-row"><span class="g-time"><?= TextUtils::convertTime($tour[0]->create_time) ?> by <?=$tour[0]->author->username ?>  </span></div>
+                            <div class="g-row"><span class="g-time"><?= TextUtils::convertTime($tour->create_time) ?> by <?=$tour->author->username ?>  </span></div>
                             <div class="g-row">
                                 In Spring, Nha Trang is always a fascinating destination for both domestic and international guests. In Nha Trang, with a hired motorbike or…
                             </div>
-                            <div class="g-row"><a class="g-more" href="<?= $this->context->baseUrl . UrlUtils::item($tour[0]->title, $tour[0]->id) ?>"><i class="fa fa-arrow-right"></i>View more</a></div>
+                            <div class="g-row"><a class="g-more" href="<?= $this->context->baseUrl . UrlUtils::item($tour->title, $tour->id) ?>"><i class="fa fa-arrow-right"></i>View more</a></div>
                         </div>
                     </div><!-- grid -->
                 </li>
