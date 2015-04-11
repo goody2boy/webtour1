@@ -94,31 +94,6 @@ class TourSearch extends Model {
         } else if ($this->updateTimeTo > 0) {
             $query->andWhere('update_time <= :time', [':time' => $this->updateTimeTo / 1000]);
         }
-//        switch ($this->sort) {
-//            case 'name_asc':
-//                $query->orderBy("name ASC");
-//                break;
-//            case 'name_desc':
-//                $query->orderBy("name DESC");
-//                break;
-//            case 'code_desc':
-//                $query->orderBy("code DESC");
-//                break;
-//            case 'code_asc':
-//                $query->orderBy("code ASC");
-//                break;
-//            case 'createTime_asc':
-//                $query->orderBy("create_time ASC");
-//                break;
-//            case 'updateTime_asc':
-//                $query->orderBy("update_time ASC");
-//                break;
-//            case 'updateTime_desc':
-//                $query->orderBy("update_time DESC");
-//                break;
-//            default :
-//                $query->orderBy("create_time DESC");
-//        }
         $dataPage = new DataPage();
         if (!$page) {
             return $query;

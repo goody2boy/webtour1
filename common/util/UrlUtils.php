@@ -57,6 +57,10 @@ class UrlUtils {
         return "p/" . trim(strtolower($alias)) . "";
     }
 
+    public static function tour($name, $id) {
+        return "tour/" . TextUtils::removeMarks($name) . "-" . trim($id) . ".html";
+    }
+    
     /**
      * Chi tiết sản phẩm
      * @param type $name
