@@ -41,7 +41,7 @@ class TourSearch extends Model {
     public function rules() {
         return [
             [['title', 'code', 'tourType', 'language', 'sort'], 'string'],
-            [['id','city', 'price', 'status', 'durationTime', 'createTime', 'createTimeTo', 'updateTime', 'updateTimeTo', 'pageSize', 'page'], 'integer'],
+            [['id', 'city', 'price', 'status', 'durationTime', 'createTime', 'createTimeTo', 'updateTime', 'updateTimeTo', 'pageSize', 'page'], 'integer'],
         ];
     }
 
@@ -94,31 +94,6 @@ class TourSearch extends Model {
         } else if ($this->updateTimeTo > 0) {
             $query->andWhere('update_time <= :time', [':time' => $this->updateTimeTo / 1000]);
         }
-//        switch ($this->sort) {
-//            case 'name_asc':
-//                $query->orderBy("name ASC");
-//                break;
-//            case 'name_desc':
-//                $query->orderBy("name DESC");
-//                break;
-//            case 'code_desc':
-//                $query->orderBy("code DESC");
-//                break;
-//            case 'code_asc':
-//                $query->orderBy("code ASC");
-//                break;
-//            case 'createTime_asc':
-//                $query->orderBy("create_time ASC");
-//                break;
-//            case 'updateTime_asc':
-//                $query->orderBy("update_time ASC");
-//                break;
-//            case 'updateTime_desc':
-//                $query->orderBy("update_time DESC");
-//                break;
-//            default :
-//                $query->orderBy("create_time DESC");
-//        }
         $dataPage = new DataPage();
         if (!$page) {
             return $query;
@@ -177,15 +152,14 @@ class TourSearch extends Model {
         $categories = CategoryBusiness::getToKey($categoryIds);
         $result = [];
         foreach ($tourIds as $tour_id) {
-            foreach ($categoryTours as $cateTour) {
-                if (array_search($cateTour, $categoryTours) == $tour_id) {
-                    foreach ($cateTour as $cateId) {
-                        if (!isset($result[$tour_id]) || $result[$tour_id] == null) {
-                            $result[$tour_id] = [];
-                        }
-                        $result[$tour_id][] = $categories[$cateId];
-                    }
+//            foreach ($categoryTours as $cateTour) {
+//                if (array_search($cateTour, $categoryTours) == $tour_id) {
+            $cateTour = $categoryTours[$tour_id];
+            foreach ($cateTour as $cateId) {
+                if (!isset($result[$tour_id]) || $result[$tour_id] == null) {
+                    $result[$tour_id] = [];
                 }
+                $result[$tour_id][] = $categories[$cateId];
             }
         }
         return $result;

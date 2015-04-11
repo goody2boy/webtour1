@@ -59,6 +59,9 @@ tour.grid = function () {
                         }
                     }
                 });
+                setTimeout(function () {
+                    editor("descriptionText", {});
+                });
             } else {
                 popup.msg(resp.message);
             }
@@ -115,7 +118,9 @@ tour.edit = function (id) {
         loading: false,
         done: function (resp) {
             if (resp.success) {
-                popup.open('popup-edit-tour', 'Sửa Thông tin Tour.', Fly.template('/tour/add.tpl', resp), [
+                console.log("gia tri resp");
+                console.log(resp);
+                popup.open('popup-edit-tour', 'Sửa thông tin Tour.', Fly.template('/tour/add.tpl', resp), [
                     {
                         title: 'Sửa',
                         style: 'btn-primary',
@@ -145,11 +150,44 @@ tour.edit = function (id) {
                             popup.close('popup-edit-tour');
                         }
                     }
-                ]);
+                ], "modal-lg");
                 setTimeout(function () {
                     $('input[data-info=startTime]').timeSelect();
                     $('input[data-info=endTime]').timeSelect();
                 }, 300);
+                ajax({
+                    service: '/city/get-all',
+                    data: '',
+                    done: function (resp1) {
+                        if (resp1.success) {
+                            var selectHtml = '<option value="" >--Chọn Thành phố--</option>';
+                            $.each(resp1.data, function (i) {
+                                selectHtml += '<option ' + (this.id === resp.data.id ? 'selected' : '') + ' value="' + this.id + '" >' + this.name + '</option>';
+                            });
+                            $('select[data-update=city]').html(selectHtml);
+                        } else {
+                            popup.msg(resp1.message);
+                        }
+                    }
+                });
+                ajax({
+                    service: '/category/get-all',
+                    data: '',
+                    done: function (resp1) {
+                        if (resp1.success) {
+                            var selectHtml = '<option value="" >--Chọn Tour Type--</option>';
+                            $.each(resp1.data, function (i) {
+                                selectHtml += '<option value="' + this.id + '" >' + this.name + '</option>';
+                            });
+                            $('select[data-update=tourType]').html(selectHtml);
+                            var gotCateIds = resp.data.category_ids;
+                            var selectedArr = gotCateIds.substring(0, gotCateIds.length - 1).split(",");
+                            $('select[data-update=tourType]').val(selectedArr);
+                        } else {
+                            popup.msg(resp1.message);
+                        }
+                    }
+                });
             } else {
                 popup.msg(resp.message);
             }
