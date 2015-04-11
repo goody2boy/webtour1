@@ -25,7 +25,7 @@ class TourBusiness implements InterBusiness {
     }
 
     public static function mGet($ids) {
-        return Tour::find()->andWhere(["id" => $ids]);
+        return Tour::find()->andWhere(["id" => $ids])->all();
     }
 
     public static function changeActive($id) {

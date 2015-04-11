@@ -43,9 +43,7 @@ class TourController extends ServiceController {
         }
         $id = Yii::$app->request->get('id');
         $tour = TourBusiness::get($id);
-        $search = new TourSearch();
-        $search->id = $id;
-        return $this->response(new Response(true, "", $search->search(true)));
+        return $this->response(new Response(true, "", TourBusiness::get($id)));
     }
 
     public function actionChangeActive($id) {
