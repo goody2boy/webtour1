@@ -31,6 +31,7 @@ class WebAsset extends AppAsset {
         'js/customer/tour.js',
         'js/customer/option.js',
         'js/customer/user.js',
+        'js/customer/menu.js',
     ];
 
 }

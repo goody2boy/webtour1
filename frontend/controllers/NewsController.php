@@ -112,7 +112,7 @@ class NewsController extends BaseController {
         $items = $item->search(true);
         $meta = MetaCategoryBusiness::get($catealias->id);
         if (!empty($meta)) {
-            $this->meta($meta->title, $meta->description, $this->baseUrl . UrlUtils::browse($alias), !empty($category->images) ? $item->images[0] : null, $meta->keyword);
+            $this->meta($meta->title, $meta->description, $this->baseUrl . UrlUtils::newsBrowse($alias), !empty($category->images) ? $item->images[0] : null, $meta->keyword);
         }
         $this->var['menuactive'] = Yii::$app->request->absoluteUrl;
         return $this->render("category", [

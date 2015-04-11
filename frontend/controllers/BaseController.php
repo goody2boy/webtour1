@@ -23,10 +23,11 @@ class BaseController extends Controller {
         parent::init();
         $this->baseUrl = 'http://' . $_SERVER['HTTP_HOST'] . str_replace("index.php", '', $_SERVER['SCRIPT_NAME']);
         $this->mDefault();
+        $this->footer();
     }
 
     public function footer() {
-        
+        $this->var['menus'] = MenuBusiness::getGrid(1);
         
     }
 
@@ -34,15 +35,15 @@ class BaseController extends Controller {
      * config default
      */
     private function mDefault() {
-        $this->title = "Máy lọc không khí hàng đầu Việt Nam";
-        $this->keywrod = "Điều hòa, máy lọc không khí";
-        $this->description = "Máy lọc không khí, tốt cho trẻ em, hàng nhập từ mỹ,CÁCH MẠNG CÔNG NGHỆ MÁY LỌC KHÔNG KHÍ ĐẾN TỪ NASA";
+        $this->title = "City tours - Unique insight into Vietnam";
+        $this->keywrod = "vietnam day tour, things to do in vietnam, vietnam day trips, vietnam day tours, vietnam daily tour, vietnam insight, vietnam city tour, vietnam sightseeing tours, vietnam excursions,  vietnam private tours, hanoi city tour, ho chi minh city tour, hue tour, hoi an tour, nha trang city tour";
+        $this->description = "Planning a trip to Vietnam? Join Vietnam city tours and day trips operated by City Insight to have great experience exploring the cities of Vietnam.";
         /**
          * config default og
          */
         $this->og = [
-            "title" => "Máy lọc không khí đến từ nasa",
-            "site_name" => "Airocide",
+            "title" => "City tours - Unique insight into Vietnam",
+            "site_name" => "City tours",
             "url" => $this->baseUrl,
             "image" => "",
             "description" => $this->description,
