@@ -67,7 +67,7 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                     <ul>
                         <?php if (!empty($menus)) { ?>
                             <?php foreach ($menus as $menu) { ?>
-                        <li class="<?= isset($this->context->var['menuactive']) && $this->context->var['menuactive'] == $menu->link ? 'active' : '' ?>"><a href="<?= $menu->link ?>"><?= $menu->name ?></a></li>
+                                <li class="<?= isset($this->context->var['menuactive']) && $this->context->var['menuactive'] == $menu->link ? 'active' : '' ?>"><a href="<?= $menu->link ?>"><?= $menu->name ?></a></li>
                             <?php } ?>
                         <?php } ?>
                     </ul>
@@ -135,14 +135,11 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
             <div class="footer-menu">
                 <div class="container">
                     <ul>
-                        <li><a href="#">Panorama</a></li>
-                        <li><a href="#">Our Cities</a></li>
-                        <li><a href="#">City Highlight</a></li>
-                        <li><a href="#">Vietnam Discovery</a></li>
-                        <li><a href="#">Tour request</a></li>
-                        <li><a href="#">Other service</a></li>
-                        <li><a href="#">Diary</a></li>
-                        <li><a href="#">Contact us</a></li>
+                        <?php if (!empty($menus)) { ?>
+                            <?php foreach ($menus as $menu) { ?>
+                                <li><a href="<?= $menu->link ?>"><?= $menu->name ?></a></li>
+                            <?php } ?>
+                        <?php } ?>
                     </ul>
                 </div><!-- container -->
             </div><!-- footer-menu -->
