@@ -28,8 +28,9 @@ return [
         'GET hinh-anh/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'album/index',
         //---contact
         'GET lien-he.html' => 'contact/index',
-        //---item
-        'GET p/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'item/detail',
+        //---tour
+        'our-cities.html' => 'city/index',
+        'tour/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'tour/detail',
         'GET san-pham.html' => 'item/index',
     ],
 ];

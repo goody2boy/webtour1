@@ -18,10 +18,14 @@ class IndexController extends BaseController {
     public function actionIndex() {
         $heart = BannerBusiness::getByType(BannerType::HEART, 1);
         $this->var['menuactive'] = Yii::$app->request->absoluteUrl;
-        $tourFeatures = $this->getTourFeatureBox();
+        $tourFeature = $this->getTourFeature();
+        $tourFeatureBoxs = $this->getTourFeatureBox();
+        $featureImage = $this->getImageFetureTour();
         return $this->render('index', [
                     'heart' => $heart,
-                    'tourFeatures' => $tourFeatures,
+                    'tourFeature' => $tourFeature,
+                    'featureImage' => $featureImage,  
+                    'tourFeatureBoxs' => $tourFeatureBoxs,
         ]);
     }
 
@@ -29,13 +33,30 @@ class IndexController extends BaseController {
         $tourFeatures = [];
         $search = new TourSearch();
         $nameArr = ['HOMEBOX'];
-        $listTourIds = preg_split ("/,/", OptionBusiness::getConfig($nameArr, 1)[0]->value);
+        $listTourIds = preg_split("/,/", OptionBusiness::getConfig($nameArr, 1)[0]->value);
         foreach ($listTourIds as $tourId) {
             $search->id = $tourId;
             $tourFeatures[] = $search->search(true)->data[0];
         }
         return $tourFeatures;
     }
+
+    public function getTourFeature() {
+        $search = new TourSearch();
+        $nameArr = ['FEATURETUOUR'];
+        $tourId = OptionBusiness::getConfig($nameArr, 1)[0]->value;
+        $search->id = $tourId;
+        $tourFeature = $search->search(true)->data[0];
+        return $tourFeature;
+    }
+    
+    public function getImageFetureTour(){
+        $nameArr = ['FEATURETUREIMAGE'];
+        $imageLink = OptionBusiness::getConfig($nameArr, 1)[0]->value;
+        return $imageLink;
+    }
+    
+    
 
     public function actionPhp() {
         phpinfo();

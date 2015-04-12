@@ -8,6 +8,7 @@ use yii\base\Model;
 use yii\data\Pagination;
 use common\models\business\CityBusiness;
 use common\models\business\PriceBusiness;
+use common\models\business\ImageBusiness;
 use common\models\business\CategoryBusiness;
 use common\models\business\CategoryTourBusiness;
 use common\models\business\UserBusiness;
@@ -131,8 +132,9 @@ class TourSearch extends Model {
             $tour->categories = $categoryArr[$tour->id] != null ? $categoryArr[$tour->id] : '';
             $tour->moneys = $moneyArr[$tour->money_id] != null ? $moneyArr[$tour->money_id] : '';
             $tour->author = $authorArr[$tour->author_id] != null ? $authorArr[$tour->author_id] : '';
-//            $tour->prices =  PriceBusiness::getByTour($tourId);
+            $tour->prices = PriceBusiness::getByTour($tour->id);
 //            $tour->moneys = MoneyBusiness::mGet($ids);
+            $tour->images = ImageBusiness::getByTarget($tour->id, "tour");
         }
         // lay trong vong for
         return $dataPage;
