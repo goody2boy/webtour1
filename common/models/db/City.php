@@ -14,21 +14,19 @@ use Yii;
  * @property string $description
  * @property string $language
  */
-class City extends \yii\db\ActiveRecord
-{
+class City extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'city';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id', 'name', 'code', 'country_id', 'description', 'language'], 'required'],
             [['id', 'country_id'], 'integer'],
@@ -42,8 +40,7 @@ class City extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'name' => 'Name',
@@ -54,6 +51,11 @@ class City extends \yii\db\ActiveRecord
             'bg_color' => 'Background color',
         ];
     }
+
+    public function attributes() {
+        return array_merge(parent::attributes(), ['images']);
+    }
+
     
     public function attributes() {
         return array_merge(parent::attributes(), ['images']);
