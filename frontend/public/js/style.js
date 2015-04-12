@@ -58,5 +58,29 @@ $(document).ready(function(){
 		autoplayTimeout:4000,
 		autoplayHoverPause:false,
 	});
+	
+	//tdslider
+	$('#tdslider').owlCarousel({
+		loop:false,
+		margin:0,
+		responsiveClass:true,
+		nav:true,
+		dots:false,
+		autoplay:false,
+		autoHeight:false,
+		autoplayTimeout:4000,
+		autoplayHoverPause:false,
+		responsive:{
+			0:{
+				items:1
+			},
+			534:{
+				items:2
+			},
+			768:{
+				items:3
+			}
+		}
+	});
 
 });
