@@ -44,5 +44,19 @@ $(document).ready(function(){
 			}
 		}
 	});
+	
+	//infoslider
+	$('#infoslider').owlCarousel({
+		loop:true,
+		items:1,
+		margin:0,
+		responsiveClass:false,
+		nav:false,
+		dots:true,
+		autoplay:true,
+		autoHeight:false,
+		autoplayTimeout:4000,
+		autoplayHoverPause:false,
+	});
 
 });

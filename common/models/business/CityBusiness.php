@@ -3,8 +3,8 @@
 namespace common\models\business;
 
 use common\models\db\City;
+use common\models\enu\ImageType;
 use common\models\inter\InterBusiness;
-use common\models\db\District;
 use common\models\output\Response;
 
 class CityBusiness implements InterBusiness {
@@ -22,6 +22,7 @@ class CityBusiness implements InterBusiness {
      * @param type $id
      */
     public static function remove($id) {
+        ImageBusiness::deleteByTarget($id);
         return new Response(true, "Xóa thành phố thành công", City::deleteAll(['id' => $id]));
     }
 
@@ -33,11 +34,21 @@ class CityBusiness implements InterBusiness {
     }
 
     public static function getCityByCountry($coutryId) {
-        return City::findAll(['country_id' => $coutryId])->all();
+        $cities = City::findAll(['country_id' => $coutryId]);
+        $ids = [];
+        foreach ($cities as $city) {
+            $ids[] = $city->id;
+        }
+        $images = ImageBusiness::getByTarget($ids, ImageType::CITY, true, true);
+        foreach ($cities as $city) {
+            $city->images = isset($images[$city->id]) ? $images[$city->id] : [];
+        }
+
+        return $cities;
     }
 
     public static function mGet($ids) {
-        return City::find()->andWhere(["id" => $ids])->all();
+        return City::findAll(["id" => $ids]);
     }
 
     public static function getToKey($ids) {
