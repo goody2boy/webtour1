@@ -61,6 +61,10 @@ class UrlUtils {
         return "tour/" . TextUtils::removeMarks($name) . "-" . trim($id) . ".html";
     }
     
+    public static function city($name, $id) {
+        return "city/" . TextUtils::removeMarks($name) . "-" . trim($id) . ".html";
+    }
+    
     /**
      * Chi tiết sản phẩm
      * @param type $name

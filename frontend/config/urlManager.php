@@ -30,6 +30,7 @@ return [
         'GET lien-he.html' => 'contact/index',
         //---tour
         'our-cities.html' => 'city/index',
+        'city/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'city/detail',
         'tour/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'tour/detail',
         'GET san-pham.html' => 'item/index',
     ],
