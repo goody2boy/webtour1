@@ -51,14 +51,8 @@ class City extends \yii\db\ActiveRecord {
             'bg_color' => 'Background color',
         ];
     }
-
-    public function attributes() {
-        return array_merge(parent::attributes(), ['images']);
-    }
-
     
     public function attributes() {
         return array_merge(parent::attributes(), ['images']);
     }
-}
 }
