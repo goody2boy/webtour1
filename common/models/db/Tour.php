@@ -82,7 +82,7 @@ class Tour extends \yii\db\ActiveRecord
     }
     
     public function attributes() {
-        return array_merge(parent::attributes(), ['prices', 'city', 'moneys', 'categories', 'author', 'images']);
+        return array_merge(parent::attributes(), ['prices', 'city', 'moneys', 'categories', 'author', 'images','minprice']);
     }
     
     public function getCategoryTour()

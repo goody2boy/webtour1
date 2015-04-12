@@ -133,6 +133,7 @@ class TourSearch extends Model {
             $tour->moneys = $moneyArr[$tour->money_id] != null ? $moneyArr[$tour->money_id] : '';
             $tour->author = $authorArr[$tour->author_id] != null ? $authorArr[$tour->author_id] : '';
             $tour->prices = PriceBusiness::getByTour($tour->id);
+            $tour->minprice = $this->getMinPrice($tour->prices);
 //            $tour->moneys = MoneyBusiness::mGet($ids);
             $tour->images = ImageBusiness::getByTarget($tour->id, "tour");
         }
@@ -191,6 +192,17 @@ class TourSearch extends Model {
 
     public static function getCities($cityIds) {
         return CityBusiness::getToKey($cityIds);
+    }
+
+    public static function getMinPrice($prices) {
+        $min = $prices[0]->price;
+        foreach ($prices as $price) {
+            if ($min > $price->price) {
+                $min = $price->price;
+            }
+        }
+
+        return $min;
     }
 
 }

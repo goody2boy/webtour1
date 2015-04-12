@@ -19,7 +19,7 @@ use common\util\UrlUtils;
                         <div class="ci-bottom">
                             <ul>
                                 <?php foreach ($maptours[$city->id]->data as $tour) { ?>
-                                    <li><a href="<?= $this->context->baseUrl . UrlUtils::tour($tour->title, $tour->id) ?>"><i class="fa fa-long-arrow-right"></i><?= $tour->title?></a><span class="ci-cost">$26.8</span></li>
+                                    <li><a href="<?= $this->context->baseUrl . UrlUtils::tour($tour->title, $tour->id) ?>"><i class="fa fa-long-arrow-right"></i><?= $tour->title?></a><span class="ci-cost"><?= $tour->minprice?></span></li>
                                 <?php } ?>
                             </ul>
                         </div>
