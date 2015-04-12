@@ -61,3 +61,4 @@ class City extends \yii\db\ActiveRecord {
         return array_merge(parent::attributes(), ['images']);
     }
 }
+}
