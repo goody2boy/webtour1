@@ -17,11 +17,6 @@
                 <div class="col-sm-3 padding-all-5">
                     <input data-search="title" name="title" type="text" class="form-control" placeholder="Tiêu đề" style="margin-top:5px;"  >
                     <input data-search="durationTime" name="durationTime" type="text" class="form-control" placeholder="Thời gian dự kiến" style="margin-top:5px;" >
-                    <select data-search="price" class="form-control" name="price" style="margin-top:5px;" >
-                        <option value="" >--Chọn giá--</option>
-                        <option value="100" >100</option>
-                        <option value="200" >200</option>
-                    </select>
                 </div><!-- /col -->
                 <!-- code, toutype, language, status -->
                 <div class="col-sm-3 padding-all-5">
@@ -84,7 +79,7 @@
                         <th class="text-center" style="vertical-align: middle;width: 150px" >Tiêu đề tour</th>
                         <th class="text-center" style="vertical-align: middle;width: 150px" >Tour Type</th>
                         <th class="text-center" style="vertical-align: middle;width: 80px" >Thời gian dự kiến</th>
-                        <th class="text-center" style="vertical-align: middle" >Giá min</th>
+                        <th class="text-center" style="vertical-align: middle" >Bảng Giá</th>
                         <th class="text-center" style="vertical-align: middle" >Thành phố</th>
                         <th class="text-center" style="vertical-align: middle" >Ngôn ngữ</th>
                         <th class="text-center" style="vertical-align: middle" >Ngày tạo</th>
@@ -118,7 +113,11 @@
                             <% }); %>
                         </td>
                         <td class="text-center" style="vertical-align: middle"><%= this.duration_time %> (Ngày)</td>
-                        <td class="text-center" style="vertical-align: middle"><%= this.price_name %></td>
+                        <td class="text-center" style="vertical-align: middle">
+                            <button onclick="tour.showPrice('<%= this.id %>')" type="button" class="btn btn-info" style="margin-left:20px;">
+                                <span class="glyphicon glyphicon-search"></span>Show Price
+                            </button>
+                        </td>
                         <td class="text-center" style="vertical-align: middle"><%= this.city.name %></td>
                         <td class="text-center" style="vertical-align: middle"><%= this.language %></td>
                         <td class="text-center" style="vertical-align: middle"><%= textUtils.formatTime(this.create_time,'day') %></td>

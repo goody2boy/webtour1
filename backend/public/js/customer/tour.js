@@ -194,3 +194,26 @@ tour.edit = function (id) {
         }
     });
 };
+
+tour.showPrice = function (id) {
+    ajax({
+        service: '/tour/get-price',
+        data: {id: id},
+        loading: false,
+        done: function (resp) {
+            if (resp.success) {
+                console.log("gia tri resp");
+                console.log(resp);
+                popup.open('popup-show-price', 'Xem thông tin giá Tour.', Fly.template('/tour/pricetable.tpl', resp), [
+                    {
+                        title: 'ẩn',
+                        style: 'btn-default',
+                        fn: function () {
+                            popup.close('popup-show-price');
+                        }
+                    }
+                ], "modal-lg");
+            }
+        }
+    });
+};

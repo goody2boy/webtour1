@@ -63,5 +63,32 @@ class TourController extends ServiceController {
         PriceBusiness::removeByTour($id);
         return $this->response(TourBusiness::remove($id));
     }
+    
+    public function actionAdd($id) {
+        if (is_object($resp = $this->can("add"))) {
+            return $this->response($resp);
+        }
+       $form = new TourForm();
+       $form->setAttributes(Yii::$app->request->getBodyParams());
+       $form->author_id = Yii::$app->user->getId();
+       
+       $cateName = NewsCategoryBusiness::get($form->categoryId);
+       $form->categoryName = $cateName->name;
+
+        return $this->response($form->save());
+        return $this->response(TourBusiness::add($id));
+    }
+    
+    
+    public function actionGetPrice($id){
+        if (is_object($resp = $this->can("get-price"))) {
+            return $this->response($resp);
+        }
+        $search = new TourSearch();
+        $search->id = $id;
+        $tour = $search->search(true)->data[0];
+        $prices = $tour->prices;
+        return $this->response(new Response(true, "Giá tour", $prices));
+    }
 
 }

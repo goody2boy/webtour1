@@ -39,10 +39,11 @@ class TourForm extends Model {
     public $author_id;
     public $language;
     public $status;
+    public $categories;
 
     public function rules() {
         return [
-            [['name', 'code', 'language', 'active'], 'required', 'message' => '{attribute} không được để trống!'],
+            [['name', 'code', 'language', 'active', 'categories'], 'required', 'message' => '{attribute} không được để trống!'],
             [['id'], 'integer', 'message' => '{attribute} không được để trống!'],
         ];
     }
@@ -68,7 +69,7 @@ class TourForm extends Model {
         }
         $money->code = $this->code;
         $money->name = $this->name;
-        $money->active = $this->active;
+        $money->active = $this->active == 1 ? 1 : 0;
         $money->language = $this->language;
         $money->update_time = time();
         if (!$money->save(false)) {
