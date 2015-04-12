@@ -34,6 +34,7 @@ class City extends \yii\db\ActiveRecord
             [['id', 'country_id'], 'integer'],
             [['description'], 'string'],
             [['name'], 'string', 'max' => 100],
+            [['bg_color'], 'string', 'max' => 12],
             [['code', 'language'], 'string', 'max' => 3]
         ];
     }
@@ -50,6 +51,11 @@ class City extends \yii\db\ActiveRecord
             'country_id' => 'Country ID',
             'description' => 'Description',
             'language' => 'Language',
+            'bg_color' => 'Background color',
         ];
+    }
+    
+    public function attributes() {
+        return array_merge(parent::attributes(), ['images']);
     }
 }

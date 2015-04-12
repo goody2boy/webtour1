@@ -154,8 +154,6 @@ class TourSearch extends Model {
         $categories = CategoryBusiness::getToKey($categoryIds);
         $result = [];
         foreach ($tourIds as $tour_id) {
-//            foreach ($categoryTours as $cateTour) {
-//                if (array_search($cateTour, $categoryTours) == $tour_id) {
             $cateTour = $categoryTours[$tour_id];
             foreach ($cateTour as $cateId) {
                 if (!isset($result[$tour_id]) || $result[$tour_id] == null) {
