@@ -7,7 +7,6 @@ use common\models\output\DataPage;
 use yii\base\Model;
 use yii\data\Pagination;
 use common\models\business\CityBusiness;
-use common\models\business\HightLightBusiness;
 use common\models\business\PriceBusiness;
 use common\models\business\ImageBusiness;
 use common\models\business\CategoryBusiness;
@@ -27,10 +26,8 @@ class TourSearch extends Model {
     public $title;
     public $price;
     public $city;
-    public $hightlight;
     public $code;
     public $tourType;
-    public $listType;
     public $language;
     public $durationTime;
     public $status;
@@ -45,7 +42,7 @@ class TourSearch extends Model {
     public function rules() {
         return [
             [['title', 'code', 'tourType', 'language', 'sort'], 'string'],
-            [['id', 'city', 'hightlight', 'price', 'status', 'durationTime', 'createTime', 'createTimeTo', 'updateTime', 'updateTimeTo', 'pageSize', 'page'], 'integer'],
+            [['id', 'city', 'price', 'status', 'durationTime', 'createTime', 'createTimeTo', 'updateTime', 'updateTimeTo', 'pageSize', 'page'], 'integer'],
         ];
     }
 
@@ -68,22 +65,15 @@ class TourSearch extends Model {
         if ($this->city > 0) {
             $query->andWhere(['=', 'city_id', $this->city]);
         }
-        if ($this->hightlight > 0) {
-            $query->andWhere(['=', 'hightlight_type', $this->hightlight]);
-        }
         if ($this->code != null && $this->code != '') {
             $query->andWhere(['=', 'code', strtoupper($this->code)]);
         }
-        if ($this->listType != null && $this->listType != '' && is_array($this->listType)) {
-            $strQuery = ['like', 'category_ids', $this->listType[0] + ','];
-            for ($i = 1; $i < sizeof($this->listType); $i++) {
-                $strQuery = ['or', $strQuery, ['like', 'category_ids', $this->listType[$i] + ',']];
-            }
-            $query->andWhere($strQuery);
-        } else {
-            if ($this->tourType != null && $this->tourType != '') {
+        if ($this->tourType != null && $this->tourType != '') {
+//            if (is_array($this->tourType)) {
+//                $query->andWhere(['or', ['like','category_ids', $this->tourType + ',']]);
+//            } else {
                 $query->andWhere(['like', 'category_ids', $this->tourType + ',']);
-            }
+//            }
         }
         if ($this->language != null && $this->language != '') {
             $query->andWhere(['LIKE', 'language', strtolower($this->language)]);
@@ -131,22 +121,18 @@ class TourSearch extends Model {
         $moneyIds = [];
         $authorIds = [];
         $cityIds = [];
-        $hightlightTypeIds = [];
         foreach ($dataPage->data as $tour) {
             $tourIds[] = $tour->id;
             $moneyIds[] = $tour->money_id;
             $authorIds[] = $tour->author_id;
             $cityIds[] = $tour->city_id;
-            $hightlightTypeIds[] = $tour->hightlight_type;
         }
         $cityArr = $this->getCities($cityIds);
-        $higthlightArr = $this->getHightlightType($hightlightTypeIds);
         $categoryArr = $this->getCategories($tourIds);
         $moneyArr = $this->getMoney($moneyIds);
         $authorArr = $this->getAuthors($authorIds);
         foreach ($dataPage->data as $tour) {
             $tour->city = $cityArr[$tour->city_id] != null ? $cityArr[$tour->city_id] : '';
-            $tour->hightlight = $higthlightArr[$tour->hightlight_type] != null ? $higthlightArr[$tour->hightlight_type] : '';
             $tour->categories = $categoryArr[$tour->id] != null ? $categoryArr[$tour->id] : '';
             $tour->moneys = $moneyArr[$tour->money_id] != null ? $moneyArr[$tour->money_id] : '';
             $tour->author = $authorArr[$tour->author_id] != null ? $authorArr[$tour->author_id] : '';
@@ -210,10 +196,6 @@ class TourSearch extends Model {
 
     public static function getCities($cityIds) {
         return CityBusiness::getToKey($cityIds);
-    }
-
-    public static function getHightlightType($hightlightIds) {
-        return HightLightBusiness::getToKey($hightlightIds);
     }
 
     public static function getMinPrice($prices) {

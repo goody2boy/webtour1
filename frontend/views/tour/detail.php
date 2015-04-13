@@ -1,9 +1,7 @@
-<?php
-
+<?php 
 use common\util\TextUtils;
 use common\util\UrlUtils;
 ?>
-
 <div class="container">
     <div class="tour-detail">
         <div class="td-title">
@@ -25,14 +23,14 @@ use common\util\UrlUtils;
             </div>
             <div class="td-row">
                 <label>City hightlight:</label>
-                <div class="td-text"><a href="<?= $this->context->baseUrl . UrlUtils::hightlight($tour->hightlight->name, $tour->hightlight->id) ?>"><?= $tour->hightlight->name ?></a></div>
+                <div class="td-text"><a href="#">Daily Group Tours</a></div>
             </div>
             <div class="td-row">
                 <label>Tour type:</label>
                 <div class="td-text">
                     <?php for ($i = 0; $i < count($tour->categories); $i ++) { ?>
                         <?php $cate = $tour->categories[$i]; ?>
-                        <a href="<?= $this->context->baseUrl . UrlUtils::tourtype($cate->name, $cate->id) ?>"><?= $cate->name ?></a>
+                        <a href="#"><?= $cate->name ?></a>
                         <?php if ($i < count($tour->categories) - 1) { ?>
                             <?= " - " ?> 
                         <?php } ?>
@@ -72,7 +70,7 @@ use common\util\UrlUtils;
                                 <?php foreach ($tour->prices as $price) { ?>
                                     <td><?= $price->price * $moneyconvert[$money->id] ?></td>
                                 <?php } ?>
-                                <td><a href="<?= $this->context->baseUrl . UrlUtils::contact() ?>">Contact Us</a></td>
+                                <td><a href="#">Contact Us</a></td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -97,50 +95,94 @@ use common\util\UrlUtils;
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="full-itinerary">
                         <div class="maincontent">                                            
-                            <?= $tour->full_initerary ?>
+                            <?= $tour->full_initerary?>
                         </div><!-- maincontent -->
                     </div><!-- tab-pane -->
                     <div role="tabpanel" class="tab-pane" id="inclusion">
                         <div class="maincontent">
-                            <?= $tour->inclusion ?>
+                           <?= $tour->inclusion?>
                         </div><!-- maincontent -->
                     </div><!-- tab-pane -->
                     <div role="tabpanel" class="tab-pane" id="exclusion">
                         <div class="maincontent">
-                            <?= $tour->exclusion ?>
+                            <?= $tour->exclusion?>
                         </div><!-- maincontent -->
                     </div><!-- tab-pane -->
                     <div role="tabpanel" class="tab-pane" id="tour-notes">
                         <div class="maincontent">
-                            <?= $tour->note ?>
+                            <?= $tour->note?>
                         </div><!-- maincontent -->
                     </div><!-- tab-pane -->
                 </div><!-- tab-content -->
             </div><!-- pd-tabs -->
-            <div class="related-venues">Related venues <span>(<?= sizeof($venuesTour) ?>)</span></div>
+            <div class="related-venues">Related venues <span>(5)</span></div>
             <ul class="rv-ul">
-                <?php $index = 1; ?>
-                <?php foreach ($venuesTour as $tour) { ?>
-                    <li>
-                        <div class="rv-item">
-                            <span class="rv-number"><?= $index ?></span>
-                            <div class="rv-name"><?= $tour->title ?></div>
-                            <div class="rv-desc">
-                                <?= $tour->mapp_address ?>
-                            </div>
-                            <div class="rv-info">
-                                <?= $tour->description ?>
-                            </div>
+                <li>
+                    <div class="rv-item">
+                        <span class="rv-number">1</span>
+                        <div class="rv-name">Bat Trang Pottery Village</div>
+                        <div class="rv-desc">
+                            Gia Lam Dist. - Hanoi Capital
                         </div>
-                    </li>
-                    <?php $index++; ?>   
-                <?php } ?>
+                        <div class="rv-info">
+                            Visiting Bat Trang Village - one of the city's traditional handicraft villages, tourists can take a walk to visit many ceramic stores for purchasing special gifts or try ceramics making to get an unforgettable experience.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="rv-item">
+                        <span class="rv-number">2</span>
+                        <div class="rv-name">Hanoi Old Quarter</div>
+                        <div class="rv-desc">
+                            Hoan Kiem District - Hanoi Capital
+                        </div>
+                        <div class="rv-info">
+                            Without Old Quarter, a maze of labyrinthine streets dated back to the 13th century, Hanoi would not be Hanoi. Strolling around Hanoi Old Quarter, one can perceive the beauty as well as typical feature of these streets.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="rv-item">
+                        <span class="rv-number">3</span>
+                        <div class="rv-name">Long Bien Bridge</div>
+                        <div class="rv-desc">
+                            Long Bien District, Hanoi, Vietnam - Hanoi Capital
+                        </div>
+                        <div class="rv-info">
+                            Finished in 1902, Long Bien Bridge was the pride and symbol of architecture in Hanoi. This special bridge contains its unique historic, architectural and cultural values. If tourists have chance to visit Hanoi, do not forget to walk on Long Bien Bridge for sightseeing and experiencing the daily life of Hanoians.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="rv-item">
+                        <span class="rv-number">4</span>
+                        <div class="rv-name">Hanoi Ecopark</div>
+                        <div class="rv-desc">
+                            Xuan Quan, Van Giang - Hanoi Capital
+                        </div>
+                        <div class="rv-info">
+                            Stretching over 500 hectares near Bat Trang Village, Ecopark is an urban township development in Hanoi. With the vision to create harmony between humans and nature, Ecopark brings together modern facilities of international standards in order to create the most enjoyable living environment for its residents.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="rv-item">
+                        <span class="rv-number">5</span>
+                        <div class="rv-name">Bai Giua</div>
+                        <div class="rv-desc">
+                            Red River, Hanoi Capital, Vietnam - Hanoi Capital
+                        </div>
+                        <div class="rv-info">
+                            Bai Giua is a land lying in the middle of the Red River, with five kilometers long and one kilometer across. Whenever cycling to Bat Trang Village from the Hanoi center, you have to pass this land. Bai Giua is worthwhile for boating trip and ideal for the Youths to take photos.
+                        </div>
+                    </div>
+                </li>
             </ul>
             <div class="clearfix"></div>
         </div><!-- td-main -->
         <div class="td-sidebar">
-            <div class="td-map" id="map-canvas">
-                <!--<img src="data/staticmap.jpg" alt="map">-->
+            <div class="td-map">
+                <img src="data/staticmap.jpg" alt="map">
             </div><!-- td-map -->
             <div class="td-map-expand"><a href="#">Expand map</a></div>
             <div class="winget">
@@ -148,23 +190,23 @@ use common\util\UrlUtils;
                 <div class="winget-content">
                     <div class="td-featured">
                         <?php foreach ($relateTourCity as $tour) { ?>
-                            <div class="grid">
-                                <div class="img"><a href="<?= $this->context->baseUrl . UrlUtils::tour($tour->title, $tour->id) ?>"><img src="<?= $this->context->baseUrl . $tour->images[0]->imageId ?>" alt="img"></a></div>
-                                <div class="g-content">
-                                    <div class="g-row">
-                                        <a class="g-title" href="<?= $this->context->baseUrl . UrlUtils::tour($tour->title, $tour->id) ?>"><?= $tour->title ?></a>
-                                    </div>
-                                    <div class="g-row">Duration: <?= $tour->duration_time ?> Day</div>
-                                    <div class="g-row">Start from <span class="g-price">$<?= $tour->minprice ?></span></div>
-                                    <div class="g-row">
-                                        <a class="g-more" href="#"></a>
-                                    </div>
+                        <div class="grid">
+                            <div class="img"><a href="<?= $this->context->baseUrl . UrlUtils::tour($tour->title, $tour->id) ?>"><img src="<?= $this->context->baseUrl . $tour->images[0]->imageId ?>" alt="img"></a></div>
+                            <div class="g-content">
+                                <div class="g-row">
+                                    <a class="g-title" href="<?= $this->context->baseUrl . UrlUtils::tour($tour->title, $tour->id) ?>"><?= $tour->title ?></a>
                                 </div>
-                                <div class="g-bottom">
-                                    City hightlight: <a href="<?= $this->context->baseUrl . UrlUtils::hightlight($tour->hightlight->name, $tour->hightlight->id) ?>"><?= $tour->hightlight->name ?></a> - City: <a href="<?= $this->context->baseUrl . UrlUtils::city($tour->city->name, $tour->city->id) ?>"><?= $tour->city->name ?></a>
+                                <div class="g-row">Duration: <?= $tour->duration_time ?> Day</div>
+                                <div class="g-row">Start from <span class="g-price">$<?= $tour->minprice?></span></div>
+                                <div class="g-row">
+                                    <a class="g-more" href="#"></a>
                                 </div>
-                            </div><!-- grid -->
-                        <?php } ?>
+                            </div>
+                            <div class="g-bottom">
+                                City hightlight: <a href="#">Daily Group Tours</a> - City: <a href="<?= $this->context->baseUrl . UrlUtils::city($tour->city->name, $tour->city->id) ?>"><?= $tour->city->name ?></a>
+                            </div>
+                        </div><!-- grid -->
+                        <?php }?>
                     </div><!-- td-featured -->
                 </div><!-- winget-content -->
             </div><!-- winget -->
@@ -172,34 +214,3 @@ use common\util\UrlUtils;
         <div class="clearfix"></div>
     </div><!-- tour-detail -->
 </div>
-<script src="https://maps.googleapis.com/maps/api/js"></script>
-<script>
-                    var geocoder;
-                    var map;
-                    function initialize() {
-                        geocoder = new google.maps.Geocoder();
-                        var mapCanvas = document.getElementById('map-canvas');
-                        var mapOptions = {
-                            center: new google.maps.LatLng(44.5403, -78.5463),
-                            zoom: 8,
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        }
-                        map = new google.maps.Map(mapCanvas, mapOptions)
-                    }
-                    google.maps.event.addDomListener(window, 'load', initialize);
-//                    function codeAddress() {
-//                        var address = "Long Bien District, Hanoi, Vietnam - Hanoi Capital";
-//                        geocoder.geocode({'address': address}, function (results, status) {
-//                            if (status == google.maps.GeocoderStatus.OK) {
-//                                map.setCenter(results[0].geometry.location);
-//                                var marker = new google.maps.Marker({
-//                                    map: map,
-//                                    position: results[0].geometry.location
-//                                });
-//                            } else {
-//                                alert("Geocode was not successful for the following reason: " + status);
-//                            }
-//                        });
-//                    }
-//                    codeAddress();
-</script>

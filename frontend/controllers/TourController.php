@@ -54,12 +54,10 @@ class TourController extends BaseController {
         }
         $moneyConvert = MoneyConvertBusiness::getFromUSDToOther($listIds);
         // get related tour by TourType
-        $listTourType = preg_split("/,/", $tour->category_ids);
         $search = new TourSearch();
         $search->status = 1;
-        $search->listType = $listTourType;
-        $search->pageSize = 6;
-        $venuesTour = $search->search(true)->data;
+        $search->tourType = $tour->categories;
+        
         // get relate Tour by city
         $search = new TourSearch();
         $search->status = 1;
@@ -70,7 +68,6 @@ class TourController extends BaseController {
                     'tour' => $tour,
                     'moneys' => $moneys,
                     'moneyconvert' => $moneyConvert,
-                    'venuesTour' => $venuesTour,
                     'relateTourCity' => $relateTourCity,
         ]);
     }
