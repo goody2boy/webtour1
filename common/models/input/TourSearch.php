@@ -69,7 +69,11 @@ class TourSearch extends Model {
             $query->andWhere(['=', 'code', strtoupper($this->code)]);
         }
         if ($this->tourType != null && $this->tourType != '') {
-            $query->andWhere(['like', 'category_ids', $this->tourType + ',']);
+//            if (is_array($this->tourType)) {
+//                $query->andWhere(['or', ['like','category_ids', $this->tourType + ',']]);
+//            } else {
+                $query->andWhere(['like', 'category_ids', $this->tourType + ',']);
+//            }
         }
         if ($this->language != null && $this->language != '') {
             $query->andWhere(['LIKE', 'language', strtolower($this->language)]);

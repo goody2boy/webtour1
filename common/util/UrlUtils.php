@@ -65,6 +65,10 @@ class UrlUtils {
         return "city/" . TextUtils::removeMarks($name) . "-" . trim($id) . ".html";
     }
     
+    public static function cate($name){
+        
+    }
+    
     /**
      * Chi tiết sản phẩm
      * @param type $name

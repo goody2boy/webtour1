@@ -1,5 +1,7 @@
-<?php ?>
-
+<?php 
+use common\util\TextUtils;
+use common\util\UrlUtils;
+?>
 <div class="container">
     <div class="tour-detail">
         <div class="td-title">
@@ -187,86 +189,24 @@
                 <div class="winget-title"><div class="lb-name">Related tour</div></div>
                 <div class="winget-content">
                     <div class="td-featured">
+                        <?php foreach ($relateTourCity as $tour) { ?>
                         <div class="grid">
-                            <div class="img"><a href="#"><img src="data/01.jpg" alt="img"></a></div>
+                            <div class="img"><a href="<?= $this->context->baseUrl . UrlUtils::tour($tour->title, $tour->id) ?>"><img src="<?= $this->context->baseUrl . $tour->images[0]->imageId ?>" alt="img"></a></div>
                             <div class="g-content">
                                 <div class="g-row">
-                                    <a class="g-title" href="#">Half-day cycling tour to explore the typical values of Hanoi</a>
+                                    <a class="g-title" href="<?= $this->context->baseUrl . UrlUtils::tour($tour->title, $tour->id) ?>"><?= $tour->title ?></a>
                                 </div>
-                                <div class="g-row">Duration: 0.5 Day</div>
-                                <div class="g-row">Start from <span class="g-price">$26.8</span></div>
+                                <div class="g-row">Duration: <?= $tour->duration_time ?> Day</div>
+                                <div class="g-row">Start from <span class="g-price">$<?= $tour->minprice?></span></div>
                                 <div class="g-row">
                                     <a class="g-more" href="#"></a>
                                 </div>
                             </div>
                             <div class="g-bottom">
-                                City hightlight: <a href="#">Daily Group Tours</a> - City: <a href="#">Hanoi Capital</a>
+                                City hightlight: <a href="#">Daily Group Tours</a> - City: <a href="<?= $this->context->baseUrl . UrlUtils::city($tour->city->name, $tour->city->id) ?>"><?= $tour->city->name ?></a>
                             </div>
                         </div><!-- grid -->
-                        <div class="grid">
-                            <div class="img"><a href="#"><img src="data/02.jpg" alt="img"></a></div>
-                            <div class="g-content">
-                                <div class="g-row">
-                                    <a class="g-title" href="#">Pedaling through different parts of Hanoi</a>
-                                </div>
-                                <div class="g-row">Duration: 0.5 Day</div>
-                                <div class="g-row">Start from <span class="g-price">$26.8</span></div>
-                                <div class="g-row">
-                                    <a class="g-more" href="#"></a>
-                                </div>
-                            </div>
-                            <div class="g-bottom">
-                                City hightlight: <a href="#">Daily Group Tours</a> - City: <a href="#">Hanoi Capital</a>
-                            </div>
-                        </div><!-- grid -->
-                        <div class="grid">
-                            <div class="img"><a href="#"><img src="data/03.jpg" alt="img"></a></div>
-                            <div class="g-content">
-                                <div class="g-row">
-                                    <a class="g-title" href="#">A day trip to discover Vietnam education history</a>
-                                </div>
-                                <div class="g-row">Duration: 0.5 Day</div>
-                                <div class="g-row">Start from <span class="g-price">$26.8</span></div>
-                                <div class="g-row">
-                                    <a class="g-more" href="#"></a>
-                                </div>
-                            </div>
-                            <div class="g-bottom">
-                                City hightlight: <a href="#">Daily Group Tours</a> - City: <a href="#">Hanoi Capital</a>
-                            </div>
-                        </div><!-- grid -->
-                        <div class="grid">
-                            <div class="img"><a href="#"><img src="data/04.jpg" alt="img"></a></div>
-                            <div class="g-content">
-                                <div class="g-row">
-                                    <a class="g-title" href="#">Harvesting day in Hanoi suburb</a>
-                                </div>
-                                <div class="g-row">Duration: 0.5 Day</div>
-                                <div class="g-row">Start from <span class="g-price">$26.8</span></div>
-                                <div class="g-row">
-                                    <a class="g-more" href="#"></a>
-                                </div>
-                            </div>
-                            <div class="g-bottom">
-                                City hightlight: <a href="#">Daily Group Tours</a> - City: <a href="#">Hanoi Capital</a>
-                            </div>
-                        </div><!-- grid -->
-                        <div class="grid">
-                            <div class="img"><a href="#"><img src="data/05.jpg" alt="img"></a></div>
-                            <div class="g-content">
-                                <div class="g-row">
-                                    <a class="g-title" href="#">Four hours Hanoi by night</a>
-                                </div>
-                                <div class="g-row">Duration: 0.5 Day</div>
-                                <div class="g-row">Start from <span class="g-price">$26.8</span></div>
-                                <div class="g-row">
-                                    <a class="g-more" href="#"></a>
-                                </div>
-                            </div>
-                            <div class="g-bottom">
-                                City hightlight: <a href="#">Daily Group Tours</a> - City: <a href="#">Hanoi Capital</a>
-                            </div>
-                        </div><!-- grid -->
+                        <?php }?>
                     </div><!-- td-featured -->
                 </div><!-- winget-content -->
             </div><!-- winget -->
