@@ -44,11 +44,12 @@ class Tour extends \yii\db\ActiveRecord
     {
         return [
             [['id', 'code', 'title', 'city_id', 'description', 'full_initerary', 'inclusion', 'exclusion', 'note', 'mapp_address', 'price_id', 'duration_time', 'money_id', 'create_time', 'update_time', 'end_time', 'author_id', 'language', 'status'], 'required'],
-            [['id', 'city_id',  'price_id', 'duration_time', 'money_id', 'create_time', 'update_time', 'end_time', 'author_id'], 'integer'],
+            [['id', 'city_id',  'price_id', 'money_id', 'create_time', 'update_time', 'end_time', 'author_id'], 'integer'],
             [['description', 'full_initerary', 'inclusion', 'exclusion', 'note'], 'string'],
             [['code'], 'string', 'max' => 10],
             [['title', 'mapp_address'], 'string', 'max' => 100],
             [['language'], 'string', 'max' => 3],
+            [['duration_time'], 'float'],
             [['status'], 'string', 'max' => 12]
         ];
     }

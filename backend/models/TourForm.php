@@ -40,6 +40,8 @@ class TourForm extends Model {
     public $language;
     public $status;
     public $categories;
+    public $prices;
+    
 
     public function rules() {
         return [
