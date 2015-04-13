@@ -43,9 +43,9 @@ class Tour extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'code', 'title', 'city_id', 'description', 'full_initerary', 'inclusion', 'exclusion', 'note', 'mapp_address', 'price_id', 'duration_time', 'money_id', 'create_time', 'update_time', 'end_time', 'author_id', 'language', 'status'], 'required'],
-            [['id', 'city_id',  'price_id', 'money_id', 'create_time', 'update_time', 'end_time', 'author_id'], 'integer'],
-            [['description', 'full_initerary', 'inclusion', 'exclusion', 'note'], 'string'],
+            [['id', 'code', 'title', 'city_id', 'category_ids','hightlight_type', 'description', 'full_initerary', 'inclusion', 'exclusion', 'note', 'mapp_address', 'price_id', 'duration_time', 'money_id', 'create_time', 'update_time', 'end_time', 'author_id', 'language', 'status'], 'required'],
+            [['id', 'city_id','hightlight_type',  'price_id', 'money_id', 'create_time', 'update_time', 'end_time', 'author_id'], 'integer'],
+            [['description', 'full_initerary','category_ids', 'inclusion', 'exclusion', 'note'], 'string'],
             [['code'], 'string', 'max' => 10],
             [['title', 'mapp_address'], 'string', 'max' => 100],
             [['language'], 'string', 'max' => 3],
@@ -79,11 +79,13 @@ class Tour extends \yii\db\ActiveRecord
             'author_id' => 'Author ID',
             'language' => 'Language',
             'status' => 'Status',
+            'category_ids' => 'All Tour Type',
+            'hightlight_type' => 'Hight Light Type',
         ];
     }
     
     public function attributes() {
-        return array_merge(parent::attributes(), ['prices', 'city', 'moneys', 'categories', 'author', 'images','minprice']);
+        return array_merge(parent::attributes(), ['prices', 'city', 'hightlight', 'moneys', 'categories', 'author', 'images','minprice']);
     }
     
     public function getCategoryTour()
