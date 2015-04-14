@@ -51,3 +51,7 @@ tour.ShowBookingInput = function (tourId) {
     var htmlForm = Fly.template("/order/bookinginput.tpl", input);
     $("#order-form").html(htmlForm);
 };
+
+tour.createOrder = function (){
+    
+};

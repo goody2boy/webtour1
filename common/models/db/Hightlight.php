@@ -30,7 +30,9 @@ class Hightlight extends \yii\db\ActiveRecord
         return [
             [['id', 'name', 'language'], 'required'],
             [['id'], 'integer'],
-            [['name', 'description', 'language'], 'string', 'max' => 45]
+            [['name'], 'string', 'max' => 100],
+            [['description', 'slogan'], 'string'],
+            [['language'], 'string', 'max' => 3],
         ];
     }
 
@@ -43,6 +45,7 @@ class Hightlight extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
             'description' => Yii::t('app', 'Description'),
+            'slogan' => Yii::t('app', 'Slogan'),
             'language' => Yii::t('app', 'Language'),
         ];
     }
