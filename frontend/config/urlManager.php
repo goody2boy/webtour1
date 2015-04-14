@@ -31,7 +31,8 @@ return [
         //---tour
         'our-cities.html' => 'city/index',
         'city/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'city/detail',
-        'hightlight/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'hightlight/index',
+        'city-highlight.html' => 'hight-light/index',
+        'hightlight/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'hightlight/detail',
         'tour/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'tour/detail',
         'tour-type/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'category/index',
         'GET san-pham.html' => 'item/index',

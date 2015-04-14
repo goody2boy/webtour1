@@ -143,6 +143,63 @@ use common\util\UrlUtils;
                 <!--<img src="data/staticmap.jpg" alt="map">-->
             </div><!-- td-map -->
             <div class="td-map-expand"><a href="#">Expand map</a></div>
+            <div class="box-order">
+                <div class="order-title">Booking Form</div>
+                <div class="order-content">
+                    <div class="form">
+                        <div class="form-group">
+                            <label>Choose your departure date:</label>
+                            <div class="form-box">
+                                <input name="" type="text" class="form-control form-calendar" placeholder="dd/mm/yyyy">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                        </div><!-- form-group -->
+                        <div class="form-group">
+                            <label>No of Adults:</label>
+                            <div class="form-box">
+                                <select class="form-control text-inlineblock">
+                                    <option>1 Pax</option>
+                                    <option>2 Pax</option>
+                                    <option>3 Pax</option>
+                                    <option>4 Pax</option>
+                                    <option>5 Pax</option>
+                                    <option>6 Pax</option>
+                                </select>
+                            </div>
+                        </div><!-- form-group -->
+                        <div class="form-group">
+                            <label>No of children<span> (5-10 years old)</span></label>
+                            <div class="form-box">
+                                <select class="form-control text-inlineblock">
+                                    <option>1 Pax</option>
+                                    <option>2 Pax</option>
+                                    <option>3 Pax</option>
+                                    <option>4 Pax</option>
+                                    <option>5 Pax</option>
+                                    <option>6 Pax</option>
+                                </select>
+                            </div>
+                        </div><!-- form-group -->
+                        <div class="form-group">
+                            <label>Children<span> (under 5 years old)</span></label>
+                            <div class="form-box">
+                                <select class="form-control text-inlineblock">
+                                    <option>1 Pax</option>
+                                    <option>2 Pax</option>
+                                    <option>3 Pax</option>
+                                    <option>4 Pax</option>
+                                    <option>5 Pax</option>
+                                    <option>6 Pax</option>
+                                </select>
+                            </div>
+                        </div><!-- form-group -->
+                    </div><!-- form -->
+                    <div class="order-button">
+                        <a class="btn btn-primary" href="#">Calculate</a>
+                    </div>
+                </div><!-- order-content -->
+                <div class="order-loading"></div>
+            </div>
             <div class="winget">
                 <div class="winget-title"><div class="lb-name">Related tour</div></div>
                 <div class="winget-content">
