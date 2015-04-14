@@ -34,13 +34,15 @@ class UrlUtils {
      */
     public static function news($alias = null) {
         if (empty($alias)) {
-        return "tin-tuc.html";    
+            return "tin-tuc.html";
         }
         return "tin-tuc/" . trim(strtolower($alias)) . ".html";
     }
+
     public static function contact() {
         return "lien-he.html";
     }
+
     public static function reviews() {
         return "y-kien-khach-hang.html";
     }
@@ -60,11 +62,23 @@ class UrlUtils {
     public static function tour($name, $id) {
         return "tour/" . TextUtils::removeMarks($name) . "-" . trim($id) . ".html";
     }
-    
+
+    public static function tourtype($name, $id) {
+        return "tour-type/" . TextUtils::removeMarks($name) . "-" . trim($id) . ".html";
+    }
+
     public static function city($name, $id) {
         return "city/" . TextUtils::removeMarks($name) . "-" . trim($id) . ".html";
     }
-    
+
+    public static function hightlight($name, $id) {
+        return "hightlight/" . TextUtils::removeMarks($name) . "-" . trim($id) . ".html";
+    }
+
+    public static function cate($name) {
+        
+    }
+
     /**
      * Chi tiết sản phẩm
      * @param type $name
@@ -74,6 +88,7 @@ class UrlUtils {
     public static function item($name, $id) {
         return "p/" . TextUtils::removeMarks($name) . "-" . trim($id) . ".html";
     }
+
     public static function itemlist() {
         return "san-pham.html";
     }
@@ -86,21 +101,22 @@ class UrlUtils {
         return "dang-xuat.html";
     }
 
-    public static function video($id = null,$name=null) {
-        if ($id == null||$name==null)
+    public static function video($id = null, $name = null) {
+        if ($id == null || $name == null)
             return "video.html";
-        return "video/".  TextUtils::removeMarks($name).'-' . $id . ".html";
+        return "video/" . TextUtils::removeMarks($name) . '-' . $id . ".html";
     }
-    public static function album($id = null,$name=null) {
-        if ($id == null||$name==null)
+
+    public static function album($id = null, $name = null) {
+        if ($id == null || $name == null)
             return "hinh-anh.html";
-        return "hinh-anh/".  TextUtils::removeMarks($name).'-' . $id . ".html";
+        return "hinh-anh/" . TextUtils::removeMarks($name) . '-' . $id . ".html";
     }
+
     public static function checkout($id = null) {
         if ($id == null)
             return "dat-hang.html";
-        return "dat-hang.html?id=". $id;
+        return "dat-hang.html?id=" . $id;
     }
-
 
 }

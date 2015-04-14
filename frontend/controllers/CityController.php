@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\business\CityBusiness;
 use common\models\business\ImageBusiness;
 use common\models\business\OptionBusiness;
+use common\models\enu\ImageType;
 use common\models\input\TourSearch;
 use common\models\enu\BannerType;
 use Yii;
@@ -49,7 +50,7 @@ class CityController extends BaseController {
     }
     
     public function getCityImages($city){
-        return ImageBusiness::getByTarget($city->id, "city");
+        return ImageBusiness::getByTarget($city->id, ImageType::CITY);
     }
 
 }

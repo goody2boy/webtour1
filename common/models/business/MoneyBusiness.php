@@ -25,6 +25,17 @@ class MoneyBusiness implements InterBusiness {
         return Money::findAll();
     }
 
+    public static function listAll($limit = '', $active = 1) {
+        $moneys = Money::find();
+        if ($limit != '' || $limit != null) {
+            $moneys->limit($limit);
+        }
+        if ($active > 0) {
+            $moneys->andWhere(['=', 'active', $active == 1 ? 1 : 0]);
+        }
+        return $moneys->all();
+    }
+
     public static function remove($id) {
         $money = self::get($id);
         // check xem co tour nao dung loai tien nay khong
@@ -52,8 +63,7 @@ class MoneyBusiness implements InterBusiness {
         return Money::find()->andWhere(['id' => $ids])->all();
     }
 
-    
-    public static function getToKey($ids){
+    public static function getToKey($ids) {
         $moneys = Money::find()->andWhere(["id" => $ids])->all();
         if ($moneys == null || empty($moneys)) {
             return $moneys;
@@ -64,4 +74,9 @@ class MoneyBusiness implements InterBusiness {
         }
         return $result;
     }
+    
+    public static function getByCode($code){
+        return Money::find()->andWhere(['=','code' , $code])->all();
+    }
+
 }

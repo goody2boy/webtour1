@@ -31,6 +31,7 @@ class WebAsset extends AppAsset {
         'js/reviews.js',
         'js/contact.js',
         'js/index.js',
+        'js/tour.js',
         'js/urlsUtils.js',
         'js/order.js',
         'js/greensock.js',

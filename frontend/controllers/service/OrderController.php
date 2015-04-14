@@ -3,6 +3,7 @@
 namespace frontend\controllers\service;
 
 use common\models\business\OrderBusiness;
+use common\models\input\TourSearch;
 use common\models\output\Response;
 use frontend\models\OrderForm;
 use stdClass;
@@ -60,6 +61,25 @@ class OrderController extends ServiceController {
         $form = new OrderForm();
         $form->setAttributes(Yii::$app->request->getBodyParams());
         return $this->response($form->save());
+    }
+
+    public function actionCalculatePrice($tourId, $numAdult) {
+        $search = new TourSearch();
+        $search->id = $tourId;
+        $search->status = 1;
+        $result = $search->search(true)->data;
+        if ($result == null) {
+            return $this->response(new Response(false, "Tour không tồn tại", $tourId));
+        }
+        $tour = $result[0];
+        if ($tour != null) {
+            foreach ($tour->prices as $price) {
+                if ($price->name == $numAdult) {
+                    return $this->response(new Response(true, "Success", $price->price));
+                }
+            }
+        }
+        return $this->response(new Response(false, "Không tính được phí do Admin chưa cấu hình!", $tourId));
     }
 
 }
