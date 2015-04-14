@@ -6,6 +6,9 @@
 	-webkit-border-radius:0;
 	border-radius:0;
 }
+.btn .fa{
+	margin-right:4px;
+}
 .btn-sm{
 	padding:5px 10px;
 }
@@ -40,6 +43,9 @@
 	margin:0 0 5px;
 	vertical-align:middle;
 }
+.captcha-text{
+	width:100px;
+}
 .btnnewimg{
     background: url(../images/btnnewimg.png) no-repeat;
     border:none;
@@ -53,3 +59,18 @@
 	display:inline-block;
 }
 /*end common css*/
+.form label{
+	font-weight:600;
+}
+.form-account{
+	padding:15px 0 0;
+}
+.form-account .btn-lg{
+	min-width:180px;
+}
+.form-account .intro-img{
+	width:100%;
+}
+.form-horizontal .control-label{
+	text-align:left;
+}

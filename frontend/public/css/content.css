@@ -6,6 +6,7 @@ body{
 	font-family: 'Open Sans';
 	font-weight: normal;
   	font-style: normal;
+	font-size:12px;
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
 	font-family:Arial, Tahoma;
@@ -37,16 +38,21 @@ ul{
 	cursor:pointer !important;
 }
 .maincontent{
-	font-size:14px;
-	line-height:22px;
+	font-size:12px;
+	line-height:20px;
 }
 .maincontent p{
-	font-size:14px;
+	font-size:12px;
 	margin:0 0 5px;
 }
 .maincontent img{
 	max-width:100%;
 	height:auto !important;
+}
+.form-line{
+	height:1px;
+	background-color:#e5e5e5;
+	margin:0 0 10px;
 }
 .row.xs-reset-all{
 	margin-left:0;
@@ -284,27 +290,19 @@ ul{
 }
 /*end grid all*/
 /*frame*/
-.box{
-	margin:0 0 15px;
-}
 .box-title{
-	border-bottom:3px solid #1f4995;
-	padding:0 0 7px;
-	min-height:34px;
+	border-bottom:1px solid #e5e5e5;
+	min-height:40px;
 	position:relative;
 	z-index:1;
 }
 .box-title .lb-name{
-	font-size:20px;
-	text-transform:uppercase;
-	color:#0e0e0e;
-	font-weight:bold;
+	color:#333;
 	display:block;
-}
-.box-title .lb-desc{
-	display:block;
-	font-size:14px;
-	color:#525252;
+	font-size:18px;
+	font-weight:600;
+	padding:7px 0;
+	line-height:24px;
 }
 .box-banner{
 	margin:0 0 15px;
@@ -332,6 +330,15 @@ ul{
 	color:#333;
 	font-weight:600;
 	display:block;
+}
+.page-title{
+	margin:0 0 15px;
+	padding:15px 0 0;
+}
+.page-title h1, .page-title h2{
+	margin:0;
+	font-weight:600;
+	font-size:24px;
 }
 /*end frame*/
 /*slider*/
@@ -1425,6 +1432,11 @@ ul{
 	border-bottom:1px solid #dcdcdc;
 	margin:0 0 15px;
 }
+.modal .td-featured .grid{
+	padding:0 0 15px;
+	border-bottom:1px dashed #dcdcdc;
+	border-right:none;
+}
 .td-featured .grid .img{
 	width:110px;
 	height:75px;
@@ -1537,5 +1549,65 @@ ul{
 	overflow:hidden;
 	text-overflow:ellipsis;
 	line-height:26px;
+}
+.box-order{
+	margin:0 0 15px;
+	border:1px dashed #bfbfbf;
+	position:relative;
+	z-index:1;
+}
+.box-order .order-title{
+	padding:8px 15px;
+	font-size:14px;
+	color:#fff;
+	font-weight:600;
+	background:#1080c0;
+}
+.box-order .form{
+	padding:10px 15px 0;
+}
+.box-order .form .form-group{
+	position:relative;
+	z-index:1;
+}
+.box-order .form .fa-calendar{
+	position:absolute;
+	z-index:2;
+	top:37px;
+	right:15px;
+	font-size:14px;
+}
+.box-order .form .form-control.form-calendar{
+	padding-right:35px;
+}
+.box-order .form label{
+	display:block;
+}
+.box-order .form label span{
+	font-weight:normal;
+}
+.box-order .form label .text-danger.pull-right{
+	font-size:18px;
+	margin-top:-3px;
+}
+.box-order .form .form-box{
+	background:#f7f9fa;
+	padding:5px;
+}
+.box-order .order-button{
+	padding:10px 15px;
+	background:#f8fafb;
+	border-top:1px solid #dde0e8;
+}
+.box-order .order-loading{
+	background:url(../images/ajax-loader.gif) no-repeat center center #fff;
+	background:url(../images/ajax-loader.gif) no-repeat center center rgba(255,255,255,0.8);
+	position:absolute;
+	z-index:2;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	display:none;
 }
 /*end tour detail*/
