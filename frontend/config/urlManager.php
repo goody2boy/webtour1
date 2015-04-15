@@ -9,6 +9,9 @@ return [
         '' => 'index/index',
         'index.php' => 'index/index',
         'index.html' => 'index/index',
+        'register.html' => 'user/register',
+        'login.html' => 'user/login',
+        'forgot.html' => 'user/forgot',
         //reviews
         'GET y-kien-khach-hang.html' => 'reviews/index',
         //lien he

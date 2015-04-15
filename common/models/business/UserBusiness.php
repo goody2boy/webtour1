@@ -26,6 +26,10 @@ class UserBusiness {
         $username = trim($username);
         return User::find()->andWhere(['=', 'username', $username])->one();
     }
+    public static function getByLogin($account) {
+        $account = trim($account);
+        return User::find()->andWhere(['=', 'username', $account])->orWhere(['=','email',$account])->one();
+    }
 
     public static function getByEmail($email) {
         $email = trim($email);

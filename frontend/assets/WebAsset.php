@@ -38,6 +38,7 @@ class WebAsset extends AppAsset {
         'js/layerslider.transitions.js',
         'js/layerslider.kreaturamedia.jquery.js',
         'js/style.js',
+        'js/user.js',
     ];
 
 }
