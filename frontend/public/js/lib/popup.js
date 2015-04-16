@@ -62,7 +62,7 @@
 
 
         this.msg = function (msg, fn) {
-            this.open('popup-msg', 'Thông báo', '<div style="min-width: 300px; padding: 40px 20px;"  >' + msg + '</div>', [{
+            this.open('popup-msg', 'Thông báo', '<div style="min-width: 300px; "  >' + msg + '</div>', [{
                     title: "Đồng ý",
                     style: "btn-primary",
                     fn: function () {
@@ -75,7 +75,7 @@
         };
 
         this.confirm = function (msg, fn) {
-            this.open('popup-confirm', 'Xác nhận', '<div style="min-width: 300px; padding: 40px 20px;">' + msg + '</div>', [{
+            this.open('popup-confirm', 'Xác nhận', '<div style="min-width: 300px;">' + msg + '</div>', [{
                     title: "Đồng ý",
                     style: "btn-primary",
                     fn: function () {

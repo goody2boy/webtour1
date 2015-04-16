@@ -45,6 +45,9 @@ ul{
 	font-size:12px;
 	margin:0 0 5px;
 }
+.maincontent b, .maincontent strong{
+	font-weight:600;
+}
 .maincontent img{
 	max-width:100%;
 	height:auto !important;
@@ -1611,3 +1614,193 @@ ul{
 	display:none;
 }
 /*end tour detail*/
+/*user*/
+.box-user{
+	padding:35px 0;
+}
+.user-menu{
+	background:#6195c4;
+	height:36px;
+}
+.user-menu > ul > li{
+	float:left;
+	height:36px;
+	position:relative;
+	z-index:1;
+}
+.user-menu > ul > li > a, .user-menu > ul > li > span{
+	display:block;
+	height:36px;
+	padding:7px 15px 0;
+	color:#fff;
+	text-decoration:none;
+	font-size:14px;
+	font-weight:normal;
+	text-transform:none;
+}
+.user-menu > ul > li > span{
+	text-transform:uppercase;
+	font-weight:bold;
+}
+.user-menu > ul > li > a > .fa{
+	margin-right:5px;
+}
+.user-menu > ul > li:hover, .user-menu > ul > li.active{
+	background:#4a7ea8;
+}
+.user-menu > ul > li.um-home{
+	background:#275c88;
+}
+.user-content{
+	border:1px solid #ddd;
+}
+.user-title{
+	padding:10px 15px;
+	background:#f9f9f9;
+}
+.user-title .ut-name{
+	font-size:14px;
+	font-weight:bold;
+	padding:0 0 3px;
+}
+.user-title .ut-desc{
+	font-size:12px;
+	color:#666;
+}
+.user-info{
+	text-align:right;
+	padding:10px 15px;
+}
+.user-content .table{
+	margin-bottom:0;
+}
+.user-content .table > thead > tr > th{
+	background:#eaeaea;
+	font-weight:600;
+	vertical-align:middle;
+}
+.user-content .table > tbody > tr > td{
+	background:#f7f7f7;
+	vertical-align:middle;
+}
+.user-content .table > tfoot > tr > td{
+	background:#eaeaea;
+	vertical-align:middle;
+	font-size:16px;
+	font-weight:bold;
+}
+.user-content .table p{
+	margin:0 0 7px;
+}
+.user-content > .form{
+	padding:20px;
+}
+.user-bottom{
+	padding:10px 15px;
+	text-align:right;
+	background:#f9f9f9;
+}
+.box-invoice{
+	padding:20px 25px;
+}
+.box-invoice b{
+	font-weight:600;
+}
+.box-invoice .invoice-number{
+	text-align:right;
+}
+.box-invoice .invoice-number > span{
+	font-size:14px;
+	font-weight:600;
+	padding:5px 10px;
+	background:#f7f7f7;
+	display:inline-block;
+	vertical-align:top;
+}
+.box-invoice .invoice-label{
+	padding:15px 0;
+	font-size:18px;
+	text-transform:uppercase;
+	color:#3e7bc2;
+	font-weight:600;
+}
+.invoice-bottom{
+	background:#e3edfd;
+	text-align:right;
+	padding:10px 15px;
+	margin-top:15px;
+}
+/*end user*/
+/*checkout*/
+.box-checkout{
+	padding:35px 0;
+}
+.checkout-title{
+	padding:0 0 25px;
+	font-size:18px;
+	text-transform:uppercase;
+	color:#3e7bc2;
+	font-weight:600;
+}
+.checkout-content{
+	border:1px solid #ddd;
+}
+.checkout-content b{
+	font-weight:600;
+}
+.checkout-content .table{
+	margin-bottom:0;
+}
+.checkout-content .table > thead > tr > th{
+	background:#eaeaea;
+	font-weight:600;
+	vertical-align:middle;
+}
+.checkout-content .table > tbody > tr > td{
+	background:#f7f7f7;
+	vertical-align:middle;
+}
+.checkout-content .table > tfoot > tr > td{
+	background:#eaeaea;
+	vertical-align:middle;
+	font-size:16px;
+	font-weight:bold;
+}
+.checkout-content .table p{
+	margin:0 0 7px;
+}
+.checkout-label{
+	background:#6195c4;
+	font-size:14px;
+	text-transform:uppercase;
+	font-weight:600;
+	padding:10px 15px;
+	color:#fff;
+}
+.checkout-name{
+	color:#6195c4;
+	padding:10px 0;
+	text-align:center;
+	font-size:14px;
+	text-transform:uppercase;
+	font-weight:600;
+}
+.checkout-desc{
+	padding:15px;
+}
+.checkout-method{
+	padding:10px 15px;
+}
+.checkout-bottom{
+	background:#f5f5f5;
+	padding:10px 15px;
+}
+.checkout-bottom .checkbox{
+	padding-left:20px;
+}
+.text-coupon{
+	width:100px;
+	display:inline-block;
+	vertical-align:middle;
+}
+/*end checkout*/
