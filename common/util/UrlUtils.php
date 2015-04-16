@@ -34,9 +34,9 @@ class UrlUtils {
      */
     public static function news($alias = null) {
         if (empty($alias)) {
-            return "tin-tuc.html";
+            return "other-service.html";
         }
-        return "tin-tuc/" . trim(strtolower($alias)) . ".html";
+        return "other-service/" . trim(strtolower($alias)) . ".html";
     }
 
     public static function contact() {

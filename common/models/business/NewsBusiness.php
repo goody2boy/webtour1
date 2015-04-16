@@ -92,7 +92,7 @@ class NewsBusiness implements InterBusiness {
             $news->andWhere(['=', 'active', $active == 1 ? 1 : 0]);
         }
         if ($nav > 0) {
-            $news->andWhere(['=', 'nav', $nav == 1 ? 1 : 0]);
+            $news->andWhere(['=', 'home', $nav == 1 ? 1 : 0]);
         }
         return $news->all();
     }
