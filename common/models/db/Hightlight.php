@@ -12,25 +12,23 @@ use Yii;
  * @property string $description
  * @property string $language
  */
-class Hightlight extends \yii\db\ActiveRecord
-{
+class Hightlight extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'hightlight';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['id', 'name', 'language'], 'required'],
+            [['id', 'name', 'language', 'icon'], 'required'],
             [['id'], 'integer'],
-            [['name'], 'string', 'max' => 100],
+            [['name', 'icon'], 'string', 'max' => 100],
             [['description', 'slogan'], 'string'],
             [['language'], 'string', 'max' => 3],
         ];
@@ -39,18 +37,19 @@ class Hightlight extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
             'description' => Yii::t('app', 'Description'),
             'slogan' => Yii::t('app', 'Slogan'),
+            'icon' => Yii::t('app', 'Icon'),
             'language' => Yii::t('app', 'Language'),
         ];
     }
-    
+
     public function attributes() {
         return array_merge(parent::attributes(), ['images']);
     }
+
 }

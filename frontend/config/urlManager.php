@@ -33,7 +33,8 @@ return [
         'GET lien-he.html' => 'contact/index',
         //---tour
         'our-cities.html' => 'city/index',
-        'city/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'city/detail',
+        'city-type/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'city/types',
+        'city-tours/<type:[0-9a-z_-]+>-<typeid:\d+>/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'city/tours',
         'city-highlight.html' => 'hight-light/index',
         'hightlight/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'hightlight/detail',
         'tour/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'tour/detail',

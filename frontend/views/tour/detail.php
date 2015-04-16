@@ -220,7 +220,7 @@ use common\util\UrlUtils;
                                     </div>
                                 </div>
                                 <div class="g-bottom">
-                                    City hightlight: <a href="<?= $this->context->baseUrl . UrlUtils::hightlight($rtour->hightlight->name, $rtour->hightlight->id) ?>"><?= $rtour->hightlight->name ?></a> - City: <a href="<?= $this->context->baseUrl . UrlUtils::city($rtour->city->name, $rtour->city->id) ?>"><?= $rtour->city->name ?></a>
+                                    City hightlight: <a href="<?= $this->context->baseUrl . UrlUtils::hightlight($rtour->hightlight->name, $rtour->hightlight->id) ?>"><?= $rtour->hightlight->name ?></a> - City: <a href="<?= $this->context->baseUrl . UrlUtils::citytypes($rtour->city->name, $rtour->city->id) ?>"><?= $rtour->city->name ?></a>
                                 </div>
                             </div><!-- grid -->
                         <?php } ?>

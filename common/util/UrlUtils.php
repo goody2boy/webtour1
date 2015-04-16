@@ -67,8 +67,12 @@ class UrlUtils {
         return "tour-type/" . TextUtils::removeMarks($name) . "-" . trim($id) . ".html";
     }
 
-    public static function city($name, $id) {
-        return "city/" . TextUtils::removeMarks($name) . "-" . trim($id) . ".html";
+    public static function citytypes($name, $id) {
+        return "city-type/" . TextUtils::removeMarks($name) . "-" . trim($id) . ".html";
+    }
+
+    public static function citytours($name, $id, $type, $typeId) {
+        return "city-tours/" . TextUtils::removeMarks($type) . "-" . trim($typeId) . "/" . TextUtils::removeMarks($name) . "-" . trim($id) . ".html";
     }
 
     public static function hightlight($name, $id) {
