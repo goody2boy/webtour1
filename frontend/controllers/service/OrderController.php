@@ -11,6 +11,16 @@ use Yii;
 
 class OrderController extends ServiceController {
 
+    public function order($userId,$tourId, $numAdult, $numChild, $numNoChild, $date ){
+        // check user login
+        
+        // 
+        // get price_id by num and tour_id 
+        // save tour order
+        
+    }
+    
+    
     public function actionAdditem() {
         $id = urldecode(Yii::$app->request->get('id'));
         $itemId = Yii::$app->request->get('itemId');
