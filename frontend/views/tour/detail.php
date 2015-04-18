@@ -233,6 +233,23 @@ use common\util\UrlUtils;
                 </div><!-- order-content -->
                 <div class="order-loading"></div>
             </div>
+            <div id="TA_cdswritereviewlg639" class="TA_cdswritereviewlg">
+                <ul id="oZgWUQYUrNC" class="TA_links C7YtZxSDlqhH">
+                    <li id="Uwt3unK" class="s2NlBDboT">
+                        <a target="_blank" href="http://www.tripadvisor.com/"><img src="http://www.tripadvisor.com/img/cdsi/img2/branding/medium-logo-12097-2.png" alt="TripAdvisor"/></a>
+                    </li>
+                </ul>
+            </div>
+            <script src="http://www.jscache.com/wejs?wtype=cdswritereviewlg&amp;uniq=639&amp;locationId=258705&amp;lang=en_US&amp;border=false&amp;display_version=2"></script>
+            <div id="TA_selfserveprop273" class="TA_selfserveprop">
+                <ul id="xgmDNc3p" class="TA_links Q8DbKVMR24Y8">
+                    <li id="UGOBPF5KM" class="ZRbFC1j1rzI">
+                        <a target="_blank" href="http://www.tripadvisor.com/"><img src="http://www.tripadvisor.com/img/cdsi/img2/branding/150_logo-11900-2.png" alt="TripAdvisor"/></a>
+                    </li>
+                </ul>
+            </div>
+            <script src="http://www.jscache.com/wejs?wtype=selfserveprop&amp;uniq=273&amp;locationId=258705&amp;lang=en_US&amp;rating=true&amp;nreviews=5&amp;writereviewlink=true&amp;popIdx=true&amp;iswide=false&amp;border=true&amp;display_version=2"></script>
+
             <div class="winget">
                 <div class="winget-title"><div class="lb-name">Related tour</div></div>
                 <div class="winget-content">
