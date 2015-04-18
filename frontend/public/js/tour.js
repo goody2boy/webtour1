@@ -52,6 +52,23 @@ tour.ShowBookingInput = function (tourId) {
     $("#order-form").html(htmlForm);
 };
 
-tour.createOrder = function (){
-    
+tour.submitOrder = function (tourId, numAdult, numNoChild, numChild, date) {
+    $(".order-loading").show();
+//    var numAdult = $("#num-adult").val();
+//    var dateorder = $('input[name=dateorder]').val();
+//    var numNoChild = $("#num-nochild").val();
+//    var numChild = $("#num-child").val();
+    ajax({
+        service: '/order/submitorder',
+        data: {tourId: tourId, numAdult: numAdult, numNoChild: numNoChild, numChild: numChild, date: date},
+        loading: false,
+        done: function (resp) {
+            if (resp.success) {
+                $(".order-loading").hide();
+                window.location.replace("/checkout.html");
+            } else {
+                popup.msg("that bai" + resp.data);
+            }
+        }
+    });
 };
