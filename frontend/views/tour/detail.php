@@ -72,7 +72,7 @@ use common\util\UrlUtils;
             </div>
             <div class="td-row">
                 <label>City:</label>
-                <div class="td-text"><a href="<?= $this->context->baseUrl . UrlUtils::tourtype($tour->city->name, $tour->city->id) ?>"><?= $tour->city->name ?></a></div>
+                <div class="td-text"><a href="<?= $this->context->baseUrl . UrlUtils::citytypes($tour->city->name, $tour->city->id) ?>"><?= $tour->city->name ?></a></div>
             </div>
             <div class="maincontent">
                 <?= $tour->description ?>

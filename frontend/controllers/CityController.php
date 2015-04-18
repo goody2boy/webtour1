@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\business\CityBusiness;
+use common\models\business\CategoryBusiness;
 use common\models\business\ImageBusiness;
 use common\models\business\HightLightBusiness;
 use common\models\enu\ImageType;
@@ -45,9 +46,40 @@ class CityController extends BaseController {
             return $this->render('//error/message', ['message' => "City không tồn tại", 'title' => "404 NOT FOUND"]);
         }
         $hightlights = HightLightBusiness::getAll();
+        $categories = CategoryBusiness::getAll();
         return $this->render('types', [
                     'city' => $city,
                     'hightlights' => $hightlights,
+                    'categories' => $categories,
+        ]);
+    }
+
+    public function actionTours() {
+        $cityAlias = Yii::$app->request->get('alias');
+        $cityId = Yii:: $app->request->get('id');
+        $hilightAlias = Yii::$app->request->get('type');
+        $hilightId = Yii:: $app->request->get('typeid');
+        $search1 = new CitySearch();
+        $search1->id = $cityId;
+        $result = $search1->search(true)->data;
+        $city = $result[0];
+        if (TextUtils::removeMarks($city->name) != $cityAlias) {
+            return $this->render('//error/message', ['message' => "City không tồn tại", 'title' => "404 NOT FOUND"]);
+        }
+        $hightlight = HightLightBusiness::get($hilightId);
+        if (TextUtils::removeMarks($hightlight->name) != $hilightAlias) {
+            return $this->render('//error/message', ['message' => "City không tồn tại", 'title' => "404 NOT FOUND"]);
+        }
+        $categories = CategoryBusiness::getAll();
+        $search2 = new TourSearch();
+        $search2->city = $cityId;
+        $search2->hightlight = $hilightId;
+        $listTours = $search2->search(true);
+        return $this->render('tours', [
+                    'city' => $city,
+                    'hightlights' => $hightlight,
+                    'categories' => $categories,
+                    'listTours' => $listTours,
         ]);
     }
 
