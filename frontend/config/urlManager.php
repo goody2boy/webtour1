@@ -36,7 +36,7 @@ return [
         'city-type/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'city/types',
         'city-tours/<type:[0-9a-z_-]+>-<typeid:\d+>/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'city/tours',
         'city-highlight.html' => 'hight-light/index',
-        'hightlight/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'hightlight/detail',
+        'hightlight/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'hight-light/detail',
         'tour/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'tour/detail',
         'tour-type/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'category/index',
         'checkout.html' => 'order/checkout',
