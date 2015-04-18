@@ -2,6 +2,8 @@
 
 use common\util\TextUtils;
 use common\util\UrlUtils;
+use yii\data\Pagination;
+use yii\widgets\LinkPager;
 ?>
 <div class="container">
     <div class="city-type highlight-type">
@@ -9,12 +11,10 @@ use common\util\UrlUtils;
         <div class="ct-inner">
             <label>Select city</label>
             <select class="form-control">
-                <option>All</option>
-                <option>Hanoi Capital</option>
-                <option>Ho Chi Minh City</option>
-                <option>Nha Trang City</option>
-                <option>Hoian City</option>
-                <option>Hue City</option>
+                <option value="0">All</option>
+                <?php foreach ($cities as $city) { ?>
+                    <option value="<?= $city->id ?>"><?= $city->name ?></option>
+                <?php } ?>
             </select>
         </div>
     </div><!-- highlight-type -->
@@ -52,15 +52,19 @@ use common\util\UrlUtils;
     </div><!-- highlight-tour -->
     <div class="box-control">
         <div class="pagination-router">
-            <ul class="pagination">
-                <li class="disabled"><a href="#">&lt;&nbsp;Trước</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">Sau&nbsp;&gt;</a></li>
-            </ul>
+            <?php
+            $pagination = new Pagination(['totalCount' => $listTours->dataCount]);
+            $pagination->setPageSize($listTours->pageSize);
+            $pagination->setPage($listTours->page - 1);
+            ?>
+            <?=
+            LinkPager::widget([
+                'pagination' => $pagination,
+                'nextPageLabel' => 'Sau &gt;',
+                'prevPageLabel' => '&lt; Trước',
+                'maxButtonCount' => 5
+            ]);
+            ?>
         </div><!-- pagination-router -->
     </div><!-- box-control -->
 </div>

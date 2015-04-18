@@ -4,9 +4,11 @@ namespace frontend\controllers;
 
 use common\models\business\HightLightBusiness;
 use common\models\business\ImageBusiness;
+use common\models\business\CityBusiness;
 use common\models\input\TourSearch;
 use common\models\enu\ImageType;
 use common\models\enu\BannerType;
+use yii\data\Pagination;
 use Yii;
 
 /**
@@ -35,15 +37,20 @@ class HightLightController extends BaseController {
     public function actionDetail() {
         $alias = Yii::$app->request->get('alias');
         $id = Yii:: $app->request->get('id');
+        //
         $hilight = HightLightBusiness::get($id);
         $hilight->images = $this->getHightLightImages($hilight);
+        //
         $search = new TourSearch();
         $search->hightlight = $hilight->id;
         $search->pageSize = 6;
         $listTours = $search->search(true);
+        //
+        $cities = CityBusiness::getAll();
         return $this->render('detail', [
                     'hilight' => $hilight,
                     'listTours' => $listTours,
+                    'cities'=>$cities,
         ]);
     }
 
