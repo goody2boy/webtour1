@@ -7,7 +7,7 @@ use yii\widgets\LinkPager;
 ?>
 <div class="container">
     <div class="city-type highlight-type">
-        <div class="ct-name"><?=$hilight->name?></div>
+        <div class="ct-name"><?=$category->name?></div>
         <div class="ct-inner">
             <label>Select city</label>
             <select class="form-control">
@@ -42,7 +42,7 @@ use yii\widgets\LinkPager;
                             </div>
                         </div>
                         <div class="highlight-bottom">
-                            <a href="<?= $this->context->baseUrl . UrlUtils::tourtype($tour->city->name, $tour->city->id) ?>"><?= $tour->city->name ?></a>
+                            <a href="<?= $this->context->baseUrl . UrlUtils::citytypes($tour->city->name, $tour->city->id) ?>"><?= $tour->city->name ?></a>
                             <span class="highlight-price">Start from: <span>$<?= $tour->minprice ?></span></span>
                         </div>
                     </div><!-- highlight-item -->

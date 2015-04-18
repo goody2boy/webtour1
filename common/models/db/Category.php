@@ -47,4 +47,8 @@ class Category extends \yii\db\ActiveRecord
             'status' => Yii::t('app', 'Status'),
         ];
     }
+    
+    public function attributes() {
+        return array_merge(parent::attributes(), ['images']);
+    }
 }

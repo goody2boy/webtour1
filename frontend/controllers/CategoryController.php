@@ -4,9 +4,9 @@ namespace frontend\controllers;
 
 use common\models\business\CategoryBusiness;
 use common\models\business\ImageBusiness;
+use common\models\business\CityBusiness;
 use common\models\enu\ImageType;
 use common\models\input\TourSearch;
-use common\models\input\CitySearch;
 use common\util\TextUtils;
 use Yii;
 
@@ -32,26 +32,29 @@ class CategoryController extends BaseController {
                     'maptours' => $mapTours,
         ]);
     }
-
-    public function actionTypes() {
+    
+    public function actionDetail() {
         $alias = Yii::$app->request->get('alias');
         $id = Yii:: $app->request->get('id');
-        $search = new CitySearch();
-        $search->id = $id;
-        $result = $search->search(true)->data;
-        $city = $result[0];
-        if (TextUtils::removeMarks($city->name) != $alias) {
-            return $this->render('//error/message', ['message' => "City không tồn tại", 'title' => "404 NOT FOUND"]);
-        }
-        $hightlights = HightLightBusiness::getAll();
-        return $this->render('types', [
-                    'city' => $city,
-                    'hightlights' => $hightlights,
+        //
+        $category = CategoryBusiness::get($id);
+        $category->images = $this->getCategoryImages($category);
+        //
+        $search = new TourSearch();
+        $search->tourType = $category->id;
+        $search->pageSize = 6;
+        $listTours = $search->search(true);
+        //
+        $cities = CityBusiness::getAll();
+        return $this->render('detail', [
+                    'category' => $category,
+                    'listTours' => $listTours,
+                    'cities'=>$cities,
         ]);
     }
 
-    public function getCityImages($city) {
-        return ImageBusiness::getByTarget($city->id, ImageType::CITY);
+    public function getCategoryImages($cate) {
+        return ImageBusiness::getByTarget($cate->id, ImageType::CATEGORY);
     }
 
 }

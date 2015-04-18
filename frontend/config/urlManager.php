@@ -38,7 +38,7 @@ return [
         'city-highlight.html' => 'hight-light/index',
         'hightlight/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'hight-light/detail',
         'tour/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'tour/detail',
-        'tour-type/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'category/index',
+        'tour-type/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'category/detail',
         'checkout.html' => 'order/checkout',
         'GET san-pham.html' => 'item/index',
         'tour-request.html'=> 'tour/request',
