@@ -17,9 +17,9 @@ return [
         //lien he
         'GET lien-he.html' => 'contact/index',
         //---News
-        'GET tin-tuc.html' => 'news/index',
-        'GET tin-tuc/<alias:[0-9a-z_-]+>' => 'news/browse',
-        'GET tin-tuc/<alias:[0-9a-z_-]+>.html' => 'news/detail',
+        'GET other-service.html' => 'news/index',
+//        'GET other-service/<alias:[0-9a-z_-]+>' => 'news/browse',
+        'GET other-service/<alias:[0-9a-z_-]+>.html' => 'news/detail',
         //---video
         'GET video.html' => 'video/index',
 //        'GET video/<alias:[0-9a-z_-]+>' => 'video/browse',

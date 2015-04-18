@@ -43,7 +43,7 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                     <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
                     by 53 reviews
                 </div>
-                <div class="tripadvisor-header"><img src="data/tripadvisor-header.png" alt="img" /></div>
+                <div class="tripadvisor-header"><img src="<?= $this->context->baseUrl ?>data/tripadvisor-header.png" alt="img" /></div>
                 <ul class="admin-ul">
                     <li><a href="#">Site map</a></li>
                     <li><a href="#">Login</a></li>
@@ -61,7 +61,7 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
         </div><!-- navigator -->
         <div class="header">
             <div class="container">
-                <div class="logo"><a href="#"><img src="images/logo.png" alt="logo" /></a></div>
+                <div class="logo"><a href="#"><img src="<?= $this->context->baseUrl ?>images/logo.png" alt="logo" /></a></div>
                 <div class="menu-expand"><i class="fa fa-bars"></i>Menu</div>
                 <div class="menu">
                     <ul>
