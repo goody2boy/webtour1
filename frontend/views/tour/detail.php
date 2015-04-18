@@ -40,11 +40,13 @@ use common\util\UrlUtils;
         <div class="td-title">
             <h1><?= $tour->title ?> <span><?= $tour->duration_time ?> day</span></h1>
             <div class="td-rating">
-                <i class="fa fa-star yellow"></i>
-                <i class="fa fa-star yellow"></i>
-                <i class="fa fa-star yellow"></i>
-                <i class="fa fa-star yellow"></i>
-                <i class="fa fa-star"></i>
+                <?php for ($i = 1; $i <= 5; $i++) { ?>
+                    <?php if ($i <= $tour->review) { ?>
+                        <i class="fa fa-star yellow"></i>
+                    <?php } else { ?>
+                        <i class="fa fa-star"></i>
+                    <?php } ?>
+                <?php } ?>
                 <a href="#">See reviews</a>
             </div>
         </div><!-- td-title -->

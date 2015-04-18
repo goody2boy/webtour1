@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\business\BannerBusiness;
-use common\models\business\TourBusiness;
+use common\models\business\ReviewBusiness;
 use common\models\business\OptionBusiness;
 use common\models\input\TourSearch;
 use common\models\enu\BannerType;
@@ -21,11 +21,13 @@ class IndexController extends BaseController {
         $tourFeature = $this->getTourFeature();
         $tourFeatureBoxs = $this->getTourFeatureBox();
         $featureImage = $this->getImageFetureTour();
+        $reviewList = ReviewBusiness::getAll(6);
         return $this->render('index', [
                     'heart' => $heart,
                     'tourFeature' => $tourFeature,
-                    'featureImage' => $featureImage,  
+                    'featureImage' => $featureImage,
                     'tourFeatureBoxs' => $tourFeatureBoxs,
+                    'reviewLists' => $reviewList,
         ]);
     }
 
@@ -49,14 +51,12 @@ class IndexController extends BaseController {
         $tourFeature = $search->search(true)->data[0];
         return $tourFeature;
     }
-    
-    public function getImageFetureTour(){
+
+    public function getImageFetureTour() {
         $nameArr = ['FEATURETUREIMAGE'];
         $imageLink = OptionBusiness::getConfig($nameArr, 1)[0]->value;
         return $imageLink;
     }
-    
-    
 
     public function actionPhp() {
         phpinfo();

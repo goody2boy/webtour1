@@ -14,21 +14,19 @@ use Yii;
  * @property string $review_comment
  * @property integer $submit_time
  */
-class Review extends \yii\db\ActiveRecord
-{
+class Review extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'review';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['tour_id', 'rate', 'review_title', 'review_comment', 'submit_time'], 'required'],
             [['tour_id', 'rate', 'submit_time'], 'integer'],
@@ -40,8 +38,7 @@ class Review extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'tour_id' => 'Tour ID',
@@ -51,4 +48,9 @@ class Review extends \yii\db\ActiveRecord
             'submit_time' => 'Submit Time',
         ];
     }
+
+    public function attributes() {
+        return array_merge(parent::attributes(), ['image', 'tour']);
+    }
+
 }

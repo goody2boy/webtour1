@@ -39,89 +39,30 @@ use common\util\UrlUtils;
     <div class="home-comment">
         <div class="hc-title">See What Our Clients Say About Us</div>
         <div id="commentslider" class="owl-carousel">
-            <div class="grid">
-                <div class="img"><a><img src="data/user.jpg" alt="img" /></a></div>
-                <div class="g-content">
-                    <div class="g-row">
-                        <span class="g-title" href="#">
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star"></i>
-                        </span>
+            <?php foreach ($reviewLists as $review) { ?>
+                <div class="grid">
+                    <div class="img"><a><img src="<?= $this->context->baseUrl . $review->tour->images[0]->imageId ?>" alt="img" /></a></div>
+                    <div class="g-content">
+                        <div class="g-row">
+                            <span class="g-title" href="#"><?= $review->review_title ?>
+                                <?php for ($i = 1; $i <= 5; $i++) { ?>
+                                    <?php if ($i <= $review->rate) { ?>
+                                        <i class="fa fa-star yellow"></i>
+                                    <?php } else { ?>
+                                        <i class="fa fa-star"></i>
+                                    <?php } ?>
+                                <?php } ?>
+                            </span>
+                        </div>
+                        <div class="g-row">
+                            <?= $review->review_comment ?>
+                        </div>
+                        <div class="g-row">
+                            <span class="g-from">From: <?= $review->tour->title ?></span>
+                        </div>
                     </div>
-                    <div class="g-row">
-                        Great customer service. Max B was helpful with the complicated itinerary. He answered many ...
-                    </div>
-                    <div class="g-row">
-                        <span class="g-from">From: Raleigh - Phnom Penh</span>
-                    </div>
-                </div>
-            </div><!-- grid -->
-            <div class="grid">
-                <div class="img"><a><img src="data/user2.jpg" alt="img" /></a></div>
-                <div class="g-content">
-                    <div class="g-row">
-                        <span class="g-title" href="#">
-                            Justin McCurry
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star"></i>
-                        </span>
-                    </div>
-                    <div class="g-row">
-                        Great customer service. Max B was helpful with the complicated itinerary. He answered many ...
-                    </div>
-                    <div class="g-row">
-                        <span class="g-from">From: Raleigh - Phnom Penh</span>
-                    </div>
-                </div>
-            </div><!-- grid -->
-            <div class="grid">
-                <div class="img"><a href="#"><img src="data/user.jpg" alt="img" /></a></div>
-                <div class="g-content">
-                    <div class="g-row">
-                        <span class="g-title" href="#">
-                            Justin McCurry
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star"></i>
-                        </span>
-                    </div>
-                    <div class="g-row">
-                        Great customer service. Max B was helpful with the complicated itinerary. He answered many ...
-                    </div>
-                    <div class="g-row">
-                        <span class="g-from">From: Raleigh - Phnom Penh</span>
-                    </div>
-                </div>
-            </div><!-- grid -->
-            <div class="grid">
-                <div class="img"><a href="#"><img src="data/user2.jpg" alt="img" /></a></div>
-                <div class="g-content">
-                    <div class="g-row">
-                        <span class="g-title" href="#">
-                            Justin McCurry
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star yellow"></i>
-                            <i class="fa fa-star"></i>
-                        </span>
-                    </div>
-                    <div class="g-row">
-                        Great customer service. Max B was helpful with the complicated itinerary. He answered many ...
-                    </div>
-                    <div class="g-row">
-                        <span class="g-from">From: Raleigh - Phnom Penh</span>
-                    </div>
-                </div>
-            </div><!-- grid -->
+                </div><!-- grid -->
+            <?php } ?>
         </div><!-- commentslider -->
     </div><!-- home-comment -->
 </div><!-- container -->

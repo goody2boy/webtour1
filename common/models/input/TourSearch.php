@@ -14,6 +14,7 @@ use common\models\business\CategoryBusiness;
 use common\models\business\CategoryTourBusiness;
 use common\models\business\UserBusiness;
 use common\models\business\MoneyBusiness;
+use common\models\business\ReviewBusiness;
 use yii\db\Query;
 
 /**
@@ -154,6 +155,7 @@ class TourSearch extends Model {
             $tour->minprice = $this->getMinPrice($tour->prices);
 //            $tour->moneys = MoneyBusiness::mGet($ids);
             $tour->images = ImageBusiness::getByTarget($tour->id, "tour");
+            $tour->review = $this->getReview($tour->id);
         }
         // lay trong vong for
         return $dataPage;
@@ -225,6 +227,18 @@ class TourSearch extends Model {
         }
 
         return $min;
+    }
+
+    public static function getReview($tourId) {
+        $reviewList = ReviewBusiness::getByTour($tourId);
+        if (sizeof($reviewList) > 0) {
+            $total = 0;
+            foreach ($reviewList as $review) {
+                $total += $review->rate;
+            }
+            return (int) ($total / sizeof($reviewList));
+        }
+        return 0;
     }
 
 }
