@@ -65,7 +65,7 @@ tour.submitOrder = function (tourId, numAdult, numNoChild, numChild, date) {
         done: function (resp) {
             if (resp.success) {
                 $(".order-loading").hide();
-                window.location.replace("/checkout.html");
+                window.location.replace(baseUrl + "checkout.html");
             } else {
                 popup.msg("that bai" + resp.data);
             }

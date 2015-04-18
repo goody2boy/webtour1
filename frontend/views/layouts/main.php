@@ -64,12 +64,16 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                 <div class="logo"><a href="#"><img src="<?= $this->context->baseUrl ?>images/logo.png" alt="logo" /></a></div>
                 <div class="menu-expand"><i class="fa fa-bars"></i>Menu</div>
                 <div class="menu">
+                    
                     <ul>
-                        <?php if (!empty($menus)) { ?>
-                            <?php foreach ($menus as $menu) { ?>
-                                <li class="<?= isset($this->context->var['menuactive']) && $this->context->var['menuactive'] == $menu->link ? 'active' : '' ?>"><a href="<?= $menu->link ?>"><?= $menu->name ?></a></li>
-                            <?php } ?>
-                        <?php } ?>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>">PANORAMA</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>our-cities.html">Our Cities</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>city-highlight.html">City Highlight</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>">Vietnam Discovery</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>tour-request.html">Tour request</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>">Other service</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>">Diary</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>lien-he.html">Contact us</a></li>
                     </ul>
                 </div><!-- menu -->
             </div><!-- container -->

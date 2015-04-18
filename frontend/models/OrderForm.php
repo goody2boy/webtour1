@@ -63,13 +63,13 @@ class OrderForm extends Model {
         $order->number_adult = $this->number_adult;
         $order->number_child = $this->number_child;
         $order->number_nochild = $this->number_nochild;
-        $order->total_price = time();
-        $order->date_departure = time();
+        $order->total_price = $this->total_price;
+        $order->date_departure = $this->date_departure;
         if ($this->promo_code != null && $this->promo_code != "") {
             $order->promo_code = time();
         }
         $order->payment_method = $this->payment_method;
-        $order->status_payment = PaymentStatusType::EVER;
+        $order->status_payment = $this->status_payment;
         $order->update_time = time();
         if (!$order->save(false)) {
             return new Response(false, "Không lưu được vào csdl", $order->errors);

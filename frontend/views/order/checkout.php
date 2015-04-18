@@ -8,7 +8,7 @@ use common\util\UrlUtils;
         <div class="checkout-title">Review &amp; Payment</div>
         <div class="checkout-content">
             <div class="checkout-label">your tour details</div>
-            <div class="checkout-name"><?= $tour->title ?></div>
+            <div class="checkout-name"><?= $orders->data[0]->tour->title ?></div>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -22,14 +22,16 @@ use common\util\UrlUtils;
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><a href="#"><?= $tour->code ?></a></td>
-                            <td><?= $order->date_departure ?></td>
-                            <td><?= $order->number_adult ?></td>
-                            <td><?= $order->number_child ?></td>
-                            <td><?= $order->number_nochild ?></td>
-                            <td><?= $order->total_price ?></td>
-                        </tr>
+                        <?php foreach ($orders->data as $order) { ?>
+                            <tr>
+                                <td><a href="<?= $this->context->baseUrl . UrlUtils::tour($order->tour->title, $order->tour->id) ?>"><?= $order->tour->code ?></a></td>
+                                <td><?= $order->date_departure ?></td>
+                                <td><?= $order->number_adult ?></td>
+                                <td><?= $order->number_child ?></td>
+                                <td><?= $order->number_nochild ?></td>
+                                <td>$<?= $order->total_price ?></td>
+                            </tr>
+                        <?php } ?>
                         <tr>
                             <td colspan="2">If you have a promo code enter it here:</td>
                             <td colspan="2">
@@ -44,12 +46,12 @@ use common\util\UrlUtils;
                         <tr>
                             <td colspan="4"></td>
                             <td>Total (USD):</td>
-                            <td><span class="text-danger"><?= $order->total_price ?></span></td>
+                            <td><span class="text-danger">$<?= $order->total_price ?></span></td>
                         </tr>
                     </tfoot>
                 </table>
             </div><!-- table-responsive -->
-            <div class="checkout-desc"><b>Contact details:</b> <?= $user->name ?> - Email: <?= $user->email ?></div>
+            <div class="checkout-desc"><b>Contact details:</b> <?= $order->user->username ?> - Email: <?= $order->user->email ?></div>
             <div class="checkout-label">Select Your Payment Method</div>
             <div class="checkout-method">
                 <div class="row">

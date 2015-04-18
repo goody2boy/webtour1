@@ -3,7 +3,38 @@
 use common\util\TextUtils;
 use common\util\UrlUtils;
 ?>
+<div class="main-slider">
+    <div id="heartslider" class="owl-carousel">
+        <?php if (!empty($heart)) { ?>
+            <?php foreach ($heart as $banner) { ?>
+                <div class="h-item">
+                    <a href="<?= $banner->link ?>"><img src="<?= (sizeof($banner->images) > 0) ? $banner->images[0] : $this->context->baseUrl . 'data/slider1' ?>" alt="<?= $banner->name ?>" /></a>
+                </div><!-- h-item -->
+            <?php } ?>
+        <?php } ?>
 
+    </div><!-- owl-carousel -->
+    <div class="box-support">
+        <div class="container">
+            <div class="bs-inline">
+                <i class="fa fa-phone"></i>
+                Hot line: +<b class="text-danger">84 974 88 11 22</b>  +<b class="text-danger">84 905 351 699</b>
+            </div>
+            <div class="bs-inline">
+                <i class="fa fa-envelope"></i>
+                Email: <a class="text-primary" href="#"><b>info@vietnamdiscoverytour.com.vn</b></a>
+            </div>
+            <div class="bs-inline">
+                <a class="text-uppercase" href="#"><b>Support Offline</b></a>
+            </div>
+            <div class="bs-inline">
+                Chat online:
+                <a href="#"><i class="fa fa-skype"></i></a>
+                <a href="ymsgr:sendim?lee_haira"><img src="http://opi.yahoo.com/online?u=lee_haira&amp;m=g&amp;t=5"></a>
+            </div>
+        </div><!-- container -->
+    </div><!-- box-support -->
+</div><!-- main-slider -->
 <div class="container">
     <div class="tour-detail">
         <div class="td-title">

@@ -3,28 +3,20 @@
 namespace frontend\controllers;
 
 use common\models\business\OrderBusiness;
-use common\models\input\ItemSearch;
+use common\models\input\OrderSearch;
 use Yii;
 
 class OrderController extends BaseController {
 
     public function actionCheckout() {
-//        $id = Yii::$app->request->get('id');
-//        if (OrderBusiness::isJson($id)) {
-//            $arr = \GuzzleHttp\json_decode($id)->id;
-//            $search = new ItemSearch();
-//            $search->ids = $arr;
-//            $data = $search->search(true);
-//        } else {
-//            $data = null;
-//        }
-//        $items = new ItemSearch();
+        $userId = "1"; //Yii::user->id;
+        $search = new OrderSearch();
+        $search->user_id = $userId;
+        $orders = $search->search(true);
         return $this->render('checkout'
-//                , [
-//                    'items' => $items->search(false)->all(),
-//                    'data' => $data
-//        ]
-                );
+                , ['orders' => $orders,
+                ]
+        );
     }
 
 }

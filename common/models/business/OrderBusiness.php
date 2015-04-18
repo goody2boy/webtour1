@@ -2,7 +2,8 @@
 
 namespace common\models\business;
 
-use common\models\db\Item;
+use common\models\db\Order;
+use common\models\db\Tour;
 use common\models\inter\InterBusiness;
 
 class OrderBusiness implements InterBusiness {
@@ -59,6 +60,10 @@ public static function isJson($string)
 
     public static function get($id) {
         
+    }
+    
+    public static function getOrderByUser($userId){
+        return Order::find()->andWhere(["user_id" => $userId])->orderBy("date_departure ASC")->all();
     }
 
 }

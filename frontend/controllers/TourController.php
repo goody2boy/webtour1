@@ -31,8 +31,14 @@ class TourController extends BaseController {
                     'tourFeatures' => $tourFeatures,
         ]);
     }
+    public function actionRequest() {
+        return $this->render('request', []);
+    }
 
+    
+    
     public function actionDetail() {
+        $heart = BannerBusiness::getByType(BannerType::HEART, 1);
         $search = new TourSearch();
         $alias = Yii::$app->request->get('alias');
         $id = Yii:: $app->request->get('id');
@@ -67,6 +73,7 @@ class TourController extends BaseController {
         $search->pageSize = 5;
         $relateTourCity = $search->search(true)->data;
         return $this->render('detail', [
+                    'heart' => $heart,
                     'tour' => $tour,
                     'moneys' => $moneys,
                     'moneyconvert' => $moneyConvert,

@@ -22,23 +22,21 @@ use Yii;
  * @property string $payment_method
  * @property string $status_payment
  */
-class Order extends \yii\db\ActiveRecord
-{
+class Order extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'order';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['tour_id', 'user_id', 'price_id', 'number_adult', 'number_child', 'number_nochild', 'total_price', 'date_departure', 'create_time', 'update_time', 'payment_method', 'status_payment'], 'required'],
+            [['tour_id', 'user_id', 'price_id', 'number_adult', 'number_child', 'number_nochild', 'total_price', 'date_departure', 'create_time', 'update_time'], 'required'],
             [['tour_id', 'user_id', 'price_id', 'number_adult', 'number_child', 'number_nochild', 'date_departure', 'create_time', 'update_time'], 'integer'],
             [['total_price'], 'number'],
             [['promo_code', 'payment_method', 'status_payment'], 'string', 'max' => 12]
@@ -48,8 +46,7 @@ class Order extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => Yii::t('app', 'ID'),
             'tour_id' => Yii::t('app', 'Tour ID'),
@@ -67,4 +64,9 @@ class Order extends \yii\db\ActiveRecord
             'status_payment' => Yii::t('app', 'Status Payment'),
         ];
     }
+
+    public function attributes() {
+        return array_merge(parent::attributes(), ['tour', 'user', 'price']);
+    }
+
 }

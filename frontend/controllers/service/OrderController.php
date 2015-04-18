@@ -6,6 +6,7 @@ use common\models\business\OrderBusiness;
 use common\models\input\TourSearch;
 use common\models\output\Response;
 use frontend\models\OrderForm;
+use common\models\enu\PaymentType;
 use stdClass;
 use Yii;
 
@@ -13,7 +14,7 @@ class OrderController extends ServiceController {
 
     public function actionSubmitorder($tourId, $numAdult, $numChild, $numNoChild, $date) {
         // check user login
-        $userId = Yii::$app->user->getId();
+        $userId = "1"; //Yii::$app->user->getId();
 //        if ($userId == null || $userId == "") {
 //            return $this->redirect('/user/login', 302);
 //        }
@@ -38,11 +39,12 @@ class OrderController extends ServiceController {
         }
         //
         $order = new OrderForm();
+        $order->user_id = $userId;
         $order->tour_id = $tourId;
         $order->number_adult = $numAdult;
         $order->number_child = $numChild;
         $order->number_nochild = $numNoChild;
-        $order->date_departure = $date;
+        $order->date_departure = $date * 1000;
         $order->price_id = $price_id;
         $order->total_price = ($order->number_adult + $order->number_child * 70 / 100) * $price_unit;
         return $this->response($order->save());
