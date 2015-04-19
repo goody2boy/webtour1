@@ -54,10 +54,6 @@ tour.ShowBookingInput = function (tourId) {
 
 tour.submitOrder = function (tourId, numAdult, numNoChild, numChild, date) {
     $(".order-loading").show();
-//    var numAdult = $("#num-adult").val();
-//    var dateorder = $('input[name=dateorder]').val();
-//    var numNoChild = $("#num-nochild").val();
-//    var numChild = $("#num-child").val();
     ajax({
         service: '/order/submitorder',
         data: {tourId: tourId, numAdult: numAdult, numNoChild: numNoChild, numChild: numChild, date: date},
@@ -67,7 +63,14 @@ tour.submitOrder = function (tourId, numAdult, numNoChild, numChild, date) {
                 $(".order-loading").hide();
                 window.location.replace(baseUrl + "checkout.html");
             } else {
-                popup.msg("that bai" + resp.data);
+                if (resp.data === 'NO_LOGIN') {
+                    popup.msg("You are not login . Please login to order this tour.");
+                    setTimeout(function () {
+                        window.location.replace(baseUrl + "login.html");
+                    }, 5000);
+                } else {
+                    popup.msg("Có lỗi xảy ra trong quá trình truyền dữ liệu. ");
+                }
             }
         }
     });

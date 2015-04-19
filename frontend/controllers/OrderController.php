@@ -9,13 +9,20 @@ use Yii;
 class OrderController extends BaseController {
 
     public function actionCheckout() {
-        $userId = "1"; //Yii::user->id;
+        $user = Yii::$app->getSession()->get("customer");
+        if ($user == null) {
+            return $this->render('checkoutnologin'
+                            , ['orders' => $orders,
+                            ]
+            );
+        }
+        $userId = $user->id;
         $search = new OrderSearch();
         $search->user_id = $userId;
         $orders = $search->search(true);
         return $this->render('checkout'
-                , ['orders' => $orders,
-                ]
+                        , ['orders' => $orders,
+                        ]
         );
     }
 
