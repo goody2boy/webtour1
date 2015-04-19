@@ -14,6 +14,8 @@ return [
         'logout.html' => 'user/logout',
         'profile.html' => 'user/profile',
         'forgot.html' => 'user/forgot',
+        'changepassword.html' => 'user/changepassword',
+        'my-booking.html' => 'user/booking',
         //reviews
         'GET y-kien-khach-hang.html' => 'reviews/index',
         //lien he

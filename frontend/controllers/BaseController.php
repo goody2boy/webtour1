@@ -21,6 +21,7 @@ class BaseController extends Controller {
         $this->baseUrl = 'http://' . $_SERVER['HTTP_HOST'] . str_replace("index.php", '', $_SERVER['SCRIPT_NAME']);
         $this->mDefault();
         $this->footer();
+        $this->var['breadcrumb'] = [];
     }
 
     public function footer() {

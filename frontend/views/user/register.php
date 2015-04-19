@@ -60,7 +60,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">Country <span class="text-danger">*</span></label>
                     <div class="col-sm-3">
-                        <select class="form-control" name="countryId" onchange="user.loadCity($(this).val())">
+                        <select class="form-control" name="countryId" onchange="user.loadCity($(this).val(),'<?= $user->cityId ?>')">
                             <option value="">Choose</option>
                             <?php if (!empty($countries)) { ?>
                                 <?php foreach ($countries as $c) { ?>

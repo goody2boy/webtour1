@@ -1,5 +1,5 @@
 <form class="form-horizontal" id="form-add-menu">
-    <div class="form-group hide">
+    <div class="form-group">
         <label class="control-label col-sm-3">Menu cha:</label>
         <div class="col-sm-8">
             <select data-detail="parentId" name="parentId" class="form-control" >

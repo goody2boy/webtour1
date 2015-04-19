@@ -49,7 +49,7 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                         <li><a href="#">Site map</a></li>
                         <li><a href="<?= $this->context->baseUrl ?>login.html">Login</a></li>
                     <?php } else { ?>
-                        <li><a href="#">Login as <?= Yii::$app->getSession()->get("customer")->firstName." ".Yii::$app->getSession()->get("customer")->lastName ?></a></li>
+                        <li><a href="#">Login as <?= Yii::$app->getSession()->get("customer")->firstName . " " . Yii::$app->getSession()->get("customer")->lastName ?></a></li>
                         <li><a href="<?= $this->context->baseUrl ?>logout.html">Logout</a></li>
                     <?php } ?>
                 </ul>
@@ -83,6 +83,39 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                 </div><!-- menu -->
             </div><!-- container -->
         </div><!-- header -->
+        <div class="box-center">
+            <div class="box-support">
+                <div class="container">
+                    <div class="bs-inline">
+                        <i class="fa fa-phone"></i>
+                        Hot line: +<b class="text-danger">84 974 88 11 22</b>  +<b class="text-danger">84 905 351 699</b>
+                    </div>
+                    <div class="bs-inline">
+                        <i class="fa fa-envelope"></i>
+                        Email: <a class="text-primary" href="#"><b>info@vietnamdiscoverytour.com.vn</b></a>
+                    </div>
+                    <div class="bs-inline">
+                        Chat online:
+                        <a href="#"><i class="fa fa-skype"></i></a>
+                        <a href="ymsgr:sendim?lee_haira"><img src="http://opi.yahoo.com/online?u=lee_haira&amp;m=g&amp;t=5"></a>
+                    </div>
+                </div><!-- container -->
+            </div><!-- box-support -->
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li>You are here :<a href="<?= $this->context->baseUrl ?>">Panorama</a></li>
+                    <?php if (!empty($this->context->var['breadcrumb'])) { ?>
+                        <?php foreach ($this->context->var['breadcrumb'] as $key => $value) { ?>
+                            <?php if ($key == sizeof($this->context->var['breadcrumb']) - 1) { ?>
+                                <li class="active"><?= $value['name'] ?></li>
+                            <?php } else { ?>
+                                <li><a href="<?= $this->context->baseUrl . $value['link'] ?>"><?= $value['name'] ?></a></li>
+                            <?php } ?>
+                        <?php } ?>
+                    <?php } ?>
+                </ol>
+            </div><!-- container -->
+        </div><!-- box-center -->
         <?= $content ?>
         <div class="footer">
             <div class="footer-top">

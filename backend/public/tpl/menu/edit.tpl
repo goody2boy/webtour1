@@ -6,7 +6,7 @@
         </div>
     </div>
             <input name="id" type="hidden" value="<%=data.id%>" class="form-control"/>
-    <div class="form-group hide">
+    <div class="form-group">
         <label class="control-label col-sm-3">Menu cha:</label>
         <div class="col-sm-8">
             <select data-detail="parentId" name="parentId" class="form-control" >
