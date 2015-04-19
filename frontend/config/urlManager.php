@@ -45,6 +45,7 @@ return [
         'checkout.html' => 'order/checkout',
         'tour-request.html'=> 'tour/request',
         'diary.html'=> 'diary/index',
+        'vietnam-discovery.html'=> 'tag/index',
         
     ],
 ];

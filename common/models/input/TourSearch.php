@@ -35,6 +35,7 @@ class TourSearch extends Model {
     public $language;
     public $durationTime;
     public $status;
+    public $tag;
     public $createTime;
     public $updateTime;
     public $createTimeTo;
@@ -46,7 +47,7 @@ class TourSearch extends Model {
     public function rules() {
         return [
             [['title', 'code', 'tourType', 'language', 'sort'], 'string'],
-            [['id', 'city', 'hightlight', 'price', 'status', 'durationTime', 'createTime', 'createTimeTo', 'updateTime', 'updateTimeTo', 'pageSize', 'page'], 'integer'],
+            [['id','tag', 'city', 'hightlight', 'price', 'status', 'durationTime', 'createTime', 'createTimeTo', 'updateTime', 'updateTimeTo', 'pageSize', 'page'], 'integer'],
         ];
     }
 
@@ -94,6 +95,9 @@ class TourSearch extends Model {
         }
         if ($this->status != null && $this->status != '') {
             $query->andWhere(['=', 'status', $this->status]);
+        }
+        if ($this->tag != null && $this->tag != '') {
+            $query->andWhere(['=', 'status', $this->tag]);
         }
         if ($this->createTime > 0 && $this->createTimeTo > 0) {
             $query->andWhere(['between', 'create_time', $this->createTime / 1000, $this->createTimeTo / 1000]);
