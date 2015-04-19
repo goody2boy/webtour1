@@ -41,6 +41,7 @@ tour.ShowTotalFee = function (data) {
     $("#order-form").html("");
     var htmlForm = Fly.template("/order/totalfee.tpl", data);
     $("#order-form").html(htmlForm);
+    $('input[name=dateorder]').timeSelect();
 };
 
 tour.ShowBookingInput = function (tourId) {
@@ -50,6 +51,7 @@ tour.ShowBookingInput = function (tourId) {
     $("#order-form").html("");
     var htmlForm = Fly.template("/order/bookinginput.tpl", input);
     $("#order-form").html(htmlForm);
+    $('input[name=dateorder]').timeSelect();
 };
 
 tour.submitOrder = function (tourId, numAdult, numNoChild, numChild, date) {

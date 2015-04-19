@@ -42,5 +42,24 @@ class DiaryController extends BaseController {
                     'reviews' => $reviews,
         ]);
     }
+    public function actionComment() {
+        $photos = ImageBusiness::getByType(ImageType::TOUR, false, false, 8);
+        $tourIds = [];
+        foreach ($photos as $img) {
+            $tourIds[] = $img->targetId;
+        }
+        $search = new TourSearch();
+        $search->status = 1;
+        foreach ($photos as $img) {
+            $search->id = $img->targetId;
+            $tour = $search->search(true)->data[0];
+            $img->target = $tour;
+        }
+        $reviews = ReviewBusiness::getAll(6);
+        return $this->render('comments', [
+                    'photos' => $photos,
+                    'reviews' => $reviews,
+        ]);
+    }
 
 }

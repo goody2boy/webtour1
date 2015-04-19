@@ -5,10 +5,10 @@ use common\util\UrlUtils;
 ?>
 <div class="main-slider">
     <div id="heartslider" class="owl-carousel">
-        <?php if (!empty($heart)) { ?>
-            <?php foreach ($heart as $banner) { ?>
+        <?php if (!empty($tour->images)) { ?>
+            <?php foreach ($tour->images as $img) { ?>
                 <div class="h-item">
-                    <a href="<?= $banner->link ?>"><img src="<?= (sizeof($banner->images) > 0) ? $banner->images[0] : $this->context->baseUrl . 'data/slider1' ?>" alt="<?= $banner->name ?>" /></a>
+                    <a><img src="<?= $img->imageId != "" ? $img->imageId : $this->context->baseUrl . 'data/slider1' ?>" alt="<?= $img->caption != "" ? $img->caption : "" ?>" /></a>
                 </div><!-- h-item -->
             <?php } ?>
         <?php } ?>
@@ -103,7 +103,7 @@ use common\util\UrlUtils;
                             <tr id="<?= "price_" . $money->code ?>" <?= $money->code != "USD" ? 'style="display: none;"' : "" ?>  >
                                 <td>Price/adult</td>
                                 <?php foreach ($tour->prices as $price) { ?>
-                                    <td><?= $price->price * $moneyconvert[$money->id] ?></td>
+                                    <td><?= number_format($price->price * $moneyconvert[$money->id], 0, ',', '.'); ?></td>
                                 <?php } ?>
                                 <td><a href="<?= $this->context->baseUrl . UrlUtils::contact() ?>">Contact Us</a></td>
                             </tr>

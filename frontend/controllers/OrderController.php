@@ -11,10 +11,7 @@ class OrderController extends BaseController {
     public function actionCheckout() {
         $user = Yii::$app->getSession()->get("customer");
         if ($user == null) {
-            return $this->render('checkoutnologin'
-                            , ['orders' => $orders,
-                            ]
-            );
+            return $this->redirect($this->baseUrl . 'user/login', 302);
         }
         $userId = $user->id;
         $search = new OrderSearch();
