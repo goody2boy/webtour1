@@ -14,11 +14,11 @@ use Yii;
 class ReviewBusiness implements InterBusiness {
 
     public static function get($id) {
-        return Tour::findOne($id);
+        return Review::findOne($id);
     }
 
     public static function mGet($ids) {
-        return Tour::find()->andWhere(["id" => $ids])->all();
+        return Review::find()->andWhere(["id" => $ids])->all();
     }
 
     public static function getAll($limit = 0) {
@@ -29,15 +29,15 @@ class ReviewBusiness implements InterBusiness {
             $reviewList = Review::find()->orderBy(['rate' => SORT_ASC])->all();
         }
         foreach($reviewList as $review){
-            $tour = TourBusiness::get($review->tour_id);
-            $tour->images = ImageBusiness::getByTarget($review->tour_id, "tour");
-            $review->tour = $tour;
+            $user = UserBusiness::get($review->user_id);
+            $user->images = ImageBusiness::getByTarget($review->user_id, "user");
+            $review->user = $user;
         }
         return $reviewList;
     }
 
-    public static function getByTour($tourId) {
-        return Review::find()->andWhere(['tour_id' => $tourId])->orderBy(['rate' => SORT_ASC])->all();
+    public static function getByUser($userId) {
+        return Review::find()->andWhere(['user_id' => $userId])->orderBy(['rate' => SORT_ASC])->all();
     }
 
 }

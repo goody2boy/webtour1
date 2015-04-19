@@ -3,7 +3,7 @@
     <div class="pp-inner">
         <a class="pp-close" id="close-pop-btn"><i class="fa fa-times"></i></a>
         <div class="pp-left">
-            <div class="pp-cell"><img src="" alt="photo"></div>
+            <div class="pp-cell"><img src="<%=baseUrl + data.images[0].imageId%>" alt="photo"></div>
             <a class="pp-prev" href="#"></a>
             <a class="pp-next" href="#"></a>
         </div><!-- pp-left -->
