@@ -25,7 +25,7 @@ use yii\widgets\LinkPager;
                 <li>
                     <div class="photo-item">
                         <div class="photo-thumb">
-                            <a href="#"><img src="<?= $this->context->baseUrl . $img->imageId ?>" alt="img"></a>
+                            <a onclick="tour.showPopImage(<?= $img->target->id ?>);"><img  src="<?= $this->context->baseUrl . $img->imageId ?>" alt="img"></a>
                         </div>
                         <div class="photo-content">
                             <div class="photo-row"><a class="photo-title" href="#"><?= $img->caption != "" ? $img->caption : 'Photo at: ' . $img->target->title ?></a></div>

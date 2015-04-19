@@ -32,6 +32,7 @@ return [
         //---contact
         'GET lien-he.html' => 'contact/index',
         //---tour
+        'GET san-pham.html' => 'item/index',
         'our-cities.html' => 'city/index',
         'city-type/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'city/types',
         'city-tours/<type:[0-9a-z_-]+>-<typeid:\d+>/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'city/tours',
@@ -40,7 +41,6 @@ return [
         'tour/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'tour/detail',
         'tour-type/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'category/detail',
         'checkout.html' => 'order/checkout',
-        'GET san-pham.html' => 'item/index',
         'tour-request.html'=> 'tour/request',
         'diary.html'=> 'diary/index',
         

@@ -74,21 +74,24 @@ tour.submitOrder = function (tourId, numAdult, numNoChild, numChild, date) {
 };
 
 tour.showPopImage = function (tourId) {
-    $('#overlay-pop').click(function () {
-        $(this).hide();
-    });
     ajax({
-        service: '',
+        service: '/tour/get-tour-img',
         data: {id: tourId},
+        loading: false,
         type: 'post',
+        contentType: 'json',
         done: function (resp) {
             if (resp.success) {
+                console.log(resp);
                 popupHTML = Fly.template('/diary/popup-img-tour.tpl', resp);
                 $('#tour-popup').html(popupHTML);
                 $('#overlay-pop').click(function () {
-                    $('#tour-popup').hide();
+                    $('#tour-popup').children().hide();
                 });
-                $('#tour-popup').show();
+                $('#close-pop-btn').click(function () {
+                    $('#tour-popup').children().hide();
+                });
+                $('#tour-popup').children().show();
             } else {
                 popup.msg('Tour bạn chọn không có ảnh');
             }
