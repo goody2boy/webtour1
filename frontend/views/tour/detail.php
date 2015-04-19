@@ -8,7 +8,7 @@ use common\util\UrlUtils;
         <?php if (!empty($tour->images)) { ?>
             <?php foreach ($tour->images as $img) { ?>
                 <div class="h-item">
-                    <a><img src="<?= $img->imageId != "" ? $img->imageId : $this->context->baseUrl . 'data/slider1' ?>" alt="<?= $img->caption != "" ? $img->caption : "" ?>" /></a>
+                    <a><img src="<?= $this->context->baseUrl . ($img->imageId != "" ? $img->imageId : 'data/slider1') ?>" alt="<?= $img->caption != "" ? $img->caption : "" ?>" /></a>
                 </div><!-- h-item -->
             <?php } ?>
         <?php } ?>
