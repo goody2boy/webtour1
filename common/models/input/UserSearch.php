@@ -2,10 +2,13 @@
 
 namespace common\models\input;
 
+use common\models\business\ImageBusiness;
 use common\models\db\User;
+use common\models\enu\ImageType;
 use common\models\output\DataPage;
 use yii\base\Model;
 use yii\data\Pagination;
+
 // Lap Dam
 class UserSearch extends Model {
 
@@ -72,7 +75,16 @@ class UserSearch extends Model {
         $dataPage->pageCount = $dataPage->dataCount / $dataPage->pageSize;
         if ($dataPage->pageCount % $dataPage->pageSize != 0)
             $dataPage->pageCount = ceil($dataPage->pageCount) + 1;
-        $dataPage->pageCount = $dataPage->pageCount < 1 ? 1 : $dataPage->pageCount-1;
+        $dataPage->pageCount = $dataPage->pageCount < 1 ? 1 : $dataPage->pageCount - 1;
+        $ids = [];
+        foreach ($dataPage->data as $item) {
+            $ids[] = $item->id;
+        }
+        $images = ImageBusiness::getByTarget($ids, ImageType::USER, true, true);
+
+        foreach ($dataPage->data as $item) {
+            $item->images = isset($images[$item->id]) ? $images[$item->id] : [];
+        }
         return $dataPage;
     }
 

@@ -54,6 +54,7 @@
                 <thead>
                     <tr class="success" >
                         <th class="text-center" style="vertical-align: middle" >STT</th>
+                        <th class="text-center" style="vertical-align: middle" >Ảnh</th>
                         <th class="text-center" style="vertical-align: middle" >Tài khoản</th>
                         <th class="text-center" style="vertical-align: middle" >Email</th>
                         <th class="text-center" style="vertical-align: middle" >Ngày đăng ký</th>
@@ -65,6 +66,13 @@
                     <% $.each(data.data, function(index){ %>
                     <tr data-key="<%= this.id %>" >
                         <td class="text-center" ><%= eval(index+1) %></td>
+                        <td class="text-center" style="vertical-align: middle;width: 80px" >
+                            <% if(this.images.length > 0){ %>
+                            <img src="<%= this.images[0] %>" style="max-width:60px; margin:auto;" class="thumbnail"/>
+                            <%}else { %>
+                            <img src="<%= baseUrl %>images/no_avatar.png" style="max-width:60px; margin:auto;"  class="thumbnail" />
+                            <% } %>
+                        </td>
                         <td class="text-center" ><%= this.username %></td>
                         <td class="text-center" ><%= this.email %></td>
                         <td class="text-center" ><%= textUtils.formatTime(this.createTime) %></td>
@@ -79,6 +87,7 @@
                                 <i class="fa fa-edit"></i>
                                 Chi tiết
                             </button>
+                            <button onclick="image.addImage('<%= this.id %>', 'user');" type="button" class="btn btn-success" style="width: 80px;"><span class="fa fa-image pull-left" style="line-height: 18px" ></span> Ảnh</button>
                         </td>
                     </tr>
                     <%  }); %>
