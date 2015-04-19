@@ -42,5 +42,7 @@ return [
         'checkout.html' => 'order/checkout',
         'GET san-pham.html' => 'item/index',
         'tour-request.html'=> 'tour/request',
+        'diary.html'=> 'diary/index',
+        
     ],
 ];

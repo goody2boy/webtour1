@@ -93,5 +93,6 @@ class TourController extends BaseController {
         }
         return $tourFeatures;
     }
+    
 
 }

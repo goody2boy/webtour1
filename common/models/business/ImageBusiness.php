@@ -143,9 +143,9 @@ class ImageBusiness {
         }
         return $imgs;
     }
-    public static function getByType($type = ImageType::_DEFAULT, $getUrl = false, $baseUrl = false) {
+    public static function getByType($type = ImageType::_DEFAULT, $getUrl = false, $baseUrl = false, $limit = 8) {
         $config = Yii::$app->params['image'];
-        $imgs = Image::find()->andWhere([ 'type' => $type])->all();
+        $imgs = Image::find()->andWhere([ 'type' => $type])->limit($limit)->all();
         if ($imgs == null || empty($imgs)) {
             return $imgs;
         }

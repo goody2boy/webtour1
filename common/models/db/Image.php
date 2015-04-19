@@ -33,7 +33,8 @@ class Image extends \yii\db\ActiveRecord {
             [['position', 'width', 'height'], 'integer'],
             [['targetId', 'imageId'], 'string', 'max' => 220],
             [['type'], 'string', 'max' => 20],
-            [['extension'], 'string', 'max' => 50]
+            [['extension'], 'string', 'max' => 50],
+            [['caption'], 'string', 'max' => 500],
         ];
     }
 
@@ -49,7 +50,13 @@ class Image extends \yii\db\ActiveRecord {
             'height' => Yii::t('app', 'Height'),
             'extension' => Yii::t('app', 'Extension'),
             'imageId' => Yii::t('app', 'Image ID'),
+            'caption' => Yii::t('app', 'Caption'),
+            'description' => Yii::t('app', 'Description'),
         ];
+    }
+    
+    public function attributes() {
+        return array_merge(parent::attributes(), ['author', 'target']);
     }
 
 }

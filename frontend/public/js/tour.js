@@ -72,3 +72,26 @@ tour.submitOrder = function (tourId, numAdult, numNoChild, numChild, date) {
         }
     });
 };
+
+tour.showPopImage = function (tourId) {
+    $('#overlay-pop').click(function () {
+        $(this).hide();
+    });
+    ajax({
+        service: '',
+        data: {id: tourId},
+        type: 'post',
+        done: function (resp) {
+            if (resp.success) {
+                popupHTML = Fly.template('/diary/popup-img-tour.tpl', resp);
+                $('#tour-popup').html(popupHTML);
+                $('#overlay-pop').click(function () {
+                    $('#tour-popup').hide();
+                });
+                $('#tour-popup').show();
+            } else {
+                popup.msg('Tour bạn chọn không có ảnh');
+            }
+        }
+    });
+};

@@ -24,8 +24,12 @@ class TourBusiness implements InterBusiness {
         return Tour::findOne($id);
     }
 
-    public static function mGet($ids) {
-        return Tour::find()->andWhere(["id" => $ids])->all();
+    public static function mGet($ids, $limit = 0) {
+        if ($limit > 0) {
+            return Tour::find()->andWhere(["id" => $ids])->limit($limit)->all();
+        } else {
+            return Tour::find()->andWhere(["id" => $ids])->all();
+        }
     }
 
     public static function changeActive($id) {
