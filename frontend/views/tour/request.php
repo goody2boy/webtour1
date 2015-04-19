@@ -30,7 +30,10 @@
                     <div class="form-group">
                         <label>Country <span class="text-danger">*</span>:</label>
                         <select class="form-control">
-                            <option>Select Country</option>
+                            <option value="0">Select Country</option>
+                            <?php foreach ($countries as $country) { ?>
+                                <option value="<?= $country->id ?>"><?= $country->name ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div><!-- col -->

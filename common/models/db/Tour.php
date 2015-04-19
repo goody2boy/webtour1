@@ -81,6 +81,7 @@ class Tour extends \yii\db\ActiveRecord
             'status' => 'Status',
             'category_ids' => 'All Tour Type',
             'hightlight_type' => 'Hight Light Type',
+            'tag' => 'Tag',
         ];
     }
     

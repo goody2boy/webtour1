@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\business\BannerBusiness;
 use common\models\business\TourBusiness;
+use common\models\business\CountryBusiness;
 use common\models\business\OptionBusiness;
 use common\models\business\MoneyBusiness;
 use common\models\business\MoneyConvertBusiness;
@@ -32,7 +33,10 @@ class TourController extends BaseController {
         ]);
     }
     public function actionRequest() {
-        return $this->render('request', []);
+        $countries = CountryBusiness::getAll();
+        return $this->render('request', [
+            'countries'=>$countries,
+        ]);
     }
 
     
