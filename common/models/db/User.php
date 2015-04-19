@@ -69,7 +69,7 @@ class User extends \yii\db\ActiveRecord {
     }
 
     public function attributes() {
-        return array_merge(parent::attributes(), ['countryName','cityName']);
+        return array_merge(parent::attributes(), ['countryName','cityName','images']);
     }
 
 }
