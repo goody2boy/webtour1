@@ -45,8 +45,13 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                 </div>
                 <div class="tripadvisor-header"><img src="<?= $this->context->baseUrl ?>data/tripadvisor-header.png" alt="img" /></div>
                 <ul class="admin-ul">
-                    <li><a href="#">Site map</a></li>
-                    <li><a href="#">Login</a></li>
+                    <?php if ((Yii::$app->getSession()->get("customer") == null)) { ?>
+                        <li><a href="#">Site map</a></li>
+                        <li><a href="<?= $this->context->baseUrl ?>login.html">Login</a></li>
+                    <?php } else { ?>
+                        <li><a href="#">Login as <?= Yii::$app->getSession()->get("customer")->firstName." ".Yii::$app->getSession()->get("customer")->lastName ?></a></li>
+                        <li><a href="<?= $this->context->baseUrl ?>logout.html">Logout</a></li>
+                    <?php } ?>
                 </ul>
                 <div class="box-social">
                     <a href="#"><span class="icon-facebook"></span></a>
@@ -64,7 +69,7 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                 <div class="logo"><a href="#"><img src="<?= $this->context->baseUrl ?>images/logo.png" alt="logo" /></a></div>
                 <div class="menu-expand"><i class="fa fa-bars"></i>Menu</div>
                 <div class="menu">
-                    
+
                     <ul>
                         <li class=""><a href="<?= $this->context->baseUrl ?>">PANORAMA</a></li>
                         <li class=""><a href="<?= $this->context->baseUrl ?>our-cities.html">Our Cities</a></li>

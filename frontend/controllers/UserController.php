@@ -28,6 +28,18 @@ class UserController extends BaseController {
         return $this->render("login", [
         ]);
     }
+    public function actionProfile() {
+        if (empty(Yii::$app->getSession()->get("customer"))) {
+            return $this->redirect($this->baseUrl);
+        }
+        return $this->render("profile", [
+        ]);
+    }
+
+    public function actionLogout() {
+        Yii::$app->getSession()->set("customer", null);
+        return $this->redirect($this->baseUrl);
+    }
 
     public function actionForgot() {
         return $this->render("forgot", [

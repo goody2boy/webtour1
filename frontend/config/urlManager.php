@@ -11,6 +11,8 @@ return [
         'index.html' => 'index/index',
         'register.html' => 'user/register',
         'login.html' => 'user/login',
+        'logout.html' => 'user/logout',
+        'profile.html' => 'user/profile',
         'forgot.html' => 'user/forgot',
         //reviews
         'GET y-kien-khach-hang.html' => 'reviews/index',
