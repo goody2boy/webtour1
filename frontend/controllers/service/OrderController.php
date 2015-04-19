@@ -13,11 +13,7 @@ use Yii;
 class OrderController extends ServiceController {
 
     public function actionSubmitorder($tourId, $numAdult, $numChild, $numNoChild, $date) {
-        // check user login
-        $userId = "1"; //Yii::$app->user->getId();
-//        if ($userId == null || $userId == "") {
-//            return $this->redirect('/user/login', 302);
-//        }
+
         // get price_id by num and tour_id 
         $search = new TourSearch();
         $search->id = $tourId;
@@ -39,7 +35,6 @@ class OrderController extends ServiceController {
         }
         //
         $order = new OrderForm();
-        $order->user_id = $userId;
         $order->tour_id = $tourId;
         $order->number_adult = $numAdult;
         $order->number_child = $numChild;
@@ -47,6 +42,14 @@ class OrderController extends ServiceController {
         $order->date_departure = $date * 1000;
         $order->price_id = $price_id;
         $order->total_price = ($order->number_adult + $order->number_child * 70 / 100) * $price_unit;
+        // check user login
+        $user = Yii::$app->getSession()->get("customer");
+        if ($user == null) {
+            Yii::$app->getSession()->set("order", $order);
+            return $this->response(new Response(false, "Bạn chưa đăng nhập", 'NO_LOGIN'));
+        } else {
+            $order->user_id = $user->id;
+        }
         return $this->response($order->save());
 
         // save tour order
