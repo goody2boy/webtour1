@@ -234,7 +234,7 @@ class TourSearch extends Model {
     }
 
     public static function getReview($tourId) {
-        $reviewList = ReviewBusiness::getByTour($tourId);
+        $reviewList = ReviewBusiness::getByUser($tourId);
         if (sizeof($reviewList) > 0) {
             $total = 0;
             foreach ($reviewList as $review) {

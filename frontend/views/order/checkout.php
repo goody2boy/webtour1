@@ -8,7 +8,13 @@ use common\util\UrlUtils;
         <div class="checkout-title">Review &amp; Payment</div>
         <div class="checkout-content">
             <div class="checkout-label">your tour details</div>
-            <div class="checkout-name"><?= $orders->data[0]->tour->title ?></div>
+            <div class="checkout-name">
+                <?php if (!empty($orders->data)) { ?>
+                    <?= $orders->data[0]->tour->title ?>
+                <?php } else { ?>
+                    Hiện tại không có tour nào.
+                <?php } ?>
+            </div>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -39,19 +45,26 @@ use common\util\UrlUtils;
                                 <button type="submit" onclick="order.usePromoCode();" class="btn btn-primary btn-sm">Enter</button>
                             </td>
                             <td>Your discount</td>
-                            <td><span class="text-danger">-$0</span></td>
+                            <td><span id="discount-price" class="text-danger">-$0</span></td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colspan="4"></td>
                             <td>Total (USD):</td>
-                            <td><span class="text-danger">$<?= $order->total_price ?></span></td>
+                            <td><span id="total-price" class="text-danger">$
+                                    <?php if (!empty($orders->data)) { ?>
+                                        <?= $order->total_price ?>
+                                    <?php } else { ?>
+                                        0
+                                    <?php } ?>
+                                </span>
+                            </td>
                         </tr>
                     </tfoot>
                 </table>
             </div><!-- table-responsive -->
-            <div class="checkout-desc"><b>Contact details:</b> <?= $order->user->username ?> - Email: <?= $order->user->email ?></div>
+            <div class="checkout-desc"><b>Contact details:</b> <?= $user->username ?> - Email: <?= $user->email ?></div>
             <div class="checkout-label">Select Your Payment Method</div>
             <div class="checkout-method">
                 <div class="row">

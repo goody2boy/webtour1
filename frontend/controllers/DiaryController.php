@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\business\ImageBusiness;
-use common\models\business\TourBusiness;
+use common\models\business\CountryBusiness;
 use common\models\business\ReviewBusiness;
 use common\models\business\MoneyBusiness;
 use common\models\business\MoneyConvertBusiness;
@@ -23,6 +23,14 @@ class DiaryController extends BaseController {
      * Trang chủ backend
      * @return type
      */
+    public function actions() {
+        return [
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+            ],
+        ];
+    }
+
     public function actionIndex() {
         $photos = ImageBusiness::getByType(ImageType::TOUR, false, false, 8);
         $tourIds = [];
@@ -36,13 +44,16 @@ class DiaryController extends BaseController {
             $tour = $search->search(true)->data[0];
             $img->target = $tour;
         }
-        $reviews = ReviewBusiness::getAll(6);
+        $reviews = ReviewBusiness::getAll();
+        $countries = CountryBusiness::getAll();
         return $this->render('index', [
                     'photos' => $photos,
                     'reviews' => $reviews,
+                    'countries' => $countries,
         ]);
     }
-    public function actionComment() {
+
+    public function actionComments() {
         $photos = ImageBusiness::getByType(ImageType::TOUR, false, false, 8);
         $tourIds = [];
         foreach ($photos as $img) {
@@ -55,10 +66,12 @@ class DiaryController extends BaseController {
             $tour = $search->search(true)->data[0];
             $img->target = $tour;
         }
-        $reviews = ReviewBusiness::getAll(6);
+        $reviews = ReviewBusiness::getAll(10);
+        $countries = CountryBusiness::getAll();
         return $this->render('comments', [
                     'photos' => $photos,
                     'reviews' => $reviews,
+                    'countries' => $countries,
         ]);
     }
 

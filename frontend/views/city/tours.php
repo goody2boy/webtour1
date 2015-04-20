@@ -2,6 +2,8 @@
 
 use common\util\TextUtils;
 use common\util\UrlUtils;
+use yii\data\Pagination;
+use yii\widgets\LinkPager;
 ?>
 
 <div class="container">
@@ -82,4 +84,21 @@ use common\util\UrlUtils;
         </ul>
         <div class="clearfix"></div>
     </div>
+    <div class="box-control">
+        <div class="pagination-router">
+            <?php
+            $pagination = new Pagination(['totalCount' => $listTours->dataCount]);
+            $pagination->setPageSize($listTours->pageSize);
+            $pagination->setPage($listTours->page - 1);
+            ?>
+            <?=
+            LinkPager::widget([
+                'pagination' => $pagination,
+                'nextPageLabel' => 'Sau &gt;',
+                'prevPageLabel' => '&lt; Trước',
+                'maxButtonCount' => 5
+            ]);
+            ?>
+        </div><!-- pagination-router -->
+    </div><!-- box-control -->
 </div>

@@ -8,7 +8,7 @@ namespace common\models\enu;
  *
  * @author CANH
  */
-class PaymentStatusType extends BasicEnum {
+class StatusPayment extends BasicEnum {
     const EVER = "EVER";
     const MILESTONE = "MILESTONE";
     const DONE = "DONE";

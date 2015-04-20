@@ -1,4 +1,21 @@
 tour = {};
+tour.changeCaptcha = function () {
+    $('#refresh-captcha').click(function (event) {
+        event.preventDefault();
+        $("#w0-image").click();
+    });
+
+    ajax({
+        service: '/tour/getcaptcha',
+        loading: false,
+        done: function (resp) {
+            if (resp.success) {
+                console.log('captcha');
+                console.log(resp);
+            }
+        }
+    });
+};
 tour.changeMoney = function () {
     $("#table-price tbody tr").children().hide();
     var select = $("#money-select option:selected").text();
@@ -99,6 +116,25 @@ tour.showPopImage = function (tourId) {
                 $('#tour-popup').children().show();
             } else {
                 popup.msg('Tour bạn chọn không có ảnh');
+            }
+        }
+    });
+};
+tour.submitReview = function () {
+    ajaxSubmit({
+        service: '/review/save',
+        id: 'submit-review',
+        contentType: 'json',
+        loading: true,
+        done: function (rs) {
+            if (rs.success) {
+                console.log('Test submit review');
+                console.log(rs);
+//                popup.msg(rs.message, function() {
+//                    window.location.href = baseUrl;
+//                });
+            } else {
+                popup.msg(rs.message);
             }
         }
     });

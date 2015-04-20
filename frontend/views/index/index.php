@@ -41,10 +41,16 @@ use common\util\UrlUtils;
         <div id="commentslider" class="owl-carousel">
             <?php foreach ($reviewLists as $review) { ?>
                 <div class="grid">
-                    <div class="img"><a><img src="<?= $this->context->baseUrl . $review->tour->images[0]->imageId ?>" alt="img" /></a></div>
+                    <div class="img"><a>
+                            <?php if (!empty($review->user->images)) { ?>
+                                <img src="<?= $this->context->baseUrl . ($review->user->images[0]->imageId != "" ? $review->user->images[0]->imageId : "data/user.jpg") ?>" alt="img">
+                            <?php } else { ?>
+                                <img src="data/user.jpg" alt="img">
+                            <?php } ?>
+                        </a></div>
                     <div class="g-content">
                         <div class="g-row">
-                            <span class="g-title" href="#"><?= $review->review_title ?>
+                            <span class="g-title" href="#"><?= $review->user->username ?>
                                 <?php for ($i = 1; $i <= 5; $i++) { ?>
                                     <?php if ($i <= $review->rate) { ?>
                                         <i class="fa fa-star yellow"></i>
@@ -58,7 +64,7 @@ use common\util\UrlUtils;
                             <?= $review->review_comment ?>
                         </div>
                         <div class="g-row">
-                            <span class="g-from">From: <?= $review->tour->title ?></span>
+                            <span class="g-from">From: <?= $review->user->address ?></span>
                         </div>
                     </div>
                 </div><!-- grid -->

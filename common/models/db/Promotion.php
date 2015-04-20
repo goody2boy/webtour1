@@ -32,9 +32,10 @@ class Promotion extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['code', 'user_id', 'discount_price', 'discount_percent', 'start_time', 'end_time'], 'required'],
+            [['code', 'discount_price', 'discount_percent', 'start_time', 'end_time'], 'required'],
             [['user_id', 'start_time', 'end_time', 'status'], 'integer'],
             [['discount_price', 'discount_percent'], 'number'],
+            [['type'], 'string'],
             [['code'], 'string', 'max' => 12]
         ];
     }
@@ -53,6 +54,7 @@ class Promotion extends \yii\db\ActiveRecord
             'start_time' => Yii::t('app', 'Start Time'),
             'end_time' => Yii::t('app', 'End Time'),
             'status' => Yii::t('app', 'Status'),
+            'type' => Yii::t('app', 'Type'),
         ];
     }
 }

@@ -43,7 +43,16 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                     <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
                     by 53 reviews
                 </div>
-                <div class="tripadvisor-header"><img src="<?= $this->context->baseUrl ?>data/tripadvisor-header.png" alt="img" /></div>
+                <div class="tripadvisor-header">
+                    <div id="TA_socialButtonBubbles789" class="TA_socialButtonBubbles">
+                        <ul id="P3Tgrl" class="TA_links USm6zXvP">
+                            <li id="tKRSuMm8" class="LaE2jx9r">
+                                <a target="_blank" href="http://www.tripadvisor.com/Hotel_Review-g60745-d258705-Reviews-Hotel_Commonwealth-Boston_Massachusetts.html"><img src="http://www.tripadvisor.com/img/cdsi/img2/branding/socialWidget/20x28_green-21693-2.png"/></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <script src="http://www.jscache.com/wejs?wtype=socialButtonBubbles&amp;uniq=789&amp;locationId=258705&amp;color=green&amp;size=rect&amp;lang=en_US&amp;display_version=2"></script>
+                </div>
                 <ul class="admin-ul">
                     <?php if ((Yii::$app->getSession()->get("customer") == null)) { ?>
                         <li><a href="#">Site map</a></li>
@@ -69,15 +78,14 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                 <div class="logo"><a href="#"><img src="<?= $this->context->baseUrl ?>images/logo.png" alt="logo" /></a></div>
                 <div class="menu-expand"><i class="fa fa-bars"></i>Menu</div>
                 <div class="menu">
-
                     <ul>
                         <li class=""><a href="<?= $this->context->baseUrl ?>">PANORAMA</a></li>
                         <li class=""><a href="<?= $this->context->baseUrl ?>our-cities.html">Our Cities</a></li>
                         <li class=""><a href="<?= $this->context->baseUrl ?>city-highlight.html">City Highlight</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>">Vietnam Discovery</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>vietnam-discovery.html">Vietnam Discovery</a></li>
                         <li class=""><a href="<?= $this->context->baseUrl ?>tour-request.html">Tour request</a></li>
                         <li class=""><a href="<?= $this->context->baseUrl ?>other-service.html">Other service</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>">Diary</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>diary.html">Diary</a></li>
                         <li class=""><a href="<?= $this->context->baseUrl ?>lien-he.html">Contact us</a></li>
                     </ul>
                 </div><!-- menu -->
@@ -169,7 +177,14 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                             </div><!-- row -->
                         </div><!-- col -->
                         <div class="col-md-2">
-                            <div class="tripadvisor"><a href="#">Vietnam Discovery Tour</a></div>
+                            <div id="TA_rated687" class="TA_rated">
+                                <ul id="El9M7JVro9lg" class="TA_links KNtt3LI">
+                                    <li id="69uGck" class="cogSb3t7S5">
+                                        <a target="_blank" href="http://www.tripadvisor.com/"><img src="http://www.tripadvisor.com/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor"/></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <script src="http://www.jscache.com/wejs?wtype=rated&amp;uniq=687&amp;locationId=258705&amp;lang=en_US&amp;display_version=2"></script>
                         </div><!-- col -->
                     </div><!-- row -->
                 </div><!-- container -->
@@ -177,11 +192,14 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
             <div class="footer-menu">
                 <div class="container">
                     <ul>
-                        <?php if (!empty($menus)) { ?>
-                            <?php foreach ($menus as $menu) { ?>
-                                <li><a href="<?= $menu->link ?>"><?= $menu->name ?></a></li>
-                            <?php } ?>
-                        <?php } ?>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>">PANORAMA</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>our-cities.html">Our Cities</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>city-highlight.html">City Highlight</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>vietnam-discovery.html">Vietnam Discovery</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>tour-request.html">Tour request</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>">Other service</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>diary.html">Diary</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>lien-he.html">Contact us</a></li>
                     </ul>
                 </div><!-- container -->
             </div><!-- footer-menu -->

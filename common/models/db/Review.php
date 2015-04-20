@@ -28,10 +28,9 @@ class Review extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
-            [['tour_id', 'rate', 'review_title', 'review_comment', 'submit_time'], 'required'],
-            [['tour_id', 'rate', 'submit_time'], 'integer'],
+            [['rate', 'review_comment', 'submit_time'], 'required'],
+            [['user_id', 'rate', 'submit_time'], 'integer'],
             [['review_comment'], 'string'],
-            [['review_title'], 'string', 'max' => 100]
         ];
     }
 
@@ -41,16 +40,15 @@ class Review extends \yii\db\ActiveRecord {
     public function attributeLabels() {
         return [
             'id' => 'ID',
-            'tour_id' => 'Tour ID',
+            'user_id' => 'User ID',
             'rate' => 'Rate',
-            'review_title' => 'Review Title',
             'review_comment' => 'Review Comment',
             'submit_time' => 'Submit Time',
         ];
     }
 
     public function attributes() {
-        return array_merge(parent::attributes(), ['image', 'tour']);
+        return array_merge(parent::attributes(), ['image', 'user']);
     }
 
 }
