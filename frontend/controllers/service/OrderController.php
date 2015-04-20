@@ -3,6 +3,7 @@
 namespace frontend\controllers\service;
 
 use common\models\business\OrderBusiness;
+use common\models\business\PromotionBusiness;
 use common\models\input\TourSearch;
 use common\models\output\Response;
 use frontend\models\OrderForm;
@@ -55,52 +56,7 @@ class OrderController extends ServiceController {
         // save tour order
     }
 
-    public function actionAdditem() {
-        $id = urldecode(Yii::$app->request->get('id'));
-        $itemId = Yii::$app->request->get('itemId');
-        if (OrderBusiness::isJson($id)) {
-            $newid = \GuzzleHttp\json_decode($id)->id;
-            if (is_numeric($itemId)) {
-                if (!in_array($itemId, $newid)) {
-                    array_push($newid, $itemId);
-                }
-                $std = new stdClass();
-                $std->id = $newid;
-                $id = json_encode($std);
-            }
-        } else {
-            if (is_numeric($itemId)) {
-                $std = new stdClass();
-                $std->id = [$itemId];
-                $id = json_encode($std);
-            }
-        }
-        return $this->response(new Response(true, "ok", $id));
-    }
-
-    public function actionDeleteitem() {
-        $id = urldecode(Yii::$app->request->get('id'));
-        $itemId = Yii::$app->request->get('itemId');
-        if (OrderBusiness::isJson($id)) {
-            $newid = \GuzzleHttp\json_decode($id)->id;
-            if (is_numeric($itemId)) {
-                if (($key = array_search($itemId, $newid)) !== false) {
-                    array_splice($newid, $key, 1);
-                }
-                if (!empty($newid)) {
-                    $std = new stdClass();
-                    $std->id = $newid;
-                    $id = json_encode($std);
-                } else {
-                    $id = '';
-                }
-            }
-        } else {
-            $id = '';
-        }
-        return $this->response(new Response(true, "ok", $id));
-    }
-
+    
     public function actionSave() {
         $form = new OrderForm();
         $form->setAttributes(Yii::$app->request->getBodyParams());
@@ -126,4 +82,19 @@ class OrderController extends ServiceController {
         return $this->response(new Response(false, "Không tính được phí do Admin chưa cấu hình!", $tourId));
     }
 
+    public function actionGetPromotion() {
+        $user = Yii::$app->getSession()->get("customer");
+        $post = Yii::$app->request->post();
+        $code = $post['code'];
+        $promo = PromotionBusiness::getBycode($code);
+        if($promo!=null){
+            if($promo->user_id != $user->id){
+                return $this->response(new Response(false,"Mã promotion này không thuộc về bạn.", $promo));
+            }
+        }else{
+            return $this->response(new Response(false,"Mã promotion này không hợp lệ.", $code));
+        }
+        return $this->response(new Response(true,"Get Promotion thanh cong", $promo));
+    }
+    
 }

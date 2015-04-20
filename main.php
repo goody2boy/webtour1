@@ -11,9 +11,6 @@ return [
             'dsn' => 'mysql:host=123.30.129.231:3306;dbname=cafeitvn_webtourdb',
             'username' => 'cafeitvn_webtour',
             'password' => 'webtour',
-//            'dsn' => 'mysql:host=mysql.hostinger.vn;dbname=u240183961_loz',
-//            'username' => 'u240183961_loz',
-//            'password' => 'pa880413',
             'charset' => 'utf8',
         ],
          'mailer' => [
