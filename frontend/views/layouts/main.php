@@ -76,7 +76,7 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                         <li class=""><a href="<?= $this->context->baseUrl ?>city-highlight.html">City Highlight</a></li>
                         <li class=""><a href="<?= $this->context->baseUrl ?>">Vietnam Discovery</a></li>
                         <li class=""><a href="<?= $this->context->baseUrl ?>tour-request.html">Tour request</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>">Other service</a></li>
+                        <li class=""><a href="<?= $this->context->baseUrl ?>other-service.html">Other service</a></li>
                         <li class=""><a href="<?= $this->context->baseUrl ?>">Diary</a></li>
                         <li class=""><a href="<?= $this->context->baseUrl ?>lien-he.html">Contact us</a></li>
                     </ul>
