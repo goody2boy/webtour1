@@ -38,12 +38,22 @@ class HightLightController extends BaseController {
         $alias = Yii::$app->request->get('alias');
         $id = Yii:: $app->request->get('id');
         //
+        $page = Yii::$app->request->get('page');
+        $pageSize = Yii::$app->request->get('per-page');
+        //
         $hilight = HightLightBusiness::get($id);
         $hilight->images = $this->getHightLightImages($hilight);
         //
         $search = new TourSearch();
         $search->hightlight = $hilight->id;
-        $search->pageSize = 6;
+        if ($page > 0) {
+            $search->page = $page;
+        }
+        if ($pageSize > 0) {
+            $search->pageSize = $pageSize;
+        } else {
+            $search->pageSize = 6;
+        }
         $listTours = $search->search(true);
         //
         $cities = CityBusiness::getAll();

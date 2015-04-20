@@ -71,7 +71,18 @@ class CityController extends BaseController {
             return $this->render('//error/message', ['message' => "City không tồn tại", 'title' => "404 NOT FOUND"]);
         }
         $categories = CategoryBusiness::getAll();
+        //
+        $page = Yii::$app->request->get('page');
+        $pageSize = Yii::$app->request->get('per-page');
         $search2 = new TourSearch();
+        if ($page > 0) {
+            $search2->page = $page;
+        }
+        if ($pageSize > 0) {
+            $search2->pageSize = $pageSize;
+        } else {
+            $search2->pageSize = 6;
+        }
         $search2->city = $cityId;
         $search2->hightlight = $hilightId;
         $listTours = $search2->search(true);
