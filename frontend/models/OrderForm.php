@@ -5,7 +5,7 @@ namespace frontend\models;
 use common\models\business\OrderBusiness;
 use common\models\db\Order;
 use common\models\enu\PaymentType;
-use common\models\enu\PaymentStatusType;
+use common\models\enu\StatusPayment;
 use common\models\output\Response;
 use yii\base\Model;
 
@@ -56,6 +56,7 @@ class OrderForm extends Model {
         if ($order == null) {
             $order = new Order();
             $order->create_time = time();
+            $order->update_time = time();
         }
         $order->tour_id = $this->tour_id;
         $order->user_id = $this->user_id;
@@ -66,11 +67,10 @@ class OrderForm extends Model {
         $order->total_price = $this->total_price;
         $order->date_departure = $this->date_departure;
         if ($this->promo_code != null && $this->promo_code != "") {
-            $order->promo_code = time();
+            $order->promo_code = $this->promo_code;
         }
         $order->payment_method = $this->payment_method;
-        $order->status_payment = $this->status_payment;
-        $order->update_time = time();
+        $order->status_payment = StatusPayment::EVER;
         if (!$order->save(false)) {
             return new Response(false, "Không lưu được vào csdl", $order->errors);
         }

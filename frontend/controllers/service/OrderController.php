@@ -5,13 +5,65 @@ namespace frontend\controllers\service;
 use common\models\business\OrderBusiness;
 use common\models\business\PromotionBusiness;
 use common\models\input\TourSearch;
+use common\models\input\OrderSearch;
 use common\models\output\Response;
 use frontend\models\OrderForm;
+use frontend\models\CheckoutForm;
 use common\models\enu\PaymentType;
+use common\models\enu\StatusPayment;
 use stdClass;
 use Yii;
 
 class OrderController extends ServiceController {
+
+    public function actionCheckout($orderId, $promoCode, $method) {
+        $user = Yii::$app->getSession()->get("customer");
+        if ($user == null) {
+            return $this->response(new Response(false, "Bạn chưa đăng nhập", 'NO_LOGIN'));
+        }
+        //
+        $method_payment = "";
+        switch ($method) {
+            case 0: $method_payment = PaymentType::PAYPAL;
+                break;
+            case 1: $method_payment = PaymentType::MASTER_CARD;
+                break;
+            case 2: $method_payment = PaymentType::LATER;
+                break;
+            default : $method_payment = PaymentType::LATER;
+                break;
+        }
+        //
+        if ($promoCode != null && $promoCode != "") {
+            $promo = PromotionBusiness::getBycode($promoCode);
+            if ($promo != null && sizeof($promo) > 0) {
+                if ($promo[0]->user_id != $user->id) {
+                    return $this->response(new Response(false, "Mã promotion này không thuộc về bạn.", $promo));
+                }
+            } else {
+                return $this->response(new Response(false, "Mã promotion này không hợp lệ.", $code));
+            }
+        }
+        //
+        $search = new OrderSearch();
+        $search->id = $orderId;
+        $search->user_id = $user->id;
+        $result = $search->search(true)->data;
+        $order = null;
+        if (sizeof($result) > 0) {
+            $order = new CheckoutForm();
+            $order->id = $orderId;
+            if ($promoCode != null && $promoCode != "") {
+                $order->promo_code = $promoCode;
+            }
+            $order->status_payment = StatusPayment::DONE;
+            $order->payment_method = $method_payment;
+            return $this->response($order->save());
+//            return $this->response(new Response(true, "Checkout thành công.", $order));
+        } else {
+            return $this->response(new Response(false, "Không tồn tại order này.", $orderId));
+        }
+    }
 
     public function actionSubmitorder($tourId, $numAdult, $numChild, $numNoChild, $date) {
 
@@ -56,7 +108,6 @@ class OrderController extends ServiceController {
         // save tour order
     }
 
-    
     public function actionSave() {
         $form = new OrderForm();
         $form->setAttributes(Yii::$app->request->getBodyParams());
@@ -86,15 +137,31 @@ class OrderController extends ServiceController {
         $user = Yii::$app->getSession()->get("customer");
         $post = Yii::$app->request->post();
         $code = $post['code'];
-        $promo = PromotionBusiness::getBycode($code);
-        if($promo!=null){
-            if($promo->user_id != $user->id){
-                return $this->response(new Response(false,"Mã promotion này không thuộc về bạn.", $promo));
-            }
-        }else{
-            return $this->response(new Response(false,"Mã promotion này không hợp lệ.", $code));
+        $orderId = $post['orderId'];
+        $search = new OrderSearch();
+        $search->id = $orderId;
+        $search->user_id = $user->id;
+        $result = $search->search(true)->data;
+        if (sizeof($result) > 0) {
+            $order = $result[0];
+        } else {
+            return $this->response(new Response(false, "Không tồn tại order này.", $orderId));
         }
-        return $this->response(new Response(true,"Get Promotion thanh cong", $promo));
+        $promo = PromotionBusiness::getBycode($code);
+        if ($promo != null && sizeof($promo) > 0) {
+            if ($promo[0]->user_id != $user->id) {
+                return $this->response(new Response(false, "Mã promotion này không thuộc về bạn.", $promo));
+            }
+        } else {
+            return $this->response(new Response(false, "Mã promotion này không hợp lệ.", $code));
+        }
+        $promo_price = 0;
+        if ($promo[0]->discount_price > 0) {
+            $promo_price = $order->total_price - $promo[0]->discount_price;
+        } else if ($promo[0]->discount_percent > 0) {
+            $promo_price = $order->total_price * $promo[0]->discount_percent / 100;
+        }
+        return $this->response(new Response(true, "Get Promotion thanh cong", $promo_price));
     }
-    
+
 }

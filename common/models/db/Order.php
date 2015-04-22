@@ -36,7 +36,7 @@ class Order extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
-            [['tour_id', 'user_id', 'price_id', 'number_adult', 'number_child', 'number_nochild', 'total_price', 'date_departure', 'create_time', 'update_time'], 'required'],
+            [['tour_id', 'user_id', 'price_id', 'number_adult', 'number_child', 'number_nochild', 'total_price', 'date_departure', 'create_time', 'update_time', 'invoice_code'], 'required'],
             [['tour_id', 'user_id', 'price_id', 'number_adult', 'number_child', 'number_nochild', 'date_departure', 'create_time', 'update_time'], 'integer'],
             [['total_price'], 'number'],
             [['promo_code', 'payment_method', 'status_payment'], 'string', 'max' => 12]
@@ -62,6 +62,7 @@ class Order extends \yii\db\ActiveRecord {
             'promo_code' => Yii::t('app', 'Promo Code'),
             'payment_method' => Yii::t('app', 'Payment Method'),
             'status_payment' => Yii::t('app', 'Status Payment'),
+            'invoice_code' => Yii::t('app', 'Invoice Code'),
         ];
     }
 
