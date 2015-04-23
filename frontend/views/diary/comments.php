@@ -158,7 +158,7 @@ use yii\captcha\Captcha;
                 </div><!-- end modal-body -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" onclick="tour.submitReview();">Submit</button>
-                    <button type="button" class="btn btn-default" data-target="#ModalRating" data-dismiss="#ModalRating">Cancel</button>
+                    <button type="button" class="btn btn-default" data-target="#ModalRating" data-dismiss="modal">Cancel</button>
                 </div>
             </div><!-- end modal-content -->
         </form>

@@ -79,6 +79,18 @@ class UrlUtils {
         return "hightlight/" . TextUtils::removeMarks($name) . "-" . trim($id) . ".html";
     }
 
+    public static function vietnameDicover($name, $id) {
+        return "vietnam-discovery.html";
+    }
+
+    public static function travelJournal($name, $id) {
+        return "travel-journal.html";
+    }
+
+    public static function cultureStory($name, $id) {
+        return "culture-story.html";
+    }
+
     public static function cate($name) {
         
     }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace common\models\enu;
 
 /**
@@ -9,7 +8,8 @@ namespace common\models\enu;
  * @author CANH
  */
 class PaymentType extends BasicEnum {
-    const ONEPAY = "ONEPAY";
-    const ONEPAY = "PAYPAL";
-    
+    const PAYPAL = "PAYPAL";
+    const MASTER_CARD = "MASTER_CARD";
+    const LATER = "LATER";
+
 }

@@ -5,6 +5,6 @@ return [
         'baseUrl' => "http://localhost/webtour1/frontend/public/"
     ],
     "email" => [
-        'baseUrl' => "http://localhost/webtour1/frontend/public/"
+        'baseUrl' => "http://phananh.besaba.com/frontend/public/"
     ]
 ];

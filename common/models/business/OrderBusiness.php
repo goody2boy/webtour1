@@ -54,12 +54,16 @@ public static function isJson($string)
     return $isValid;
 }
 
-    public static function mGet($ids) {
-        
+    public static function mGet($ids, $limit = 0) {
+        if ($limit > 0) {
+            return Order::find()->andWhere(["id" => $ids])->limit($limit)->all();
+        } else {
+            return Order::find()->andWhere(["id" => $ids])->all();
+        }
     }
 
     public static function get($id) {
-        
+        return Order::findOne($id);
     }
     
     public static function getOrderByUser($userId){

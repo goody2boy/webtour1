@@ -45,10 +45,11 @@ return [
         'tour/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'tour/detail',
         'tour-type/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'category/detail',
         'checkout.html' => 'order/checkout',
-        'tour-request.html'=> 'tour/request',
-        'diary.html'=> 'diary/index',
-        'comments.html'=> 'diary/comments',
-        'vietnam-discovery.html'=> 'tag/index',
-        
+        'tour-request.html' => 'tour/request',
+        'diary.html' => 'diary/index',
+        'comments.html' => 'diary/comments',
+        'vietnam-discovery.html' => 'tag/discover',
+        'travel-journal.html' => 'tag/travel',
+        'culture-story.html' => 'tag/culture',
     ],
 ];

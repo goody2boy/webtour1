@@ -10,7 +10,8 @@ AppAsset::register($this);
 LibAsset::register($this);
 WebAsset::register($this);
 
-$reviews = isset($this->context->var["reviews"]) ? $this->context->var["reviews"] : '';
+$reviewsAvg = isset($this->context->var["reviewsAvg"]) ? $this->context->var["reviewsAvg"] : '';
+$reviewsCount = isset($this->context->var["reviewsCount"]) ? $this->context->var["reviewsCount"] : '';
 $albums = isset($this->context->var["albums"]) ? $this->context->var["albums"] : '';
 $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : '';
 ?>
@@ -40,8 +41,14 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
             <div class="container">
                 <div class="rating-header">
                     Quality Rating 
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                    by 53 reviews
+                    <?php for ($i = 1; $i <= 5; $i++) { ?>
+                        <?php if ($i <= $reviewsAvg) { ?>
+                            <i class="fa fa-star yellow"></i>
+                        <?php } else { ?>
+                            <i class="fa fa-star"></i>
+                        <?php } ?>
+                    <?php } ?>
+                    by <?= $reviewsCount ?> reviews
                 </div>
                 <div class="tripadvisor-header">
                     <div id="TA_socialButtonBubbles789" class="TA_socialButtonBubbles">

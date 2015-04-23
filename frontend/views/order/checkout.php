@@ -42,7 +42,7 @@ use common\util\UrlUtils;
                             <td colspan="2">If you have a promo code enter it here:</td>
                             <td colspan="2">
                                 <input name="promo_code" type="text" class="form-control text-coupon">
-                                <button type="submit" onclick="order.usePromoCode();" class="btn btn-primary btn-sm">Enter</button>
+                                <button type="submit" onclick="order.usePromoCode(<?php if (!empty($orders->data)) { ?> <?= $order->id?>,<?= $order->total_price ?> <?php } ?>);" class="btn btn-primary btn-sm">Enter</button>
                             </td>
                             <td>Your discount</td>
                             <td><span id="discount-price" class="text-danger">-$0</span></td>
@@ -70,17 +70,17 @@ use common\util\UrlUtils;
                 <div class="row">
                     <div class="col-md-4">
                         <div class="radio">
-                            <label><input name="rd_payment" type="radio" value="" checked=""> Paypal</label>
+                            <label><input name="rd_payment" type="radio" value="0" checked=""> Paypal</label>
                         </div>
                     </div><!-- col -->
                     <div class="col-md-4">
                         <div class="radio">
-                            <label><input name="rd_payment" type="radio" value=""> Visa/Master/American Express/JCB Card</label>
+                            <label><input name="rd_payment" type="radio" value="1"> Visa/Master/American Express/JCB Card</label>
                         </div>
                     </div><!-- col -->
                     <div class="col-md-4">
                         <div class="radio">
-                            <label><input name="rd_payment" type="radio" value=""> Pay later</label>
+                            <label><input name="rd_payment" type="radio" value="2"> Pay later</label>
                         </div>
                     </div><!-- col -->
                 </div><!-- row -->
@@ -94,7 +94,7 @@ use common\util\UrlUtils;
                         </div>
                     </div><!-- col -->
                     <div class="col-sm-6 text-right">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" onclick="order.submitOrder(<?php if (!empty($orders->data)) { ?> <?= $order->id?> <?php } ?>);" class="btn btn-primary">Submit</button>
                     </div><!-- col -->
                 </div><!-- row -->
             </div><!-- checkout-bottom -->

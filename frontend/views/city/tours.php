@@ -51,11 +51,13 @@ use yii\widgets\LinkPager;
                         </div>
                         <div class="tour-content">
                             <div class="tour-rating">
-                                <i class="fa fa-star yellow"></i>
-                                <i class="fa fa-star yellow"></i>
-                                <i class="fa fa-star yellow"></i>
-                                <i class="fa fa-star yellow"></i>
-                                <i class="fa fa-star"></i>
+                                <?php for ($i = 1; $i <= 5; $i++) { ?>
+                                    <?php if ($i <= $tour->review) { ?>
+                                        <i class="fa fa-star yellow"></i>
+                                    <?php } else { ?>
+                                        <i class="fa fa-star"></i>
+                                    <?php } ?>
+                                <?php } ?>
                                 <a href="#">See 1 reviews</a>
                             </div>
                             <div class="tour-row">Tour type: 

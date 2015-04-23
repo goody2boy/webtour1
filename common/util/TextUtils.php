@@ -11,7 +11,7 @@ class TextUtils {
      * @return string
      */
     public static function randomString() {
-        $validCharacters = "abcdefghijklmnopqrstuxyvwz";
+        $validCharacters = "abcdefghijklmnopqrstuxyvwz0123456789";
         $validCharNumber = strlen($validCharacters);
 
         $index = mt_rand(0, $validCharNumber - 1);

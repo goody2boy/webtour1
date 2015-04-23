@@ -7,7 +7,7 @@ use yii\widgets\LinkPager;
 ?>
 <div class="container">
     <div class="city-type highlight-type">
-        <div class="ct-name"><?=$category->name?></div>
+        <div class="ct-name"><?= $category->name ?></div>
         <div class="ct-inner">
             <label>Select city</label>
             <select class="form-control">
@@ -28,11 +28,13 @@ use yii\widgets\LinkPager;
                         </div>
                         <div class="highlight-content">
                             <div class="highlight-rating">
-                                <i class="fa fa-star yellow"></i>
-                                <i class="fa fa-star yellow"></i>
-                                <i class="fa fa-star yellow"></i>
-                                <i class="fa fa-star yellow"></i>
-                                <i class="fa fa-star"></i>
+                                <?php for ($i = 1; $i <= 5; $i++) { ?>
+                                    <?php if ($i <= $tour->review) { ?>
+                                        <i class="fa fa-star yellow"></i>
+                                    <?php } else { ?>
+                                        <i class="fa fa-star"></i>
+                                    <?php } ?>
+                                <?php } ?>
                                 <a href="#">See 1 reviews</a>
                             </div>
                             <div class="highlight-row"><a class="highlight-title" href="<?= $this->context->baseUrl . UrlUtils::tour($tour->title, $tour->id) ?>"><?= $tour->title ?></a></div>
