@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\business\MenuBusiness;
+use common\models\business\OptionBusiness;
 use common\models\business\ReviewBusiness;
 use yii\web\Controller;
 
@@ -26,7 +27,8 @@ class BaseController extends Controller {
         $this->var["reviewsCount"] = ReviewBusiness::countAllStar();
         $a = 3.875;
         $b = (int) $a;
-        $this->var["reviewsAvg"] = (int)ReviewBusiness::averageAllStar();
+        $this->var["reviewsAvg"] = (int) ReviewBusiness::averageAllStar();
+        $this->var['home'] = $this->information();
     }
 
     public function footer() {
@@ -80,6 +82,16 @@ class BaseController extends Controller {
         if ($image != null) {
             $this->og['image'] = $image;
         }
+    }
+
+    private function information() {
+        $options = OptionBusiness::getAll();
+        $home=[];
+        foreach ($options as $option) {
+            $home[$option->key] = $option->value;
+        }
+        return $home;
+        
     }
 
 }

@@ -22,9 +22,14 @@ class OptionBusiness {
     public static function get($id) {
         return Option::findOne($id);
     }
+
     public static function getByKey($key) {
         $key = strtoupper($key);
-        return Option::find()->andWhere(['=','key',$key])->one();
+        return Option::find()->andWhere(['=', 'key', $key])->one();
+    }
+
+    public static function getAll() {
+        return Option::find()->all();
     }
 
     public static function getConfig($nameArr = [], $active = 0) {

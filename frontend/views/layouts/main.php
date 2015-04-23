@@ -14,6 +14,7 @@ $reviewsAvg = isset($this->context->var["reviewsAvg"]) ? $this->context->var["re
 $reviewsCount = isset($this->context->var["reviewsCount"]) ? $this->context->var["reviewsCount"] : '';
 $albums = isset($this->context->var["albums"]) ? $this->context->var["albums"] : '';
 $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : '';
+$home = isset($this->context->var["home"]) ? $this->context->var["home"] : '';
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -70,30 +71,27 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                     <?php } ?>
                 </ul>
                 <div class="box-social">
-                    <a href="#"><span class="icon-facebook"></span></a>
-                    <a href="#"><span class="icon-twitter"></span></a>
-                    <a href="#"><span class="icon-googleplus"></span></a>
-                    <a href="#"><span class="icon-youtube"></span></a>
-                    <a href="#"><span class="icon-pinterest"></span></a>
-                    <a href="#"><span class="icon-tumblr"></span></a>
-                    <a href="#"><span class="icon-linkin"></span></a>
+                    <a href="<?= !empty($home)&&isset($home['FACEBOOK'])?$home['FACEBOOK']:'' ?>"><span class="icon-facebook"></span></a>
+                    <a href="<?= !empty($home)&&isset($home['TWITTER'])?$home['TWITTER']:'' ?>"><span class="icon-twitter"></span></a>
+                    <a href="<?= !empty($home)&&isset($home['GOOGLE'])?$home['GOOGLE']:'' ?>"><span class="icon-googleplus"></span></a>
+                    <a href="<?= !empty($home)&&isset($home['YOUTUBE'])?$home['YOUTUBE']:'' ?>"><span class="icon-youtube"></span></a>
+                    <a href="<?= !empty($home)&&isset($home['PINTEREST'])?$home['PINTEREST']:'' ?>"><span class="icon-pinterest"></span></a>
+                    <a href="<?= !empty($home)&&isset($home['TUMBLR'])?$home['TUMBLR']:'' ?>"><span class="icon-tumblr"></span></a>
+                    <a href="<?= !empty($home)&&isset($home['LINKIN'])?$home['LINKIN']:'' ?>"><span class="icon-linkin"></span></a>
                 </div>
             </div><!-- container -->
         </div><!-- navigator -->
         <div class="header">
             <div class="container">
-                <div class="logo"><a href="#"><img src="<?= $this->context->baseUrl ?>images/logo.png" alt="logo" /></a></div>
+                <div class="logo"><a href="<?= $this->context->baseUrl ?>"><img src="<?= $this->context->baseUrl ?>images/logo.png" alt="logo" /></a></div>
                 <div class="menu-expand"><i class="fa fa-bars"></i>Menu</div>
                 <div class="menu">
-                    <ul>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>">PANORAMA</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>our-cities.html">Our Cities</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>city-highlight.html">City Highlight</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>vietnam-discovery.html">Vietnam Discovery</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>tour-request.html">Tour request</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>other-service.html">Other service</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>diary.html">Diary</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>lien-he.html">Contact us</a></li>
+                   <ul>
+                        <?php if (!empty($menus)) { ?>
+                            <?php foreach ($menus as $menu) { ?>
+                                <li class="<?= isset($this->context->var['menuactive']) && $this->context->var['menuactive'] == $menu->link ? 'active' : '' ?>"><a href="<?= $menu->link ?>"><?= $menu->name ?></a></li>
+                            <?php } ?>
+                        <?php } ?>
                     </ul>
                 </div><!-- menu -->
             </div><!-- container -->
@@ -103,16 +101,16 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                 <div class="container">
                     <div class="bs-inline">
                         <i class="fa fa-phone"></i>
-                        Hot line: +<b class="text-danger">84 974 88 11 22</b>  +<b class="text-danger">84 905 351 699</b>
+                        Hot line:<b class="text-danger"><?= !empty($home)&&isset($home['HOT_LINE'])?$home['HOT_LINE']:'' ?></b>
                     </div>
                     <div class="bs-inline">
                         <i class="fa fa-envelope"></i>
-                        Email: <a class="text-primary" href="#"><b>info@vietnamdiscoverytour.com.vn</b></a>
+                        Email: <a class="text-primary" href="mailto:<?= !empty($home)&&isset($home['EMAIL_INFO'])?$home['EMAIL_INFO']:'' ?>"><b><?= !empty($home)&&isset($home['EMAIL_INFO'])?$home['EMAIL_INFO']:'' ?></b></a>
                     </div>
                     <div class="bs-inline">
                         Chat online:
-                        <a href="#"><i class="fa fa-skype"></i></a>
-                        <a href="ymsgr:sendim?lee_haira"><img src="http://opi.yahoo.com/online?u=lee_haira&amp;m=g&amp;t=5"></a>
+                        <a href="Skype:<?= !empty($home)&&isset($home['SKYPE'])?$home['SKYPE']:'' ?>?chat"><i class="fa fa-skype"></i></a>
+                        <a href="ymsgr:sendim?<?= !empty($home)&&isset($home['YAHOO'])?$home['YAHOO']:'' ?>"><img src="http://opi.yahoo.com/online?u=lee_haira&amp;m=g&amp;t=5"></a>
                     </div>
                 </div><!-- container -->
             </div><!-- box-support -->
@@ -142,10 +140,10 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                                     <label class="footer-lb">About Us<span class="fa fa-plus"></span></label>
                                     <div class="footer-content">
                                         <ul class="list-ul">
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>Why us</a></li>
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>Meet our team</a></li>
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>For Affiliates</a></li>
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>Request Form</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['WHY_US'])?$home['WHY_US']:'' ?>"><i class="fa fa fa-angle-right"></i>Why us</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['MEET_OUR_TEAM'])?$home['MEET_OUR_TEAM']:'' ?>"><i class="fa fa fa-angle-right"></i>Meet our team</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['FOR_AFFILIATES'])?$home['FOR_AFFILIATES']:'' ?>"><i class="fa fa fa-angle-right"></i>For Affiliates</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['REQUEST_FORM'])?$home['REQUEST_FORM']:'' ?>"><i class="fa fa fa-angle-right"></i>Request Form</a></li>
                                         </ul>   
                                     </div><!-- footer-content -->
                                 </div><!-- col -->
@@ -153,11 +151,11 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                                     <label class="footer-lb">Quick Links<span class="fa fa-plus"></span></label>
                                     <div class="footer-content">
                                         <ul class="list-ul">
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>Terms of Use</a></li>
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>Privacy Policy</a></li>
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>Travel Guides</a></li>
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>Contact us</a></li>
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>Sitemap</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['TERMS_OF_USE'])?$home['TERMS_OF_USE']:'' ?>"><i class="fa fa fa-angle-right"></i>Terms of Use</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['PRIVACY_POLICY'])?$home['PRIVACY_POLICY']:'' ?>"><i class="fa fa fa-angle-right"></i>Privacy Policy</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['TRAVEL_GUIDES'])?$home['TRAVEL_GUIDES']:'' ?>"><i class="fa fa fa-angle-right"></i>Travel Guides</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['CONTACT_US'])?$home['CONTACT_US']:'' ?>"><i class="fa fa fa-angle-right"></i>Contact us</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['SITEMAP'])?$home['SITEMAP']:'' ?>"><i class="fa fa fa-angle-right"></i>Sitemap</a></li>
                                         </ul>
                                     </div><!-- footer-content -->
                                 </div><!-- col -->
@@ -165,9 +163,9 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                                     <label class="footer-lb">Virtual Experience<span class="fa fa-plus"></span></label>
                                     <div class="footer-content">
                                         <ul class="list-ul">
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>Client Memoirs</a></li>
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>Wonderful moments</a></li>
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>Impressive Journeys</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['CLIENT_MEMOIRS'])?$home['CLIENT_MEMOIRS']:'' ?>"><i class="fa fa fa-angle-right"></i>Client Memoirs</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['WONDERFUL_MOMENTS'])?$home['WONDERFUL_MOMENTS']:'' ?>"><i class="fa fa fa-angle-right"></i>Wonderful moments</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['IMPRESSIVE_JOURNEYS'])?$home['IMPRESSIVE_JOURNEYS']:'' ?>"><i class="fa fa fa-angle-right"></i>Impressive Journeys</a></li>
                                         </ul>
                                     </div><!-- footer-content -->
                                 </div><!-- col -->
@@ -175,9 +173,9 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
                                     <label class="footer-lb">Service Improvement<span class="fa fa-plus"></span></label>
                                     <div class="footer-content">
                                         <ul class="list-ul">
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>Service reviews</a></li>
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>Questions & Answers</a></li>
-                                            <li><a href="#"><i class="fa fa fa-angle-right"></i>Newsletter</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['SERVICE_REVIEWS'])?$home['SERVICE_REVIEWS']:'' ?>"><i class="fa fa fa-angle-right"></i>Service reviews</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['QUESTIONS_ANSWERS'])?$home['QUESTIONS_ANSWERS']:'' ?>"><i class="fa fa fa-angle-right"></i>Questions & Answers</a></li>
+                                            <li><a href="<?= !empty($home)&&isset($home['NEWSLETTER'])?$home['NEWSLETTER']:'' ?>"><i class="fa fa fa-angle-right"></i>Newsletter</a></li>
                                         </ul>
                                     </div><!-- footer-content -->
                                 </div><!-- col -->
@@ -199,23 +197,20 @@ $menus = isset($this->context->var["menus"]) ? $this->context->var["menus"] : ''
             <div class="footer-menu">
                 <div class="container">
                     <ul>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>">PANORAMA</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>our-cities.html">Our Cities</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>city-highlight.html">City Highlight</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>vietnam-discovery.html">Vietnam Discovery</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>tour-request.html">Tour request</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>">Other service</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>diary.html">Diary</a></li>
-                        <li class=""><a href="<?= $this->context->baseUrl ?>lien-he.html">Contact us</a></li>
+                        <?php if (!empty($menus)) { ?>
+                            <?php foreach ($menus as $menu) { ?>
+                                <li class=""><a href="<?= $menu->link ?>"><?= $menu->name ?></a></li>
+                            <?php } ?>
+                        <?php } ?>
                     </ul>
                 </div><!-- container -->
             </div><!-- footer-menu -->
             <div class="copyright">
                 <div class="container">
                     <p>Vietnam Discovery Tour</p>
-                    <p>Address: Vietnam Discovery Office - 64 Le Loi Street, Hue City, Vietnam</p>
+                    <p>Address: <?= !empty($home)&&isset($home['ADDRESS'])?$home['ADDRESS']:'' ?></p>
                     <p>Number of Licence: 01- 420/2014/TCDL-GPLHQT</p>
-                    <p>Hotline: +84 974 88 11 22  +84 905 351 699 - Email: info@vietnamdiscoverytour.com.vn</p>
+                    <p>Hotline:<?= !empty($home)&&isset($home['HOT_LINE'])?$home['HOT_LINE']:'' ?> - Email: <?= !empty($home)&&isset($home['EMAIL_INFO'])?$home['EMAIL_INFO']:'' ?></p>
                 </div><!-- container -->
             </div><!-- copyright -->
         </div><!-- footer -->

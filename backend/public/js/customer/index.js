@@ -1,6 +1,7 @@
 var index = {};
 
 index.grid = function() {
+    window.location.href = baseUrl+"#option/grid";
     layout.title("Quản trị thông tin cơ bản");
     layout.breadcrumb([
         ["Trang chủ", "#index/grid"],

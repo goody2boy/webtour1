@@ -1,3 +1,6 @@
+<?php
+$home = isset($this->context->var["home"]) ? $this->context->var["home"] : '';
+?>
 <div class="container">
     <div class="big-title">
         <div class="lb-name">Contact Us</div>
@@ -10,19 +13,19 @@
                     <br />
                     <p><b>Office Address</b></p>
                     <p><b class="text-primary">Vietnam Discovery Office</b></p>
-                    <p>64 Le Loi Street, Hue City, Vietnam</p>
+                    <p><?= !empty($home)&&isset($home['ADDRESS'])?$home['ADDRESS']:'' ?></p>
                     <br />
                     <p><b>Support by Phone</b></p>
                     <p>Please kindly contact Vietnam Discovery Tours’s Customer Support Center at: (International charges will be applied)</p>
-                    <p>Hotline: <span class="text-danger">+84 974 88 11 22 +84 905 351 699</span></p>
+                    <p>Hotline: <span class="text-danger"><?= !empty($home)&&isset($home['HOT_LINE'])?$home['HOT_LINE']:'' ?></span></p>
                     <br />
                     <p><b>Customer Service hours</b></p>
                     <p>Monday - Friday: 8:00 am - 5:30 pm (GMT + 7)</p>
                     <p>Saturday: 8:30 am - 11:30 am (GMT +7)</p>
                     <br />
                     <p><b>Support Online</b></p>
-                    <p>Customer Support: <a href="#">info@vietnamdiscoverytour.com.vn</a></p>
-                    <p>Feedback: <a href="#"> info@vietnamdiscoverytour.com.vn</a></p>
+                    <p>Customer Support: <a href="mailto:<?= !empty($home)&&isset($home['EMAIL_INFO'])?$home['EMAIL_INFO']:'' ?>"><b><?= !empty($home)&&isset($home['EMAIL_INFO'])?$home['EMAIL_INFO']:'' ?></b></a></p>
+                    <p>Feedback: <a href="mailto:<?= !empty($home)&&isset($home['EMAIL_INFO'])?$home['EMAIL_INFO']:'' ?>"><b><?= !empty($home)&&isset($home['EMAIL_INFO'])?$home['EMAIL_INFO']:'' ?></b></a></p>
                     <p>Website: <a href="#">www.vietnamdiscoverytour.com.vn</a></p>
                 </div><!-- maincontent -->
             </div><!-- col -->
