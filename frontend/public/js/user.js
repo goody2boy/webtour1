@@ -56,7 +56,7 @@ user.changepass = function() {
         done: function(rs) {
             if (rs.success) {
                 popup.msg(rs.message);
-                window.location.href = baseUrl+'profile.html'
+                window.location.href = baseUrl + 'profile.html'
             } else {
                 popup.msg(rs.message);
             }
@@ -64,25 +64,28 @@ user.changepass = function() {
     });
 };
 user.login = function() {
-    var account = $('input[name=account]').val();
-    if (account == null || account == '') {
-        popup.msg("Account requierd");
-        return;
-    }
-    var pass = $('input[name=password]').val();
-    if (pass == null || pass == '') {
-        popup.msg("Password requierd");
-        return;
-    }
-    ajax({
+    ajaxSubmit({
         service: '/user/login',
-        data: {account: account, pass: pass},
+        id: 'form-login',
         contentType: 'json',
-        type: 'post',
         done: function(rs) {
             if (rs.success) {
-                location.reload();
-
+                window.location.href = baseUrl;
+            } else {
+                $('div#error').removeClass('hide')
+                $('div#error div').text(rs.message);
+            }
+        }
+    });
+};
+user.forgot = function() {
+    ajaxSubmit({
+        service: '/user/forgot',
+        id: 'form-forgot',
+        contentType: 'json',
+        done: function(rs) {
+            if (rs.success) {
+                popup.msg(rs.message);
             } else {
                 popup.msg(rs.message);
             }

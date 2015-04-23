@@ -1,26 +1,20 @@
 <?php
+namespace frontend\models;
 
-namespace backend\models;
-
-use common\models\business\AdministratorBusiness;
-use common\models\db\Administrator;
+use common\models\business\UserBusiness;
 use common\models\output\Response;
 use Yii;
 use yii\base\Model;
 
+
 class SiginForm extends Model {
 
-    public $email;
-    public $description;
-    public $remember;
+    public $account;
+    public $password;
 
     public function rules() {
         return [
-            ['email', 'required'],
-            ['email', 'email'],
-            ['email', 'filter', 'filter' => 'trim'],
-            ['description', 'string'],
-            ['remember', 'boolean'],
+            [['account', 'password'], 'required'],
         ];
     }
 
@@ -30,25 +24,14 @@ class SiginForm extends Model {
      */
     public function signin() {
         if (!$this->validate()) {
-            return new Response(false, "Incorrect data", $this->errors);
+            return new Response(false, "Account and password cannot is blank", $this->errors);
         }
-        $admin = AdministratorBusiness::get($this->email);
-        if ($admin == null) {
-            $admin = new Administrator();
-            $admin->active = 0;
-            $admin->id = $this->email;
-            $admin->description = $this->description;
-            $admin->joinTime = time();
+        $user = UserBusiness::getByLogin($this->account, $this->password);
+        if (empty($user)) {
+            return new Response(false, "Account or password incorect !", $this->errors);
         }
-        if ($this->remember) {
-            $admin->rememberKey = Yii::$app->getSecurity()->generateRandomString();
-        }
-        $admin->lastTime = time();
-        $admin->save();
-        if (!$admin->active) {
-            return new Response(false, "Account " . $admin->id . ' are locked', $admin);
-        }
-        return new Response(true, "Sign successful", $admin);
+        Yii::$app->getSession()->set("customer", $user);
+        return new Response(true, "Sign successful", $user);
     }
 
 }

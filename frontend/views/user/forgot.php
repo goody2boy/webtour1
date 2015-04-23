@@ -11,7 +11,7 @@
                 <div class="box-content">
                     <div class="form form-account">
                         <div class="form-group">
-                            <img class="intro-img" src="images/intro.jpg" alt="intro" />
+                            <img class="intro-img" src="<?= $this->context->baseUrl ?>images/intro.jpg" alt="intro" />
                         </div><!-- form-group -->
                         <div class="form-group">
                             <p class="form-control-static">
@@ -20,7 +20,7 @@
                         </div><!-- form-group -->
                         <div class="form-group">
                             <div class="form-line"></div>
-                            <a class="btn btn-primary btn-lg" href="#">Create an Account</a>
+                            <a class="btn btn-primary btn-lg" href="<?= $this->context->baseUrl ?>register.html">Create an Account</a>
                         </div><!-- form-group -->
                     </div><!-- form -->
                 </div><!-- box-content -->
@@ -33,32 +33,23 @@
                 </div><!-- box-title -->
                 <div class="box-content">
                     <div class="form form-account">
-                        <div class="row">
-                            <div class="col-sm-9 col-md-8 col-lg-7">
-                                <div class="form-group has-error">
-                                    <label>Email Address <span class="text-danger">*</span></label>
-                                    <input name="" type="text" class="form-control" />
-                                    <div class="help-block">Email wrong!</div>
-                                </div><!-- form-group -->
-                                <div class="form-group">
-                                    <label>Captcha  <span class="text-danger">*</span></label>
-                                    <input name="" type="text" class="form-control captcha-text" />
-                                </div><!-- form-group -->
-                                <div class="form-group">
-                                    <div class="box-captcha">
-                                        <img src="data/captcha.png" alt="captcha" />
+                        <form id="form-forgot">
+                            <div class="row">
+                                <div class="col-sm-9 col-md-8 col-lg-7">
+                                    <div class="form-group">
+                                        <label>Email Address <span class="text-danger">*</span></label>
+                                        <input name="email" type="text" class="form-control" />
                                     </div>
-                                    <a class="btnnewimg" href="#"></a>
-                                </div><!-- form-group -->
-                            </div><!-- col -->
-                        </div><!-- row -->
-                        <div class="form-group has-error">
-                            <div class="help-block text-right">* Required Fields</div>
-                        </div><!-- form-group -->
-                        <div class="form-group">
-                            <div class="form-line"></div>
-                            <button type="submit" class="btn btn-primary btn-lg">Sent</button>
-                        </div><!-- form-group -->
+                                </div><!-- col -->
+                            </div><!-- row -->
+                            <div class="form-group has-error">
+                                <div class="help-block text-right">* Required Fields</div>
+                            </div><!-- form-group -->
+                            <div class="form-group">
+                                <div class="form-line"></div>
+                                <button type="button" onclick="user.forgot()" class="btn btn-primary btn-lg">Sent</button>
+                            </div><!-- form-group -->
+                        </form>
                     </div><!-- form -->
                 </div><!-- box-content -->
             </div><!-- box -->
