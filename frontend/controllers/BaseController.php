@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\business\MenuBusiness;
+use common\models\business\ReviewBusiness;
 use yii\web\Controller;
 
 class BaseController extends Controller {
@@ -22,11 +23,14 @@ class BaseController extends Controller {
         $this->mDefault();
         $this->footer();
         $this->var['breadcrumb'] = [];
+        $this->var["reviewsCount"] = ReviewBusiness::countAllStar();
+        $a = 3.875;
+        $b = (int) $a;
+        $this->var["reviewsAvg"] = (int)ReviewBusiness::averageAllStar();
     }
 
     public function footer() {
         $this->var['menus'] = MenuBusiness::getGrid(1);
-        
     }
 
     /**

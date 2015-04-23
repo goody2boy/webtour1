@@ -22,13 +22,13 @@ class ReviewBusiness implements InterBusiness {
     }
 
     public static function getAll($limit = 0) {
-        
+
         if ($limit > 0) {
             $reviewList = Review::find()->orderBy(['rate' => SORT_ASC])->limit($limit)->all();
         } else {
             $reviewList = Review::find()->orderBy(['rate' => SORT_ASC])->all();
         }
-        foreach($reviewList as $review){
+        foreach ($reviewList as $review) {
             $user = UserBusiness::get($review->user_id);
             $user->images = ImageBusiness::getByTarget($review->user_id, "user");
             $review->user = $user;
@@ -38,6 +38,18 @@ class ReviewBusiness implements InterBusiness {
 
     public static function getByUser($userId) {
         return Review::find()->andWhere(['user_id' => $userId])->orderBy(['rate' => SORT_ASC])->all();
+    }
+
+    public static function countAllStar() {
+        return Review::find()->count("rate");
+    }
+
+    public static function averageAllStar() {
+        return Review::find()->average("rate");
+    }
+
+    public static function sumAllStar() {
+        return Review::find()->sum("rate");
     }
 
 }
