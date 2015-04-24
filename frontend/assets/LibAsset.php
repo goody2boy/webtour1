@@ -5,7 +5,7 @@ namespace frontend\assets;
 class LibAsset extends AppAsset {
 
     public $css = [
-//        'js/lib/jqueryui/jqueryui.css',
+        'js/lib/jqueryui/jqueryui.css',
     ];
     public $js = [
         'js/lib/migrate.js',
