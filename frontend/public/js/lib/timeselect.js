@@ -1,3 +1,4 @@
+$.noConflict();
 (function ($) {
     $.fn.timeSelect = function (_time) {
         $(this).each(function () {

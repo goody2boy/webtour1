@@ -19,7 +19,7 @@ class WebAsset extends AppAsset {
         'skins/v5/skin.css',
     ];
     public $js = [
-        'js/jquery-1.11.2.min.js',
+//        'js/jquery-1.11.2.min.js',
         'js/lib/ajax.js',
         'js/bootstrap.min.js',
         'js/owl.carousel.min.js',
