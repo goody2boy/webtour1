@@ -143,6 +143,7 @@ class ImageBusiness {
         }
         return $imgs;
     }
+
     public static function getByType($type = ImageType::_DEFAULT, $getUrl = false, $baseUrl = false, $limit = 8) {
         $config = Yii::$app->params['image'];
         $imgs = Image::find()->andWhere([ 'type' => $type])->limit($limit)->all();
@@ -182,6 +183,14 @@ class ImageBusiness {
      */
     public static function deleteByTarget($condition) {
         $images = Image::find()->andWhere(["targetId" => $condition])->all();
+        foreach ($images as $image) {
+            self::delete($image->imageId);
+        }
+        Image::deleteAll(["targetId" => $condition]);
+    }
+
+    public static function deleteByTargetAndType($condition, $type) {
+        $images = Image::find()->andWhere(["targetId" => $condition])->andWhere(["type" => $type])->all();
         foreach ($images as $image) {
             self::delete($image->imageId);
         }

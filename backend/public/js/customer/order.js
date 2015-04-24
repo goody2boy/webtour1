@@ -1,6 +1,6 @@
-var tour = {};
+var order = {};
 
-tour.grid = function () {
+order.grid = function () {
     layout.title("Quản trị Thông tin tour");
     layout.breadcrumb([
         ["Trang chủ", "#index/grid"],
@@ -70,7 +70,7 @@ tour.grid = function () {
 
 };
 
-tour.remove = function (id) {
+order.remove = function (id) {
     popup.confirm("Bạn có muốn xóa Tour này?", function () {
         ajax({
             service: '/tour/remove',
@@ -89,7 +89,7 @@ tour.remove = function (id) {
     });
 };
 
-tour.changeActive = function (id) {
+order.changeActive = function (id) {
     var textMsg = "Bạn có muốn hủy kích hoạt tour này?";
     if ($("div[data-key-active='" + id + "'] label").attr('class').search('danger') >= 0) {
         textMsg = "Bạn có muốn kích hoạt tour này?";
@@ -110,7 +110,7 @@ tour.changeActive = function (id) {
     });
 };
 
-tour.edit = function (id) {
+order.edit = function (id) {
     var index = $("tr[data-key='" + id + "'] td:nth-child(1)").text();
     ajax({
         service: '/tour/get',
@@ -195,7 +195,7 @@ tour.edit = function (id) {
     });
 };
 
-tour.showPrice = function (id) {
+order.showPrice = function (id) {
     ajax({
         service: '/tour/get-price',
         data: {id: id},

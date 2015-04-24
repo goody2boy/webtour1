@@ -38,7 +38,7 @@ class Order extends \yii\db\ActiveRecord {
         return [
             [['tour_id', 'user_id', 'price_id', 'number_adult', 'number_child', 'number_nochild', 'total_price', 'date_departure', 'create_time', 'update_time', 'invoice_code'], 'required'],
             [['tour_id', 'user_id', 'price_id', 'number_adult', 'number_child', 'number_nochild', 'date_departure', 'create_time', 'update_time'], 'integer'],
-            [['total_price'], 'number'],
+            [['total_price','status'], 'number'],
             [['promo_code', 'payment_method', 'status_payment'], 'string', 'max' => 12]
         ];
     }
@@ -63,11 +63,12 @@ class Order extends \yii\db\ActiveRecord {
             'payment_method' => Yii::t('app', 'Payment Method'),
             'status_payment' => Yii::t('app', 'Status Payment'),
             'invoice_code' => Yii::t('app', 'Invoice Code'),
+            'status' => Yii::t('app', 'Trạng thái'),
         ];
     }
 
     public function attributes() {
-        return array_merge(parent::attributes(), ['tour', 'user', 'price']);
+        return array_merge(parent::attributes(), ['tour', 'user', 'price', 'final_price']);
     }
 
 }

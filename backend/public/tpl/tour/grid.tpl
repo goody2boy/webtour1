@@ -29,11 +29,11 @@
                 <!-- create time from,updatetimefrom  -->
                 <div class="col-sm-3 padding-all-5">
                     <div class="input-group" style="margin-top:5px;">
-                        <input type="hidden" name="createTime" data-search="createTime" class="form-control" placeholder="Create Time">
+                        <input type="hidden" name="createTime" data-search="createTime" class="form-control" placeholder="Thời gian tạotừ ">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                     </div>
                     <div class="input-group" style="margin-top:5px;">
-                        <input type="hidden" name="updateTime" data-search="updateTime"  class="form-control" placeholder="Update Time">
+                        <input type="hidden" name="updateTime" data-search="updateTime"  class="form-control" placeholder="Thời gian Update từ">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                     </div>
                     <select data-search="language" class="form-control" name="language"  style="margin-top:5px;" >
@@ -45,11 +45,11 @@
                 <!-- create time to,updatetime to  -->
                 <div class="col-sm-3 padding-all-5">
                     <div class="input-group" style="margin-top:5px;">
-                        <input type="hidden" name="createTimeTo" data-search="createTimeTo"  class="form-control" placeholder="Create Time To">
+                        <input type="hidden" name="createTimeTo" data-search="createTimeTo"  class="form-control" placeholder="Thời gian tạo đến">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                     </div>
                     <div class="input-group" style="margin-top:5px;">
-                        <input type="hidden" name="updateTimeTo" data-search="updateTimeTo"  class="form-control" placeholder="Update Time To">
+                        <input type="hidden" name="updateTimeTo" data-search="updateTimeTo"  class="form-control" placeholder="Thời gian update đến">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                     </div>
                     <select data-search="status" class="form-control" name="status"  style="margin-top:5px;" >

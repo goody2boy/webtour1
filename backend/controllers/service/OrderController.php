@@ -3,13 +3,16 @@
 namespace backend\controllers\service;
 
 use backend\models\TourForm;
+use backend\models\OrderForm;
 use common\models\business\TourBusiness;
 use common\models\business\CategoryTourBusiness;
 use common\models\business\PriceBusiness;
 use common\models\business\ImageBusiness;
 use common\models\db\Tour;
+use common\models\db\Order;
 use common\models\enu\ImageType;
 use common\models\input\TourSearch;
+use common\models\input\OrderSearch;
 use common\models\output\Response;
 use Yii;
 
@@ -18,12 +21,12 @@ use Yii;
  *
  * @author CANH
  */
-class TourController extends ServiceController {
+class OrderController extends ServiceController {
 
     //put your code here
     public function init() {
         parent::init();
-        $this->controller = Tour::getTableSchema()->name;
+        $this->controller = Order::getTableSchema()->name;
     }
 
     /**
@@ -33,7 +36,7 @@ class TourController extends ServiceController {
         if (is_object($resp = $this->can("grid"))) {
             return $this->response($resp);
         }
-        $search = new TourSearch();
+        $search = new OrderSearch();
         $search->setAttributes(Yii::$app->request->get());
         // 
         return $this->response(new Response(true, "Danh sách tour", $search->search(true)));

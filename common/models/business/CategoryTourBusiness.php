@@ -57,4 +57,16 @@ class CategoryTourBusiness implements InterBusiness {
         return new Response(true, "Xóa thành công Category Tour");
     }
 
+    public static function addCateTour($tourId, $cateIds) {
+        foreach ($cateIds as $cateId) {
+            $cateTour = new CategoryTour();
+            $cateTour->tour_id = $tourId;
+            $cateTour->cate_id = $cateId;
+            if (!$cateTour->save(false)) {
+                return new Response(false, "Thêm Tour-Category thất bại.", $cateTour->errors);
+            }
+        }
+        return new Response(true, "Thêm Tour-Category thành công.", $cateTour);
+    }
+
 }

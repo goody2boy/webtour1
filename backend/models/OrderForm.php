@@ -18,29 +18,26 @@ use yii\base\Model;
  *
  * @author CANH
  */
-class TourForm extends Model {
+class OrderForm extends Model {
 
-    public $id;
-    public $code;
-    public $title;
-    public $tourType;
-    public $city_id;
-    public $description;
-    public $full_initerary;
-    public $inclusion;
-    public $exclusion;
-    public $notes;
-    public $mapp_address;
-//    public $price_id;
-    public $duration_time;
-//    public $author_id;
-    public $language;
+    public $invoice_code;
+    public $promo_code;
+    public $payment_method;
+    public $tour_code;
+    public $user;
+    public $status_payment;
+    public $createTimeFrom;
+    public $createTimeTo;
+    public $date_departureFrom;
+    public $date_departureTo;
+    public $total_priceFrom;
+    public $total_priceTo;
     public $status;
 
     public function rules() {
         return [
-            [['name', 'code', 'title', 'tourType', 'city_id', 'language', 'status'], 'required', 'message' => '{attribute} không được để trống!'],
-            [['id', 'city_id'], 'integer', 'message' => '{attribute} phải là kiểu số!'],
+            [['invoice_code', 'promo_code', 'tour_code', 'status'], 'required', 'message' => '{attribute} không được để trống!'],
+            [['total_priceFrom', 'total_priceTo', 'date_departureFrom', 'date_departureTo', 'createTimeFrom', 'createTimeTo', 'payment_method', 'status_payment', 'user'], 'integer', 'message' => '{attribute} phải là kiểu số!'],
         ];
     }
 

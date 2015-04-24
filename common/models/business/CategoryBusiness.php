@@ -39,5 +39,4 @@ class CategoryBusiness implements InterBusiness {
         return $result;
     }
 
-//put your code here
 }
