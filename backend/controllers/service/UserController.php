@@ -45,5 +45,11 @@ class UserController extends ServiceController {
         $id = Yii::$app->request->get('id');
         return $this->response(new Response(true,"",UserBusiness::get($id,true)));
     }
+    public function actionGetall(){
+        if (is_object($resp = $this->can("getall"))) {
+            return $this->response($resp);
+        }
+        return $this->response(new Response(true,"",UserBusiness::getAll()));
+    }
 
 }

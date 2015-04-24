@@ -1,11 +1,11 @@
 var order = {};
 
 order.grid = function () {
-    layout.title("Quản trị Thông tin tour");
+    layout.title("Quản trị Thông tin order");
     layout.breadcrumb([
         ["Trang chủ", "#index/grid"],
-        ["Tour", "#tour/grid"],
-        ["Danh sách tour"]
+        ["Tour", "#order/grid"],
+        ["Danh sách order"]
     ]);
 
     var search = textUtils.hashParam();
@@ -17,51 +17,55 @@ order.grid = function () {
     }
 
     ajax({
-        service: '/tour/grid',
+        service: '/order/grid',
         data: search,
+        loading: true,
         done: function (resp) {
             if (resp.success) {
-                layout.container(Fly.template("/tour/grid.tpl", resp));
+                console.log('order : ');
+                console.log(resp);
+                layout.container(Fly.template("/order/grid.tpl", resp));
                 setTimeout(function () {
                     viewUtils.initSearch("search");
-                    $('input[data-search=createTime]').timeSelect();
+                    $('input[data-search=createTimeFrom]').timeSelect();
                     $('input[data-search=createTimeTo]').timeSelect();
-                    $('input[data-search=updateTime]').timeSelect();
-                    $('input[data-search=updateTimeTo]').timeSelect();
+                    $('input[data-search=date_departureFrom]').timeSelect();
+                    $('input[data-search=date_departureTo]').timeSelect();
                 }, 300);
                 ajax({
-                    service: '/city/get-all',
+                    service: '/user/getall',
                     data: '',
                     done: function (resp) {
                         if (resp.success) {
-                            var selectHtml = '<option value="" >--Chọn Thành phố--</option>';
+                            console.log(resp);
+                            var selectHtml = '<option value="" >--Chọn User--</option>';
                             $.each(resp.data, function (i) {
-                                selectHtml += '<option value="' + this.id + '" >' + this.name + '</option>';
+                                selectHtml += '<option value="' + this.id + '" >' + this.username + '</option>';
                             });
-                            $('select[data-search=city]').html(selectHtml);
+                            $('select[data-search=user]').html(selectHtml);
                         } else {
                             popup.msg(resp.message);
                         }
                     }
                 });
-                ajax({
-                    service: '/category/get-all',
-                    data: '',
-                    done: function (resp) {
-                        if (resp.success) {
-                            var selectHtml = '<option value="" >--Chọn Tour Type--</option>';
-                            $.each(resp.data, function (i) {
-                                selectHtml += '<option value="' + this.id + '" >' + this.name + '</option>';
-                            });
-                            $('select[data-search=tourType]').html(selectHtml);
-                        } else {
-                            popup.msg(resp.message);
-                        }
-                    }
-                });
-                setTimeout(function () {
-                    editor("descriptionText", {});
-                });
+//                ajax({
+//                    service: '/category/get-all',
+//                    data: '',
+//                    done: function (resp) {
+//                        if (resp.success) {
+//                            var selectHtml = '<option value="" >--Chọn Tour Type--</option>';
+//                            $.each(resp.data, function (i) {
+//                                selectHtml += '<option value="' + this.id + '" >' + this.name + '</option>';
+//                            });
+//                            $('select[data-search=tourType]').html(selectHtml);
+//                        } else {
+//                            popup.msg(resp.message);
+//                        }
+//                    }
+//                });
+//                setTimeout(function () {
+//                    editor("descriptionText", {});
+//                });
             } else {
                 popup.msg(resp.message);
             }

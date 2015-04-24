@@ -6,7 +6,7 @@ use common\models\db\Order;
 use common\models\output\DataPage;
 use yii\base\Model;
 use yii\data\Pagination;
-use common\models\business\CityBusiness;
+use common\models\business\PromotionBusiness;
 use common\models\business\HightLightBusiness;
 use common\models\business\PriceBusiness;
 use common\models\business\ImageBusiness;
@@ -131,6 +131,7 @@ class OrderSearch extends Model {
             $order->tour = $result[0];
             $order->user = $userArr[$order->user_id] != null ? $userArr[$order->user_id] : '';
             $order->price = PriceBusiness::get($order->price_id);
+            $order->final_price = $this->calPromoPrice($order->total_price, $order->promo_code);
         }
         // lay trong vong for
         return $dataPage;
@@ -138,6 +139,19 @@ class OrderSearch extends Model {
 
     public static function getAuthors($authorIds) {
         return UserBusiness::getToKey($authorIds);
+    }
+
+    public static function calPromoPrice($totalPrice, $promoCode) {
+        if ($promoCode != null && $promoCode != "") {
+            $promo = PromotionBusiness::getBycode($promoCode);
+            $promo_price = 0;
+            if ($promo[0]->discount_price > 0) {
+                $promo_price = $totalPrice - $promo[0]->discount_price;
+            } else if ($promo[0]->discount_percent > 0) {
+                $promo_price = $totalPrice * $promo[0]->discount_percent / 100;
+            }
+            return $totalPrice - $promo_price;
+        }
     }
 
 }

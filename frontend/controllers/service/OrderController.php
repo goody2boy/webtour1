@@ -11,6 +11,7 @@ use frontend\models\OrderForm;
 use frontend\models\CheckoutForm;
 use common\models\enu\PaymentType;
 use common\models\enu\StatusPayment;
+use common\util\TextUtils;
 use stdClass;
 use Yii;
 

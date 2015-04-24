@@ -4,24 +4,7 @@ namespace common\models\db;
 
 use Yii;
 
-/**
- * This is the model class for table "order".
- *
- * @property string $id
- * @property string $tour_id
- * @property string $user_id
- * @property string $price_id
- * @property integer $number_adult
- * @property integer $number_child
- * @property integer $number_nochild
- * @property string $total_price
- * @property integer $date_departure
- * @property integer $create_time
- * @property integer $update_time
- * @property string $promo_code
- * @property string $payment_method
- * @property string $status_payment
- */
+
 class Order extends \yii\db\ActiveRecord {
 
     /**

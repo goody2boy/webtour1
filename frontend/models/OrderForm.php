@@ -7,6 +7,7 @@ use common\models\db\Order;
 use common\models\enu\PaymentType;
 use common\models\enu\StatusPayment;
 use common\models\output\Response;
+use common\util\TextUtils;
 use yii\base\Model;
 
 class OrderForm extends Model {
@@ -71,6 +72,7 @@ class OrderForm extends Model {
         }
         $order->payment_method = $this->payment_method;
         $order->status_payment = StatusPayment::EVER;
+        $order->invoice_code = TextUtils::createInvoiceCode($order->id);
         if (!$order->save(false)) {
             return new Response(false, "Không lưu được vào csdl", $order->errors);
         }

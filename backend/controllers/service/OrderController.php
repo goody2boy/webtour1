@@ -38,7 +38,6 @@ class OrderController extends ServiceController {
         }
         $search = new OrderSearch();
         $search->setAttributes(Yii::$app->request->get());
-        // 
         return $this->response(new Response(true, "Danh sách tour", $search->search(true)));
     }
 

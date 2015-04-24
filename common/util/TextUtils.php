@@ -10,6 +10,11 @@ class TextUtils {
      * 
      * @return string
      */
+    public static function createInvoiceCode($orderId) {
+        $orderCode = str_pad($orderId, 5, '0', STR_PAD_LEFT);
+        return "INC" + $orderCode;
+    }
+
     public static function randomString() {
         $validCharacters = "abcdefghijklmnopqrstuxyvwz0123456789";
         $validCharNumber = strlen($validCharacters);

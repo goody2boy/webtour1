@@ -65,6 +65,10 @@ class UserBusiness {
         }
         return $result;
     }
+    
+    public static function getAll(){
+        return User::find()->orderBy("username ASC")->all();
+    }
 
 //put your code here
 }
