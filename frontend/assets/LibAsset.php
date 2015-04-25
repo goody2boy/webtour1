@@ -5,10 +5,10 @@ namespace frontend\assets;
 class LibAsset extends AppAsset {
 
     public $css = [
-        'js/lib/jqueryui/jqueryui.css',
+//        'js/lib/jqueryui/jqueryui.css',
     ];
     public $js = [
-        'js/jquery-1.11.2.min.js',
+        // 'js/jquery-1.11.2.min.js',
         'js/lib/migrate.js',
         'js/lib/jqueryui/jqueryui.js',
         'js/lib/bootstrap.js',

@@ -7,12 +7,11 @@ use common\util\UrlUtils;
     <div id="heartslider" class="owl-carousel">
         <?php if (!empty($heart)) { ?>
             <?php foreach ($heart as $banner) { ?>
-                <div class="h-item">
-                    <a href="<?= $banner->link ?>"><img src="<?= (sizeof($banner->images) > 0) ? $banner->images[0] : $this->context->baseUrl . 'data/slider1' ?>" alt="<?= $banner->name ?>" /></a>
-                </div><!-- h-item -->
+               <div class="h-item">
+                   <a href="<?= !empty($banner->link)?$banner->link:'#' ?>"><img src="<?= (sizeof($banner->images) > 0) ? $banner->images[0] : $this->context->baseUrl . 'data/slider1' ?>" alt="<?= $banner->name ?>" /></a>
+                </div> <!-- h-item -->
             <?php } ?>
         <?php } ?>
-
     </div><!-- owl-carousel -->
     <div class="box-support">
         <div class="container">

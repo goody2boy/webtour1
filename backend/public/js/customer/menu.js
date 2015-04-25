@@ -1,5 +1,5 @@
 var menu = {};
-menu.grid = function () {
+menu.grid = function() {
     layout.title("Menu trang chủ");
     layout.breadcrumb([
         ["Trang chủ", "#index/grid"],
@@ -17,10 +17,10 @@ menu.grid = function () {
     ajax({
         service: '/menu/grid',
         data: search,
-        done: function (resp) {
+        done: function(resp) {
             if (resp.success) {
                 layout.container(Fly.template("/menu/grid.tpl", resp));
-                setTimeout(function () {
+                setTimeout(function() {
                     viewUtils.initSearch("search");
                     $("input[data-search=startTime]").timeSelect();
                     $("input[data-search=endTime]").timeSelect();
@@ -34,20 +34,20 @@ menu.grid = function () {
 };
 
 
-menu.add = function () {
+menu.add = function() {
     popup.open('popup-add-menu', 'Thêm mới menu.', Fly.template('/menu/add.tpl'), [
         {
             title: 'Thêm mới',
             style: 'btn-primary',
-            fn: function () {
+            fn: function() {
                 ajaxSubmit({
                     service: '/menu/change',
                     id: 'form-add-menu',
                     contentType: 'json',
                     loading: false,
-                    done: function (rs) {
+                    done: function(rs) {
                         if (rs.success) {
-                            popup.msg(rs.message, function () {
+                            popup.msg(rs.message, function() {
                                 location.reload();
                             });
                         } else {
@@ -60,26 +60,25 @@ menu.add = function () {
         {
             title: 'Hủy',
             style: 'btn-default',
-            fn: function () {
+            fn: function() {
                 popup.close('popup-add-menu');
             }
         }
     ]);
-
-    setTimeout(function () {
+    setTimeout(function() {
         menu.drawlMenu();
-    }, 300);
+    }, 100);
 };
 
-menu.drawlMenu = function (selected) {
+menu.drawlMenu = function(selected) {
     ajax({
         service: '/menu/grid',
         data: {},
         loading: false,
-        done: function (resp) {
+        done: function(resp) {
             if (resp.success) {
                 var html = '<option value="0">-- Là menu gốc --</option>';
-                $.each(resp.data, function () {
+                $.each(resp.data, function() {
                     if (this.parentId == 0) {
 
                         html += '<option value="' + this.id + '" ' + (selected == this.id ? 'selected' : '') + ' >' + this.name + '</option>';
@@ -93,15 +92,15 @@ menu.drawlMenu = function (selected) {
     });
 };
 
-menu.remove = function (id) {
-    popup.confirm("Bạn có chắc chắn muốn xóa menu này?", function () {
+menu.remove = function(id) {
+    popup.confirm("Bạn có chắc chắn muốn xóa menu này?", function() {
         ajax({
             service: '/menu/remove',
             data: {id: id},
             loading: false,
-            done: function (resp) {
+            done: function(resp) {
                 if (resp.success) {
-                    popup.msg(resp.message, function () {
+                    popup.msg(resp.message, function() {
                         $('tr[rel-data=' + id + ']').addClass('danger');
                     });
                 } else {
@@ -112,26 +111,26 @@ menu.remove = function (id) {
     });
 };
 
-menu.edit = function (id) {
+menu.edit = function(id) {
     ajax({
         service: '/menu/get',
         data: {id: id},
         loading: false,
-        done: function (resp) {
+        done: function(resp) {
             if (resp.success) {
                 popup.open('popup-add-menu', 'Thêm mới menu.', Fly.template('/menu/edit.tpl', resp), [
                     {
                         title: 'Cập nhật',
                         style: 'btn-primary',
-                        fn: function () {
+                        fn: function() {
                             ajaxSubmit({
                                 service: '/menu/change',
                                 id: 'edit-menu',
                                 contentType: 'json',
                                 loading: false,
-                                done: function (rs) {
+                                done: function(rs) {
                                     if (rs.success) {
-                                        popup.msg(rs.message, function () {
+                                        popup.msg(rs.message, function() {
                                             location.reload();
                                         });
                                     } else {
@@ -144,12 +143,12 @@ menu.edit = function (id) {
                     {
                         title: 'Hủy',
                         style: 'btn-default',
-                        fn: function () {
+                        fn: function() {
                             popup.close('popup-add-menu');
                         }
                     }
                 ]);
-                setTimeout(function () {
+                setTimeout(function() {
                     menu.drawlMenu(resp.data.parentId);
                 }, 300);
             } else {

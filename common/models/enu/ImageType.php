@@ -17,5 +17,6 @@ abstract class ImageType extends BasicEnum {
     const HIGHTLIGHT = "hightlight";
     const CATEGORY = "category";
     const USER = "user";
+    const MENU = "menu";
 
 }

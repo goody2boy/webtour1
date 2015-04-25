@@ -82,5 +82,26 @@ $(document).ready(function(){
 			}
 		}
 	});
+	
+	//request click
+    $('.option-title .fa').click(function() {
+		var parent = $(this).parent();
+		var grand = $(this).parent().parent();
+        if ($(this).hasClass("fa-plus")) {
+            $(this).removeClass("fa-plus");
+			$(this).addClass("fa-minus");
+			$('.tr-form',$('.tr-option .active')).slideUp();
+			$('.fa',$('.tr-option .active')).removeClass("fa-minus").addClass("fa-plus");
+			$('.option-item',$('.tr-option')).removeClass("active");
+			$(grand).addClass("active");
+			$('.tr-form',$(grand)).slideDown();
+        } else {
+            $(this).removeClass("fa-minus");
+			$(this).addClass("fa-plus");
+			$(grand).removeClass("active");
+			$('.tr-form',$(grand)).slideUp();
+        }
+        return false;
+    });
 
 });
