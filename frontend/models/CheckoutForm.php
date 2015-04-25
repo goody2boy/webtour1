@@ -6,6 +6,7 @@ use common\models\business\OrderBusiness;
 use common\models\db\Order;
 use common\models\output\Response;
 use yii\base\Model;
+
 /**
  * Description of CheckoutForm
  *
@@ -49,6 +50,7 @@ class CheckoutForm extends Model {
         $order->payment_method = $this->payment_method;
         $order->status_payment = $this->status_payment;
         $order->update_time = time();
+        $order->invoice_code = "CI" + str_pad($order->user_id, 5, "0") + str_pad($order->id, 5, "0");
         if (!$order->save(false)) {
             return new Response(false, "Không lưu được vào csdl", $order->errors);
         }
