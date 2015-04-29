@@ -48,7 +48,7 @@ class OrderController extends ServiceController {
         }
         $id = Yii::$app->request->get('id');
         $order = OrderBusiness::get($id);
-        return $this->response(new Response(true, "", $order ));
+        return $this->response(new Response(true, "", $order));
     }
 
     public function actionChangeActive($id) {

@@ -3,7 +3,7 @@
     <div class="form-group">
         <label class="control-label col-sm-4">Thời gian dự kiến</label>
         <div class="input-group col-sm-8" style="margin-top:5px;">
-            <input type="hidden" name="date_departure" data-search="date_departure" class="form-control" placeholder="Thời gian dự kiến đi" value="<%= (typeof data != 'undefined' ?  data.date_departure : '') %>">
+            <input type="hidden" name="date_departure" data-search="date_departure" class="form-control" placeholder="Thời gian dự kiến đi" value="<%= (typeof data != 'undefined' ?  (data.date_departure > 0 ? data.date_departure * 1000 : '0') : '') %>">
             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
         </div>
     </div>

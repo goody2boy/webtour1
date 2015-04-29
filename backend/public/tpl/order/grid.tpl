@@ -28,14 +28,13 @@
                 <div class="col-sm-3 padding-all-5">
                     <select data-search="tour_id" class="form-control" name="tour_id" style="margin-top:5px;"  >
                     </select>
-                    <select data-search="user_id" class="form-control" name="user" style="margin-top:5px;"  >
+                    <select data-search="user_id" class="form-control" name="user_id" style="margin-top:5px;"  >
                     </select>
                     <select data-search="status_payment" class="form-control" name="status_payment"  style="margin-top:5px;" >
                         <option value="" >--Trạng thái thanh toán--</option>
                         <option value="1" >Chưa thanh toán</option>
                         <option value="2" >Xác nhận thanh toán</option>
                     </select>
-
                 </div><!-- /col -->
                 <!-- create time from,updatetimefrom  -->
                 <div class="col-sm-3 padding-all-5">
