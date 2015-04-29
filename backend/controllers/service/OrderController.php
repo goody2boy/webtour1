@@ -8,6 +8,7 @@ use common\models\business\TourBusiness;
 use common\models\business\CategoryTourBusiness;
 use common\models\business\PriceBusiness;
 use common\models\business\ImageBusiness;
+use common\models\business\OrderBusiness;
 use common\models\db\Tour;
 use common\models\db\Order;
 use common\models\enu\ImageType;
@@ -46,8 +47,8 @@ class OrderController extends ServiceController {
             return $this->response($resp);
         }
         $id = Yii::$app->request->get('id');
-        $tour = TourBusiness::get($id);
-        return $this->response(new Response(true, "", TourBusiness::get($id)));
+        $order = OrderBusiness::get($id);
+        return $this->response(new Response(true, "", $order ));
     }
 
     public function actionChangeActive($id) {
@@ -63,22 +64,15 @@ class OrderController extends ServiceController {
             return $this->response($resp);
         }
         $id = Yii::$app->request->get('id');
-        CategoryTourBusiness::removeByTour($id);
-        PriceBusiness::removeByTour($id);
-        ImageBusiness::deleteByTargetAndType($id, ImageType::TOUR);
-        return $this->response(TourBusiness::remove($id));
+        return $this->response(OrderBusiness::remove($id));
     }
     
-    public function actionAdd() {
+    public function actionEdit() {
         if (is_object($resp = $this->can("add"))) {
             return $this->response($resp);
         }
-        
-       $form = new TourForm();
-       $form->setAttributes(Yii::$app->request->getBodyParams());       
-//       $cateIds = CategoryBusiness::get($form->tourType);
-       CategoryTourBusiness::addCateTour($form->id, $form->tourType);
-//       $form->categoryName = $cateName->name;
+       $form = new OrderForm();
+       $form->setAttributes(Yii::$app->request->getBodyParams());
         return $this->response($form->save());
     }
     
@@ -91,10 +85,10 @@ class OrderController extends ServiceController {
         if (is_object($resp = $this->can("get-price"))) {
             return $this->response($resp);
         }
-        $search = new TourSearch();
+        $search = new OrderSearch();
         $search->id = $id;
-        $tour = $search->search(true)->data[0];
-        $prices = $tour->prices;
+        $order = $search->search(true)->data[0];
+        $prices = $order->price;
         return $this->response(new Response(true, "Giá tour", $prices));
     }
 

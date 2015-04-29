@@ -25,6 +25,13 @@ class TourController extends ServiceController {
         parent::init();
         $this->controller = Tour::getTableSchema()->name;
     }
+    
+    public function actionGetall(){
+        if (is_object($resp = $this->can("getall"))) {
+            return $this->response($resp);
+        }
+        return $this->response(new Response(true,"",  TourBusiness::getAll()));
+    }
 
     /**
      * Search admin

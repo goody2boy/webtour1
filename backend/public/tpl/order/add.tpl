@@ -1,90 +1,48 @@
-<form class="form-horizontal" id="add-tour" style="width: 80%; margin-top: 15px;max-height: 500px;overflow-y: scroll;" >
+<form class="form-horizontal" id="edit-order" style="width: 80%; margin-top: 15px;" >
     <input name="id"  value="<%= (typeof data != 'undefined' ?  data.id : '') %>" type="text" class="form-control" placeholder="id" style="display: none;"/>
-
-    <div class="form-group">
-        <label class="control-label col-sm-4">Tiêu đề Tour:</label>
-        <div class="col-sm-8">
-            <input name="title" type="text" value="<%= (typeof data != 'undefined' ?  data.title : '0') %>" class="form-control" placeholder="Tên loại tiền"/>
-        </div>
-    </div>
     <div class="form-group">
         <label class="control-label col-sm-4">Thời gian dự kiến</label>
-        <div class="col-sm-8">
-            <input name="duration_time" type="text" value="<%= (typeof data != 'undefined' ?  data.durationTime : '0') %> Ngày" class="form-control" placeholder="0.5"/>
+        <div class="input-group col-sm-8" style="margin-top:5px;">
+            <input type="hidden" name="date_departure" data-search="date_departure" class="form-control" placeholder="Thời gian dự kiến đi" value="<%= (typeof data != 'undefined' ?  data.date_departure : '') %>">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-4">Tour Code:</label>
+        <label class="control-label col-sm-4">Number Adult</label>
         <div class="col-sm-8">
-            <input name="code" type="text" value="<%= (typeof data != 'undefined' ?  data.code : '') %>" class="form-control" placeholder="Mã loại tiền"/>
+            <input name="number_adult" type="number" max="5" min="1" class="form-control" value="<%= (typeof data != 'undefined' ?  data.number_adult : '') %>"  placeholder=""/>
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-4">Tour Type:</label>
+        <label class="control-label col-sm-4">Number No Child</label>
         <div class="col-sm-8">
-            <select  name="tourType" multiple data-update="tourType"  class="form-control"  >
-            </select>
+            <input name="number_nochild" type="number" max="5" min="0" class="form-control" value="<%= (typeof data != 'undefined' ?  data.number_nochild : '') %>"  placeholder=""/>
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-4">Description</label>
+        <label class="control-label col-sm-4">Number Child</label>
         <div class="col-sm-8">
-            <textarea id="description" rows="5" name="description" type="text"class="form-control" ><%= (typeof data != 'undefined' ?  data.description: '') %></textarea>
+            <input name="number_child" type="number" max="5" min="0" class="form-control" value="<%= (typeof data != 'undefined' ?  data.number_child : '') %>"  placeholder=""/>
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-4">Full itinerary</label>
-        <div class="col-sm-8">
-            <textarea rows="5" name="full_initerary" type="text"class="form-control" ><%= (typeof data != 'undefined' ?  data.full_initerary: '') %></textarea>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-sm-4">Inclusion</label>
-        <div class="col-sm-8">
-            <textarea rows="5" name="inclusion" type="text"class="form-control" ><%= (typeof data != 'undefined' ?  data.inclusion: '') %></textarea>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-sm-4">Exclusion</label>
-        <div class="col-sm-8">
-            <textarea rows="5" name="exclusion" type="text"class="form-control" ><%= (typeof data != 'undefined' ?  data.exclusion: '') %></textarea>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-sm-4">Tour note</label>
-        <div class="col-sm-8">
-            <textarea rows="5" name="notes" type="text"class="form-control" ><%= (typeof data != 'undefined' ?  data.note: '') %></textarea>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-sm-4">Map Address</label>
-        <div class="col-sm-8">
-            <input name="mapp_address" type="text" value="<%=  (typeof data != 'undefined' ?  data.mapp_address : '') %>" class="form-control" placeholder="Mã loại tiền"/>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-sm-4">City</label>
-        <div class="col-sm-8">
-            <select name="city_id" data-update="city_id" class="form-control"  >
-            </select>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-sm-4">Ngôn ngữ:</label>
-        <div class="col-sm-8">
-            <select name="language" class="form-control" >
-                <option value="">----- Chọn -----</option>
-                <option value="VI" <%= (typeof data != 'undefined' && data.language == 'VI' ?  'selected' : '') %>>VI</option>
-                <option value="EN" <%= (typeof data != 'undefined' && data.language == 'EN' ?  'selected' : '') %>>EN</option>
-            </select>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-sm-4">Trạng thái:</label>
+        <label class="control-label col-sm-4">Trạng thái thanh toán</label>
         <div class="col-sm-4">
-            <select name="status" class="form-control">
-                <option value="1" <%= (typeof data != 'undefined' && data.active == 1 ?  'selected' : '') %>>Hoạt động</option>
-                <option value="0" <%= (typeof data != 'undefined' && data.active == 0 ?  'selected' : '') %>>Tạm khóa</option>
+            <select data-search="status_payment" class="form-control" name="status_payment"  style="margin-top:5px;" >
+                <option value="" >--Trạng thái thanh toán--</option>
+                <option value="EVER" <%= (typeof data != 'undefined' && data.status_payment == "EVER" ?  'selected' : '') %>>Chưa thanh toán</option>
+                <option value="DONE" <%= (typeof data != 'undefined' && data.status_payment == "DONE" ?  'selected' : '') %>>Xác nhận thanh toán</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-4">Phương thức thanh toán</label>
+        <div class="col-sm-4">
+            <select data-search="payment_method" class="form-control" name="payment_method"  style="margin-top:5px;" >
+                <option value="" >--Phương thức thanh toán--</option>
+                <option value="PAYPAL" <%= (typeof data != 'undefined' && data.payment_method == "PAYPAL" ?  'selected' : '') %>>PayPal</option>
+                <option value="MASTER_CARD" <%= (typeof data != 'undefined' && data.payment_method == "MASTER_CARD" ?  'selected' : '') %>>Master Card</option>
+                <option value="LATER" <%= (typeof data != 'undefined' && data.payment_method == "LATER" ?  'selected' : '') %>>LATER</option>
             </select>
         </div>
     </div>

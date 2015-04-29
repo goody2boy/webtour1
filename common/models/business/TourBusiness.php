@@ -31,6 +31,10 @@ class TourBusiness implements InterBusiness {
             return Tour::find()->andWhere(["id" => $ids])->all();
         }
     }
+    
+    public static function getAll(){
+        return Tour::find()->orderBy("code ASC")->all();
+    }
 
     public static function changeActive($id) {
         $tour = self::get($id);

@@ -27,8 +27,8 @@ order.grid = function () {
                 layout.container(Fly.template("/order/grid.tpl", resp));
                 setTimeout(function () {
                     viewUtils.initSearch("search");
-                    $('input[data-search=createTimeFrom]').timeSelect();
-                    $('input[data-search=createTimeTo]').timeSelect();
+                    $('input[data-search=create_timeFrom]').timeSelect();
+                    $('input[data-search=create_timeTo]').timeSelect();
                     $('input[data-search=date_departureFrom]').timeSelect();
                     $('input[data-search=date_departureTo]').timeSelect();
                 }, 300);
@@ -42,42 +42,39 @@ order.grid = function () {
                             $.each(resp.data, function (i) {
                                 selectHtml += '<option value="' + this.id + '" >' + this.username + '</option>';
                             });
-                            $('select[data-search=user]').html(selectHtml);
+                            $('select[data-search=user_id]').html(selectHtml);
                         } else {
                             popup.msg(resp.message);
                         }
                     }
                 });
-//                ajax({
-//                    service: '/category/get-all',
-//                    data: '',
-//                    done: function (resp) {
-//                        if (resp.success) {
-//                            var selectHtml = '<option value="" >--Chọn Tour Type--</option>';
-//                            $.each(resp.data, function (i) {
-//                                selectHtml += '<option value="' + this.id + '" >' + this.name + '</option>';
-//                            });
-//                            $('select[data-search=tourType]').html(selectHtml);
-//                        } else {
-//                            popup.msg(resp.message);
-//                        }
-//                    }
-//                });
-//                setTimeout(function () {
-//                    editor("descriptionText", {});
-//                });
+                ajax({
+                    service: '/tour/getall',
+                    data: '',
+                    done: function (resp) {
+                        if (resp.success) {
+                            console.log(resp);
+                            var selectHtml = '<option value="" >--Chọn Tour--</option>';
+                            $.each(resp.data, function (i) {
+                                selectHtml += '<option value="' + this.id + '" >' + this.code + ' - ' + this.title + '</option>';
+                            });
+                            $('select[data-search=tour_id]').html(selectHtml);
+                        } else {
+                            popup.msg(resp.message);
+                        }
+                    }
+                });
             } else {
                 popup.msg(resp.message);
             }
         }
     });
-
 };
 
 order.remove = function (id) {
-    popup.confirm("Bạn có muốn xóa Tour này?", function () {
+    popup.confirm("Bạn có muốn xóa Order này?", function () {
         ajax({
-            service: '/tour/remove',
+            service: '/order/remove',
             data: {id: id},
             loading: false,
             done: function (resp) {
@@ -115,23 +112,24 @@ order.changeActive = function (id) {
 };
 
 order.edit = function (id) {
+//    popup.msg("Chức năng chưa hoàn thiện.");
     var index = $("tr[data-key='" + id + "'] td:nth-child(1)").text();
     ajax({
-        service: '/tour/get',
+        service: '/order/get',
         data: {id: id},
         loading: false,
         done: function (resp) {
             if (resp.success) {
                 console.log("gia tri resp");
                 console.log(resp);
-                popup.open('popup-edit-tour', 'Sửa thông tin Tour.', Fly.template('/tour/add.tpl', resp), [
+                popup.open('popup-edit-tour', 'Sửa thông tin Order.', Fly.template('/order/add.tpl', resp), [
                     {
                         title: 'Sửa',
                         style: 'btn-primary',
                         fn: function () {
                             ajaxSubmit({
-                                service: '/tour/add',
-                                id: 'add-tour',
+                                service: '/order/edit',
+                                id: 'edit-order',
                                 contentType: 'json',
                                 loading: false,
                                 done: function (rs) {
@@ -140,6 +138,7 @@ order.edit = function (id) {
                                         var html = Fly.template('/tour/tredit.tpl', rs);
 //                                            $("tr[data-key='" + id + "']").empty().html(html).addClass('success');
                                         popup.close('popup-edit-tour');
+                                        location.reload();
                                     } else {
                                         popup.msg(rs.message);
                                     }
@@ -154,44 +153,10 @@ order.edit = function (id) {
                             popup.close('popup-edit-tour');
                         }
                     }
-                ], "modal-lg");
+                ]);
                 setTimeout(function () {
-                    $('input[data-info=startTime]').timeSelect();
-                    $('input[data-info=endTime]').timeSelect();
+                    $('input[data-search=date_departure]').timeSelect();
                 }, 300);
-                ajax({
-                    service: '/city/get-all',
-                    data: '',
-                    done: function (resp1) {
-                        if (resp1.success) {
-                            var selectHtml = '<option value="" >--Chọn Thành phố--</option>';
-                            $.each(resp1.data, function (i) {
-                                selectHtml += '<option ' + (this.id === resp.data.id ? 'selected' : '') + ' value="' + this.id + '" >' + this.name + '</option>';
-                            });
-                            $('select[data-update=city_id]').html(selectHtml);
-                        } else {
-                            popup.msg(resp1.message);
-                        }
-                    }
-                });
-                ajax({
-                    service: '/category/get-all',
-                    data: '',
-                    done: function (resp1) {
-                        if (resp1.success) {
-                            var selectHtml = '<option value="" >--Chọn Tour Type--</option>';
-                            $.each(resp1.data, function (i) {
-                                selectHtml += '<option value="' + this.id + '" >' + this.name + '</option>';
-                            });
-                            $('select[data-update=tourType]').html(selectHtml);
-                            var gotCateIds = resp.data.category_ids;
-                            var selectedArr = gotCateIds.substring(0, gotCateIds.length - 1).split(",");
-                            $('select[data-update=tourType]').val(selectedArr);
-                        } else {
-                            popup.msg(resp1.message);
-                        }
-                    }
-                });
             } else {
                 popup.msg(resp.message);
             }
@@ -201,7 +166,7 @@ order.edit = function (id) {
 
 order.showPrice = function (id) {
     ajax({
-        service: '/tour/get-price',
+        service: '/order/get-price',
         data: {id: id},
         loading: false,
         done: function (resp) {
