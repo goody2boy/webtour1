@@ -52,7 +52,7 @@ class OrderForm extends Model {
         $order->number_nochild = $this->number_nochild;
         $order->number_child = $this->number_child;
         $order->number_adult = $this->number_adult;
-        $order->date_departure = $this->date_departure;
+        $order->date_departure = $this->date_departure/1000;
         $order->payment_method = $this->payment_method;
         $order->status_payment = $this->status_payment;
         if (!$order->save(false)) {
