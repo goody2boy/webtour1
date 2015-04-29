@@ -228,7 +228,8 @@ ul{
 .menu > ul > li{
 	float:left;
 	height:88px;
-	margin-left:1px;
+	position:relative;
+	z-index:1;
 }
 .menu > ul > li > a{
 	display:block;
@@ -240,6 +241,9 @@ ul{
 	text-transform:uppercase;
 	text-decoration:none;
 }
+.menu > ul > li > a .btn-submenu{
+	display:none;
+}
 .menu > ul > li.active,
 .menu > ul > li:hover{
 	background:#3e7bc2;
@@ -247,6 +251,54 @@ ul{
 .menu > ul > li.active > a,
 .menu > ul > li:hover > a{
 	color:#fff;
+}
+.submenu{
+	width:500px;
+	padding:10px 10px 0;
+	background:#3e7bc2;
+	position:absolute;
+	top:100%;
+	left:0;
+	z-index:2;
+	display:none;
+}
+.menu > ul > li:hover > .submenu{
+	display:block;
+}
+.submenu > ul{
+	margin-right:-10px;
+}
+.submenu > ul > li{
+	float:left;
+	width:33.33%;
+	padding-right:10px;
+	padding-bottom:10px;
+}
+.submenu-item{
+	padding:5px;
+	background:#ececec;
+}
+.submenu-item .si-thumb{
+	overflow:hidden;
+	margin:0 0 5px;
+	height:85px;
+}
+.submenu-item .si-thumb img{
+	width:100%;
+	min-height:85px;
+}
+.submenu-item .si-title{
+	text-decoration:none;
+	font-size:12px;
+	font-weight:600;
+	text-align:center;
+	display:block;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.submenu-item:hover{
+	background:#dfdfdf;
 }
 /*end menu*/
 /*grid all*/

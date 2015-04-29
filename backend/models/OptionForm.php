@@ -36,7 +36,8 @@ class OptionForm extends Model {
         $option = OptionBusiness::get($this->id);
         if ($option == null) {
             $option = new Option();
-            if (!empty(OptionBusiness::getByKey($this->key))) {
+            $o = OptionBusiness::getByKey($this->key);
+            if (!empty($o)) {
                 return new Response(false, "Key đã tồn tại", []);
             }
             $option->key = strtoupper($this->key);

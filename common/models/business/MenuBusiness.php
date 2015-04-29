@@ -3,6 +3,7 @@
 namespace common\models\business;
 
 use common\models\db\Menu;
+use common\models\enu\ImageType;
 use common\models\inter\InterBusiness;
 use common\models\output\Response;
 
@@ -28,7 +29,16 @@ class MenuBusiness implements InterBusiness {
             $find->andWhere(["active" => $active == 1 ? 1 : 0]);
         }
         $find->orderBy("position asc");
-        return $find->all();
+        $menus = $find->all();
+        $ids = [];
+        foreach ($menus as $menu) {
+            $ids[] = $menu->id;
+        }
+        $images = ImageBusiness::getByTarget($ids, ImageType::MENU, true, true);
+        foreach ($menus as $menu) {
+            $menu->images = isset($images[$menu->id]) ? $images[$menu->id] : [];
+        }
+        return $menus;
     }
 
     /**

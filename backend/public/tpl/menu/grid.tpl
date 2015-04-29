@@ -18,6 +18,7 @@
                 <thead>
                     <tr class="success" >
                         <th class="text-center" style="vertical-align: middle;width: 65px;" >ID</th>
+                        <th class="text-center" style="vertical-align: middle" >Ảnh</th>
                         <th class="text-center" style="vertical-align: middle" >Tên menu</th>
                         <th class="text-center" style="vertical-align: middle;" >Liên kết</th>
                         <th class="text-center" style="vertical-align: middle;width: 90px" >Trạng thái</th>
@@ -37,6 +38,9 @@
                     <% if(menu.parentId == 0){ %>
                     <tr rel-data="<%= menu.id %>">
                         <td class="text-center" style="vertical-align: middle"><p><%= menu.id %></p></td>
+                        <td class="text-center" style="vertical-align: middle;width: 80px" >
+                            <img src="<%= baseUrl %>images/no_avatar.png" style="max-width:60px; margin:auto;"  class="thumbnail" />
+                        </td>
                         <td>
                             <p class="title-item">
                                 -- <%=menu.name%>
@@ -61,6 +65,7 @@
                                 <button type="button" class="btn btn-danger" onclick="menu.remove('<%= menu.id %>')" >
                                     <i class="glyphicon glyphicon-trash pull-left" style="line-height: 16px"></i>Xóa
                                 </button>
+                                <button disabled onclick="image.addImage('<%= menu.id %>', 'menu');" type="button" class="btn btn-primary" style="width: 80px;"><span class="fa fa-image pull-left" style="line-height: 18px" ></span> Ảnh</button>
                             </div>
                         </td>
                     </tr>
@@ -68,6 +73,13 @@
                     <% if(menulv2.parentId == menu.id){ %>
                     <tr rel-data="<%= menulv2.id %>">
                         <td class="text-center" style="vertical-align: middle"><p><%= menulv2.id %></p>
+                        </td>
+                        <td class="text-center" style="vertical-align: middle;width: 80px" >
+                            <% if(menulv2.images.length > 0){ %>
+                            <img src="<%= menulv2.images[0] %>" style="max-width:60px; margin:auto;" class="thumbnail"/>
+                            <%}else { %>
+                            <img src="<%= baseUrl %>images/no_avatar.png" style="max-width:60px; margin:auto;"  class="thumbnail" />
+                            <% } %>
                         </td>
                         <td>
                             <p class="title-item">
@@ -93,6 +105,7 @@
                                 <button type="button" class="btn btn-danger" onclick="menu.remove('<%= menulv2.id %>')" >
                                     <i class="glyphicon glyphicon-trash pull-left" style="line-height: 16px"></i>Xóa
                                 </button>
+                                <button onclick="image.addImage('<%= menulv2.id %>', 'menu');" type="button" class="btn btn-primary" style="width: 80px;"><span class="fa fa-image pull-left" style="line-height: 18px" ></span> Ảnh</button>
                             </div>
                         </td>
                     </tr>

@@ -14,21 +14,19 @@ use Yii;
  * @property integer $position
  * @property integer $active
  */
-class Menu extends \yii\db\ActiveRecord
-{
+class Menu extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'menu';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['parentId', 'position', 'active'], 'integer'],
             [['name'], 'required'],
@@ -39,8 +37,7 @@ class Menu extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => Yii::t('app', 'ID'),
             'parentId' => Yii::t('app', 'Parent ID'),
@@ -50,4 +47,9 @@ class Menu extends \yii\db\ActiveRecord
             'active' => Yii::t('app', 'Active'),
         ];
     }
+
+    public function attributes() {
+        return array_merge(parent::attributes(), ['images']);
+    }
+
 }
