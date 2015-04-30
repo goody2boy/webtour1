@@ -3,6 +3,7 @@
 namespace backend\controllers\service;
 
 use backend\models\TourForm;
+use backend\models\EditPriceForm;
 use common\models\business\TourBusiness;
 use common\models\business\CategoryTourBusiness;
 use common\models\business\PriceBusiness;
@@ -25,12 +26,12 @@ class TourController extends ServiceController {
         parent::init();
         $this->controller = Tour::getTableSchema()->name;
     }
-    
-    public function actionGetall(){
+
+    public function actionGetall() {
         if (is_object($resp = $this->can("getall"))) {
             return $this->response($resp);
         }
-        return $this->response(new Response(true,"",  TourBusiness::getAll()));
+        return $this->response(new Response(true, "", TourBusiness::getAll()));
     }
 
     /**
@@ -73,26 +74,25 @@ class TourController extends ServiceController {
         ImageBusiness::deleteByTargetAndType($id, ImageType::TOUR);
         return $this->response(TourBusiness::remove($id));
     }
-    
+
     public function actionAdd() {
         if (is_object($resp = $this->can("add"))) {
             return $this->response($resp);
         }
-        
-       $form = new TourForm();
-       $form->setAttributes(Yii::$app->request->getBodyParams());       
+
+        $form = new TourForm();
+        $form->setAttributes(Yii::$app->request->getBodyParams());
 //       $cateIds = CategoryBusiness::get($form->tourType);
-       CategoryTourBusiness::addCateTour($form->id, $form->tourType);
+        CategoryTourBusiness::addCateTour($form->id, $form->tourType);
 //       $form->categoryName = $cateName->name;
         return $this->response($form->save());
     }
-    
-    
-    public function actionAddImage($tourId, $url){
+
+    public function actionAddImage($tourId, $url) {
         
     }
-    
-    public function actionGetPrice($id){
+
+    public function actionGetPrice($id) {
         if (is_object($resp = $this->can("get-price"))) {
             return $this->response($resp);
         }
@@ -101,6 +101,15 @@ class TourController extends ServiceController {
         $tour = $search->search(true)->data[0];
         $prices = $tour->prices;
         return $this->response(new Response(true, "Giá tour", $prices));
+    }
+
+    public function actionEditPrice() {
+        if (is_object($resp = $this->can("edit-price"))) {
+            return $this->response($resp);
+        }
+        $form = new EditPriceForm();
+        $form->setAttributes(Yii::$app->request->getBodyParams());
+        return $this->response($form->save());
     }
 
 }

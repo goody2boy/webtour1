@@ -55,7 +55,7 @@
                     <select data-search="status" class="form-control" name="status"  style="margin-top:5px;" >
                         <option value="" >--Trạng thái--</option>
                         <option value="1" >Đang hoạt động</option>
-                        <option value="0" >Tạm dừng</option>
+                        <option value="0" >Tạm khóa</option>
                     </select>
                 </div><!-- /col -->
                 <div class="col-sm-3" >
@@ -109,13 +109,16 @@
                         <td class="text-center" style="vertical-align: middle"><%= this.title %></td>
                         <td class="text-center" style="vertical-align: middle">
                             <% $.each(this.categories, function(index){ %>
-                            <%= this.name + ',' %>
+                            <%= this.name + '</br>' %>
                             <% }); %>
                         </td>
                         <td class="text-center" style="vertical-align: middle"><%= this.duration_time %> (Ngày)</td>
                         <td class="text-center" style="vertical-align: middle">
-                            <button onclick="tour.showPrice('<%= this.id %>')" type="button" class="btn btn-info" style="margin-left:20px;">
+                            <button onclick="tour.showPrice('<%= this.id %>')" type="button" class="btn btn-info" style="width:120px;">
                                 <span class="glyphicon glyphicon-search"></span>Show Price
+                            </button></br>
+                            <button onclick="tour.editPrice('<%= this.id %>');" type="button" class="btn btn-info" style="width:120px;">
+                                <span class="glyphicon glyphicon-search"></span>Edit Price
                             </button>
                         </td>
                         <td class="text-center" style="vertical-align: middle"><%= this.city.name %></td>
@@ -128,8 +131,10 @@
                             </div>
                         </td>
                         <td>
-                            <div class="btn-group" style="margin-top: 5px">
-                                <button onclick="tour.edit('<%=this.id%>')" type="button" class="btn btn-success" style="width: 100px;"><span class="glyphicon glyphicon-edit pull-left" style="line-height: 18px"></span> Sửa</button>
+                            <div style="margin-top: 5px">
+                                <button onclick="tour.editDetail('<%=this.id%>');" type="button" class="btn btn-success" style="width:100px;"><span class="glyphicon glyphicon-edit pull-left" style="line-height: 18px"></span>Chi tiết </button>
+                                <button onclick="tour.editImage('<%=this.id%>');" type="button" class="btn btn-info" style="width:100px;"><span class="glyphicon glyphicon-film pull-left" style="line-height: 18px"></span>Ảnh </button>
+                                <button onclick="tour.editLocation('<%=this.id%>');" type="button" class="btn btn-info" style="width:100px;"><span class="glyphicon glyphicon-road pull-left" style="line-height: 18px"></span>Địa điểm </button>
                             </div>
                         </td>
                     </tr>

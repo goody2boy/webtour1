@@ -111,7 +111,7 @@
                         <td class="text-center" style="vertical-align: middle"><a href="<%= '#tour/grid?code=' + this.tour.code %>" target="_blank"><%= this.tour.code %></a></td>
                         <td class="text-center" style="vertical-align: middle"><%= this.user.username %></td>
                         <td class="text-center" style="vertical-align: middle">
-                            <button onclick="tour.showPrice('<%= this.price.id %>');" type="button" class="btn btn-info" style="margin-left:20px;">
+                            <button onclick="order.showPrice('<%= this.id %>');" type="button" class="btn btn-info">
                                 <span class="glyphicon glyphicon-search"></span>Show Price
                             </button>
                         </td>

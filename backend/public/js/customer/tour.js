@@ -217,3 +217,52 @@ tour.showPrice = function (id) {
         }
     });
 };
+
+tour.editPrice = function (id) {
+    ajax({
+        service: '/tour/get-price',
+        data: {id: id},
+        loading: false,
+        done: function (resp) {
+            if (resp.success) {
+                popup.open('popup-edit-price', 'Xem thông tin giá Tour.', Fly.template('/tour/priceedit.tpl', resp), [
+                    {
+                        title: 'Xác nhận',
+                        style: 'btn-private',
+                        fn: function () {
+                            var price_1 = $('input[name=price_1]').val();
+                            var price_2 = $('input[name=price_2]').val();
+                            var price_3 = $('input[name=price_3]').val();
+                            var price_4 = $('input[name=price_4]').val();
+                            var price_5 = $('input[name=price_5]').val();
+                            var price_6 = $('input[name=price_6]').val();
+                            ajax({
+                                service: '/tour/edit-price',
+                                data: {id : id, price_1 : price_1, price_2 : price_2, price_3 : price_3, price_4 : price_4, price_5 : price_5, price_6 : price_6},
+                                contentType: 'json',
+                                type : 'post',
+                                loading: false,
+                                done: function (resp1) {
+                                    if (resp1.success) {
+                                        console.log("gia tri resp");
+                                        console.log(resp1);
+                                    } else {
+                                        console.log(resp1);
+                                        popup.msg(resp1.message);
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    {
+                        title: 'Hủy',
+                        style: 'btn-default',
+                        fn: function () {
+                            popup.close('popup-edit-price');
+                        }
+                    }
+                ], "modal-lg");
+            }
+        }
+    });
+};

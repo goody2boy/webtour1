@@ -47,7 +47,7 @@ class TourSearch extends Model {
     public function rules() {
         return [
             [['title', 'code', 'tourType', 'language', 'sort'], 'string'],
-            [['id','tag', 'city', 'hightlight', 'price', 'status', 'durationTime', 'createTime', 'createTimeTo', 'updateTime', 'updateTimeTo', 'pageSize', 'page'], 'integer'],
+            [['id', 'tag', 'city', 'hightlight', 'price', 'status', 'durationTime', 'createTime', 'createTimeTo', 'updateTime', 'updateTimeTo', 'pageSize', 'page'], 'integer'],
         ];
     }
 
@@ -223,14 +223,16 @@ class TourSearch extends Model {
     }
 
     public static function getMinPrice($prices) {
-        $min = $prices[0]->price;
-        foreach ($prices as $price) {
-            if ($min > $price->price) {
-                $min = $price->price;
+        if (!isset($prices)) {
+            $min = $prices[0]->price;
+            foreach ($prices as $price) {
+                if ($min > $price->price) {
+                    $min = $price->price;
+                }
             }
-        }
 
-        return $min;
+            return $min;
+        }
     }
 
     public static function getReview($tourId) {
