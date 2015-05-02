@@ -4,19 +4,19 @@
     <div class="form-group">
         <label class="control-label col-sm-4">Tiêu đề Tour:</label>
         <div class="col-sm-8">
-            <input name="title" type="text" value="<%= (typeof data != 'undefined' ?  data.title : '0') %>" class="form-control" placeholder="Tên loại tiền"/>
+            <input name="title" type="text" value="<%= (typeof data != 'undefined' ?  data.title : '') %>" class="form-control" placeholder="Tiêu đề tour"/>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-4">Thời gian dự kiến</label>
         <div class="col-sm-8">
-            <input name="duration_time" type="text" value="<%= (typeof data != 'undefined' ?  data.duration_time : '0') %>" class="form-control" placeholder="Ngày"/>
+            <input name="duration_time" type="text" value="<%= (typeof data != 'undefined' ?  data.duration_time : '1') %>" class="form-control" placeholder="Ngày"/>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-4">Tour Code:</label>
         <div class="col-sm-8">
-            <input name="code" type="text" value="<%= (typeof data != 'undefined' ?  data.code : '') %>" class="form-control" placeholder="Mã loại tiền"/>
+            <input name="code" type="text" value="<%= (typeof data != 'undefined' ?  data.code : '') %>" class="form-control" placeholder="Mã Tour"/>
         </div>
     </div>
     <div class="form-group">
@@ -59,7 +59,7 @@
     <div class="form-group">
         <label class="control-label col-sm-4">Map Address</label>
         <div class="col-sm-8">
-            <input name="mapp_address" type="text" value="<%=  (typeof data != 'undefined' ?  data.mapp_address : '') %>" class="form-control" placeholder="Mã loại tiền"/>
+            <input name="mapp_address" type="text" value="<%=  (typeof data != 'undefined' ?  data.mapp_address : '') %>" class="form-control" placeholder="Địa chỉ map"/>
         </div>
     </div>
     <div class="form-group">

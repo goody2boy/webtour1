@@ -57,8 +57,10 @@ class CategoryTourBusiness implements InterBusiness {
         return new Response(true, "Xóa thành công Category Tour");
     }
 
-    public static function addCateTour($tourId, $cateIds) {
-//        CategoryTour::find()->andWhere(["tour_id" => $tourId])->all();
+    public static function addCateTour($tourId, $cateIds, $tourCode) {
+        if($tourId == null && $tourCode != null && $tourCode != ''){
+            $tourId = TourBusiness::getByCode($tourCode)->code;
+        }
         self::removeByTour($tourId);
         foreach ($cateIds as $cateId) {
             $cateTour = new CategoryTour();

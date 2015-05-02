@@ -1,6 +1,5 @@
 <div class="modal-body" style="margin-top:10px;">
-    <div style="margin :10px;">            
-
+    <div style="margin :10px;">
         <table class="table table-bordered">
             <thead>
             <th>Pax</th>
@@ -35,14 +34,11 @@
                 <th><input name="price_4" type="number" value="<%= (typeof data != 'undefined' ?  (data[3].price != 'undefined' ? data[3].price : '0') : '0') %>" class="form-control" placeholder="$$" style="width:70px;"/></th>
                 <th><input name="price_5" type="number" value="<%= (typeof data != 'undefined' ?  (data[4].price != 'undefined' ? data[4].price : '0') : '0') %>" class="form-control" placeholder="$$" style="width:70px;"/></th>
                 <th><input name="price_6" type="number" value="<%= (typeof data != 'undefined' ?  (data[5].price != 'undefined' ? data[5].price : '0') : '0') %>" class="form-control" placeholder="$$" style="width:70px;"/></th>
-                <th>Contact us</th>-+
-                3.12w6
+                <th>Contact us</th>
                 <% } %>
             </form>
             </tr>
             </tbody>
         </table>
-
-
     </div>
 </div>

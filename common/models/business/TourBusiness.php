@@ -24,6 +24,10 @@ class TourBusiness implements InterBusiness {
         return Tour::findOne($id);
     }
 
+    public static function getByCode($code) {
+        return Tour::findOne(["code" => $code]);
+    }
+
     public static function mGet($ids, $limit = 0) {
         if ($limit > 0) {
             return Tour::find()->andWhere(["id" => $ids])->limit($limit)->all();
@@ -31,8 +35,8 @@ class TourBusiness implements InterBusiness {
             return Tour::find()->andWhere(["id" => $ids])->all();
         }
     }
-    
-    public static function getAll(){
+
+    public static function getAll() {
         return Tour::find()->orderBy("code ASC")->all();
     }
 

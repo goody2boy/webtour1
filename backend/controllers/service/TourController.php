@@ -81,13 +81,21 @@ class TourController extends ServiceController {
         }
         $form = new TourForm();
         $form->setAttributes(Yii::$app->request->getBodyParams());
-        CategoryTourBusiness::addCateTour($form->id, $form->tourType);
+        $cateIds = $form->tourType;
         $tourTypeStr = '';
+        if($form->tourType == null){
+            return new Response(false, "Chưa chọn tour Type", $form);
+        }
         foreach ($form->tourType as $temp) {
             $tourTypeStr .= $temp . ',';
         }
         $form->tourType = $tourTypeStr;
-        return $this->response($form->save());
+        if ($form->save()->success) {
+            CategoryTourBusiness::addCateTour(null, $cateIds, $form->code);
+            return $this->response(new Response(true, "Thêm mới tour thành công"));
+        } else {
+            return new Response(false, "Có lỗi xảy ra trong quá trình thêm mới Tour", $form);
+        }
     }
 
     public function actionAddImage($tourId, $url) {

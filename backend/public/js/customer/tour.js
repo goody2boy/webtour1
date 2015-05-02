@@ -223,7 +223,7 @@ tour.editPrice = function (id) {
         loading: false,
         done: function (resp) {
             if (resp.success) {
-                popup.open('popup-edit-price', 'Xem thông tin giá Tour.', Fly.template('/tour/priceedit.tpl', resp), [
+                popup.open('popup-edit-price', 'Sửa giá Tour.', Fly.template('/tour/priceedit.tpl', resp), [
                     {
                         title: 'Xác nhận',
                         style: 'btn-private',
@@ -261,6 +261,71 @@ tour.editPrice = function (id) {
                         }
                     }
                 ], "modal-lg");
+            }
+        }
+    });
+};
+tour.add = function () {
+    popup.open('popup-edit-tour', 'Thêm Tour mới.', Fly.template('/tour/add.tpl', null), [
+        {
+            title: 'Sửa',
+            style: 'btn-primary',
+            fn: function () {
+                ajaxSubmit({
+                    service: '/tour/add',
+                    id: 'add-tour',
+                    contentType: 'json',
+                    loading: false,
+                    done: function (rs) {
+                        if (rs.success) {
+                            $("tr[data-key='" + id + "']").addClass('success');
+                            popup.close('popup-edit-tour');
+                        } else {
+                            popup.msg(rs.message);
+                        }
+                    }
+                });
+            }
+        },
+        {
+            title: 'Hủy',
+            style: 'btn-default',
+            fn: function () {
+                popup.close('popup-edit-tour');
+            }
+        }
+    ], "modal-lg");
+    setTimeout(function () {
+        $('input[data-info=startTime]').timeSelect();
+        $('input[data-info=endTime]').timeSelect();
+    }, 300);
+    ajax({
+        service: '/city/get-all',
+        data: '',
+        done: function (resp1) {
+            if (resp1.success) {
+                var selectHtml = '<option value="" >--Chọn Thành phố--</option>';
+                $.each(resp1.data, function (i) {
+                    selectHtml += '<option ' + ' value="' + this.id + '" >' + this.name + '</option>';
+                });
+                $('select[data-update=city_id]').html(selectHtml);
+            } else {
+                popup.msg(resp1.message);
+            }
+        }
+    });
+    ajax({
+        service: '/category/get-all',
+        data: '',
+        done: function (resp1) {
+            if (resp1.success) {
+                var selectHtml = '<option value="" >--Chọn Tour Type--</option>';
+                $.each(resp1.data, function (i) {
+                    selectHtml += '<option value="' + this.id + '" >' + this.name + '</option>';
+                });
+                $('select[data-update=tourType]').html(selectHtml);
+            } else {
+                popup.msg(resp1.message);
             }
         }
     });

@@ -223,15 +223,17 @@ class TourSearch extends Model {
     }
 
     public static function getMinPrice($prices) {
-        if (!isset($prices)) {
-            $min = $prices[0]->price;
-            foreach ($prices as $price) {
-                if ($min > $price->price) {
-                    $min = $price->price;
+        if (isset($prices)) {
+            if ($prices != null ) {
+                $min = $prices[0]->price;
+                foreach ($prices as $price) {
+                    if ($min > $price->price) {
+                        $min = $price->price;
+                    }
                 }
+                return $min;
             }
-
-            return $min;
+            return 0;
         }
     }
 
