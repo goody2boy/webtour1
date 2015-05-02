@@ -79,12 +79,14 @@ class TourController extends ServiceController {
         if (is_object($resp = $this->can("add"))) {
             return $this->response($resp);
         }
-
         $form = new TourForm();
         $form->setAttributes(Yii::$app->request->getBodyParams());
-//       $cateIds = CategoryBusiness::get($form->tourType);
         CategoryTourBusiness::addCateTour($form->id, $form->tourType);
-//       $form->categoryName = $cateName->name;
+        $tourTypeStr = '';
+        foreach ($form->tourType as $temp) {
+            $tourTypeStr .= $temp . ',';
+        }
+        $form->tourType = $tourTypeStr;
         return $this->response($form->save());
     }
 

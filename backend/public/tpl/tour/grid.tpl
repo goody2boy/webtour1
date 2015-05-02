@@ -133,7 +133,7 @@
                         <td>
                             <div style="margin-top: 5px">
                                 <button onclick="tour.editDetail('<%=this.id%>');" type="button" class="btn btn-success" style="width:100px;"><span class="glyphicon glyphicon-edit pull-left" style="line-height: 18px"></span>Chi tiết </button>
-                                <button onclick="tour.editImage('<%=this.id%>');" type="button" class="btn btn-info" style="width:100px;"><span class="glyphicon glyphicon-film pull-left" style="line-height: 18px"></span>Ảnh </button>
+                                <button onclick="image.addImage('<%=this.id%>', 'tour');" type="button" class="btn btn-info" style="width:100px;"><span class="glyphicon glyphicon-film pull-left" style="line-height: 18px"></span>Ảnh </button>
                                 <button onclick="tour.editLocation('<%=this.id%>');" type="button" class="btn btn-info" style="width:100px;"><span class="glyphicon glyphicon-road pull-left" style="line-height: 18px"></span>Địa điểm </button>
                             </div>
                         </td>

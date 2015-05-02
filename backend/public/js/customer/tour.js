@@ -110,7 +110,7 @@ tour.changeActive = function (id) {
     });
 };
 
-tour.edit = function (id) {
+tour.editDetail = function (id) {
     var index = $("tr[data-key='" + id + "'] td:nth-child(1)").text();
     ajax({
         service: '/tour/get',
@@ -131,10 +131,8 @@ tour.edit = function (id) {
                                 contentType: 'json',
                                 loading: false,
                                 done: function (rs) {
-                                    rs.data.index = index;
                                     if (rs.success) {
-                                        var html = Fly.template('/tour/tredit.tpl', rs);
-//                                            $("tr[data-key='" + id + "']").empty().html(html).addClass('success');
+                                        $("tr[data-key='" + id + "']").addClass('success');
                                         popup.close('popup-edit-tour');
                                     } else {
                                         popup.msg(rs.message);
@@ -238,14 +236,15 @@ tour.editPrice = function (id) {
                             var price_6 = $('input[name=price_6]').val();
                             ajax({
                                 service: '/tour/edit-price',
-                                data: {id : id, price_1 : price_1, price_2 : price_2, price_3 : price_3, price_4 : price_4, price_5 : price_5, price_6 : price_6},
+                                data: {id: id, price_1: price_1, price_2: price_2, price_3: price_3, price_4: price_4, price_5: price_5, price_6: price_6},
                                 contentType: 'json',
-                                type : 'post',
+                                type: 'post',
                                 loading: false,
                                 done: function (resp1) {
                                     if (resp1.success) {
                                         console.log("gia tri resp");
                                         console.log(resp1);
+                                        popup.close('popup-edit-price');
                                     } else {
                                         console.log(resp1);
                                         popup.msg(resp1.message);

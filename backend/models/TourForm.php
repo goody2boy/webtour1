@@ -31,16 +31,16 @@ class TourForm extends Model {
     public $exclusion;
     public $notes;
     public $mapp_address;
-//    public $price_id;
     public $duration_time;
-//    public $author_id;
     public $language;
     public $status;
 
     public function rules() {
         return [
-            [['name', 'code', 'title', 'tourType', 'city_id', 'language', 'status'], 'required', 'message' => '{attribute} không được để trống!'],
-            [['id', 'city_id'], 'integer', 'message' => '{attribute} phải là kiểu số!'],
+            [[ 'code', 'title', 'tourType', 'city_id', 'language', 'status'], 'required', 'message' => '{attribute} không được để trống!'],
+            [['code', 'title','tourType','description','full_initerary','inclusion','exclusion','notes','mapp_address','language'], 'string'],
+            [['id', 'city_id','status'], 'integer', 'message' => '{attribute} phải là kiểu số!'],
+             [['duration_time'], 'number', 'numberPattern' => '/^\s*[-+]?[0-9]*[.,]?[0-9]+([eE][-+]?[0-9]+)?\s*$/', 'message' => '{attribute} phải là số!'],
         ];
     }
 
@@ -72,18 +72,14 @@ class TourForm extends Model {
             $tour = new Tour();
             $tour->create_time = time();
         }
-        $cateIds = '';
-        foreach ($this->tourType as $cateId) {
-            $cateIds += $cateIds + $cateId + ',';
-        }
+        $tour->category_ids = $this->tourType;
         $tour->code = $this->code;
         $tour->title = $this->title;
-        $tour->category_ids = $cateIds;
         $tour->description = $this->description;
         $tour->full_initerary = $this->full_initerary;
         $tour->inclusion = $this->inclusion;
         $tour->exclusion = $this->exclusion;
-        $tour->notes = $this->notes;
+        $tour->note = $this->notes;
         $tour->mapp_address = $this->mapp_address;
         $tour->duration_time = $this->duration_time;
         $tour->status = $this->status == 1 ? 1 : 0;

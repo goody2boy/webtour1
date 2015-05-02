@@ -58,6 +58,8 @@ class CategoryTourBusiness implements InterBusiness {
     }
 
     public static function addCateTour($tourId, $cateIds) {
+//        CategoryTour::find()->andWhere(["tour_id" => $tourId])->all();
+        self::removeByTour($tourId);
         foreach ($cateIds as $cateId) {
             $cateTour = new CategoryTour();
             $cateTour->tour_id = $tourId;

@@ -10,7 +10,7 @@
     <div class="form-group">
         <label class="control-label col-sm-4">Thời gian dự kiến</label>
         <div class="col-sm-8">
-            <input name="duration_time" type="text" value="<%= (typeof data != 'undefined' ?  data.durationTime : '0') %> Ngày" class="form-control" placeholder="0.5"/>
+            <input name="duration_time" type="text" value="<%= (typeof data != 'undefined' ?  data.duration_time : '0') %>" class="form-control" placeholder="Ngày"/>
         </div>
     </div>
     <div class="form-group">

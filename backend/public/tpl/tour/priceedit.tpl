@@ -16,6 +16,17 @@
                 <tr>
                     <th>Price/adult</th>
             <form class="form-horizontal" id="edit-price-tour">
+                <% if (data.length <= 0 ){ %>
+                <input name="id"  value="<%= (typeof data != 'undefined' ?  data.id : '') %>" type="text" class="form-control" placeholder="id" style="display: none;"/>
+                <% console.log("Price edit");console.log(data);%>
+                <th><input name="price_1" type="number"  class="form-control" placeholder="$$" style="width:70px;"/></th>
+                <th><input name="price_2" type="number"  class="form-control" placeholder="$$" style="width:70px;"/></th>
+                <th><input name="price_3" type="number"  class="form-control" placeholder="$$" style="width:70px;"/></th>
+                <th><input name="price_4" type="number"  class="form-control" placeholder="$$" style="width:70px;"/></th>
+                <th><input name="price_5" type="number"  class="form-control" placeholder="$$" style="width:70px;"/></th>
+                <th><input name="price_6" type="number"  class="form-control" placeholder="$$" style="width:70px;"/></th>
+                <th>Contact us</th>
+                <% }else{ %>
                 <input name="id"  value="<%= (typeof data != 'undefined' ?  data.id : '') %>" type="text" class="form-control" placeholder="id" style="display: none;"/>
                 <% console.log("Price edit");console.log(data);%>
                 <th><input name="price_1" type="number" value="<%= (typeof data != 'undefined' ?  (data[0].price != 'undefined' ? data[0].price : '0') : '0') %>" class="form-control" placeholder="$$" style="width:70px;"/></th>
@@ -24,7 +35,9 @@
                 <th><input name="price_4" type="number" value="<%= (typeof data != 'undefined' ?  (data[3].price != 'undefined' ? data[3].price : '0') : '0') %>" class="form-control" placeholder="$$" style="width:70px;"/></th>
                 <th><input name="price_5" type="number" value="<%= (typeof data != 'undefined' ?  (data[4].price != 'undefined' ? data[4].price : '0') : '0') %>" class="form-control" placeholder="$$" style="width:70px;"/></th>
                 <th><input name="price_6" type="number" value="<%= (typeof data != 'undefined' ?  (data[5].price != 'undefined' ? data[5].price : '0') : '0') %>" class="form-control" placeholder="$$" style="width:70px;"/></th>
-                <th>Contact us</th>
+                <th>Contact us</th>-+
+                3.12w6
+                <% } %>
             </form>
             </tr>
             </tbody>
