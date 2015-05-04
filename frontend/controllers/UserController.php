@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\business\CityBusiness;
 use common\models\business\CountryBusiness;
 use common\models\business\OrderBusiness;
+use common\models\business\TourBusiness;
 use Yii;
 
 class UserController extends BaseController {
@@ -79,6 +80,19 @@ class UserController extends BaseController {
             ]);
         }
         $order = OrderBusiness::getOrderByUser($account->id);
+        $ids = [];
+        foreach ($order as $value) {
+            $ids[] = $value->tour_id;
+        }
+        $tours = TourBusiness::mGet($ids);
+         foreach ($order as $value) {
+             foreach ($tours as $t) {
+             if ($value->tour_id==$t->id) {
+                    $value->tour = $t;
+                    break;
+                }
+            }
+        }
         $this->var['breadcrumb'] = [['name' => $account->firstName . " " . $account->lastName, 'link' => ''], ['name' => "My booking", 'link' => '']];
         return $this->render("booking", [
                     'order' => $order

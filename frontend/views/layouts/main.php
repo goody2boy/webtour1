@@ -66,7 +66,7 @@ $home = isset($this->context->var["home"]) ? $this->context->var["home"] : '';
                         <li><a href="#">Site map</a></li>
                         <li><a href="<?= $this->context->baseUrl ?>login.html">Login</a></li>
                     <?php } else { ?>
-                        <li><a href="#">Login as <?= Yii::$app->getSession()->get("customer")->firstName . " " . Yii::$app->getSession()->get("customer")->lastName ?></a></li>
+                        <li><a href="<?= $this->context->baseUrl ?>profile.html">Login as <?= Yii::$app->getSession()->get("customer")->firstName . " " . Yii::$app->getSession()->get("customer")->lastName ?></a></li>
                         <li><a href="<?= $this->context->baseUrl ?>logout.html">Logout</a></li>
                     <?php } ?>
                 </ul>
@@ -90,7 +90,7 @@ $home = isset($this->context->var["home"]) ? $this->context->var["home"] : '';
                         <?php if (!empty($menus)) { ?>
                             <?php foreach ($menus as $menu) { ?>
                                 <?php if ($menu->parentId == 0) { ?>
-                                    <li class="<?= isset($this->context->var['menuactive']) && $this->context->var['menuactive'] == $menu->link ? 'active' : '' ?>"><a href="<?= $menu->link ?>"><?= $menu->name ?></a>
+                                    <li class="<?= isset($this->context->var['menuactive']) && $this->context->var['menuactive'] == $menu->link ? 'active' : 'li-submenu' ?>"><a href="<?= $menu->link ?>"><?= $menu->name ?></a>
                                         <div class="submenu">
                                             <ul>
                                                 <?php foreach ($menus as $submenu) { ?>

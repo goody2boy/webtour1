@@ -15,7 +15,7 @@
     <div class="form-group">
         <label class="control-label col-sm-4">Value:</label>
         <div class="col-sm-8">
-            <input name="value" type="text" value="<%= (typeof data != 'undefined' ?  data.value : '') %>" class="form-control" placeholder="Value"/>
+            <textarea name="value" id="value" class="form-control" placeholder="Value"><%= (typeof data != 'undefined' ?  data.value : '') %></textarea>
         </div>
     </div>
     

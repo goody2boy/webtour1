@@ -138,6 +138,11 @@ option.edit = function(id) {
                         }
                     }
                 ]);
+                if (resp.data.key == 'BANK_INFO') {
+                    setTimeout(function() {
+                        editor("value", {});
+                    });
+                }
             } else {
                 popup.msg(resp.message);
             }
