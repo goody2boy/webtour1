@@ -1,5 +1,45 @@
 $(document).ready(function(){
-
+	
+	//expand menu
+    $('.menu-expand').click(function() {
+        if ($('.menu').hasClass("menu-tiny")) {
+			$(this).removeClass("active")
+            $('.menu').removeClass("menu-tiny");
+			$('.menu').slideUp();
+			$('.header').addClass("header-pc");
+        } else {
+			$(this).addClass("active");
+            $('.menu').addClass("menu-tiny");
+			$('.menu').slideDown();
+			$('.header').removeClass("header-pc");
+        }
+        return false;
+    });
+	
+	//expand submenu
+    $('.menu > ul > li > a > .btn-submenu').click(function() {
+		var grand = $(this).parent().parent();
+		var root = $(this).parent().parent().parent();
+        if ($(this).hasClass("fa-plus")) {
+            $(this).removeClass("fa-plus");
+			$(this).addClass("fa-minus");
+			$('li.mobile-active > .submenu',$(root)).slideUp();
+			$('li.mobile-active > a > .btn-submenu',$(root)).removeClass("fa-minus");
+			$('li.mobile-active > a > .btn-submenu',$(root)).addClass("fa-plus");
+			$('li',$(root)).removeClass("mobile-active");
+			$(grand).addClass("mobile-active");
+			$('.submenu',$(grand)).slideDown();
+			$('.menu').addClass("menu-pc");
+        } else {
+            $(this).removeClass("fa-minus");
+			$(this).addClass("fa-plus");
+			$(grand).removeClass("mobile-active");
+			$('.submenu',$(grand)).slideUp();
+			$('.menu').removeClass("menu-pc");
+        }
+        return false;
+    });
+	
 	//heartslider
 	$('#heartslider').owlCarousel({
 		loop:true,
@@ -100,6 +140,21 @@ $(document).ready(function(){
 			$(this).addClass("fa-plus");
 			$(grand).removeClass("active");
 			$('.tr-form',$(grand)).slideUp();
+        }
+        return false;
+    });
+	
+	//footer menu mobile click
+    $('.footer-lb .fa').click(function() {
+		var grand = $(this).parent().parent();
+        if ($(this).hasClass("fa-plus")) {
+            $(this).removeClass("fa-plus");
+			$(this).addClass("fa-minus");
+			$('.footer-content',$(grand)).slideDown();
+        } else {
+            $(this).removeClass("fa-minus");
+			$(this).addClass("fa-plus");
+			$('.footer-content',$(grand)).slideUp();
         }
         return false;
     });

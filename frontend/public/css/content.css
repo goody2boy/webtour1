@@ -212,6 +212,8 @@ ul{
 	text-transform:uppercase;
 	font-weight:bold;
 	display:none;
+	border:1px solid #eee;
+	margin-bottom:1px;
 }
 .menu-expand .fa{
 	font-size:18px;
@@ -219,8 +221,9 @@ ul{
 	vertical-align:middle;
 }
 .menu-expand.active, .menu-expand:hover{
-	background:#3d5a99;
+	background:#3e7bc2;
 	color:#fff;
+	border:1px solid #3e7bc2;
 }
 .menu{
 	float:right;
@@ -243,6 +246,17 @@ ul{
 }
 .menu > ul > li > a .btn-submenu{
 	display:none;
+	background:rgba(0,0,0,0.1);
+	width:41px;
+	height:41px;
+	color:#333;
+	font-size:20px;
+	padding:10px 0 0;
+	text-align:center;
+	position:absolute;
+	top:0;
+	right:0;
+	z-index:2;
 }
 .menu > ul > li.active,
 .menu > ul > li:hover{
@@ -250,6 +264,10 @@ ul{
 }
 .menu > ul > li.active > a,
 .menu > ul > li:hover > a{
+	color:#fff;
+}
+.menu > ul > li.active > a .btn-submenu,
+.menu > ul > li:hover > a .btn-submenu{
 	color:#fff;
 }
 .submenu{
@@ -262,7 +280,7 @@ ul{
 	z-index:2;
 	display:none;
 }
-.menu > ul > li:hover > .submenu{
+.menu > ul > li.li-submenu:hover > .submenu{
 	display:block;
 }
 .submenu > ul{
@@ -753,7 +771,7 @@ ul{
 	font-weight:600;
 	white-space:nowrap;
 	overflow:hidden;
-	display:inline-block;
+	display:block;
 	vertical-align:top;
 	text-overflow:ellipsis;
 }
@@ -783,9 +801,13 @@ ul{
 	text-transform:uppercase;
 	font-weight:600;
 	padding:5px 0;
+	display:block;
 }
 .footer-top .footer-lb .fa{
 	display:none;
+	float:right;
+	font-size:22px;
+	cursor:pointer;
 }
 .footer-top  .list-ul{
 	border-top:1px dotted #909090;
@@ -900,7 +922,7 @@ ul{
 	margin:0 0 15px;
 }
 .box-control .pagination > li{
-	margin:0 2px 0 0;
+	margin:0 2px 2px 0;
 	float:left;
 }
 .box-control .pagination > li > a,
@@ -1588,10 +1610,11 @@ ul{
 .td-map{
 	height:150px;
 	overflow:hidden;
+	text-align:center;
 }
 .td-map img{
-	width:100%;
 	height:150px;
+	max-width:350px;
 }
 .td-map-expand{
 	padding:5px 0;
@@ -1861,7 +1884,17 @@ ul{
 	margin:0 0 7px;
 }
 .user-content > .form{
-	padding:20px;
+	padding:20px 15px;
+}
+.user-avatar{
+	display:inline-block;
+	vertical-align:middle;
+	margin-right:10px;
+	margin-bottom:5px;
+}
+.user-avatar img{
+	width:75px;
+	height:75px;
 }
 .user-bottom{
 	padding:10px 15px;
@@ -2006,6 +2039,7 @@ ul{
 	display:block;
 	white-space:nowrap;
 	text-overflow:ellipsis;
+	overflow:hidden;
 }
 .service-list .grid .g-desc{
 	height:126px;
@@ -2025,7 +2059,7 @@ ul{
 /*news*/
 .box-news{
 	margin:0 0 15px;
-	padding:10px 0 0;
+	padding:5px 0 0;
 }
 .box-news .maincontent{
 	padding:10px 0;
@@ -2222,6 +2256,7 @@ ul{
 .menu-hoz{
 	min-height:34px;
 	margin:0 0 25px;
+	overflow:hidden;
 }
 .menu-hoz > ul > li{
 	float:left;
@@ -2280,6 +2315,7 @@ ul{
 	display:table-cell;
 	text-align:center;
 	vertical-align:middle;
+	background:#000;
 }
 .pp-left .pp-cell img{
 	max-width:570px;
