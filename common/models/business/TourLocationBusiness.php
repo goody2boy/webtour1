@@ -34,4 +34,9 @@ class TourLocationBusiness implements InterBusiness {
         TourLocation::deleteAll(['tour_id' => $tourId]);
         return new Response(true, "Xóa thành công Địa điểm");
     }
+    
+    public static function remove($id){
+        TourLocation::deleteAll(['id' => $id]);
+        return new Response(true, "Xóa thành công Địa điểm");
+    }
 }
