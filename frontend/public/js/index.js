@@ -26,7 +26,7 @@ index.app = function(id) {
     });
 }
 
-$(document).ready(function() {
+$(document).ready(function() {;
     $.each($('div.submenu ul'), function() {
         if ($(this).children().length < 1) {
             $(this).parent().addClass('hide');

@@ -1,3 +1,8 @@
+<?php
+
+use common\util\TextUtils;
+use common\util\UrlUtils;
+?>
 <div class="container">
     <div class="box-user">
         <div class="user-menu">
@@ -33,12 +38,12 @@
                         <?php if(!empty($order)){ ?>
                         <?php foreach ($order as $o){ ?>
                         <tr>
-                            <td>CI11101036</td>
-                            <td><a href="#">SEN117 - Hoi An home dinner - Hoi An City</a></td>
-                            <td>27 Mar,2015</td>
-                            <td>01 Apr,2015</td>
-                            <td>$61.00</td>
-                            <td>Under payment <a href="#">(Click to pay)</a></td>
+                            <td><?= $o->invoice_code ?></td>
+                            <td><a target="_blank" href="<?= $this->context->baseUrl.UrlUtils::tour($o->tour->title, $o->tour->id) ?>"><?= $o->tour->title ?></a></td>
+                            <td><?= TextUtils::convertTime($o->create_time) ?></td>
+                            <td><?= TextUtils::convertTime($o->date_departure) ?></td>
+                            <td>$<?= TextUtils::sellPrice($o->total_price) ?></td>
+                            <td><?= $o->status_payment == "DONE"?"paid":"unpaid" ?><?php if($o->status_payment != "DONE"){ ?><a href="<?= $this->context->baseUrl.UrlUtils::checkout($o->id) ?>">(Click to pay)</a><?php } ?></td>
                         </tr>
                         <?php } ?>
                         <?php }else { ?>
