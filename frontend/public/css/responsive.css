@@ -1,6 +1,28 @@
 @media (min-width: 1200px){
 }
 @media (max-width: 1199px){
+	.container{
+		width:970px;
+	}
+	.menu > ul > li > a{
+		padding:37px 9px 0;
+		font-size:12px;
+	}
+	.box-support .bs-inline{
+		margin-right:15px;
+	}
+	.city-info .ci-left{
+		width:380px;
+	}
+	.td-item .grid .g-title{
+		font-size:16px;
+	}
+	.td-main{
+		width:640px;
+	}
+	.main{
+		width:690px;
+	}
 }
 @media (min-width: 992px){
 	.row.md-reset-all{
@@ -31,10 +53,279 @@
 	[class*="col-md-"].reset-padding-right{
 		padding-right:0;
 	}
+	.header-pc .menu{
+		display:block !important;
+	}
 }
 @media (max-width: 991px){
 	.container{
 		width:750px;
+	}
+	.box-social{
+		display:none;
+	}
+	.tripadvisor-header{
+		display:none;
+	}
+	.header{
+		height:auto;
+		padding:0 0 10px;
+	}
+	.logo{
+		position:static;
+		float:none;
+		background:transparent;
+		text-align:center;
+		-moz-box-shadow:none;
+		-webkit-box-shadow:none;
+		box-shadow:none;
+	}
+	.logo img{
+		height:80px;
+	}
+	.menu-expand{
+		display:block;
+	}
+	.menu{
+		float:none;
+		display:none;
+	}
+	.menu > ul > li{
+		float:none;
+		height:auto;
+		border-bottom:1px solid #eee;
+	}
+	.menu > ul > li:last-child{
+		border-bottom:none;
+	}
+	.menu > ul > li > a{
+		padding:12px 15px;
+		height:auto;
+	}
+	.menu > ul > li.li-submenu > a{
+		padding:12px 41px 12px 15px;
+	}
+	.menu > ul > li > a .btn-submenu{
+		display:block;
+	}
+	.menu > ul > li.li-submenu:hover > .submenu{
+		display:none;
+	}
+	.submenu{
+		position:static;
+		width:auto;
+	}
+	.submenu > ul > li{
+		float:none;
+		width:auto;
+	}
+	.submenu-item{
+		padding:10px 15px;
+	}
+	.submenu-item .si-thumb{
+		display:none;
+	}
+	.submenu-item .si-title{
+		font-size:14px;
+		text-align:left;
+	}
+	.box-support{
+		position:static;
+	}
+	.box-support .bs-inline{
+		margin-right:0;
+		width:49%;
+	}
+	.box-center .box-support{
+		text-align:left;
+	}
+	.home-comment{
+		padding:15px 0 60px;
+	}
+	.home-comment .hc-title{
+		font-size:24px;
+	}
+	.home-comment .owl-dots{
+		bottom:-40px;
+	}
+	.home-content{
+		padding:30px 0 10px;
+	}
+	.top-featured{
+		margin:0 0 30px;
+	}
+	.top-featured .grid .img{
+		float:none;
+		width:auto;
+		height:auto;
+	}
+	.top-featured .grid .img img{
+		min-height:0;
+	}
+	.top-featured .grid .g-content{
+		margin-left:0;
+		padding:15px 15px 10px;
+		min-height:0;
+	}
+	.big-list{
+		padding:20px 15px 0;
+	}
+	.big-list ul{
+		margin-right:-15px;
+	}
+	.big-list ul li{
+		padding-right:15px;
+	}
+	.small-list{
+		padding:30px 0 10px;
+	}
+	.small-list ul li{
+		padding-left:0;
+		padding-right:15px;
+		padding-bottom:15px;
+	}
+	.footer-top{
+		padding:15px 0;
+	}
+	.tripadvisor{
+		padding:15px 0;
+	}
+	.our-city{
+		padding:20px 0 5px;
+	}
+	.our-city > ul > li{
+		width:50%;
+		padding-bottom:25px;
+	}
+	.city-info{
+		padding:20px 0 0;
+	}
+	.city-info .ci-left{
+		width:auto;
+		float:none;
+		height:auto;
+		padding:20px;
+	}
+	.city-info .ci-left .ci-desc{
+		max-height:none;
+	}
+	.city-info .ci-left .ci-title{
+		font-size:26px;
+	}
+	.city-info .ci-right{
+		width:auto;
+		float:none;
+		height:auto;
+	}
+	.city-info .ci-right img{
+		min-height:0;
+	}
+	.city-folder{
+		padding:0 0 15px;
+	}
+	.city-tour ul li{
+		width:50%;
+	}
+	.city-highlight{
+		padding:20px 0;
+	}
+	.city-highlight ul li{
+		width:50%;
+		padding-bottom:20px;
+	}
+	.highlight-tour ul li{
+		width:50%;
+		padding-bottom:25px;
+	}
+	.highlight-type{
+		margin:0 0 20px;
+	}
+	.highlight-type .ct-name{
+		font-size:20px;
+	}
+	.td-item .grid{
+		opacity:1;
+	}
+	.td-item .grid .g-title{
+		font-size:12px;
+	}
+	.td-main{
+		float:none;
+		width:auto;
+		margin:0 0 15px;
+	}
+	.td-sidebar{
+		float:none;
+		width:auto;
+	}
+	.big-title{
+		padding:15px 0 20px;
+	}
+	.big-title .lb-name{
+		font-size:20px;
+	}
+	.tr-form label{
+		font-size:11px;
+	}
+	.service-list ul{
+		margin-right:-15px;
+	}
+	.service-list ul li{
+		padding-right:15px;
+		padding-bottom:15px;
+	}
+	.service-list .grid .g-title{
+		font-size:14px;
+	}
+	.bground{
+		padding:15px 0;
+	}
+	.main{
+		float:none;
+		width:auto;
+	}
+	.sidebar{
+		float:none;
+		width:auto;
+	}
+	.box-checkout{
+		padding:20px 0;
+	}
+	.photo-list ul li{
+		width:33.33%;
+	}
+	.comment-list{
+		padding:15px 0;
+	}
+	.comment-list ul li{
+		padding-bottom:15px;
+		padding-right:15px;
+	}
+	.comment-more{
+		padding:0;
+	}
+	.photo-popup{
+		width:570px;
+		top:30px;
+		margin-top:0;
+		height:auto;
+		margin-left:-285px;
+		position:absolute;
+	}
+	.pp-left{
+		width:auto;
+		float:none;
+	}
+	.pp-right{
+		width:auto;
+		float:none;
+		padding:15px;
+	}
+	.pp-social{
+		display:none;
+	}
+	.pp-info{
+		padding:0;
 	}
 }
 @media only screen and (min-width: 768px){
@@ -73,14 +364,590 @@
 		padding-left:15px;
 		padding-right:15px;
 	}
+	.admin-ul{
+		padding-top:0;
+		padding-bottom:3px;
+	}
+	.rating-header{
+		display:none;
+	}
+	.main-slider .owl-nav .owl-prev, .main-slider .owl-nav .owl-next{
+		background:url(../images/slider-button-small.png) no-repeat 0 0;
+		width:21px;
+		height:44px;
+		margin-top:-22px;
+	}
+	.main-slider .owl-nav .owl-next{
+		background:url(../images/slider-button-small.png) no-repeat -21px 0;
+	}
+	.box-support{
+		display:none;
+	}
+	.home-comment{
+		padding:15px 0 50px;
+	}
+	.home-comment .hc-title{
+		padding:0 0 15px;
+	}
+	.home-comment .owl-dots{
+		bottom:-30px;
+	}
+	.box-center{
+		padding:15px 0;
+	}
+	.our-city{
+		padding:15px 0 10px;
+	}
+	.our-city > ul{
+		margin-right:-15px;
+	}
+	.our-city > ul > li{
+		padding-right:15px;
+		padding-bottom:15px;
+	}
+	.city-item .ci-content{
+		padding:10px 15px;
+	}
+	.footer-content{
+		display:none;
+	}
+	.footer-top .footer-lb{
+		border-bottom:1px solid #eee;
+		padding:10px 0;
+		margin-bottom:0;
+	}
+	.footer-top .footer-lb .fa{
+		display:block;
+	}
+	.footer-top .list-ul{
+		border-top:none;
+	}
+	.tripadvisor{
+		display:none;
+	}
+	.home-content{
+		padding:15px 0 0;
+	}
+	.top-featured{
+		margin:0 0 15px;
+	}
+	.big-list{
+		padding:15px 15px 0;
+	}
+	.small-list{
+		padding:15px 0 0;
+	}
+	.small-list .grid .g-time{
+		font-size:11px;
+	}
+	.city-info{
+		padding:15px 0 0;
+		margin:0 0 15px;
+	}
+	.city-info .ci-left{
+		padding:15px;
+	}
+	.city-type{
+		margin:0 0 15px;
+	}
+	.city-tour ul{
+		margin-right:-15px;
+	}
+	.city-tour ul li{
+		padding-right:15px;
+		padding-bottom:15px;
+	}
+	.city-highlight{
+		padding:15px 0;
+	}
+	.city-highlight ul li{
+		padding-bottom:15px;
+	}
+	.highlight-group .hg-content{
+		padding:10px 5px 0;
+	}
+	.highlight-tour ul{
+		margin-right:-15px;
+	}
+	.highlight-tour ul li{
+		padding-right:15px;
+		padding-bottom:15px;
+	}
+	.tour-detail{
+		padding:15px 0;
+	}
+	.td-title{
+		padding:0 0 15px;
+	}
+	.td-title h1{
+		font-size:18px;
+	}
+	.td-label{
+		padding:0 0 10px;
+	}
+	.td-main .maincontent{
+		margin:15px 0;
+	}
+	.td-slider .owl-nav .owl-prev, .td-slider .owl-nav .owl-next{
+		background:url(../images/slider-button-small.png) no-repeat 0 0;
+		width:21px;
+		height:44px;
+		margin-top:-22px;
+	}
+	.td-slider .owl-nav .owl-next{
+		background:url(../images/slider-button-small.png) no-repeat -21px 0;
+	}
+	.box-control .pagination-router{
+		text-align:left;
+	}
+	.tr-form label{
+		font-size:12px;
+	}
+	.big-title{
+		padding:15px 0;
+	}
+	.tr-desc{
+		padding:15px 15px 0;
+	}
+	.tr-title{
+		padding:15px;
+	}
+	.tr-form{
+		padding:15px 15px 5px;
+	}
+	.tr-option{
+		padding:0 15px;
+	}
+	.tr-bottom{
+		padding:12px 15px;
+	}
+	.option-item .tr-form{
+		padding:10px 15px;
+	}
+	.box-checkout{
+		padding:15px 0;
+	}
+	.checkout-title{
+		padding:0 0 15px;
+	}
+	.checkout-content .table-responsive{
+		margin-bottom:0;
+	}
+	.checkout-bottom .text-right.col-sm-6{
+		text-align:left;
+	}
+	.big-title .lb-name{
+		font-size:18px;
+	}
+	.box-contact{
+		padding:15px;
+		margin:0 0 15px;
+	}
+	.box-contact .maincontent{
+		margin:0 0 15px;
+	}
+	.user-content > .form{
+		padding:15px;
+	}
+	.page-title h1, .page-title h2{
+		font-size:20px;
+	}
+	.box-title{
+		min-height:34px;
+	}
+	.box-title .lb-name{
+		font-size:16px;
+		padding:5px 0;
+	}
+	.box-user{
+		padding:15px 0;
+	}
+	.user-info{
+		text-align:left;
+	}
+	.box-invoice{
+		padding:15px;
+	}
+	.menu-hoz{
+		margin:0 0 10px;
+	}
+	.photo-list ul{
+		margin-right:-15px;
+	}
+	.photo-list ul li{
+		padding-right:15px;
+		padding-bottom:15px;
+	}
+	.comment-list{
+		padding:15px 0;
+	}
+	.comment-more{
+		font-size:12px;
+	}
 }
 @media (max-width: 640px){
+	.home-comment .hc-title{
+		font-size:20px;
+	}
+	.home-comment .grid .g-row{
+		font-size:12px;
+		line-height:20px;
+	}
+	.big-list ul li{
+		width:50%;
+	}
+	.small-list ul li{
+		float:none;
+		width:auto;
+		padding-right:0;
+	}
+	.small-list .grid .g-title{
+		white-space:normal;
+	}
+	.city-item .ci-title{
+		font-size:20px;
+	}
+	.city-info .ci-left .ci-title{
+		font-size:22px;
+	}
+	.highlight-group .hg-content .grid .g-title{
+		font-size:16px;
+	}
+	.highlight-type .ct-name{
+		font-size:16px;
+		padding:15px 0 0;
+	}
+	.tr-desc{
+		font-size:12px;
+	}
+	.service-list ul li{
+		width:50%;
+	}
+	.user-menu{
+		height:auto;
+	}
+	.user-menu > ul > li{
+		float:none;
+	}
+	.photo-popup{
+		width:auto;
+		top:15px;
+		left:15px;
+		right:15px;
+		margin-left:0;
+	}
+	.pp-left .pp-cell{
+		width:auto;
+		height:auto;
+		display:block;
+	}
+	.pp-left .pp-cell img{
+		max-height:none;
+		max-width:100%;
+	}
+	.pp-title{
+		font-size:16px;
+	}
 }
 @media (max-width: 533px){
+	.tour-item .tour-thumb{
+		height:178px;
+	}
+	.tour-item .tour-thumb img{
+		min-height:178px;
+	}
+	.highlight-group .hg-thumb{
+		height:141px;
+	}
+	.highlight-group .hg-thumb img{
+		min-height:141px;
+	}
+	.highlight-item .highlight-thumb{
+		height:178px;
+	}
+	.highlight-item .highlight-thumb img{
+		min-height:178px;
+	}
+	.rv-ul li{
+		width:50%;
+	}
+	.photo-list ul li{
+		width:50%;
+	}
+	.comment-list ul{
+		margin-right:0;
+	}
+	.comment-list ul li{
+		float:none;
+		width:auto;
+		padding-right:0;
+	}
 }
 @media (max-width: 480px){
+	.footer-menu ul > li > a{
+		font-size:11px;
+	}
+	.home-comment .hc-title{
+		font-size:16px;
+	}
+	.home-comment .grid .g-title{
+		font-size:12px;
+	}
+	.top-featured .grid .g-title{
+		font-size:14px;
+	}
+	.big-list .grid .g-title{
+		font-size:14px;
+	}
+	.our-city > ul{
+		margin-right:0;
+	}
+	.our-city > ul > li{
+		padding-right:0;
+		float:none;
+		width:auto;
+	}
+	.city-item .ci-desc{
+		height:auto;
+	}
+	.city-item .ci-thumb{
+		height:auto;
+	}
+	.city-item .ci-thumb img{
+		min-height:0;
+	}
+	.city-info .ci-left .ci-title{
+		font-size:18px;
+	}
+	.city-info .ci-left .ci-desc{
+		font-size:12px;
+	}
+	.city-folder ul li{
+		width:50%;
+	}
+	.city-type .ct-inner{
+		display:block;
+	}
+	.city-type .ct-inner label{
+		display:block;
+		margin:0 0 7px;
+		padding:0;
+	}
+	.city-type .ct-inner .form-control{
+		display:block;
+		width:100%;
+	}
+	.tour-item .tour-title a{
+		font-size:12px;
+		line-height:18px;
+		height:36px;
+	}
+	.tour-item .tour-thumb{
+		height:159px;
+	}
+	.tour-item .tour-thumb img{
+		min-height:159px;
+	}
+	.highlight-group .hg-content .grid .g-title{
+		font-size:14px;
+	}
+	.city-highlight ul li{
+		float:none;
+		width:auto;
+		padding-right:0;
+	}
+	.highlight-group .hg-thumb{
+		height:auto;
+	}
+	.highlight-group .hg-thumb img{
+		min-height:0;
+	}
+	.highlight-group .hg-content{
+		padding:10px 0 0;
+	}
+	.highlight-group .hg-content .hg-desc{
+		height:auto;
+	}
+	.highlight-type .ct-name{
+		display:block;
+		padding:0 0 7px;
+	}
+	.highlight-type .ct-inner{
+		float:none;
+	}
+	.highlight-item .highlight-thumb{
+		height:159px;
+	}
+	.highlight-item .highlight-thumb img{
+		min-height:159px;
+	}
+	.service-list ul{
+		margin-right:0;
+	}
+	.service-list ul li{
+		float:none;
+		width:auto;
+		padding-right:0;
+	}
+	.service-list .grid .g-desc{
+		height:auto;
+	}
+	.box-news .maincontent{
+		font-size:12px;
+		line-height:20px;
+	}
+	.box-news .maincontent p{
+		font-size:12px;
+	}
+	.box-other ul li a{
+		font-size:12px;
+	}
+	.box-other .bo-title{
+		font-size:16px;
+	}
+	.news-title h1{
+		font-size:16px;
+	}
+	.checkout-title{
+		font-size:16px;
+	}
+	.big-title .lb-name{
+		font-size:16px;
+	}
+	.box-map{
+		height:300px;
+	}
+	.menu-hoz > ul > li{
+		margin:0 5px 5px 0;
+	}
 }
 @media (max-width: 360px){
+	.big-list ul{
+		margin-right:0;
+	}
+	.big-list ul li{
+		float:none;
+		width:auto;
+		padding-right:0;
+		padding-bottom:10px;
+	}
+	.big-list .grid .img{
+		height:auto;
+	}
+	.big-list .grid .img img{
+		min-height:0;
+	}
+	.big-list .grid .g-desc{
+		height:auto;
+	}
+	.small-list .grid .img{
+		width:85px;
+		height:85px;
+	}
+	.small-list .grid .img img{
+		min-height:75px;
+	}
+	.small-list .grid .g-content{
+		margin-left:97px;
+	}
+	.city-item .ci-row{
+		margin-bottom:7px;
+	}
+	.city-item .ci-title{
+		font-size:16px;
+	}
+	.city-info .ci-left .ci-title{
+		font-size:16px;
+	}
+	.city-folder ul li{
+		float:none;
+		width:auto;
+	}
+	.city-tour ul{
+		margin-right:0;
+	}
+	.city-tour ul li{
+		float:none;
+		width:auto;
+		padding-right:0;
+	}
+	.tour-item .tour-rating{
+		margin:0 0 5px;
+	}
+	.highlight-tour ul{
+		margin-right:0;
+	}
+	.highlight-tour ul li{
+		width:auto;
+		float:none;
+		padding-right:0;
+	}
+	.highlight-item .highlight-thumb{
+		height:auto;
+	}
+	.highlight-item .highlight-thumb img{
+		min-height:0;
+	}
+	.highlight-item .highlight-rating{
+		margin:0 0 5px;
+	}
+	.highlight-item .highlight-desc{
+		height:auto;
+	}
+	.td-title h1{
+		font-size:16px;
+	}
+	.td-help{
+		text-align:left;
+	}
+	.rv-ul li{
+		float:none;
+		width:auto;
+		height:auto;
+		margin-bottom:10px;
+	}
+	.rv-item{
+		padding:3px 0 15px 20px;
+	}
+	.rv-item .rv-info{
+		height:auto;
+	}
+	.pd-tabs .nav-tabs > li{
+		float:none;
+		margin-bottom:1px;
+	}
+	.pd-tabs .nav-tabs > li > a{
+		font-size:14px;
+		border:none;
+	}
+	.pd-tabs .nav-tabs > li.active > a,
+	.pd-tabs .nav-tabs > li.active > a:hover,
+	.pd-tabs .nav-tabs > li.active > a:focus{
+		background-color:#3e7bc2;
+		color:#fff;
+		border:none;
+	}
+	.menu-left > ul > li > a{
+		font-size:12px;
+	}
+	.box-map{
+		height:250px;
+	}
+	.photo-list ul{
+		margin-right:0;
+	}
+	.photo-list ul li{
+		float:none;
+		width:auto;
+		padding-right:0;
+	}
+	.photo-item .photo-thumb{
+		height:auto;
+		min-height:150px;
+	}
 }
 @media (max-width: 320px){
+	.home-comment .hc-title{
+		font-size:14px;
+	}
 }

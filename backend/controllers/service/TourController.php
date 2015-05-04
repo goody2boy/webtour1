@@ -121,5 +121,17 @@ class TourController extends ServiceController {
         $form->setAttributes(Yii::$app->request->getBodyParams());
         return $this->response($form->save());
     }
+    
+    public function actionGetLocation($id){
+        if (is_object($resp = $this->can("get-location"))) {
+            return $this->response($resp);
+        }
+        $search = new TourSearch();
+        $search->id = $id;
+        $tour = $search->search(true)->data[0];
+        $locations = $tour->locations;
+//        TourLocationBusiness::getByTour($tour->id);
+        return $this->response(new Response(true, "Địa điểm trong tour", $locations));
+    }
 
 }

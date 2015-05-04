@@ -330,3 +330,32 @@ tour.add = function () {
         }
     });
 };
+tour.addLocation = function (){
+  $('#location-table').addClass('col-sm-6');
+  $('#location-editPnl').addClass('col-sm-6');
+  htmlform = Fly.template('/tour/editlocationform.tpl', null);
+  $('#location-editPnl').html(htmlform);
+  
+};
+tour.editLocation = function (id) {
+    ajax({
+        service: '/tour/get-location',
+        data: {id: id},
+        loading: false,
+        done: function (resp) {
+            if (resp.success) {
+                console.log("gia tri resp locations");
+                console.log(resp);
+                popup.open('popup-edit-tourlocation', 'Xem các địa điểm trong tour.', Fly.template('/tour/editlocation.tpl', resp), [
+                    {
+                        title: 'ẩn',
+                        style: 'btn-default',
+                        fn: function () {
+                            popup.close('popup-show-price');
+                        }
+                    }
+                ], "modal-lg");
+            }
+        }
+    });
+};

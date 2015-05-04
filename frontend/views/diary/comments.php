@@ -17,9 +17,9 @@ use yii\captcha\Captcha;
                     <div class="grid">
                         <div class="img"><a>
                                 <?php if (!empty($review->user->images)) { ?>
-                                    <img src="<?= $this->context->baseUrl . ($review->user->images[0]->imageId != "" ? $review->user->images[0]->imageId : "data/user.jpg") ?>" alt="img">
+                                    <img src="<?= $this->context->baseUrl . ($review->user->images[0]->imageId != "" ? $review->user->images[0]->imageId : "images/no_avatar.png") ?>" alt="img">
                                 <?php } else { ?>
-                                    <img src="data/user.jpg" alt="img">
+                                    <img src="images/no_avatar.png" alt="img">
                                 <?php } ?>
                             </a></div>
                         <div class="g-content">

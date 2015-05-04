@@ -9,6 +9,7 @@ use yii\data\Pagination;
 use common\models\business\CityBusiness;
 use common\models\business\HightLightBusiness;
 use common\models\business\PriceBusiness;
+use common\models\business\TourLocationBusiness;
 use common\models\business\ImageBusiness;
 use common\models\business\CategoryBusiness;
 use common\models\business\CategoryTourBusiness;
@@ -156,6 +157,7 @@ class TourSearch extends Model {
             $tour->moneys = $moneyArr[$tour->money_id] != null ? $moneyArr[$tour->money_id] : '';
             $tour->author = $authorArr[$tour->author_id] != null ? $authorArr[$tour->author_id] : '';
             $tour->prices = PriceBusiness::getByTour($tour->id);
+            $tour->locations = TourLocationBusiness::getByTour($tour->id);
             $tour->minprice = $this->getMinPrice($tour->prices);
 //            $tour->moneys = MoneyBusiness::mGet($ids);
             $tour->images = ImageBusiness::getByTarget($tour->id, "tour");
