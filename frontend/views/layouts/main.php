@@ -90,7 +90,7 @@ $home = isset($this->context->var["home"]) ? $this->context->var["home"] : '';
                         <?php if (!empty($menus)) { ?>
                             <?php foreach ($menus as $menu) { ?>
                                 <?php if ($menu->parentId == 0) { ?>
-                                    <li class="<?= isset($this->context->var['menuactive']) && $this->context->var['menuactive'] == $menu->link ? 'active' : 'li-submenu' ?>"><a href="<?= $menu->link ?>"><?= $menu->name ?></a>
+                        <li class="<?= isset($this->context->var['menuactive']) && $this->context->var['menuactive'] == $menu->link ? 'active' : 'li-submenu' ?>"><a href="<?= $menu->link ?>"><?= $menu->name ?><span class="btn-submenu fa fa-plus"></span></a>
                                         <div class="submenu">
                                             <ul>
                                                 <?php foreach ($menus as $submenu) { ?>
