@@ -330,3 +330,124 @@ tour.add = function () {
         }
     });
 };
+tour.addLocation = function (id) {
+    popup.open('popup-add-tourlocation', 'Thêm mới địa điểm', Fly.template('/tour/editlocationform.tpl', null), [
+        {
+            title: 'Submit',
+            style: 'btn-primary',
+            fn: function () {
+                ajaxSubmit({
+                    service: '/tour/add-location',
+                    id: 'add-location-form',
+                    contentType: 'json',
+                    loading: true,
+                    done: function (resp) {
+                        if (resp.success) {
+                            console.log('Them moi thanh cong location');
+                            console.log(resp);
+                            popup.close('popup-add-tourlocation');
+                            var newRow = Fly.template('/tour/trlocation.tpl', resp);
+                            $('#locationTable > tbody tr:last').after(newRow);
+                        } else {
+                            popup.msg(resp.message);
+                        }
+                    }
+                });
+            }
+        }, {
+            title: 'cancel',
+            style: 'btn-default',
+            fn: function () {
+                popup.close('popup-add-tourlocation');
+            }
+        }
+    ]);
+    $('input[name=tour_id]').val(id);
+
+};
+tour.editLocation = function (id) {
+    ajax({
+        service: '/tour/get-location',
+        data: {id: id},
+        loading: true,
+        done: function (resp) {
+            if (resp.success) {
+                console.log('Test edit map');
+                console.log(resp);
+                popup.open('popup-add-tourlocation', 'Thêm mới địa điểm', Fly.template('/tour/editlocationform.tpl', resp), [
+                    {
+                        title: 'Submit',
+                        style: 'btn-primary',
+                        fn: function () {
+                            ajaxSubmit({
+                                service: '/tour/add-location',
+                                id: 'add-location-form',
+                                contentType: 'json',
+                                loading: true,
+                                done: function (resp) {
+                                    if (resp.success) {
+                                        console.log('Them moi thanh cong location');
+                                        console.log(resp);
+                                        popup.close('popup-add-tourlocation');
+                                        var newRow = Fly.template('/tour/trlocation.tpl', resp);
+                                        $('#locationTable > tbody tr:last').after(newRow);
+                                    } else {
+                                        popup.msg(resp.message);
+                                    }
+                                }
+                            });
+                        }
+                    }, {
+                        title: 'cancel',
+                        style: 'btn-default',
+                        fn: function () {
+                            popup.close('popup-add-tourlocation');
+                        }
+                    }
+                ]);
+                $('input[name=tour_id]').val(id);
+            } else {
+                popup.msg(resp.message);
+            }
+        }
+    });
+};
+tour.removeLocation = function (id) {
+    popup.confirm("Bạn có muốn xóa Địa điểm này?", function () {
+        ajax({
+            service: '/tour/remove-location',
+            data: {id: id},
+            loading: false,
+            done: function (resp) {
+                if (resp.success) {
+                    popup.msg(resp.message);
+                    $('#locationTable tr[data-key=' + id + ']').remove();
+                } else {
+                    popup.msg(resp.message);
+                }
+            }
+        });
+    });
+};
+tour.editLocations = function (id) {
+    ajax({
+        service: '/tour/get-locations',
+        data: {id: id},
+        loading: true,
+        done: function (resp) {
+            if (resp.success) {
+                console.log("gia tri resp locations");
+                console.log(resp);
+                popup.open('popup-edit-tourlocation', 'Xem các địa điểm trong tour.', Fly.template('/tour/editlocation.tpl', resp), [
+                    {
+                        title: 'ẩn',
+                        style: 'btn-default',
+                        fn: function () {
+                            popup.close('popup-edit-tourlocation');
+                        }
+                    }
+                ], "modal-lg");
+            }
+        }
+    });
+};

@@ -3,8 +3,10 @@
 namespace backend\controllers\service;
 
 use backend\models\TourForm;
+use backend\models\TourLocationForm;
 use backend\models\EditPriceForm;
 use common\models\business\TourBusiness;
+use common\models\business\TourLocationBusiness;
 use common\models\business\CategoryTourBusiness;
 use common\models\business\PriceBusiness;
 use common\models\business\ImageBusiness;
@@ -83,7 +85,7 @@ class TourController extends ServiceController {
         $form->setAttributes(Yii::$app->request->getBodyParams());
         $cateIds = $form->tourType;
         $tourTypeStr = '';
-        if($form->tourType == null){
+        if ($form->tourType == null) {
             return new Response(false, "Chưa chọn tour Type", $form);
         }
         foreach ($form->tourType as $temp) {
@@ -120,6 +122,52 @@ class TourController extends ServiceController {
         $form = new EditPriceForm();
         $form->setAttributes(Yii::$app->request->getBodyParams());
         return $this->response($form->save());
+    }
+
+    public function actionGetLocations($id) {
+        if (is_object($resp = $this->can("get-locations"))) {
+            return $this->response($resp);
+        }
+        $search = new TourSearch();
+        $search->id = $id;
+        $tour = $search->search(true)->data[0];
+//        $locations = $tour->locations;
+//        TourLocationBusiness::getByTour($tour->id);
+        return $this->response(new Response(true, "Địa điểm trong tour", $tour));
+    }
+
+    public function actionAddLocation() {
+        if (is_object($resp = $this->can("add-location"))) {
+            return $this->response($resp);
+        }
+        $form = new TourLocationForm();
+        $form->setAttributes(Yii::$app->request->getBodyParams());
+//        return new Response($form->save());
+        $result = $form->save();
+        if ($result->success) {
+            return $this->response($result);
+        } else {
+            return new Response(false, $result->message, $form);
+        }
+    }
+
+    public function actionRemoveLocation($id) {
+        if (is_object($resp = $this->can("add-location"))) {
+            return $this->response($resp);
+        }
+        return $this->response(TourLocationBusiness::remove($id));
+    }
+
+    public function actionGetLocation($id) {
+        if (is_object($resp = $this->can("get-location"))) {
+            return $this->response($resp);
+        }
+        $tourLocat = TourLocationBusiness::get($id);
+        if ($tourLocat == null) {
+            return $this->response(new Response(false, 'Không tìm thấy địa điểm này', $id));
+        } else {
+            return $this->response(new Response(true, 'Tìm thấy địa điểm', $tourLocat));
+        }
     }
 
 }

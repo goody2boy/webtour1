@@ -150,19 +150,19 @@ use common\util\UrlUtils;
                     </div><!-- tab-pane -->
                 </div><!-- tab-content -->
             </div><!-- pd-tabs -->
-            <div class="related-venues">Related venues <span>(<?= sizeof($venuesTour) ?>)</span></div>
+            <div class="related-venues">Related venues <span>(<?= sizeof($tour->locations) ?>)</span></div>
             <ul class="rv-ul">
                 <?php $index = 1; ?>
-                <?php foreach ($venuesTour as $vtour) { ?>
+                <?php foreach ($tour->locations as $tourLocate) { ?>
                     <li>
                         <div class="rv-item">
                             <span class="rv-number"><?= $index ?></span>
-                            <div class="rv-name"><?= $vtour->title ?></div>
+                            <div class="rv-name"><?= $tourLocate->location_name ?></div>
                             <div class="rv-desc">
-                                <?= $vtour->mapp_address ?>
+                                <?= $tourLocate->location_address ?>
                             </div>
                             <div class="rv-info">
-                                <?= $vtour->description ?>
+                                <?= $tourLocate->location_desc ?>
                             </div>
                         </div>
                     </li>
