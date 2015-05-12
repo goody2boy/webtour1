@@ -71,7 +71,7 @@
                         <th class="text-center" style="vertical-align: middle" >Ngày sửa</th>
                         <th class="text-center" style="vertical-align: middle;width: 100px;" >Kích hoạt<i class="glyphicon glyphicon-edit pull-right"></i></th>
                         <th class="text-center" style="vertical-align: middle;width: 215px" > 
-                            Chức năng<i style="cursor: pointer" onclick="album.add();" class="pull-right glyphicon glyphicon-plus">
+                            Chức năng<i style="cursor: pointer" onclick="money.add();" class="pull-right glyphicon glyphicon-plus">
                         </th>
                     <tr>
                 </thead>

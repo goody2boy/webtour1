@@ -36,6 +36,16 @@ class ReviewBusiness implements InterBusiness {
         return $reviewList;
     }
 
+    public static function getByIds($ids) {
+        $reviewList = Review::find()->andWhere(["id" => $ids])->orderBy(['rate' => SORT_ASC])->all();
+        foreach ($reviewList as $review) {
+            $user = UserBusiness::get($review->user_id);
+            $user->images = ImageBusiness::getByTarget($review->user_id, "user");
+            $review->user = $user;
+        }
+        return $reviewList;
+    }
+
     public static function getByUser($userId) {
         return Review::find()->andWhere(['user_id' => $userId])->orderBy(['rate' => SORT_ASC])->all();
     }

@@ -21,7 +21,7 @@ class IndexController extends BaseController {
         $tourFeature = $this->getTourFeature();
         $tourFeatureBoxs = $this->getTourFeatureBox();
         $featureImage = $this->getImageFetureTour();
-        $reviewList = ReviewBusiness::getAll(6);
+        $reviewList = $this->getReviewFeatureBox();
         return $this->render('index', [
                     'heart' => $heart,
                     'tourFeature' => $tourFeature,
@@ -41,6 +41,12 @@ class IndexController extends BaseController {
             $tourFeatures[] = $search->search(true)->data[0];
         }
         return $tourFeatures;
+    }
+
+    public function getReviewFeatureBox() {
+        $nameArr = ['REVIEWBOX'];
+        $reviewIds = preg_split("/,/", OptionBusiness::getConfig($nameArr, 1)[0]->value);
+        return ReviewBusiness::getByIds($reviewIds);
     }
 
     public function getTourFeature() {
