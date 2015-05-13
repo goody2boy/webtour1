@@ -1,4 +1,4 @@
-<form class="form-horizontal" id="add-money" style="width: 500px; margin-top: 15px;" >
+<form class="form-horizontal" id="add-review" style="width: 500px; margin-top: 15px;" >
     <input name="id"  value="<%= (typeof data != 'undefined' ?  data.id : '') %>" type="text" class="form-control" placeholder="id" style="display: none;"/>
     <div class="form-group">
         <label class="control-label col-sm-4">Người review</label>

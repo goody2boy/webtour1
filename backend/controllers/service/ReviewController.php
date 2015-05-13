@@ -9,7 +9,7 @@ use common\models\db\Review;
 use common\models\output\Response;
 use common\models\input\ReviewSearch;
 use common\models\business\ReviewBusiness;
-use backend\models\MoneyForm;
+use backend\models\ReviewForm;
 use Yii;
 /**
  * Description of MoneyController

@@ -111,6 +111,7 @@ review.edit = function (id) {
                                         var html = Fly.template('/review/tredit.tpl', rs);
 //                                            $("tr[data-key='" + id + "']").empty().html(html).addClass('success');
                                         popup.close('popup-edit-review');
+                                        location.reload();
                                     } else {
                                         popup.msg(rs.message);
                                     }
