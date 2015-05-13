@@ -71,10 +71,10 @@
                             <hr/>
                             <i class="glyphicon glyphicon-trash icon-remove" onclick="review.remove('<%= this.id %>');"></i>
                         </td>
-                        <td class="text-center" style="vertical-align: middle">
+                        <td class="text-center" style="vertical-align: middle;font-size: 15px;">
                             <%= this.user.username %></br>
                             <span>
-                                <img src="<%= baseImage.baseUrl %><%= this.user.images.length > 0 ? this.user.images[0].imageId : 'images/no_avatar.png' %>" style="height: auto; max-height: 100px;" alt="No Image" />
+                                <img src="<%= baseImage.baseUrl %><%= this.user.images.length > 0 ? this.user.images[0].imageId : 'images/no_avatar.png' %>" style="margin: auto;height: auto; max-height: 60px;" alt="No Image" class="thumbnail"/>
                             </span>
                         </td>
                         <td class="text-center" style="vertical-align: middle"><%= this.review_comment %></td>

@@ -94,7 +94,7 @@ use common\util\UrlUtils;
                 <li>
                     <div class="grid">
                         <div class="g-row">
-                            <a class="g-title" href="#">Vietnam Discovery</a>
+                            <a class="g-title" href="<?= $this->context->baseUrl .'vietnam-discovery.html'?>">Vietnam Discovery</a>
                         </div>
                         <div class="img"><a href="#"><img src="data/home1.jpg" alt="img" /></a></div>
                         <div class="g-content">
@@ -110,7 +110,7 @@ use common\util\UrlUtils;
                 <li>
                     <div class="grid">
                         <div class="g-row">
-                            <a class="g-title" href="#">Travel Journals</a>
+                            <a class="g-title" href="<?= $this->context->baseUrl .'travel-journal.html'?>">Travel Journals</a>
                         </div>
                         <div class="img"><a href="#"><img src="data/home2.jpg" alt="img" /></a></div>
                         <div class="g-content">
@@ -126,7 +126,7 @@ use common\util\UrlUtils;
                 <li>
                     <div class="grid">
                         <div class="g-row">
-                            <a class="g-title" href="#">Culture Stories</a>
+                            <a class="g-title" href="<?= $this->context->baseUrl .'culture-story.html'?>">Culture Stories</a>
                         </div>
                         <div class="img"><a href="#"><img src="data/home3.jpg" alt="img" /></a></div>
                         <div class="g-content">

@@ -87,30 +87,30 @@ review.changeActive = function (id) {
     });
 };
 
-review.edit = function (id){
+review.edit = function (id) {
     var index = $("tr[data-key='" + id + "'] td:nth-child(1)").text();
     ajax({
         service: '/review/get',
         data: {id: id},
         loading: false,
-        done: function(resp) {
+        done: function (resp) {
             if (resp.success) {
                 popup.open('popup-edit-review', 'Sửa Loại tiền.', Fly.template('/review/add.tpl', resp), [
                     {
                         title: 'Sửa',
                         style: 'btn-primary',
-                        fn: function() {
+                        fn: function () {
                             ajaxSubmit({
                                 service: '/review/add',
                                 id: 'add-review',
                                 contentType: 'json',
                                 loading: false,
-                                done: function(rs) {
+                                done: function (rs) {
                                     rs.data.index = index;
                                     if (rs.success) {
-                                            var html = Fly.template('/review/tredit.tpl', rs);
+                                        var html = Fly.template('/review/tredit.tpl', rs);
 //                                            $("tr[data-key='" + id + "']").empty().html(html).addClass('success');
-                                            popup.close('popup-edit-review');
+                                        popup.close('popup-edit-review');
                                     } else {
                                         popup.msg(rs.message);
                                     }
@@ -121,15 +121,34 @@ review.edit = function (id){
                     {
                         title: 'Hủy',
                         style: 'btn-default',
-                        fn: function() {
+                        fn: function () {
                             popup.close('popup-edit-review');
                         }
                     }
                 ]);
-                setTimeout(function() {
+                setTimeout(function () {
                     $('input[data-info=startTime]').timeSelect();
                     $('input[data-info=endTime]').timeSelect();
                 }, 300);
+                ajax({
+                    service: '/user/getall',
+                    data: '',
+                    done: function (resp_user) {
+                        if (resp_user.success) {
+                            var selectHtml = '<option value="" >--Chọn User--</option>';
+                            console.log ('review test');
+                            console.log (resp.data);
+                            console.log (resp.data.user_id);
+                            $.each(resp_user.data, function (i) {
+                                selectHtml += '<option '+ (this.id == resp.data.user_id ? 'selected' : '') + ' value="' + this.id + '" >' + this.username + '</option>';
+                            });
+                            $('select[data-insert=user_id]').html(selectHtml);
+                        } else {
+                            popup.msg(resp_user.message);
+                        }
+                    }
+                });
+                $('select[data-insert=rate]').val(resp.data.rate);
             } else {
                 popup.msg(resp.message);
             }
