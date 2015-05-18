@@ -4,7 +4,8 @@ namespace frontend\models;
 
 use common\models\business\OrderBusiness;
 use common\models\db\Order;
-use common\models\enu\PaymentType;
+use common\models\business\EmailBusiness;
+use common\models\business\UserBusiness;
 use common\models\enu\StatusPayment;
 use common\models\output\Response;
 use common\util\TextUtils;

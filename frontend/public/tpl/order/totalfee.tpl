@@ -29,7 +29,7 @@
     </div><!-- form -->
     <div class="order-button">
         <!--<a class="btn btn-primary" onclick="$('#totalFee').html('$'+<%=data.adult * data.price + data.nochild * data.price * 70/100%>);" >Let's go</a> -->
-        <a class="btn btn-primary" onclick="tour.submitOrder(<%= data.tourId%>,<%= data.adult%>,<%= data.nochild%>,<%= data.child%>,<%= data.dateorder%> );" >Let's go</a> 
+        <a class="btn btn-primary" onclick="tour.submitOrder(<%= data.tourId%>,<%= data.adult%>,<%= data.nochild%>,<%= data.child%>,'<%= data.dateorder%>' );" >Let's go</a> 
         <a class="btn btn-default" onclick="tour.ShowBookingInput(<%= data.tourId%>);"><i class="fa fa-long-arrow-left"></i>Return...</a>
     </div>
 </div><!-- order-content -->

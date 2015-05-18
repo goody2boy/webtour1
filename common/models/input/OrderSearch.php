@@ -175,6 +175,7 @@ class OrderSearch extends Model {
             }
             return $totalPrice - $promo_price;
         }
+        return $totalPrice;
     }
 
 }

@@ -31,11 +31,11 @@ order.submitOrder = function (orderId) {
             done: function (resp) {
                 if (resp.success) {
                     if(resp.data.payment_method === "PAYPAL"){
-                        window.location.replace(baseUrl + "checkout.html");
+                        window.location.replace(baseUrl + "checkout-"+ resp.data.id +".html");
                     }else if(resp.data.payment_method === "MASTER_CARD"){
-                        window.location.replace(baseUrl + "checkout.html");
+                        window.location.replace(baseUrl + "checkout-"+ resp.data.id +".html");
                     }else if(resp.data.payment_method === "LATER"){
-                        window.location.replace(baseUrl + "checkout.html");
+                        window.location.replace(baseUrl + "checkout-"+ resp.data.id +".html");
                     }
                 } else {
                     if (resp.data === 'NO_LOGIN') {

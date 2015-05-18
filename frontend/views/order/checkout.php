@@ -31,7 +31,7 @@ use common\util\UrlUtils;
                         <?php foreach ($orders->data as $order) { ?>
                             <tr>
                                 <td><a href="<?= $this->context->baseUrl . UrlUtils::tour($order->tour->title, $order->tour->id) ?>"><?= $order->tour->code ?></a></td>
-                                <td><?= $order->date_departure ?></td>
+                                <td><?= date('m/d/Y', $order->date_departure) ?></td>
                                 <td><?= $order->number_adult ?></td>
                                 <td><?= $order->number_child ?></td>
                                 <td><?= $order->number_nochild ?></td>

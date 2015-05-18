@@ -81,8 +81,9 @@ tour.submitOrder = function (tourId, numAdult, numNoChild, numChild, date) {
         loading: false,
         done: function (resp) {
             if (resp.success) {
+                alert('test submit');
                 $(".order-loading").hide();
-                window.location.replace(baseUrl + "checkout.html");
+                window.location.replace(baseUrl + "checkout-" + resp.data.id + ".html");
             } else {
                 if (resp.data === 'NO_LOGIN') {
                     popup.msg("You are not login . Please login to order this tour.");

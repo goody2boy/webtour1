@@ -44,7 +44,7 @@ return [
         'hightlight/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'hight-light/detail',
         'tour/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'tour/detail',
         'tour-type/<alias:[0-9a-z_-]+>-<id:\d+>.html' => 'category/detail',
-        'checkout.html' => 'order/checkout',
+        'checkout-<id:\d+>.html' => 'order/checkout',
         'tour-request.html' => 'tour/request',
         'diary.html' => 'diary/index',
         'comments.html' => 'diary/comments',

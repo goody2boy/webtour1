@@ -90,7 +90,7 @@ $home = isset($this->context->var["home"]) ? $this->context->var["home"] : '';
                         <?php if (!empty($menus)) { ?>
                             <?php foreach ($menus as $menu) { ?>
                                 <?php if ($menu->parentId == 0) { ?>
-                        <li class="<?= isset($this->context->var['menuactive']) && $this->context->var['menuactive'] == $menu->link ? 'active' : 'li-submenu' ?>"><a href="<?= $menu->link ?>"><?= $menu->name ?><span class="btn-submenu fa fa-plus"></span></a>
+                                    <li class="<?= isset($this->context->var['menuactive']) && $this->context->var['menuactive'] == $menu->link ? 'active' : 'li-submenu' ?>"><a href="<?= $menu->link ?>"><?= $menu->name ?><span class="btn-submenu fa fa-plus"></span></a>
                                         <div class="submenu">
                                             <ul>
                                                 <?php foreach ($menus as $submenu) { ?>
@@ -239,6 +239,19 @@ $home = isset($this->context->var["home"]) ? $this->context->var["home"] : '';
             var account = '<?= Yii::$app->user->getId() ?>';
             var baseUrl = '<?= $this->context->baseUrl; ?>';
 <?= $this->context->staticClient; ?>
+        </script>
+        <script type="text/javascript">
+            var __lc = {};
+            __lc.license = 6122481;
+
+            (function () {
+                var lc = document.createElement('script');
+                lc.type = 'text/javascript';
+                lc.async = true;
+                lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(lc, s);
+            })();
         </script>
     </body>
 </html>

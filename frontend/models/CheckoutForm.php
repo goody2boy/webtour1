@@ -3,6 +3,9 @@
 namespace frontend\models;
 
 use common\models\business\OrderBusiness;
+use common\models\business\UserBusiness;
+use common\models\business\EmailBusiness;
+use common\models\input\OrderSearch;
 use common\models\db\Order;
 use common\models\output\Response;
 use yii\base\Model;
@@ -54,7 +57,19 @@ class CheckoutForm extends Model {
         if (!$order->save(false)) {
             return new Response(false, "Không lưu được vào csdl", $order->errors);
         }
+        $this->sendMail($order);
         return new Response(true, "Đặt hàng thành công! Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất !", $order);
+    }
+    
+    public function sendMail($order){
+        $user = UserBusiness::get($order->user_id);
+        if ($user != null) {
+            $search = new OrderSearch();
+            $search->id = $order->id;
+            $search->user_id = $order->user_id;
+            $order = $search->search(true)->data[0];
+            EmailBusiness::send($user->email, "Xác nhận đặt tour", "order", ['order' => $order, "user" => $user]);
+        }
     }
 
 }
